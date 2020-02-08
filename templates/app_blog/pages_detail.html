@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% load common_tags martortags %}
+{% block title %}{{ page.title }} :: {{ block.super }}{% endblock %}
+{% block canonical %}{% url 'pages_detail' slug=page.slug %}{% endblock %}
+
+{% if not page.publish %}
+  {% block robot %}
+    <meta name="robots" content="NONE,NOARCHIVE" />
+  {% endblock %}
+{% endif %}
+
+{% block seo %}
+  <meta name="description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+  <meta name="author" content="{{ page.author }}">
+  <meta name="keywords" content="{{ page.title }}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+  <meta property="og:url" content="https://{{ request.get_host }}{% url 'pages_detail' slug=page.slug %}">
+  {% if page.description|markdown_find_images|length >= 1 %}
+  <meta property="og:image" content="{{ page.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta property="og:site_name" content="python.web.id" >
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+  {% if page.description|markdown_find_images|length >= 1 %}
+  <meta name="twitter:image:src" content="{{ page.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:domain" content="python.web.id">
+  <meta name="twitter:creator" content="{% if page.author.profile.twitter %}{{ page.author.profile.twitter|splitter|last }}{% else %}@agusmakmun6{% endif %}">
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'css/martor/martor.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <style>.martor-preview{background: transparent;padding: 0}</style>
+{% endblock %}
+
+{% block content %}
+  <div class="ui container margin-2-0 detail-page">
+    <div class="ui grid">
+      <div class="eleven wide column">
+        <div class="ui dividing orange header">{{ page.title }}</div>
+        <div class="ui divider no-border"></div>
+        <div class="description martor-preview content-description-detail">
+          {{ page.description|safe_markdown }}
+        </div>
+      </div>
+      <div class="five wide column">
+        <div class="ui vertical fluid menu">
+          <div class="item">
+            <div class="header">{% trans "Other pages" %}</div>
+            <div class="menu">
+              {% for page in site_pages %}
+                <a class="item spf-link" href="{% url 'pages_detail' slug=page.slug %}">
+                  <i class="caret right icon"></i> {{ page }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

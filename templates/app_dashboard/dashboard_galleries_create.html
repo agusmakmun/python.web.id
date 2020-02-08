@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Upload File" %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="page content">
+    <div class="ui text container margin-2-0">
+      <form class="ui form upload-file-form" method="post" enctype="multipart/form-data"
+          action="{% if gallery %}{% url 'dashboard_galleries_edit' pk=gallery.pk %}{% else %}{% url 'dashboard_galleries_create' %}{% endif %}">
+        <div class="field">{% csrf_token %}
+          <label>{{ form.title.label }}</label>
+          <div class="ui left icon input">
+            {{ form.title }}
+            <i class="text width icon"></i>
+          </div>
+          {% if form.title.errors %}
+            <div class="ui pointing red basic label">
+              {% for error in form.title.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="field">
+          <label>{{ form.attachment.label }} *</label>
+          <div class="ui input">
+            {{ form.attachment }}
+          </div>
+          {% if form.attachment.value %}
+            <div style="padding:.5em 0">{% trans "Currently" %}:
+              <a href="{{ form.attachment.value.url }}" target="_blank">{{ form.attachment.value }}</a>
+            </div>
+            <script>
+              $('#id_attachment').removeAttr('required');
+              $('#id_attachment').attr('value', '{{ form.attachment.value }}');
+            </script>
+          {% endif %}
+
+          {% if form.attachment.errors %}
+            <div class="ui pointing red basic label">
+              {% for error in form.attachment.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <button class="ui orange button" type="submit">
+          <i class="upload icon"></i> {% trans "Upload File" %}
+        </button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

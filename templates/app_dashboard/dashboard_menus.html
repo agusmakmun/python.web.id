@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<div class="repo ribbon">
+  <div class="ui tabular menu">
+    <div class="ui container">
+      <a class="item spf-link view-dashboard-home-menu-top {% if request.resolver_match.url_name == 'dashboard_home' %}active{% endif %}"
+        href="{% url 'dashboard_home' %}"> <i class="dashboard icon"></i> {% trans "Dashboard" %}
+      </a>
+      <a class="item spf-link view-dashboard-tags-menu-top {% if request.resolver_match.url_name == 'dashboard_tags' %}active{% endif %}"
+        href="{% url 'dashboard_tags' %}"> <i class="tags icon"></i> {% trans "Tags" %}
+      </a>
+      <a class="item spf-link view-dashboard-posts-menu-top {% if request.resolver_match.url_name == 'dashboard_posts' %}active{% endif %}"
+        href="{% url 'dashboard_posts' %}"> <i class="feed icon"></i> {% trans "Posts" %}
+      </a>
+      <a class="item spf-link view-dashboard-users-menu-top {% if request.resolver_match.url_name == 'dashboard_users' %}active{% endif %}"
+        href="{% url 'dashboard_users' %}"> <i class="users icon"></i> {% trans "Users" %}
+      </a>
+      <a class="item spf-link view-dashboard-visitors-menu-top {% if request.resolver_match.url_name == 'dashboard_visitors' %}active{% endif %}"
+        href="{% url 'dashboard_visitors' %}"> <i class="eye icon"></i> {% trans "Visitors" %}
+      </a>
+      <a class="item spf-link view-dashboard-pages-menu-top {% if request.resolver_match.url_name == 'dashboard_pages' %}active{% endif %}"
+        href="{% url 'dashboard_pages' %}"> <i class="folder open icon"></i> {% trans "Pages" %}
+      </a>
+      <a class="item spf-link view-dashboard-galleries-menu-top {% if request.resolver_match.url_name == 'dashboard_galleries' %}active{% endif %}"
+        href="{% url 'dashboard_galleries' %}"> <i class="image icon"></i> {% trans "Galleries" %}
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{% extends "openid/base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'OpenID Sign In' %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="ui text container margin-2-0">
+    <h3 class="ui top attached header">{% trans 'OpenID Sign In' %}</h3>
+    <div class="ui attached stacked segment">
+      <form id="openid_login_form" class="ui form openid_login" method="post" action="{% url 'openid_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="ui primary button" type="submit">{% trans 'Sign In' %}</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

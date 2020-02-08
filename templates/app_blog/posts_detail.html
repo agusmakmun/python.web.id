@@ -1,0 +1,333 @@
+{% extends "base.html" %}
+{% load disqus_tags %}
+{% load i18n staticfiles %}
+{% load common_tags martortags post_tags user_info %}
+{% block title %}{{ post.title }} :: {{ block.super }}{% endblock %}
+{% block canonical %}{% url 'posts_detail' slug=post.slug %}{% endblock %}
+
+{% if not post.publish %}
+  {% block robot %}
+    <meta name="robots" content="NONE,NOARCHIVE" />
+  {% endblock %}
+{% endif %}
+
+{% block seo %}
+  <meta name="description" content="{% if object.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  <meta name="author" content="{{ post.author }}">
+  <meta name="keywords" content="{% if post.keywords %}{{ post.keywords }}{% else %}{{ post.title }}{% endif %}">
+  {% for tag in post.tags.all %}
+  <meta property="article:tag" content="{{ tag.title }}">
+  {% endfor %}
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  <meta property="og:url" content="https://{{ request.get_host }}{% url 'posts_detail' slug=post.slug %}">
+  {% if post.description|markdown_find_images|length >= 1 %}
+  <meta property="og:image" content="{{ post.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta property="og:site_name" content="python.web.id" >
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  {% if post.description|markdown_find_images|length >= 1 %}
+  <meta name="twitter:image:src" content="{{ post.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta name="twitter:title" content="{{ post.title }}">
+  <meta name="twitter:domain" content="python.web.id">
+  <meta name="twitter:creator" content="{% if post.author.profile.twitter %}{{ post.author.profile.twitter|splitter|last }}{% else %}@agusmakmun6{% endif %}">
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'css/martor/martor.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <div class="page content">
+    <div class="repo ribbon ribbon-detail">
+      <div class="ui container">
+        <div class="ui massive breadcrumb breadcrumb-title-detail">
+          <a href="{% url 'posts_detail' slug=post.slug %}" class="ui grey section no-underline spf-link">
+            {{ post.title }}
+            {% if not post.publish %}<label class="ui grey tiny label">{% trans "DRAFT" %}</label>{% endif %}
+          </a>
+        </div>
+        <div class="repo options">
+          <a class="ui small primary button spf-link" href="{% url 'posts_create' %}">
+            <i class="plus icon"></i> {% trans "Create a Post" %}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui equal width vertically padded grid container">
+      <div class="twelve wide column column-detail">
+        {% if not post.publish and request.user != post.author %}
+          <div class="ui message message-bulletin">
+            <i class="info circle icon"></i> {% trans "This post doesn't published yet!" %}
+          </div>
+        {% else %}
+          <div class="ui divided items">
+            <div class="item item-post">
+              <div class="stats">
+                {% if post_is_voted.score == 1 %}
+                  <div class="stats-inside-detail undo-vote-up" data-target="{% url 'vote_delete' post_id=post.pk user_id=request.user.id status='likes' %}">
+                    <i class="triangle up big link orange icon" title="{% trans 'undo vote up' %}"></i>
+                  </div>
+                {% else %}
+                  <div class="stats-inside-detail vote-up" data-target="{% url 'posts_vote_rating' object_id=post.pk score=1 %}">
+                    <i class="triangle up big link grey icon" title="{% trans 'vote up' %}"></i>
+                  </div>
+                {% endif %}
+
+                <div class="vote-total stats-inside-detail" data-id="{{ post.id }}">
+                  {% if request.user.is_authenticated %}
+                    <div class="value vote-total-public-value" style="cursor:pointer" title="{% trans 'View upvote and downvote totals' %}">
+                      {{ post.rating.get_difference }}
+                    </div>
+                    <div class="value vote-total-hidden-value" style="display:none">
+                      <span style="color:green">{% if post.rating.likes > 0 %}+{% endif %}{{ post.rating.likes }}</span>
+                      <div class="ui divider"></div>
+                      <span style="color:red">{% if post.rating.dislikes > 0 %}-{% endif %}{{ post.rating.dislikes }}</span>
+                    </div>
+                  {% else %}
+                    <div class="value">
+                      {{ post.rating.get_difference }}
+                    </div>
+                  {% endif %}
+                </div>
+
+                {% if post_is_voted.score == -1 %}
+                  <div class="stats-inside-detail undo-vote-down" data-target="{% url 'vote_delete' post_id=post.pk user_id=request.user.id status='dislikes' %}">
+                    <i class="triangle down big link orange icon" title="{% trans 'undo vote down' %}"></i>
+                  </div>
+                {% else %}
+                  <div class="stats-inside-detail vote-down" data-target="{% url 'posts_vote_rating' object_id=post.pk score=-1 %}">
+                    <i class="triangle down big link grey icon" title="{% trans 'vote down' %}"></i>
+                  </div>
+                {% endif %}
+
+                <div class="favorite-icon stats-inside-detail" data-target="{% url 'favorite_crud' pk=post.pk %}">
+                  <i class="star link {% if post.get_favorites.first.user == request.user and post.get_favorites.count > 0 %}orange{% else %}disabled{% endif %} icon" title="{% trans 'Click to mark as favorite or undo' %}"></i>
+                </div>
+                {% if post.get_favorites.count > 0 %}
+                  <div class="favorite-count stats-inside-detail">
+                    <div class="value">{{ post.get_favorites.count }}</div>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="content content-detail">
+                <div class="description martor-preview content-description-detail">
+                  {% if post.is_featured %}
+                    <label class="ui yellow tiny right corner label" title="{% trans 'Featured post' %}">
+                      <i class="bookmark icon"></i>
+                    </label>
+                  {% endif %}
+                  {{ post.description|safe_markdown }}
+                </div>
+                <div class="extra">
+                  <div class="tags-post-detail">
+                    {% for tag in post.tags.all %}
+                      <a href="{% url 'posts_tagged' slug=tag.slug %}" class="ui small label no-radius">{{ tag.title }}</a>
+                    {% endfor %}
+                  </div>
+                  <table class="ui table no-border table-post-footer">
+                    <tbody>
+                      <tr>
+                        <td class="ui grey color no-border sef-actions">
+                          <div class="ui top left pointing dropdown item dropdown-share-post">
+                            <span class="ui link grey color share share-action">
+                              <i class="share alternate icon"></i> {% trans "share" %}
+                            </span>
+                            <div class="menu">
+                              <div class="ui action icon input share-post-action">
+                                <input type="text" class="ui input input-link-post" value="{{ request.scheme }}://{{ request.get_host }}{% url 'posts_detail' slug=post.slug %}">
+                                <button class="ui icon orange button button-copy-link-post" title="{% trans 'Copy Link' %}">
+                                  <i class="copy icon" style="padding: 0"></i>
+                                </button>
+                              </div>
+                              <div class="divider"></div>
+                              <div class="item" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}{% url 'posts_detail' slug=post.slug %}&amp;title={{ post.title }}&amp;description={{ post.description|striptags|truncatewords:"20"|wordsonly }}&amp;author={{ post.author.username }}', 'newwindow', 'width=555, height=315'); return false;">
+                                <i class="facebook icon"></i> Facebook
+                              </div>
+                              <div class="item" onclick="window.open('https://twitter.com/intent/tweet/?url={{ request.scheme }}://{{ request.get_host }}{% url 'posts_detail' slug=post.slug %}&amp;text={{ post.title }}&amp;via=python-geek', 'newwindow', 'width=555, height=315'); return false;">
+                                <i class="twitter icon"></i> Twitter
+                              </div>
+                              <div class="item" onclick="window.open('https://plus.google.com/share?url={{ request.scheme }}://{{ request.get_host }}{% url 'posts_detail' slug=post.slug %}', 'newwindow', 'width=555, height=315'); return false;">
+                                <i class="google plus icon"></i> Google+
+                              </div>
+                              <div class="item" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{ request.scheme }}://{{ request.get_host }}{% url 'posts_detail' slug=post.slug %}', 'newwindow', 'width=555, height=315'); return false;">
+                                <i class="linkedin icon"></i> LinkedIn
+                              </div>
+                            </div>
+                          </div>
+                          {% if request.user == post.author %}
+                            <span class="separator">l</span>
+                            <a href="{% url 'posts_edit' slug=post.slug %}"
+                              class="ui link grey color spf-link edit-action">{% trans "edit" %}</a>
+                            <span class="separator">l</span>
+                            <a data-target="{% url 'posts_delete' pk=post.pk %}" data-confirm-message="{% trans 'Are you sure want to delete this post?' %}"
+                              class="ui link grey color delete-action">{% trans "delete" %}</a>
+                          {% endif %}
+                          {% if request.user.is_superuser %}
+                            <span class="separator">l</span>
+                            {% if post.is_featured %}
+                              <span class="ui link grey color mark-as-featured" data-target="{% url 'posts_mark_as_featured' pk=post.pk %}" data-mode="no">
+                                <i class="remove orange icon"></i><a class="ui grey color">{% trans "remove from featured" %}</a>
+                              </span>
+                            {% else %}
+                              <span class="ui link grey color mark-as-featured" data-target="{% url 'posts_mark_as_featured' pk=post.pk %}" data-mode="yes">
+                                <i class="check orange icon"></i><a class="ui grey color">{% trans "mark as featured" %}</a>
+                              </span>
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td class="no-border user-info user-signature">
+                          <div class="ui comments">
+                            <span class="ui grey color user-action-time" title="{{ post.created }}">
+                              {% blocktrans with time=post.created|timesince %}posted {{ time }} ago{% endblocktrans %}
+                            </span>
+                            <div class="comment user-info-signature">
+                              <div class="content">
+                                <a class="author spf-link" href="{% url 'posts_author' username=post.author.username %}">{{ post.author }}</a>
+                                <div class="text">
+                                  <span class="reputation" title="{% trans 'Reputation scores' %}: {{ post.author|get_total_ratings }}">
+                                    <i class="diamond orange icon"></i> {{ post.author|get_total_ratings|numberize }}
+                                  </span>
+                                  &nbsp;
+                                  <span class="feed-badge" title="{% trans 'Total posts' %}: {{ post.author|get_total_posts }}">
+                                    <i class="feed orange icon icon-dot-badge"></i> {{ post.author|get_total_posts|numberize }}
+                                  </span>
+                                  &nbsp;
+                                  <span class="up-badge" title="{% trans 'Total votes up' %}: {{ post.author|get_total_ratings:'likes' }}">
+                                    <i class="circle small green icon icon-dot-badge"></i> {{ post.author|get_total_ratings:"likes"|numberize }}
+                                  </span>
+                                  &nbsp;
+                                  <span class="down-badge" title="{% trans 'Total votes down' %}: {{ post.author|get_total_ratings:'dislikes' }}">
+                                    <i class="circle small red icon icon-dot-badge"></i> {{ post.author|get_total_ratings:"dislikes"|numberize }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div><!-- end /.item-post -->
+
+            <div class="answer-main">
+              <h3 class="ui grey header">
+                <i class="comments icon"></i>
+                <div class="content">{% trans "Your Answer" %}</div>
+              </h3>
+              <div class="disqus-comments">
+                {% set_disqus_identifier "blogpost_" post.slug %}
+                {% set_disqus_title post.title %}
+                {% disqus_show_comments %}
+              </div>
+            </div><!-- end /.answer-main -->
+          </div><!-- end /.items -->
+        {% endif %}{# endif not post.published #}
+      </div>
+      <div class="column right-sidebar">
+        <div class="ui fluid right vertical">
+          <div class="sidebar-post-info">
+            <table class="ui table no-border">
+              <tbody>
+                <tr>
+                  <td class="ui grey color no-border">{% trans "viewed" %}</td>
+                  <td class="no-border">{{ visitor_counter.total_visitors }}</td>
+                </tr>
+                <tr>
+                  <td class="ui grey color no-border">{% trans "your ip" %}</td>
+                  <td class="no-border">{{ visitor_counter.client_ip }}</td>
+                </tr>
+                <tr>
+                  <td class="ui grey color no-border">{% trans "posted" %}</td>
+                  <td class="no-border" title="{{ post.created }}">{{ post.created|timesince }} {% trans "ago" %}</td>
+                </tr>
+                <tr>
+                  <td class="ui grey color no-border">{% trans "active" %}</td>
+                  <td class="no-border">
+                    <a href="" class="ui link blue color no-border spf-link" title="{{ post.created }}">{{ post.modified|timesince }} {% trans "ago" %}</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- end /.sidebar-post-info-->
+
+          {% hot_posts as hot_posts_list %}
+          {% if hot_posts_list %}
+            <div class="sidebar-bulletin">
+              <div class="ui list">
+                {% for post in hot_posts_list %}
+                  <a class="item no-underline spf-link" href="{% url 'posts_detail' slug=post.slug %}">
+                    <i class="lightning icon"></i>
+                    <div class="content">{{ post.title }}</div>
+                  </a>
+                {% endfor %}
+              </div>
+            </div><!-- end /.sidebar-bulletin -->
+          {% else %}
+            <div class="ui divider"></div>
+          {% endif %}
+
+          <!--<div class="sidebar-related-tags">
+            <h3 class="ui grey header">Related Tags</h3>
+            <div class="ui selection list">
+              <a class="item no-underline">
+                <div class="ui horizontal label no-radius">Fruit</div>
+                × 77468
+              </a>
+              <a class="item no-underline">
+                <div class="ui horizontal label no-radius">Candy</div>
+                × 16671
+              </a>
+              <a class="item no-underline">
+                <div class="ui horizontal label no-radius">Fruit</div>
+                × 9092
+              </a>
+              <a class="item no-underline">
+                <div class="ui horizontal label no-radius">Dog</div>
+                × 7066
+              </a>
+            </div>
+          </div>--><!-- end /.sidebar-related-tags -->
+
+          <!--<div class="ui divider"></div>-->
+
+          <div class="sidebar-related-posts">
+            <h3 class="ui grey header">{% trans "Related posts" %}</h3>
+            <div class="ui list">
+              {% for post in related_posts %}
+                <a class="item spf-link no-underline" href="{% url 'posts_detail' slug=post.slug %}">
+                  <i class="ui icon" title="{% trans 'Vote score (upvotes - downvotes)' %}">
+                    {% if post.rating.get_difference < 0 %}
+                      <span style="color:red">{{ post.rating.get_difference }}</span>
+                    {% elif post.rating.get_difference == 0 %}
+                      <span>{{ post.rating.get_difference }}</span>
+                    {% else %}
+                      <span style="color:green">{{ post.rating.get_difference }}</span>
+                    {% endif %}
+                  </i>
+                  <div class="content">{{ post.title }}</div>
+                </a>
+              {% empty %}
+                <div class="item">{% trans "Empty!" %}</div>
+              {% endfor %}
+            </div>
+          </div><!-- end /.sidebar-related-posts -->
+        </div><!-- end /.ui fluid right vertical -->
+      </div>
+    </div><!-- end /.ui equal width vertically padded grid container -->
+  </div><!-- end /.page.content -->
+{% endblock %}
+
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/djangoblog.detail.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block canonical %}{% url 'tags_list' %}{% endblock %}
+
+{% block title %}{% trans "Tags" %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="ui container margin-2-0">
+    <div class="ui text container content-top-margin">
+      <form class="ui form create-tag-form" method="post" action=".">
+        {% csrf_token %}
+        <div class="field">
+          {% if request.user.is_authenticated and request.user.is_active %}
+            <div class="ui action input">
+              <input class="input-tag-title" name="title" type="text" maxlength="200"
+                placeholder="{% trans 'Type tag to find or create the tag...' %}" required>
+              <button class="ui positive button" type="submit">
+                <i class="plus icon"></i> {% trans "Add a Tag" %}
+              </button>
+            </div>
+          {% else %}
+            <input class="input-tag-title" name="title" type="text" maxlength="200"
+              placeholder="{% trans 'Type tag to find...' %}" required>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+
+    <div class="ui grid content-top-margin content-tag-list" style="margin-top: 2em">
+      {% for tag in object_list %}
+        <div class="four wide column" style="padding:0">
+          <a href="{% url 'posts_tagged' slug=tag.tag.slug %}"
+            class="ui small label no-radius spf-link" style="margin-bottom:.5em">
+            {{ tag.tag|truncatechars:30 }} <div class="detail">{{ tag.total }}</div>
+          </a>
+        </div>
+      {% empty %}
+        <p>{% trans "Empty!" %}</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script>
+    // find tag
+    $('.input-tag-title').keyup(function(){
+      var value = $(this).val().toLowerCase();
+      $(this).val(value);
+
+      $.ajax({
+        type: 'GET',
+        url: '{% url "tags_list" %}?q='+value,
+        success: function(response) {
+          $('.content-tag-list').html(
+            $(response).find('.content-tag-list').children()
+          );
+        }
+      });
+    });
+  </script>
+{% endblock %}

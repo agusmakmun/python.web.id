@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block robot %}
+  <meta name="robots" content="NONE,NOARCHIVE" />
+{% endblock %}
+
+{% block title %}
+  {% if post %}
+    {% blocktrans with title=post.title %}Edit Post "{{ title }}"{% endblocktrans %} :: {{ block.super }}
+  {% else %}
+    {% trans "Create a Post" %} :: {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'plugins/css/resizable.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'css/martor/martor.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="page content">
+  <div class="repo ribbon ribbon-detail">
+    <div class="ui container">
+      {% if post %}
+        <div class="ui massive breadcrumb breadcrumb-title-detail">
+          {% blocktrans with title=post.title %}Edit Post "{{ title }}"{% endblocktrans %}
+        </div>
+      {% else %}
+        <div class="ui massive breadcrumb breadcrumb-title-detail">{% trans "Create a Post" %}</div>
+      {% endif %}
+      <div class="repo options">
+        <a class="ui small button spf-link" onclick="window.history.go(-1); return false;">
+          <i class="reply icon"></i> {% trans "Go Back" %}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="ui grid container">
+    <div class="twelve wide column">
+      <div class="post-main" style="display:none">
+        <form class="ui form" method="post">{% csrf_token %}
+          <div class="field">
+            <label>{{ form.title.label }} *</label>
+            <div class="ui left icon input">
+              {{ form.title }}
+              <i class="terminal icon"></i>
+            </div>
+            {% if form.title.errors %}
+              <div class="ui pointing red basic label">
+                {% for error in form.title.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="ui divider padded no-border"></div>
+          <div class="field">
+            {{ form.description }}
+          </div>
+          <div class="two fields">
+            <div class="field">
+              <label>{{ form.tags.label }} *</label>
+              {{ form.tags }}
+              <label style="color:#bf8334;font-weight:normal;margin:4px 0 0 0">
+                <i>{% trans "* Please use lowercase input, eg: django rest framework" %}</i>
+              </label>
+              <label style="color:#bf8334;font-weight:normal">
+                <i>{% blocktrans %}* Click here to <a class="ui link add-new-tag">create new tag</a>{% endblocktrans %}</i>
+              </label>
+              {% if form.tags.errors %}
+                <div class="ui pointing red basic label">
+                  {% for error in form.tags.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="field">
+              <label>{{ form.keywords.label }}</label>
+              {{ form.keywords }}
+              {% if form.keywords.errors %}
+                <div class="ui pointing red basic label">
+                  {% for error in form.keywords.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div><!-- end /.two fields -->
+          <div class="field">
+            <label>{{ form.meta_description.label }}</label>
+            {{ form.meta_description }}
+            {% if form.meta_description.errors %}
+              <div class="ui pointing red basic label">
+                {% for error in form.meta_description.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="field">
+            <div class="ui clearing segment no-border post-action-segment">
+              <div class="ui toggle checkbox">
+                {{ form.publish }}
+                <label>{{ form.publish.label }}</label>
+              </div>
+              {% if post %}
+                <button class="ui right floated blue button submit-post-button" type="submit" disabled>
+                  <i class="check icon"></i> {% trans "Update Post" %}
+                </button>
+                <a href="{% url 'posts_detail' slug=post.slug %}" class="ui right floated button spf-link submit-post-button">
+                  <i class="remove icon"></i> {% trans "Cancel" %}
+                </a>
+              {% else %}
+                <button class="ui right floated positive button submit-post-button" type="submit" disabled>
+                  <i class="check icon"></i> {% trans "Create a Post" %}
+                </button>
+              {% endif %}
+            </div>
+          </div>
+        </form>
+
+        <div class="ui small modal scrolling modal-add-new-tag transition hidden">
+          <i class="close icon"></i>
+          <div class="header"><i class="tag icon"></i> {% trans "Add new tag" %}</div>
+          <div class="content">
+            <div class="ui info message">
+              <i class="help circle icon"></i>
+              {% trans "combine multiple words into single-words with hyphens" %}
+              (e.g. <label class="ui small label">ruby-on-rails</label>), {% trans "up to a maximum of 35" %}
+            </div>
+            <div class="ui success message success-tag-message" style="display: none"></div>
+            <form class="ui form stacked segment create-tag-form">
+              {% csrf_token %}
+              <div class="field">
+                <div class="ui action input">
+                  <input class="input-tag-title" name="new-tag" type="text" maxlength="200" 
+                    placeholder="{% trans 'type here...' %}" required>
+                  <button class="ui positive button button-add-new-tag">
+                    <i class="plus icon"></i> {% trans "Add a Tag" %}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!-- end /.post-main -->
+    </div>
+    <div class="four wide column right-sidebar">
+      <div class="ui fluid right vertical">
+        <div class="sidebar-help sidebar-bulletin sidebar-help-title" {% if post %}style="display:none"{% endif %}>
+          <h3 class="ui header">{% trans "How to Post" %}</h3>
+          <p>{% trans "Is your post about programming?" %}</p>
+          <p>{% trans "We prefer posts that can be posted, not just discussed." %}</p>
+          <p>{% trans "Provide details. Share your research." %}</p>
+        </div>
+        <div class="sidebar-help sidebar-bulletin sidebar-help-title-edit" {% if not post %}style="display:none"{% endif %}>
+          <h3 class="ui header">{% trans "How to Edit" %}</h3>
+          <div class="ui list">
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "fix grammatical or spelling errors" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "clarify meaning without changing it" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "correct minor mistakes" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "add related resources or links" %}</div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-help sidebar-bulletin sidebar-help-description" style="display:none">
+          <h3 class="ui header">{% trans "How to Format" %}</h3>
+          <div class="ui list">
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "put returns between paragraphs" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "for linebreak add 2 spaces at end" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content"><i>_italic_</i> {% trans "or" %} <strong>**bold**</strong></div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "indent code by 4 spaces" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "backtick escapes" %} <code>`like _so_`</code></div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "quote by placing > at start of line" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "to make links" %} [foo](http://foo.com)</div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-help sidebar-bulletin sidebar-help-tags" style="display:none">
+          <h3 class="ui header">{% trans "How to Tag" %}</h3>
+          <p>
+            {% trans "A tag is a keyword or label that categorizes your post with other, similar posts." %}
+            {% trans "Choose one or more (up to 5) tags that will help posters to find and interpret your post." %}
+          </p>
+          <div class="ui list">
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "complete the sentence: <i>my post is about...</i>" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "use tags that describe things or concepts that are essential, not incidental to your post" %}</div>
+            </div>
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">{% trans "favor using existing popular tags" %}</div>
+            </div>
+          </div>
+          <p>{% trans "If your post is primarily about a topic for which you can't find a tag:" %}</p>
+          <div class="ui list">
+            <div class="item no-underline">
+              <i class="caret right icon"></i>
+              <div class="content">
+                {% trans "combine multiple words into single-words with hyphens" %}
+                (e.g. <label class="ui small label">ruby-on-rails</label>), {% trans "up to a maximum of 35" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/martor.min.js' %}"></script>
+  <script>
+    setTimeout(function(){$('.post-main').show()}, 1000);
+    $('.tab-martor-menu').removeClass('secondary pointing');
+    $('.martor-preview pre').each(function(i, block){hljs.highlightBlock(block)});
+    $('.ui.search.tags-dropdown').dropdown({maxSelections: 5, transition: 'fade up'});
+    $('.ui.search.tags-dropdown').dropdown({
+      placeholder: '{% trans "at least one tag such as (sql css mysql), max 5 tags" %}',
+      allowAdditions: false,
+      apiSettings: {
+        url: '{% url "tags_search_json" %}?q={query}'
+      },
+      fields: {
+        remoteValues : 'results',
+        name         : 'title',
+        text         : 'title',
+        value        : 'id'
+      },
+    }).dropdown('restore defaults');
+    var disabledPostButton = function() {
+      if($('textarea[name=description]').val().split(" ").length >= 20) {
+        $('.submit-post-button').removeAttr('disabled');
+      }else {
+        $('.submit-post-button').attr({'disabled': 'disabled'});
+      }
+    }
+    disabledPostButton();
+    $(document).keyup(function(){disabledPostButton()});
+    var showHelp = function(selector) {
+      $('.sidebar-help').hide();
+      $(selector).show();
+    }
+    $(document).on('click', '.martor-field-description', function(){
+      showHelp('.sidebar-help-description');
+    });
+    $('#id_title').click(function(){
+      {% if post %}{# edit mode #}
+        showHelp('.sidebar-help-title-edit');
+      {% else %}{# create mode #}
+        showHelp('.sidebar-help-title');
+      {% endif %}
+    });
+    $('.tags-dropdown').click(function(){
+      showHelp('.sidebar-help-tags');
+    });
+
+    // create new tag
+    $('.add-new-tag').click(function(){
+      $('.modal-add-new-tag').modal('show');
+    });
+    $('.create-tag-form').submit(function(e){
+      e.preventDefault();
+      var form = $(this);
+      $.ajax({
+        type: 'POST',
+        url: '{% url "tags_create_json" %}',
+        data: form.serialize(),
+        success: function(response) {
+
+          $('.success-tag-message').html(
+            '<i class="info circle icon"></i>'+
+            response['message']
+          ).show();
+          form[0].reset();
+        }
+      })
+    });
+  </script>
+{% endblock %}

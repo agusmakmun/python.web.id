@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load common_tags martortags %}
+{% block canonical %}{% url 'docs_detail' slug=documentation.slug %}{% endblock %}
+
+{% block seo %}
+  <meta name="description" content="{{ documentation.description|safe_markdown|striptags|truncatewords:'20' }}">
+  <meta name="author" content="{{ documentation.author }}">
+  <meta name="keywords" content="{{ documentation.title }}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ documentation.title }}">
+  <meta property="og:description" content="{{ documentation.description|safe_markdown|striptags|truncatewords:'20' }}">
+  <meta property="og:url" content="https://{{ request.get_host }}{% url 'docs_detail' slug=documentation.slug %}">
+  {% if documentation.description|markdown_find_images|length >= 1 %}
+  <meta property="og:image" content="{{ documentation.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta property="og:site_name" content="python.web.id" >
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{{ documentation.description|safe_markdown|striptags|truncatewords:'20' }}">
+  {% if documentation.description|markdown_find_images|length >= 1 %}
+  <meta name="twitter:image:src" content="{{ documentation.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta name="twitter:title" content="{{ documentation.title }}">
+  <meta name="twitter:domain" content="python.web.id">
+  <meta name="twitter:creator" content="{% if documentation.author.profile.twitter %}{{ documentation.author.profile.twitter|splitter|last }}{% else %}@agusmakmun6{% endif %}">
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'css/martor/martor.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <div class="ui container margin-2-0">
+    <h2 class="ui dividing brown header">
+      <i class="cubes icon" style="font-size: 1em;padding: 0 5px"></i>
+      <div class="content">{% trans "Rest API v1" %}</div>
+    </h2>
+    <div class="ui grid">
+      <div class="four wide column">
+        <div class="ui vertical fluid tabular sticky menu">
+          {% url 'docs_detail' slug='introduction' as url_docs_introduction %}
+          <a class="item spf-link {% if request.path == url_docs_introduction %}active{% endif %}" href="{{ url_docs_introduction }}">
+            {% trans "Introduction" %}
+          </a>
+          {% url 'docs_detail' slug='authentication' as url_docs_authentication %}
+          <a class="item spf-link {% if request.path == url_docs_authentication %}active{% endif %}" href="{{ url_docs_authentication }}">
+            {% trans "Authentication" %}
+          </a>
+          {% url 'docs_detail' slug='parameters' as url_docs_parameters %}
+          <a class="item spf-link {% if request.path == url_docs_parameters %}active{% endif %}" href="{{ url_docs_parameters }}">
+            {% trans "Parameters" %}
+          </a>
+          {% url 'docs_detail' slug='posts' as url_docs_posts %}
+          <a class="item spf-link {% if request.path == url_docs_posts %}active{% endif %}" href="{{ url_docs_posts }}">
+            {% trans "Posts" %}
+          </a>
+          {% url 'docs_detail' slug='tags' as url_docs_tags %}
+          <a class="item spf-link {% if request.path == url_docs_tags %}active{% endif %}" href="{{ url_docs_tags }}">
+            {% trans "Tags" %}
+          </a>
+          {% url 'docs_detail' slug='users' as url_docs_users %}
+          <a class="item spf-link {% if request.path == url_docs_users %}active{% endif %}" href="{{ url_docs_users }}">
+            {% trans "Users" %}
+          </a>
+          {% url 'docs_detail' slug='support' as url_docs_support %}
+          <a class="item spf-link {% if request.path == url_docs_support %}active{% endif %}" href="{{ url_docs_support }}">
+            {% trans "Support" %}
+          </a>
+        </div>
+      </div>
+      <div class="twelve wide stretched column">
+        <div class="ui segment martor-preview">
+          {{ documentation.description|safe_markdown }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script>
+    $('.ui.sticky.menu').sticky({
+      context: '.martor-preview',
+      pushing: true
+    });
+    $('.martor-preview pre').each(function(i, block){hljs.highlightBlock(block)});
+    $('.martor-preview h1, .martor-preview h2, .martor-preview h3, \
+      .martor-preview h4, .martor-preview h5').each(function(i, block){
+      var text = $(block).text();
+      var divId = text.replace(/ /g, "-").toLowerCase();
+      $(block).attr({'id': divId});
+      $(block).html('');
+
+      var a = document.createElement('a');
+      a.setAttribute('href', '#'+divId);
+      a.setAttribute('style', 'color: #804722');
+      a.innerHTML = text;
+      $(block).append(a);
+    });
+  </script>
+{% endblock %}

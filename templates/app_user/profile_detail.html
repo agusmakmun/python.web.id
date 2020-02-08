@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load common_tags user_info %}
+{% block canonical %}{% url 'profile_detail' username=profile.user.username %}{% endblock %}
+{% block title %}{% trans "Profile" %} {{ profile }} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="page content">
+    {% include "includes/profile_menus_top.html" %}
+    <div class="ui grid container">
+      <div class="eight wide column">
+        <div class="ui secondary segment no-radius segment-profile-reputation">
+          {% if profile.user.is_superuser %}
+            <span class="ui black right corner label" title="{% trans 'hero user' %}">
+              <i class="shield icon"></i>
+            </span>
+          {% else %}
+            <span class="ui orange right corner label" title="{% trans 'normal user' %}">
+              <i class="user icon"></i>
+            </span>
+          {% endif %}
+          <div class="ui equal width grid grid-profile-reputation">
+            <div class="column">
+              <div class="ui massive grey header">
+                {% if profile.display_name %}{{ profile.display_name }}{% else %}{{ profile.user.username }}{% endif %}
+                <div class="sub header">
+                  {% if profile.location %}{{ profile.location }}{% endif %}
+                </div>
+              </div>
+              <div class="quarter-graph">
+                {% if profile.about_me %}{{ profile.about_me }}{% else %}{% trans "Nothing about me!" %}{% endif %}
+              </div>
+              <h5 class="ui mini grey header">{% trans "Social Accounts" %}</h5>
+              {% if not profile.website and not profile.twitter and not profile.linkedin and not profile.github %}
+                <p>{% trans "No social accounts!" %}</p>
+              {% endif %}
+
+              {% if profile.website %}
+                <a href="{{ profile.website }}" target="_blank" class="no-underline">
+                  <i class="globe link circular icon"></i>
+                </a>
+              {% endif %}
+              {% if profile.twitter %}
+                <a href="{{ profile.twitter }}" target="_blank" class="no-underline">
+                  <i class="twitter link circular icon"></i>
+                </a>
+              {% endif %}
+              {% if profile.linkedin %}
+                <a href="{{ profile.linkedin }}" target="_blank" class="no-underline">
+                  <i class="linkedin link circular icon"></i>
+                </a>
+              {% endif %}
+              {% if profile.github %}
+                <a href="{{ profile.github }}" target="_blank" class="no-underline">
+                  <i class="github link circular icon"></i>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="five wide column">
+        <div class="ui secondary segment no-radius segment-profile-badges">
+          <h4 class="ui mini grey header">{% trans "BADGES" %}</h4>
+          <div class="ui equal width grid grid-profile-badges">
+            <div class="column">
+              <span class="ui basic fluid orange small label" title="{% trans 'Reputation score' %}: {{ profile.user|get_total_ratings }}">
+                <i class="diamond orange icon"></i> {{ profile.user|get_total_ratings|numberize }}
+              </span>
+            </div>
+            <div class="column">
+              <span class="ui basic fluid brown small label" title="{% trans 'Total posts' %}: {{ profile.user|get_total_posts }}">
+                <i class="feed brown icon"></i> {{ profile.user|get_total_posts|numberize }}
+              </span>
+            </div>
+            <div class="column">
+              <span class="ui basic fluid yellow small label" title="{% trans 'Total featured posts' %}: {{ profile.user|total_featured_posts }}">
+                <i class="bookmark yellow icon"></i> {{ profile.user|total_featured_posts|numberize }}
+              </span>
+            </div>
+          </div>
+          <div class="ui equal width grid grid-profile-badges">
+            <div class="column">
+              <h5 class="ui mini grey header">{% trans "Votes up" %}</h5>
+              <span class="ui fluid teal small label" title="{% trans 'Total votes up' %}: {{ profile.user|get_total_ratings:'likes' }}">
+                <i class="thumbs up white icon"></i> {{ profile.user|get_total_ratings:"likes"|numberize }}
+              </span>
+            </div>
+            <div class="column">
+              <h5 class="ui mini grey header">{% trans "Votes down" %}</h5>
+              <span class="ui fluid red small label" title="{% trans 'Total votes down' %}: {{ profile.user|get_total_ratings:'dislikes' }}">
+                <i class="thumbs down white icon"></i> {{ profile.user|get_total_ratings:"dislikes"|numberize }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="three wide column">
+        <div class="ui secondary segment no-radius segment-profile-impact">
+          <h4 class="ui mini grey header">{% trans "IMPACT" %}</h4>
+          <div class="ui big grey header" style="margin-top:0">
+            ~ {{ profile.user|get_total_posts|numberize }}
+            <div class="sub header">{% trans "posts created" %}</div>
+          </div>
+          <div class="ui list">
+            <div class="item">
+              <i class="triangle up grey icon"></i>
+              <div class="content">
+                <a class="ui grey link color spf-link" href="{% url 'profile_activity' username=user.username %}?tab=votes">
+                  {{ total_votes|numberize }} {% trans "votes cast" %}
+                </a>
+              </div>
+            </div>
+            <div class="item">
+              <i class="star grey icon"></i>
+              <div class="content">
+                <a class="ui grey link color spf-link" href="{% url 'profile_activity' username=user.username %}?tab=favorites">
+                  {{ total_favorites|numberize }} {% trans "favorites" %}
+                </a>
+              </div>
+            </div>
+            <div class="item">
+              <i class="tag grey icon"></i>
+              <div class="content">
+                <a class="ui grey link color spf-link" href="{% url 'profile_activity' username=user.username %}?tab=tags">
+                  {{ total_tags|numberize }} {% trans "tags" %}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui grid container margin-2-0">
+      <div class="eight wide column">
+        <div class="ui secondary pointing menu">
+          <div class="ui container menu-box-posts">
+            <a class="left floated item">
+              <strong>{% trans "Posts" %} ({{ total_posts|numberize }})</strong>
+            </a>
+            <a class="active item post-filter-menu" data-filter="votes">
+              {% trans "votes" %}
+            </a>
+            <a class="item post-filter-menu" data-filter="activity">
+              {% trans "activity" %}
+            </a>
+            <a class="item post-filter-menu" data-filter="newest">
+              {% trans "newest" %}
+            </a>
+          </div>
+        </div>
+        <div class="ui list list-box-items list-box-posts">
+          {% for post in posts %}
+            <a class="item spf-link no-underline" href="{% url 'posts_detail' slug=post.slug %}">
+              {% if post.rating.get_difference < 0 %}
+                <label class="ui basic left floated small label" style="color:red" title="{% trans 'vote score' %}">{{ post.rating.get_difference }}</label>
+              {% elif post.rating.get_difference == 0 %}
+                <label class="ui basic left floated small label" title="{% trans 'vote score' %}">{{ post.rating.get_difference }}</label>
+              {% else %}
+                <label class="ui basic left floated small label" style="color:green" title="{% trans 'vote score' %}">{{ post.rating.get_difference }}</label>
+              {% endif %}
+              <div class="content">{{ post.title }}</div>
+            </a>
+          {% empty %}
+            <div class="ui padded segment">
+              <i class="info circle icon"></i> {% blocktrans with user=user %}{{ user }} dosen't have posts!{% endblocktrans %}
+            </div>
+          {% endfor %}
+          <a class="item no-underline spf-link" href="{% url 'profile_activity' username=user.username %}?tab=posts">
+            {% trans "View more" %} &rarr;
+          </a>
+        </div>
+      </div><!-- end /.eight wide column -->
+      <div class="eight wide column">
+        <div class="ui secondary pointing menu">
+          <div class="ui container">
+            <a class="item">
+              <strong>{% trans "Tags" %} ({{ total_tags|numberize }})</strong>
+            </a>
+          </div>
+        </div>
+        <div class="ui grid">
+          <div class="eight wide column">
+            <div class="ui list list-box-items">
+              {% for tag in tags %}
+                {% if forloop.counter <= 5 %}
+                  <a class="item no-underline spf-link" href="{% url 'posts_tagged' slug=tag.tag.slug %}">
+                    <label class="ui link basic left floated small label"
+                      title="{% blocktrans with user=user total=tag.total tag=tag.tag %}{{ user }} posted {{ total }} posts in {{ tag }} tag{% endblocktrans %}">{{ tag.total }}</label>
+                    <label class="ui link label no-radius">{{ tag.tag }}</label> ×
+                    <span title="{% blocktrans with total=tag.tag.get_posts.count tag=tag.tag %}{{ total }} posts in the {{ tag }} tag{% endblocktrans %}">
+                      {{ tag.tag.get_posts.count }}</spam>
+                  </a>
+                {% endif %}
+              {% empty %}
+                <div class="ui padded segment">
+                  <i class="info circle icon"></i> {% blocktrans with user=user %}{{ user }} dosen't have tags!{% endblocktrans %}
+                </div>
+              {% endfor %}
+              <a class="item no-underline spf-link" href="{% url 'profile_activity' username=user.username %}?tab=tags">
+                {% trans "View more" %} &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="eight wide column">
+            <div class="ui list list-box-items">
+              {% for tag in tags %}
+                {% if forloop.counter > 5 %}
+                  <a class="item no-underline spf-link" href="{% url 'posts_tagged' slug=tag.tag.slug %}">
+                    <label class="ui link basic left floated small label"
+                      title="{% blocktrans with user=user total=tag.total tag=tag.tag %}{{ user }} posted {{ total }} posts in {{ tag }} tag{% endblocktrans %}">{{ tag.total }}</label>
+                    <label class="ui link label no-radius">{{ tag.tag }}</label> ×
+                    <span title="{% blocktrans with total=tag.tag.get_posts.count tag=tag.tag %}{{ total }} posts in the {{ tag }} tag{% endblocktrans %}">
+                      {{ tag.tag.get_posts.count }}</spam>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div><!-- end /.ui grid -->
+      </div><!-- end /.eight wide column -->
+
+      <div class="eight wide column">
+        <div class="ui secondary pointing menu">
+          <div class="ui container">
+            <a class="left floated item">
+              <strong>{% trans "Favorites" %} ({{ total_favorites|numberize }})</strong>
+            </a>
+          </div>
+        </div>
+        <div class="ui list list-box-items">
+          {% for favorite in favorites %}
+            <a class="item spf-link no-underline" href="{% url 'posts_detail' slug=favorite.post.slug %}">
+              {% if favorite.post.rating.get_difference < 0 %}
+                <label class="ui basic left floated small label" style="color:red" title="{% trans 'vote score' %}">{{ favorite.post.rating.get_difference }}</label>
+              {% elif favorite.post.rating.get_difference == 0 %}
+                <label class="ui basic left floated small label" title="{% trans 'vote score' %}">{{ favorite.post.rating.get_difference }}</label>
+              {% else %}
+                <label class="ui basic left floated small label" style="color:green" title="{% trans 'vote score' %}">{{ favorite.post.rating.get_difference }}</label>
+              {% endif %}
+              <div class="content">{{ favorite.post.title }}</div>
+            </a>
+          {% empty %}
+            <div class="ui padded segment">
+              <i class="info circle icon"></i> {% blocktrans with user=user %}{{ user }} dosen't have favorites!{% endblocktrans %}
+            </div>
+          {% endfor %}
+          <a class="item no-underline spf-link" href="{% url 'profile_activity' username=user.username %}?tab=favorites">
+            {% trans "View more" %} &rarr;
+          </a>
+        </div>
+      </div><!-- end /.eight wide column -->
+      <div class="eight wide column">
+        <div class="ui secondary pointing menu">
+          <div class="ui container">
+            <a class="item">
+              <strong>{% trans "Votes Cast" %} ({{ total_votes }})</strong>
+            </a>
+          </div>
+        </div>
+        <table class="ui table no-border">
+          <thead>
+            <tr>
+              <th colspan="2">{% trans "all time" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ total_votes_up }}</td>
+              <td>+ {% trans "up" %}</td>
+            </tr>
+            <tr>
+              <td>{{ total_votes_down }}</td>
+              <td>- {% trans "down" %}</td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="item no-underline spf-link" href="{% url 'profile_activity' username=user.username %}?tab=votes">
+          {% trans "View more" %} &rarr;
+        </a>
+      </div><!-- end /.eight wide column -->
+    </div><!-- end /.grid container -->
+  </div><!-- end /.page.content -->
+{% endblock %}
+
+{% block js %}
+  <script>
+    $('.view-profile-menu-top').addClass('active');
+
+    $('.post-filter-menu').click(function(){
+      var button = $(this);
+      $.ajax({
+        type: 'GET',
+        url: '?filter='+button.data('filter'),
+        success: function(reponse){
+          button.closest('.menu-box-posts').find('.post-filter-menu').removeClass('active');
+          button.addClass('active');
+          $('.list-box-posts').html(
+            $(reponse).find('.list-box-posts').children()
+          );
+        }
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,9 @@
+db.sqlite3
+__pycache__/
+*.pyc
+*.swp
+.vscode/*
+*backup*
+.~lock*
+*.log*
+.idea/

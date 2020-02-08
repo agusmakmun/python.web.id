@@ -1,0 +1,50 @@
+{% extends "socialaccount/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Signup" %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="ui text container margin-2-0">
+    <h1>{% trans "Sign Up" %}</h1>
+
+    <div class="ui teal message">
+      {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}
+    </div>
+
+    <form class="ui form signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+      {% csrf_token %}
+      <div class="field">
+        <label>{{ form.email.label }} *</label>
+        <div class="ui left icon input">
+          {{ form.email }}
+          <i class="mail icon"></i>
+        </div>
+        {% if form.email.errors %}
+          <div class="ui pointing red basic label">
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <div class="field">
+        <label>{{ form.username.label }} *</label>
+        <div class="ui left icon input">
+          {{ form.username }}
+          <i class="person icon"></i>
+        </div>
+        {% if form.username.errors %}
+          <div class="ui pointing red basic label">
+            {% for error in form.username.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="ui primary button" type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </form>
+  </div>
+{% endblock %}

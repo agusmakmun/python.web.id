@@ -1,0 +1,617 @@
+.no-radius {
+  border-radius: 0!important;
+}
+.no-underline {
+  text-decoration: none!important;
+}
+.no-bold {
+  font-weight: normal!important;
+}
+.no-border {
+  border: none!important;
+}
+.ui.link {
+  cursor: pointer;
+}
+.ui.padded {
+  padding: .5em;
+}
+.no-padded {
+  padding: 0!important;
+}
+.ui.blue.color {
+  color: #4183C4!important;
+}
+.ui.grey.color {
+  color: #767676!important;
+}
+.top-align {
+  vertical-align: top!important;
+}
+.hover-opacity {
+  opacity: .2!important;
+}
+.hover-opacity:hover {
+  opacity: 1;
+}
+.icon.icon-dot-badge {
+  margin-right: -3px!important;
+}
+.breadcrumb-title-detail>a {
+  max-width: 900px;
+}
+.margin-2-0 {
+  margin: 2em 0!important;
+}
+pre.highlight {
+  background-color: #fffaf3;
+  padding: 0.5em;
+  counter-reset: line;
+  counter-increment: line;
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+.ui.blue.header {
+  color: #4183C4!important;
+  text-decoration: none;
+}
+.ui.divided.items>.item {
+  padding-top: 2em;
+}
+.ui.form .fields {
+  margin: 0;
+}
+.ui.floating.success.message {
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset, 0 2px 3px 0 rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.05) inset;
+}
+.ui.menu .item>.ui.fade.reveal>.content>img {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -.3em 0;
+  height: 2.3em;
+}
+
+/* Page Header */
+.page.header {
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #E5E5E5;
+  padding: 5px 0px;
+}
+
+/* No padding on menu */
+.page.header .menu {
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+/* Space right of input */
+.page.header .menu .item .input {
+  margin-right: 1em;
+}
+.page.header .menu .item input {
+  width: 250px;
+}
+
+/* Min Width on Dropdown */
+.page.header .ui.dropdown .menu {
+  min-width: 175px;
+}
+
+/* Resize images */
+.page.header .menu .item > .logo.image {
+  width: auto;
+  height: 28px;
+}
+.page.header .menu .item > .user.image {
+  width: auto;
+  height: 20px;
+}
+
+.page.header .plus.icon + .dropdown.icon {
+  margin-left: 2px;
+}
+
+/* Notification Bubble */
+.page.header .notification.label {
+  top: -1px;
+  right: 1px;
+  left: auto;
+}
+
+/*--------------
+ User Dropdown
+---------------*/
+
+/* Align dropdown with dropdown icon */
+.page.header .add.dropdown .menu {
+  margin: 0 -7px 0 0 !important;
+}
+
+.page.header .user.dropdown .menu {
+  margin: 0 -7px 0 0 !important;
+}
+.page.header .user.dropdown .user.header {
+  font-size: inherit;
+  padding-bottom: 0em;
+}
+.page.header .user.dropdown .user.header b {
+  color: inherit;
+}
+
+.ui.left.pointing.dropdown.dropdown-share-post>.menu {
+  color: #e4e6e8;
+  border-radius: 4px;
+  -moz-box-shadow: 1px 2px 2px rgba(12,13,14,0.4),inset 0 1px 0 rgba(255,255,255,0.3);
+  -webkit-box-shadow: 1px 2px 2px rgba(12,13,14,0.4),inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow: 1px 2px 2px rgba(12,13,14,0.4),inset 0 1px 0 rgba(255,255,255,0.3);
+  border: 1px solid #0C0D0E;
+  background-color: #2f3337;
+}
+.ui.left.pointing.dropdown.dropdown-share-post>.menu:after {
+  background: #2F3337;
+}
+.ui.left.pointing.dropdown.dropdown-share-post>.menu>.item {
+  color: #f0f0f0;
+}
+.ui.left.pointing.dropdown.dropdown-share-post>.menu>.item:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+
+/*--------------
+    Repo Menu
+---------------*/
+
+.repo.menu:first-child {
+  margin-top: 0.35em;
+}
+.column .checkout p {
+  font-size: 11px;
+  margin: 5px 0px;
+  color: #767676;
+}
+.column .checkout > .button {
+  margin-top: 10px;
+}
+.column .checkout > .button:last-child {
+  margin: 7px 0px;
+}
+
+
+/*--------------
+  Watch Button
+---------------*/
+
+.watch.dropdown.button > .menu h4 {
+  margin-bottom: 5px;
+}
+
+
+/*--------------
+     Footer
+---------------*/
+
+.footer .container {
+  position: relative;
+  margin-top: 60px;
+  padding-bottom: 2.5em;
+}
+.footer .container .github.mark,
+.footer .container .centered-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+
+/*******************************
+          Page CSS
+*******************************/
+
+
+/* This CSS is used to make per-page adjustments
+  Each page is given a body #id tag to descend
+  from for page-specific rules
+
+*/
+
+
+/*--------------
+   Top Ribbon
+---------------*/
+
+.repo.ribbon {
+  background-color: #FAFAFA;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+.repo.ribbon.ribbon-detail {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #EEE;
+  align-items: center;
+  display: flex;
+}
+.repo.ribbon .tabular.menu {
+  margin-top: 20px;
+}
+.repo.description {
+  margin: 0.35em 0em 1em;
+  font-size: 16px;
+  line-height: 22px;
+  color: #666666;
+}
+.breadcrumb.breadcrumb-title-detail {
+  line-height: 1.5em;
+}
+
+/*----------------
+   Language Used
+-----------------*/
+
+.ui.language.segments {
+  border-radius: 0px 0px 4px 4px;
+  box-shadow: none;
+  border: none;
+  width: calc(100% + 2px);
+  margin: 0px 0px 10px 0px;
+  overflow: hidden;
+}
+.language.segments .segment {
+  padding: 0.25em;
+}
+
+/*----------------
+  Latest Commits
+-----------------*/
+
+.recent.message {
+  padding: 10px;
+}
+
+
+/* Clippy */
+.recent .commit {
+  float: right;
+}
+.recent .clippy.icon {
+  margin-left: 5px;
+}
+
+/* Latest SHA */
+.latest .sha {
+  cursor: pointer;
+  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  font-size: 12px;
+  color: #888888;
+  float: right;
+}
+.latest .sha b {
+  font-weight: normal;
+  color: #333;
+}
+.latest .sha:hover {
+  text-decoration: underline;
+}
+
+/*----------------
+      Stats
+-----------------*/
+
+.stats {
+  padding: 0em;
+  border-bottom: none;
+}
+.stats.menu {
+  margin: 0em;
+}
+.stats.menu b {
+  margin-right: 3px;
+}
+
+/*----------------
+   Repo Buttons
+-----------------*/
+
+.repo.options {
+  float: right;
+}
+
+/*----------------
+   Repo Title
+-----------------*/
+
+.repo.title .input .button:first-child {
+  border-radius: 3px 0px 0px 3px;
+}
+.repo.title .input .button + input {
+  border-radius: 0px;
+  border-left: none;
+}
+
+
+/*----------------
+  Branch Dropdown
+-----------------*/
+
+/* Branch label */
+.branch.button .text {
+  font-weight: normal;
+  color: #888888;
+}
+/* Branch name */
+.branch.button b {
+  display: inline-block;
+  margin-left: 2px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.branch.button + .breadcrumb {
+  margin-left: 5px;
+}
+
+/*----------------
+      Files
+-----------------*/
+
+
+.files.table {
+  color: #888888;
+}
+
+
+/*----------------
+      Readme
+-----------------*/
+
+.readme {
+  font-size: 16px;
+}
+
+
+
+/* Container */
+@media only screen and (min-width: 1049px) {
+  .ui.container {
+    width: 1120px!important;
+  }
+  .ui.grid.container {
+    width: calc(1120px + 2rem)!important;
+  }
+}
+
+.ui.items>.item>.stats {
+  position: relative;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: block;
+  float: none;
+  margin: 0;
+  padding: 0;
+  max-height: '';
+  -webkit-align-self: top;
+  -ms-flex-item-align: top;
+  align-self: top;
+  margin-right: 1em;
+}
+.ui.items>.item>.stats>.stats-inside {
+  padding: 10px;
+  text-align: center;
+}
+.ui.items>.item>.stats>.stats-inside-detail {
+  /*padding: 0 5px;*/
+  text-align: center;
+}
+.ui.items>.item>.stats>.vote-up.stats-inside-detail .icon,
+.ui.items>.item>.stats>.undo-vote-up.stats-inside-detail .icon,
+.ui.items>.item>.stats>.vote-down.stats-inside-detail .icon,
+.ui.items>.item>.stats>.undo-vote-down.stats-inside-detail .icon {
+  font-size: 2.5em;
+}
+.ui.items>.item>.stats>.favorite-icon.stats-inside-detail .icon {
+  font-size: 1.2em;
+}
+.ui.items>.item>.stats>.stats-inside .label {
+  font-size: 10px!important;
+}
+.ui.items>.item>.stats>.stats-inside .value {
+  font-weight: bold;
+  font-size: 1em!important;
+}
+.ui.items>.item>.stats>.votes {
+  border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  /*background: #5fba7d;
+  background: #e89950;
+  color: #fff;*/
+  background: #f5f5f5;
+}
+.ui.items>.item>.stats>.views {
+  border-radius: 0 0 3px 3px;
+  -ms-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  -webkit-border-radius: 0 0 3px 3px;
+  color: #666;
+  background: #e8e8e8;
+}
+.stats>.vote-up .icon:hover,
+.stats>.vote-down .icon:hover {
+  color: #F2711C!important;
+}
+.user-info .reputation .icon,
+.user-info .gold-badge .icon,
+.user-info .silver-badge .icon,
+.user-info .bronze-badge .icon {
+  margin-right: 0;
+}
+.user-info .ui.tiny.image {
+  width: 55px;
+}
+.user-info .image+.content {
+  padding-left: 1em!important;
+}
+
+.ui.message.message-bulletin {
+  background-color: #FFF8DC;
+  border: 1px solid #E0DCBF;
+  box-shadow: none;
+}
+
+/* Sidebar */
+.sidebar-bulletin {
+  margin: 2em 0;
+  padding: 15px 15px 10px;
+  background-color: #FFF8DC;
+  border: 1px solid #E0DCBF;
+}
+.sidebar-related-tags>.selection.list>.item {
+  padding-left: 0;
+}
+.sidebar-related-tags>.selection.list>.item:hover {
+  background: transparent!important;
+}
+
+.sidebar-bulletin .list .item,
+.sidebar-related-posts .list .item {
+  margin-bottom: 1em;
+}
+.ui.list.list-box-items .item {
+  margin-bottom: .5em;
+}
+.sidebar-related-posts .list .item:hover,
+.ui.list.list-box-items .item:hover {
+  color: #3af!important;
+}
+.ui.list.list-box-items .item .content {
+  line-height: 2;
+}
+/*
+.sidebar-related-posts .list .item .ui.answered,
+.ui.list.list-box-items .item .ui.answered {
+  background: #5fba7d;
+  border-radius: 3px;
+  padding: 7px 5px;
+  font-size: 12px;
+  color: #fff;
+}
+.sidebar-related-posts .list .item:hover .ui.answered,
+.ui.list.list-box-items .item:hover .ui.answered {
+  color: #fff;
+}
+.sidebar-related-posts .list .item .ui.unanswered,
+.ui.list.list-box-items .item .ui.unanswered {
+  background: #e8e8e8;
+  border-radius: 3px;
+  padding: 7px 5px;
+  font-size: 12px;
+  color: #000;
+}
+.ui.list.list-box-items .item .ui.answered,
+.ui.list.list-box-items .item .ui.unanswered {
+  padding: 5px 7px;
+}*/
+
+.ui.items>.item>.content>.description.content-description-detail {
+  background: none;
+  line-height: 22px;
+  font-size: 14px;
+  color: #333;
+  padding: 0;
+}
+.content.content-detail {
+  max-width: 95%!important;
+}
+
+.tags-post-detail .ui.label {
+  margin-bottom: 3px;
+}
+.sef-actions {
+  vertical-align: top;
+}
+.share-action, .edit-action, .flag-action {
+  margin-right: 3px;
+}
+.user-signature {
+  width: 250px;
+}
+.user-info-signature {
+  margin: 0!important;
+}
+
+.ui.attached.buttons.radius-two-buttons .or {
+  position: static;
+}
+.ui.attached.buttons.radius-two-buttons .ui.github.button {
+  border-radius: 2px 0 0 2px;
+}
+.ui.attached.buttons.radius-two-buttons .ui.linkedin.button {
+  border-radius: 0 2px 2px 0;
+}
+
+.ui.segment.post-action-segment {
+  box-shadow: none;
+  padding: 5px;
+  padding-right: 0;
+}
+
+.column-detail {
+  padding-left: 0!important;
+}
+
+
+/* Messages */
+.main-messages {
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+  padding: 1em 0;
+}
+
+/* Notifyjs */
+.notifyjs-foo-base {
+  background: #fef8dd;
+  position: relative;
+  height: 70px;
+  border: 1px solid #e0dcbf;
+  border-radius: 3px;
+}
+.notifyjs-foo-base .title {
+  float: left;
+  margin: 5px 10px 5px 10px;
+  text-align: right;
+}
+.notifyjs-foo-base .buttons {
+  font-size: 9px;
+  padding: 5px;
+  margin: 2px;
+}
+.notifyjs-foo-base button {
+  width: 60px;
+}
+
+/* Base blank */
+.base-blank-body {
+  background: #f9f9f9;
+}
+
+/* Responsive CSS */
+@media screen and (max-width: 680px) {
+  body {
+    min-width: 100%;
+  }
+}
+@media screen and (max-width: 515px) {
+
+}
+@media screen and (max-width: 480px) {
+
+}
+@media screen and (max-width: 375px) {
+
+}

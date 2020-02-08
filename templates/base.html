@@ -1,0 +1,79 @@
+{% load staticfiles %}<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta content="noodp,noydir" name="robots">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content='100004919839335' property='fb:admins'>
+  <meta content='647189095407751' property='fb:app_id'>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="549DDB40F02282AF680D66EE25B5A94F" name="msvalidate.01">
+  <meta content="ALyG2_Wag27MgRzLcdZDMUIiL_keuGcVTfLYMeWH_CI" name="google-site-verification">
+  <link rel="publisher" href="https://plus.google.com/112965619973080744055">
+  <link rel="openid2.provider" href="https://openid.stackexchange.com/openid/provider">
+  <link rel="openid2.local_id" href="https://openid.stackexchange.com/user/dbed287a-f726-40d2-82b8-7faaf9dc5018">
+  <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}">
+  <link rel="alternate" href="/feed/" type="application/rss+xml" title="Blog Feed">
+
+  {% block robot %}
+  <meta name="robots" content="noodp, noydir"/>
+  {% endblock %}
+
+  <title>{% block title %}Python Learning{% endblock %}</title>
+  <link rel="canonical" href="https://python.web.id{% block canonical %}{% endblock %}">
+
+  {% block seo %}
+  <meta name="description" content="Django Blog Python Learning">
+  <meta name="author" content="Summon Agus">
+  <meta name="keywords" content="Python Learning, Summon Agus, Django Blog Summon Agus, Django, Blog Python Django">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Python Learning">
+  <meta property="og:description" content="Django Blog Python Learning">
+  <meta property="og:url" content="https://python.web.id">
+  <meta property="og:image" content="https://python.web.id{% static 'images/medium-logo.png' %}">
+  <meta property="og:site_name" content="python.web.id" >
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="Django Blog Python Learning">
+  <meta name="twitter:image:src" content="https://python.web.id{% static 'images/medium-logo.png' %}">
+  <meta name="twitter:title" content="Python Learning">
+  <meta name="twitter:domain" content="python.web.id">
+  <meta name="twitter:creator" content="@agusmakmun6">
+  {% endblock %}
+
+  {% block core_css %}
+  <link href="{% static 'plugins/css/semantic.min.css' %}" rel="stylesheet" media="all">
+  <link href="{% static 'css/github/global-github-theme.min.css' %}" rel="stylesheet" media="all">
+  {% endblock %}
+
+  <link href="{% static 'css/spfjs.css' %}" rel="stylesheet" media="all">
+  <link href="{% static 'css/djangoblog.css' %}" rel="stylesheet" media="all">
+  {% block css %}{% endblock %}
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/semantic.min.js' %}"></script>
+</head>
+
+<body>
+  {% include "includes/navs.html" %}
+  {% include "includes/messages.html" %}
+
+  <div class="main-container">
+    {% block content %}{% endblock %}
+  </div>
+
+  {% block footer %}
+    {% include "includes/footer.html" %}
+  {% endblock %}
+
+  <script src="{% static 'js/notify.min.js' %}"></script>
+  <script src="{% static 'js/djangoblog.js' %}"></script>
+
+  <!-- begin spfjs -->
+  <div id="spfjs-progress-bar"><dt></dt><dd></dd></div>
+  <script src="{% static 'js/spfjs.min.js' %}"></script>
+  <script src="{% static 'js/spfjs-main.js' %}"></script>
+  <!-- end spfjs -->
+  {% block js %}{% endblock %}
+</body>
+</html>

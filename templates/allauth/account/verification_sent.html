@@ -1,0 +1,14 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Verify Your E-mail Address" %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="ui text container margin-2-0">
+    <div class="ui piled segment">
+      <h3 class="ui grey header">{% trans "Verify Your E-mail Address" %}</h3>
+      <div class="ui info message">
+        <i class="info circle icon"></i> {% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

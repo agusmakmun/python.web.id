@@ -1,0 +1,110 @@
+{% load i18n staticfiles %}
+{% load common_tags user_info %}
+
+<div class="page header">
+  <div class="ui container">
+    <div class="ui right floated icon text menu">
+      {% if request.user.is_authenticated %}
+        <div class="item">
+          <span class="reputation" title="{% trans 'Reputation scores' %}: {{ request.user|get_total_ratings }}">
+            <i class="diamond orange icon"></i>{{ request.user|get_total_ratings|numberize }}
+          </span>
+          &nbsp;
+          <span class="feed-badge" title="{% trans 'Total posts' %}: {{ request.user|get_total_posts }}">
+            <i class="feed orange icon icon-dot-badge"></i> {{ request.user|get_total_posts|numberize }}
+          </span>
+          &nbsp;
+          <span class="up-badge" title="{% trans 'Total votes up' %}: {{ request.user|get_total_ratings:'likes' }}">
+            <i class="circle small green icon icon-dot-badge"></i> {{ request.user|get_total_ratings:"likes"|numberize }}
+          </span>
+          &nbsp;
+          <span class="down-badge" title="{% trans 'Total votes down' %}: {{ request.user|get_total_ratings:'dislikes' }}">
+            <i class="circle small red icon icon-dot-badge"></i> {{ request.user|get_total_ratings:"dislikes"|numberize }}
+          </span>
+        </div>
+
+        <!--<a class="item" data-content="You have unread inbox">
+          <span class="ui empty mini floating circular blue notification label"></span>
+          <i class="inbox icon"></i>
+        </a>
+        <a class="item" data-content="You have unread notification in this repository.">
+          <span class="ui empty mini floating circular blue notification label"></span>
+          <i class="bell icon"></i>
+        </a>-->
+
+        <div class="ui add top right pointing dropdown item" data-content="{% trans 'Create new...' %}" tabindex="0">
+          <i class="large plus icon"></i>
+          <i class="dropdown icon"></i>
+          <div class="menu" tabindex="-1">
+            <a class="item spf-link" href="{% url 'posts_create' %}">{% trans "New Post" %}</a>
+            <a class="item spf-link" href="{% url 'tags_list' %}">{% trans "New Tag" %}</a>
+            {% if request.user.is_superuser %}
+              <div class="divider"></div>
+              <div class="header">{% trans "This site" %}</div>
+              <a class="item spf-link" href="{% url 'dashboard_pages' %}">{% trans "New Page" %}</a>
+              <a class="item spf-link" href="{% url 'dashboard_galleries' %}">{% trans "New File" %}</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="user top right pointing ui dropdown item" data-content="{% trans 'View profile and more' %}" tabindex="0">
+          <strong>{{ request.user }}</strong>
+          <i class="dropdown icon"></i>
+          <div class="menu" tabindex="-1">
+            <div class="user header">
+              {% trans "Signed in as" %} <b>{{ request.user }}</b>
+            </div>
+            <div class="divider"></div>
+            <a href="{% url 'profile_detail' username=request.user.username %}" class="item spf-link">{% trans "Your Profile" %}</a>
+            <a href="{% url 'profile_activity' username=request.user.username %}" class="item spf-link">{% trans "Your Activity" %}</a>
+            <a href="{% url 'posts_me' %}" class="item spf-link">{% trans "Your Posts" %}</a>
+            <div class="divider"></div>
+            {% if request.user.is_superuser %}
+              <a href="{% url 'dashboard_home' %}" class="item spf-link">{% trans "Dashboard" %}</a>
+            {% endif %}
+            <a href="{% url 'profile_edit' %}" class="item spf-link">{% trans "Settings" %}</a>
+            <a href="{% url 'account_logout' %}" class="item spf-link">{% trans "Sign Out" %}</a>
+          </div>
+        </div>
+      {% else %}
+        <div class="item">
+          <a class="spf-link" href="{% url 'account_login' %}"><b>{% trans "Sign In" %}</b></a>
+        </div>
+        <div class="item">
+          <a href="{% url 'account_signup' %}"><b>{% trans "Sign Up" %}</b></a>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ui text menu">
+      <a class="icon item spf-link" href="{% url 'posts_list' %}" style="padding: 0 0 0 10px">
+        <div class="ui fade reveal">
+          <div class="visible content">
+            <img src="{% static 'images/medium-logo-brown.png' %}">
+          </div>
+          <div class="hidden content">
+            <img src="{% static 'images/medium-logo-orange.png' %}">
+          </div>
+        </div>
+      </a>
+      <div class="item">
+        <form class="ui small labeled input" method="get" action="{% url 'posts_list' %}">
+          <div class="ui label">{% trans "Posts" %}</div>{% csrf_token %}
+          <input name="q" type="text" placeholder="{% trans 'Search...' %}" {% if query %}value="{{ query }}"{% endif %}>
+        </form>
+        <a class="item spf-link" href="{% url 'posts_list' %}">
+          <b>{% trans "Posts" %}</b>
+        </a>
+        <a class="item spf-link" href="{% url 'tags_list' %}">
+          <b>{% trans "Tags" %}</b>
+        </a>
+        <a class="item spf-link" href="{% url 'users_list' %}">
+          <b>{% trans "Users" %}</b>
+        </a>
+        <a class="item spf-link" href="{% url 'pages_detail' slug='services' %}">
+          <b>{% trans "Services" %}</b>
+          <!-- <div class="floating ui green label" style="margin: 5px -12px!important; border-radius: 10px; font-size: 11px;">{% trans "new" %}</div> -->
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

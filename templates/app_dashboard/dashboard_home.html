@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load common_tags dashboard_tags %}
+{% block title %}{% trans "Dashboard" %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="page content">
+    {% include "app_dashboard/dashboard_menus.html" %}
+    <div class="ui container margin-2-0">
+      <div class="ui fluid steps">
+        <a class="step no-underline spf-link" href="{% url 'dashboard_tags' %}">
+          <i class="tags blue icon"></i>
+          <div class="content">
+            <div class="title">{{ total_tags }}</div>
+            <div class="description">{% trans "All tags created" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_posts' %}">
+          <i class="feed red icon"></i>
+          <div class="content">
+            <div class="title">{{ total_posts }}</div>
+            <div class="description">{% trans "All posts created" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_users' %}">
+          <i class="users orange icon"></i>
+          <div class="content">
+            <div class="title">{{ total_users }}</div>
+            <div class="description">{% trans "All users registered" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_galleries' %}">
+          <i class="image green icon"></i>
+          <div class="content">
+            <div class="title">{{ total_galleries }}</div>
+            <div class="description">{% trans "All galleries created" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_visitors' %}">
+          <i class="eye brown icon"></i>
+          <div class="content">
+            <div class="title">{{ total_visitors }}</div>
+            <div class="description">{% trans "All visitors visited" %}</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="ui stacked segment">
+        <div id="chart-global"></div>
+      </div>
+      <div class="ui stacked segment">
+        <div id="chart-visitors"></div>
+      </div>
+
+      <div class="ui fluid steps">
+        <a class="step no-underline spf-link" href="{% url 'dashboard_tags' %}">
+          <i class="tags blue icon"></i>
+          <div class="content">
+            <div class="title">{% get_total_tags_this_year %}</div>
+            <div class="description">{% trans "Tags this year" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_posts' %}">
+          <i class="feed red icon"></i>
+          <div class="content">
+            <div class="title">{% get_total_posts_this_year %}</div>
+            <div class="description">{% trans "Posts this year" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_users' %}">
+          <i class="users orange icon"></i>
+          <div class="content">
+            <div class="title">{% get_total_users_this_year %}</div>
+            <div class="description">{% trans "Users this year" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_galleries' %}">
+          <i class="image green icon"></i>
+          <div class="content">
+            <div class="title">{% get_total_galleries_this_year %}</div>
+            <div class="description">{% trans "Galleries this year" %}</div>
+          </div>
+        </a>
+        <a class="step no-underline spf-link" href="{% url 'dashboard_visitors' %}">
+          <i class="eye brown icon"></i>
+          <div class="content">
+            <div class="title">{% get_total_visitors_this_year %}</div>
+            <div class="description">{% trans "Visitors this year" %}</div>
+          </div>
+        </a>
+      </div>
+    </div><!-- end /.ui.container -->
+  </div><!-- end /.page.content -->
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['line', 'corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawVisitorChart);
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', '{% trans "Months" %}');
+      data.addColumn('number', '{% trans "Tags created" %}');
+      data.addColumn('number', '{% trans "Posts created" %}');
+      data.addColumn('number', '{% trans "Users registered" %}');
+      data.addColumn('number', '{% trans "Galleries created" %}');
+      data.addRows([
+        // format rows: [date, galleries, tags, posts, users]
+        [new Date({% now 'Y' %}, 0),  {{ 1|get_total_tags_this_month }},  {{ 1|get_total_posts_this_month }},  {{ 1|get_total_users_this_month }},  {{ 1|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 1),  {{ 2|get_total_tags_this_month }},  {{ 2|get_total_posts_this_month }},  {{ 2|get_total_users_this_month }},  {{ 2|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 2),  {{ 3|get_total_tags_this_month }},  {{ 3|get_total_posts_this_month }},  {{ 3|get_total_users_this_month }},  {{ 3|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 3),  {{ 4|get_total_tags_this_month }},  {{ 4|get_total_posts_this_month }},  {{ 4|get_total_users_this_month }},  {{ 4|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 4),  {{ 5|get_total_tags_this_month }},  {{ 5|get_total_posts_this_month }},  {{ 5|get_total_users_this_month }},  {{ 5|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 5),  {{ 6|get_total_tags_this_month }},  {{ 6|get_total_posts_this_month }},  {{ 6|get_total_users_this_month }},  {{ 6|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 6),  {{ 7|get_total_tags_this_month }},  {{ 7|get_total_posts_this_month }},  {{ 7|get_total_users_this_month }},  {{ 7|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 7),  {{ 8|get_total_tags_this_month }},  {{ 8|get_total_posts_this_month }},  {{ 8|get_total_users_this_month }},  {{ 8|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 8),  {{ 9|get_total_tags_this_month }},  {{ 9|get_total_posts_this_month }},  {{ 9|get_total_users_this_month }},  {{ 9|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 9),  {{ 10|get_total_tags_this_month }}, {{ 10|get_total_posts_this_month }}, {{ 10|get_total_users_this_month }}, {{ 10|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 10), {{ 11|get_total_tags_this_month }}, {{ 11|get_total_posts_this_month }}, {{ 11|get_total_users_this_month }}, {{ 11|get_total_galleries_this_month }}],
+        [new Date({% now 'Y' %}, 11), {{ 12|get_total_tags_this_month }}, {{ 12|get_total_posts_this_month }}, {{ 12|get_total_users_this_month }}, {{ 12|get_total_galleries_this_month }}],
+      ]);
+      var options = {
+        chart: {
+          title: '{% trans "Global Performance in this year" %} {% now "Y" %}',
+          subtitle: '{% trans "Recorded per-months" %}'
+        },
+        height: 300,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+      var chart = new google.charts.Line(document.getElementById('chart-global'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+
+    function drawVisitorChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', '{% trans "Months" %}');
+      data.addColumn('number', '{% trans "Visitors visited" %}');
+      data.addRows([
+        // format rows: [date, visitors]
+        [new Date({% now 'Y' %}, 0),  {{ 1|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 1),  {{ 2|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 2),  {{ 3|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 3),  {{ 4|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 4),  {{ 5|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 5),  {{ 6|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 6),  {{ 7|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 7),  {{ 8|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 8),  {{ 9|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 9),  {{ 10|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 10), {{ 11|get_total_visitors_this_month }}],
+        [new Date({% now 'Y' %}, 11), {{ 12|get_total_visitors_this_month }}],
+      ]);
+      var options = {
+        chart: {
+          title: '{% trans "Visitors Performance in this year" %} {% now "Y" %}',
+          subtitle: '{% trans "Recorded per-months" %}'
+        },
+        height: 300,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+      var chart = new google.charts.Line(document.getElementById('chart-visitors'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load common_tags martortags post_tags user_info %}
+{% block canonical %}{% if tag %}{% url 'posts_tagged' slug=tag.slug %}{% elif author %}{% url 'posts_author' username=author.username %}{% endif %}{% endblock %}
+
+{% block content %}
+  <div class="page content">
+    <div class="repo ribbon">
+      <div class="ui container">
+        <div class="repo options">
+          <a class="ui small primary button spf-link" href="{% url 'posts_create' %}">
+            <i class="plus icon"></i> {% trans "Create a Post" %}
+          </a>
+        </div>
+        <div class="ui big breadcrumb">
+          <div class="section">
+            {% if request.GET.sort == 'featured' %}
+              {% trans "Featured Posts" %}
+            {% elif request.GET.sort == 'views' %}
+              {% trans "Highest Posts Views" %}
+            {% elif request.GET.sort == 'votes' %}
+              {% trans "Highest Posts Voted" %}
+            {% else %}
+              {% trans "All Posts" %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="ui tabular menu">
+        <div class="ui container">
+          <a class="item spf-link {% if request.GET.sort == 'newest' or request.GET.sort is None %}active{% endif %}" href="?sort=newest">
+            <i class="rss icon"></i> {% trans "Newest" %}
+          </a>
+          <a class="item spf-link {% if request.GET.sort == 'featured' %}active{% endif %}" href="?sort=featured">
+            <i class="star empty blue icon"></i> {% trans "Featured" %}
+            <span class="ui small yellow label">{{ total_posts_featured }}</span>
+          </a>
+          <a class="item spf-link {% if request.GET.sort == 'views' %}active{% endif %}" href="?sort=views">
+            <i class="signal icon"></i> {% trans "Views" %}
+          </a>
+          <a class="item spf-link {% if request.GET.sort == 'votes' %}active{% endif %}" href="?sort=votes">
+            <i class="heart empty icon"></i> {% trans "Votes" %}
+          </a>
+          <a class="item spf-link {% if request.GET.sort == 'active' %}active{% endif %}" href="?sort=active">
+            <i class="wait icon"></i> {% trans "Active" %}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui equal width vertically padded grid container">
+      <div class="twelve wide column">
+        <!--<div class="repo description">
+          <div>Semantic is a UI component framework based around useful principles from natural language.</div>
+        </div>-->
+        <div class="ui divided items">
+          {% for post in object_list %}
+          <div class="item" {% if post.rating.get_difference <= -3 %}style="opacity:.35"{% endif %}>
+            <div class="stats">
+              <div class="votes stats-inside">
+                <div class="ui mini statistic">
+                  <div class="value">{{ post.rating.get_difference }}</div>
+                  <div class="label">{% trans "votes" %}</div>
+                </div>
+              </div>
+              <div class="views stats-inside">
+                <div class="ui mini statistic">
+                  <div class="value">{{ post.get_visitors.count|numberize }}</div>
+                  <div class="label">{% trans "views" %}</div>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <a href="{% url 'posts_detail' slug=post.slug %}" class="ui blue header no-bold spf-link">{{ post.title }}</a>
+              <div class="meta">
+                <span class="date">{% blocktrans with created=post.created since=post.created|timesince %}posted at {{ created }} - {{ since }} ago{% endblocktrans %}</span>
+              </div>
+              <div class="description">
+                <p>{{ post.description|safe_markdown|striptags|truncatewords:"30" }}</p>
+              </div>
+              <div class="extra">
+                {% for tag in post.tags.all|slice:":5" %}
+                  <a href="{% url 'posts_tagged' slug=tag.slug %}" class="ui small label no-radius spf-link">{{ tag }}</a>
+                {% endfor %}
+
+                <div class="ui right floated user-info">
+                  <div class="ui items">
+                    <div class="item">
+                      <div class="content">
+                        <a class="ui blue small header spf-link" href="{% url 'posts_author' username=post.author.username %}">
+                          {{ post.author }}
+                        </a>
+                        <div class="description">
+                          <span class="reputation" title="{% trans 'Reputation scores' %}: {{ post.author|get_total_ratings }}">
+                            <i class="diamond orange icon"></i> {{ post.author|get_total_ratings|numberize }}
+                          </span>
+                          &nbsp;
+                          <span class="feed-badge" title="{% trans 'Total posts' %}: {{ post.author|get_total_posts }}">
+                            <i class="feed orange icon icon-dot-badge"></i> {{ post.author|get_total_posts|numberize }}
+                          </span>
+                          &nbsp;
+                          <span class="up-badge" title="{% trans 'Total votes up' %}: {{ post.author|get_total_ratings:'likes' }}">
+                            <i class="circle small green icon icon-dot-badge"></i> {{ post.author|get_total_ratings:"likes"|numberize }}
+                          </span>
+                          &nbsp;
+                          <span class="down-badge" title="{% trans 'Total votes down' %}: {{ post.author|get_total_ratings:'dislikes' }}">
+                            <i class="circle small red icon icon-dot-badge"></i> {{ post.author|get_total_ratings:"dislikes"|numberize }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+            <div class="ui message message-bulletin"><i class="info circle icon"></i> {% trans "Empty!" %}</div>
+          {% endfor %}
+        </div><!-- end /.items -->
+
+        {% if object_list %}<div class="ui divider"></div>{% endif %}
+
+        {% if is_paginated %}
+          {# `is_paginated` is default bassed in `generic.ListView` #}
+          <div class="main-pagination">
+            <div class="ui tiny pagination menu">
+              <a class="icon item" href="?page=1{% if query %}&amp;q={{ query }}{% endif %}{% if sort %}&amp;sort={{ sort }}{% endif %}" title="{% trans 'First Page' %}">
+                <i class="angle double left icon"></i>
+              </a>
+              <a class="icon item {% if not page_obj.has_previous %}disabled{% endif %}" title="{% trans 'Previous Page' %}"
+                 {% if page_obj.has_previous %}href="?page={{ page_obj.previous_page_number }}{% if query %}&amp;q={{ query }}{% endif %}{% if sort %}&amp;sort={{ sort }}{% endif %}"{% endif %}>
+                <i class="left chevron icon"></i>
+              </a>
+              {% for linkpage in page_range %}
+                {% ifequal linkpage page_obj.number %}
+                  <span class="item active">{{ page_obj.number }}</span>
+                  {% else %}
+                  <a class="item" href="?page={{ linkpage }}{% if query %}&amp;q={{ query }}{% endif %}{% if sort %}&amp;sort={{ sort }}{% endif %}">{{ linkpage }}</a>
+                {% endifequal %}
+              {% endfor %}
+              <a class="icon item {% if not page_obj.has_next %}disabled{% endif %}" title="{% trans 'Next Page' %}"
+                 {% if page_obj.has_next %}href="?page={{ page_obj.next_page_number }}{% if query %}&amp;q={{ query }}{% endif %}{% if sort %}&amp;sort={{ sort }}{% endif %}"{% endif %}>
+                <i class="right chevron icon"></i>
+              </a>
+              <a class="icon item" href="?page={{ page_obj.paginator.num_pages }}{% if query %}&amp;q={{ query }}{% endif %}{% if sort %}&amp;sort={{ sort }}{% endif %}" title="{% trans 'Last Page' %}">
+                <i class="angle double right icon"></i>
+              </a>
+            </div><!-- end /.pagination -->
+
+            <div class="ui right floated small pagination menu no-border">
+              <form class="ui action input go-to-page" action="." method="get">
+                <input type="number" min="1" name="page" placeholder="{% trans 'Jump to page' %}" required>
+                {% if query %}<input name="q" type="hidden" value="{{ query }}">{% endif %}
+                {% if sort %}<input name="sort" type="hidden" value="{{ sort }}">{% endif %}
+                <button type="submit" class="ui button">{% trans "GO" %}</button>
+              </form>
+            </div>
+          </div>
+        {% endif %}{# endif is_paginated #}
+      </div>
+      <div class="column right-sidebar">
+        <div class="ui fluid right vertical">
+          <div class="sidebar-total-posts">
+            <h2 class="ui grey header">
+              {{ total_posts }}
+              <div class="sub header">
+                {% if tag %}
+                  {% trans "posts tagged" %} <span class="ui small label no-radius">{{ tag }}</span>
+                {% elif author %}
+                  {% trans "posted by" %} {{ author }}
+                {% elif query %}
+                  {% trans "posts by" %} {{ query }}
+                {% else %}
+                  {% trans "posts" %}
+                {% endif %}
+              </div>
+            </h2>
+            {% if author %}
+              <a href="{% url 'profile_detail' username=author.username %}" class="ui fluid small button spf-link">
+                <i class="user icon"></i> {% trans "View Profile" %}
+              </a>
+            {% endif %}
+          </div><!-- end /.sidebar-total-posts -->
+
+          <!--<div class="ui divider"></div>-->
+
+          {% hot_posts as hot_posts_list %}
+          {% if hot_posts_list %}
+            <div class="sidebar-bulletin">
+              <div class="ui list">
+                {% for post in hot_posts_list %}
+                  <a class="item no-underline spf-link" href="{% url 'posts_detail' slug=post.slug %}">
+                    <i class="lightning icon"></i>
+                    <div class="content">{{ post.title }}</div>
+                  </a>
+                {% endfor %}
+              </div>
+            </div><!-- end /.sidebar-bulletin -->
+          {% else %}
+            <div class="ui divider"></div>
+          {% endif %}
+
+          <!--<div class="ui divider"></div>-->
+
+          <div class="sidebar-related-tags">
+            <h3 class="ui grey header">{% trans "Popular Tags" %}</h3>
+            <div class="ui selection list"><!-- divided -->
+              {% popular_tags as popular_tags_list %}
+              {% for tag in popular_tags_list %}
+                <a class="item no-underline spf-link" href="{% url 'posts_tagged' slug=tag.tag.slug %}">
+                  <div class="ui horizontal label no-radius">{{ tag.tag }}</div> × {{ tag.total }}
+                </a>
+              {% empty %}
+                <div class="item">{% trans "Empty!" %}</div>
+              {% endfor %}
+            </div>
+          </div><!-- end /.sidebar-related-tags -->
+
+          <div class="ui divider"></div>
+
+          <div class="sidebar-related-posts">
+            <div class="ui list">
+              {% random_posts as random_posts_list %}
+              {% for post in random_posts_list %}
+                <a class="item spf-link no-underline" href="{% url 'posts_detail' slug=post.slug %}">
+                  {% if post.rating.get_difference < 0 %}
+                    <i class="ui answered icon" style="color:red">{{ post.rating.get_difference }}</i>
+                  {% elif post.rating.get_difference == 0 %}
+                    <i class="ui answered icon">{{ post.rating.get_difference }}</i>
+                  {% else %}
+                    <i class="ui answered icon" style="color:green">{{ post.rating.get_difference }}</i>
+                  {% endif %}
+                  <div class="content">{{ post.title }}</div>
+                </a>
+              {% endfor %}
+            </div>
+          </div><!-- end /.sidebar-related-posts -->
+        </div><!-- end /.ui fluid right vertical -->
+      </div>
+    </div><!-- end /.ui equal width vertically padded grid container -->
+
+  </div><!-- end /.page.content -->
+{% endblock %}

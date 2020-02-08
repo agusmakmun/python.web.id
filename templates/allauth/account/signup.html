@@ -1,0 +1,114 @@
+{% extends "base_blank.html" %}
+{% load i18n staticfiles %}
+{% block title %}{% trans "Register" %} :: {{ block.super }}{% endblock %}
+{% block robot %}<meta name="robots" content="noodp"/>{% endblock %}
+{% block canonical %}{% url 'account_signup' %}{% endblock %}
+
+{% block content %}
+  <div class="ui grid container">
+    <div class="three wide column"></div>
+    <div class="ten wide column margin-2-0">
+      <div class="ui main-login-form">
+        <div class="ui grey center aligned icon header">
+          <a href="{% url 'posts_list' %}" class="ui link spf-link no-underline">
+            <img src="{% static 'images/medium-logo-orange.png' %}">
+          </a>
+          <div class="content">{% trans "Welcome to Python Learning!" %}</div>
+          <div class="sub header">{% trans "Fill out the form below to sign-up for a new account" %}</div>
+        </div>
+        <form id="form-signin" class="ui form segment" method="post" action=".">{% csrf_token %}
+          <div class="field">
+            <div class="big ui two attached buttons radius-two-buttons">
+              <a href="{% url 'github_login' %}"class="ui button"><i class="github icon"></i> Github</a>
+              <div class="or"></div>
+              <a href="{% url 'linkedin_login' %}" class="ui linkedin button"><i class="linkedin square icon"></i> LinkedIn</a>
+            </div>
+          </div>
+          <div class="ui dividing header"></div>
+          <div class="two fields">
+            <div class="field username-field">
+              <label>{{ form.username.label }} *</label>
+              <div class="ui left icon input">
+                {{ form.username }}
+                <i class="user icon"></i>
+              </div>
+              {% if form.username.errors %}
+                <div class="ui pointing red basic label">
+                  {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="field email-field">
+              <label>{{ form.email.label }} *</label>
+              <div class="ui left icon input">
+                {{ form.email }}
+                <i class="mail icon"></i>
+              </div>
+              {% if form.email.errors %}
+                <div class="ui pointing red basic label">
+                  {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div><!-- end /.two fields -->
+          <div class="two fields password-field">
+            <div class="field">
+              <label>{{ form.password1.label }} *</label>
+              <div class="ui left icon input">
+                {{ form.password1 }}
+                <i class="key icon"></i>
+              </div>
+              {% if form.password1.errors %}
+                <div class="ui pointing red basic label">
+                  {% for error in form.password1.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="field password2-field">
+              <label>{{ form.password2.label }} *</label>
+              <div class="ui left icon input">
+                {{ form.password2 }}
+                <i class="key icon"></i>
+              </div>
+              {% if form.password2.errors %}
+                <div class="ui pointing red basic label">
+                  {% for error in form.password2.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div><!-- end  /.two fields -->
+          <div class="field">
+            <label>{{ form.captcha.label }} *</label>
+            {{ form.captcha }}
+            {% if form.captcha.errors %}
+              <div class="ui pointing red basic label">
+                {% for error in form.captcha.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <button class="fluid ui big positive button" type="submit">
+            <i class="user add icon"></i> {% trans "Register" %}
+          </button>
+          <div class="ui message message-bulletin">
+            <i class="info circle icon"></i> {% trans "Already signed up?" %} <a href="{% url 'account_login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">{% trans "Login here instead" %}</a>.
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="three wide column"></div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
