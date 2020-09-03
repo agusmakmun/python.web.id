@@ -8,7 +8,6 @@ def generate_unique_slug(klass, field):
     """
     return unique slug if origin slug is exist.
     eg: `foo-bar` => `foo-bar-1`
-
     :param `klass` is Class model.
     :param `field` is specific field for title.
     """

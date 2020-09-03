@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.urls import reverse
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
-from django.urls import reverse
 
-from app_blog.models import Post
+from app_blog.models.post import Post
 
 
 class CorrectMimeTypeFeed(Rss201rev2Feed):
