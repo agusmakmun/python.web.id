@@ -8,7 +8,7 @@ from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
 
 
-class AuthForm(AuthenticationForm):
+class AuthAdminForm(AuthenticationForm):
 
     if not settings.DEBUG:
         captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(

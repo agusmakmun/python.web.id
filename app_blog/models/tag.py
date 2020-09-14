@@ -10,6 +10,7 @@ from app_blog.utils.slug import generate_unique_slug
 
 
 class Tag(TimeStampedModel):
+    id = models.BigAutoField(primary_key=True)
     title = models.CharField(_('Title'), max_length=200)
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)
 

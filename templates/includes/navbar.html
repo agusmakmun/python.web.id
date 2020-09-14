@@ -1,0 +1,44 @@
+{% load static i18n %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'images/medium-logo-orange.png' %}" width="30" height="30" alt="Python Learning" loading="lazy">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <form class="form-inline mr-sm-4">
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">{% trans "Posts" %}</span>
+        </div>
+        <input type="text" class="form-control" placeholder='{% trans "Search..." %}' aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    </form>
+
+    <div class="collapse navbar-collapse" id="navbar-toggle">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">{% trans "Posts" %} <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">{% trans "Tags" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">{% trans "Users" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">{% trans "Products" %}</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav pull-right">
+        <li class="nav-item">
+          <a class="nav-link" href="#">{% trans "Sign In" %}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

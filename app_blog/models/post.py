@@ -15,6 +15,7 @@ from app_blog.utils.slug import generate_unique_slug
 
 
 class Post(TimeStampedModel):
+    id = models.BigAutoField(primary_key=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)
@@ -76,6 +77,7 @@ class Post(TimeStampedModel):
 
 
 class Page(TimeStampedModel):
+    id = models.BigAutoField(primary_key=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)

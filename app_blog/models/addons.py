@@ -10,6 +10,7 @@ from app_blog.models.post import Post
 
 
 class Visitor(TimeStampedModel):
+    id = models.BigAutoField(primary_key=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     ip = models.CharField(_('IP Address'), max_length=40)
     headers = models.TextField(_('Headers'), null=True, blank=True)
@@ -29,6 +30,7 @@ class Visitor(TimeStampedModel):
 
 
 class Favorite(TimeStampedModel):
+    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
@@ -47,6 +49,7 @@ class Favorite(TimeStampedModel):
 
 
 class Gallery(TimeStampedModel):
+    id = models.BigAutoField(primary_key=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200, blank=True, null=True)
     attachment = models.FileField(_('Attachment'), upload_to='attachments/%Y/%m/%d')

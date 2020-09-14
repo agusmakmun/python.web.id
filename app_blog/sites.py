@@ -2,7 +2,7 @@
 
 from django.contrib.admin.sites import AdminSite as _AdminSite
 
-from app_blog.forms.auth import AuthForm
+from app_blog.forms.auth import AuthAdminForm
 
 
 class AdminSite(_AdminSite):
@@ -11,4 +11,4 @@ class AdminSite(_AdminSite):
     to modify the login form with adding new recaptcha field.
     """
     login_template = 'app_blog/admin/login.html'
-    login_form = AuthForm
+    login_form = AuthAdminForm
