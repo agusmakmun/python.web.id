@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db.models import (Q, Count)
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
@@ -11,8 +12,10 @@ from app_blog.models.post import (Post, Page)
 
 
 class PostListView(ListView):
+    paginate_by = getattr(settings, 'DEFAULT_PAGINATION_NUMBER', 10)
     template_name = 'app_blog/post/list.html'
     queryset = Post.objects.published()
+    context_object_name = 'posts'
 
     def get_queryset(self):
         queryset = self.queryset

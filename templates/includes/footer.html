@@ -1,0 +1,61 @@
+{% load static i18n %}
+
+<footer class="footer container">
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link text-bold active" href="#">{% trans "Products" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link text-bold" href="#">{% trans "Sponsor" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link text-bold" href="#">{% trans "Developers" %}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <nav class="nav justify-content-end">
+        {% include "includes/switch_language.html" %}
+      </nav>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="#">{% trans "About" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="#">{% trans "Contact" %}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link disabled" tabindex="-1" aria-disabled="true">
+            <span class="text-sm">&copy; 2014-{% now "Y" %}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link active" href="#">{% trans "Disclaimer" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="#">{% trans "Terms" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="#">{% trans "Privacy" %}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pt-3 pb-3 footer-notes text-sm text-muted">
+    <p>When you visit or interact with our sites, services, applications, tools or messaging, we or our authorised service providers may use cookies, web beacons, and other similar technologies for storing information to help provide you with a better, faster and safer experience and for advertising purposes. Learn more <a href="https://www.paypal.com/id/webapps/mpp/ua/privacy-full#7" data-pa-click="footerNotes|here" pa-marked="1">here</a>.</p>
+  </div>
+</footer>
