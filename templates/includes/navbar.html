@@ -28,10 +28,20 @@
           <a class="nav-link" href="#">{% trans "Tags" %}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">{% trans "Users" %}</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#">{% trans "Products" %}</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>{% trans "More" %}</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">{% trans "Services" %}</a>
+            <a class="dropdown-item" href="#">{% trans "Sponsor" %}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">{% trans "About" %}</a>
+            <a class="dropdown-item" href="#">{% trans "Contact" %}</a>
+            <a class="dropdown-item" href="#">{% trans "Developers" %}</a>
+          </div>
         </li>
       </ul>
       <ul class="navbar-nav pull-right">
