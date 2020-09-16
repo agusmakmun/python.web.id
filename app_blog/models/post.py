@@ -10,6 +10,8 @@ from django.utils.translation import ugettext_lazy as _
 # from updown.models import Vote
 # from updown.fields import RatingField
 
+from martor.models import MartorField
+
 from app_blog.models.base import (TimeStampedModel, DefaultManager)
 from app_blog.utils.slug import generate_unique_slug
 
@@ -19,7 +21,7 @@ class Post(TimeStampedModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)
-    description = models.TextField(_('Description'))
+    description = MartorField(_('Description'))
     tags = models.ManyToManyField('Tag')
     keywords = models.CharField(_('Keywords'), null=True, blank=True,
                                 max_length=200, help_text=_('Keywords sparate by comma.'))
@@ -81,7 +83,7 @@ class Page(TimeStampedModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)
-    description = models.TextField(_('Description'))
+    description = MartorField(_('Description'))
     STATUS_CHOICES = (
         ('site', _('Site')),
         ('private', _('Private')),

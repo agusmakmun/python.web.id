@@ -1,11 +1,89 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
 
+/* body {
+  margin: 0;
+  padding: 0;
+  overflow-x: visible;
+  min-width: 1049px;
+  background: #FFF;
+  font-family: Arial,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  line-height: 1.4285em;
+  color: rgba(0,0,0,.87);
+  font-smoothing: antialiased;
+} */
+
 body {
+  margin: 0;
+  padding: 0;
   color: #333;
   font-size: 14px;
   font-family: Arial,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  background: #FFF;
+  line-height: 1.4285em;
+  color: rgba(0,0,0,.87);
+  font-smoothing: antialiased;
 }
 
+p {
+  margin: 0 0 1em;
+  line-height: 1.4285em;
+}
+a {
+  color: #4078C0;
+  text-decoration: none;
+}
+a:hover {
+  color: #6999ca;
+  text-decoration: underline;
+}
+::-webkit-selection {
+  background-color: #CCE2FF;
+  color: rgba(0,0,0,.87);
+}
+::-moz-selection {
+  background-color: #CCE2FF;
+  color: rgba(0,0,0,.87);
+}
+::selection {
+  background-color: #CCE2FF;
+  color: rgba(0,0,0,.87);
+}
+input::-webkit-selection,
+textarea::-webkit-selection {
+  background-color: rgba(100,100,100,.4);
+  color: rgba(0,0,0,.87);
+}
+input::-moz-selection,
+textarea::-moz-selection {
+  background-color: rgba(100,100,100,.4);
+  color: rgba(0,0,0,.87);
+}
+input::selection,
+textarea::selection {
+  background-color: rgba(100,100,100,.4);
+  color: rgba(0,0,0,.87);
+}
+
+/* No stuffs */
+.no-radius {
+  border-radius: unset!important;
+}
+.no-underline {
+  text-decoration: none!important;
+}
+.no-border {
+  border: none!important;
+}
+
+/* Text */
+.text-sm,
+.text-small {
+  font-size: 12px;
+}
+.text-bold {
+  font-weight: bold;
+}
 
 /* Buttons */
 .bg-gradient-primary {
@@ -113,4 +191,47 @@ body {
 }
 .stats>.stats-inside .label {
   font-size: 10px!important;
+}
+
+/* Cards */
+.card-post-item {
+  border: none;
+  border-bottom: 1px solid #efefef;
+}
+.card-footer-post-item {
+  border: none;
+  background: transparent;
+  position: relative;
+  padding-top: 0;
+}
+.card-footer .tags {
+
+}
+.badge {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: baseline;
+  margin: 0 .15384615em;
+  background-color: #E8E8E8;
+  background-image: none;
+  padding: 8px 7px;
+  color: rgba(0,0,0,.6);
+  text-transform: none;
+  font-weight: 700;
+  border: 0 solid transparent;
+  border-radius: .30769231rem;
+  -webkit-transition: background .1s ease;
+  transition: background .1s ease;
+}
+.card-footer .author {
+  margin-bottom: 11px;
+}
+.card-footer .author .name {
+  margin: .2rem 0;
+}
+.card-footer .author-ratings>span {
+  margin-right: 5px;
+}
+.card-footer .author-ratings svg {
+  margin-bottom: 3px;
 }

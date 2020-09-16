@@ -18,12 +18,12 @@ class TagAdmin(DefaultAdminMixin, admin.ModelAdmin):
 
 @admin.register(Post, site=admin_site)
 class PostAdmin(DefaultAdminMixin, admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ['title']}
 
 
 @admin.register(Page, site=admin_site)
 class PageAdmin(DefaultAdminMixin, admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ['title']}
 
 
 @admin.register(Visitor, site=admin_site)
