@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% load martortags %}
+{% load common_tags martortags %}
 
 {% block content %}
   <div class="container p-3">
@@ -9,7 +9,7 @@
     <h5>
       <a class="no-underline" href="">{{ post.title }}</a>
       <span class="float-right">
-        <a class="btn btn-sm bg-gradient-success" href="#" role="button">
+        <a class="btn btn-sm bg-gradient-success" href="#" role="button" style="line-height:1.5rem">
           <svg width="15" height="15" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
           </svg>
@@ -24,20 +24,20 @@
           <div class="post-item-content">
             <div class="stats">
               <div class="text-center text-muted stats-inside-detail vote-up" data-target="/rating/121/rate/1" title="{% trans 'vote up' %}">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
                 </svg>
               </div>
               <div class="text-center text-muted stats-inside-detail" data-id="121">
-                <div class="value">0</div>
+                <div class="value">97</div>
               </div>
               <div class="text-center text-muted stats-inside-detail vote-down" data-target="/rating/121/rate/-1" title="{% trans 'vote down' %}">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
               </div>
               <div class="text-center text-muted stats-inside-detail vote-favorite" data-target="/favorite/crud/121/" title="{% trans 'Click to mark as favorite or undo' %}">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <svg width=".8em" height=".8em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                 </svg>
               </div>
@@ -45,7 +45,7 @@
 
             <div class="post-content">
               <div class="card-body pt-0 pb-2">
-                <p class="card-text">{{ post.description|safe_markdown }}</p>
+                <div class="card-text">{{ post.description|safe_markdown }}</div>
               </div>
               <div class="card-footer card-footer-post-item">
                 <div class="tags">
@@ -53,6 +53,39 @@
                     <a class="badge badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' slug=tag.slug %}">{{ tag }}</a>
                   {% endfor %}
                 </div>
+
+                <div class="dropdown mt-2 dropdown-share-post">
+                  <span class="text-secondary share-button" id="dropdownSharePost" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-share-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+                    </svg>
+                    <span>{% trans "share" %}</span>
+                  </span>
+                  <form class="dropdown-menu" aria-labelledby="dropdownSharePost">
+                    <div class="input-group input-group-sm p-3 pt-2 pb-0 share-post-action">
+                      <input class="form-control input-link-post" type="text" value="{{ request.build_absolute_uri }}">
+                      <div class="input-group-append">
+                        <button role="button" class="btn btn-sm bg-gradient-warning button-copy-link-post" title="{% trans 'Copy Link' %}">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-stickies-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M0 1.5A1.5 1.5 0 0 1 1.5 0H13a1 1 0 0 1 1 1H1.5a.5.5 0 0 0-.5.5V14a1 1 0 0 1-1-1V1.5z"/>
+                            <path fill-rule="evenodd" d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5v4.396c0 .223.27.335.427.177l5.146-5.146a.25.25 0 0 0-.177-.427H10.5a1 1 0 0 0-1 1z"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a role="button" class="dropdown-item text-sm" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;title={{ post.title }}&amp;description={{ post.description|striptags|truncatewords:"20"|wordsonly }}&amp;author={{ post.author.username }}', 'newwindow', 'width=555, height=315'); return false;">
+                      <span>Facebook</span>
+                    </a>
+                    <a role="button" class="dropdown-item text-sm" onclick="window.open('https://twitter.com/intent/tweet/?url={{ request.build_absolute_uri }}&amp;text={{ post.title }}&amp;via=python.web.id', 'newwindow', 'width=555, height=315'); return false;">
+                      <span>Twitter</span>
+                    </a>
+                    <a role="button" class="dropdown-item text-sm" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}', 'newwindow', 'width=555, height=315'); return false;">
+                      <span>Linkedin</span>
+                    </a>
+                  </form>
+                </div>
+
                 <div class="float-right author">
                   <div class="name">
                     <a class="text-bold no-underline" href="{% url 'apps.blog:post_list_author' username=post.author.username %}">{{ post.author|truncatechars:"15" }}</a>
