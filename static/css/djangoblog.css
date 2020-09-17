@@ -215,6 +215,16 @@ hr {
 .stats>.stats-inside .label {
   font-size: 10px!important;
 }
+.stats .vote-up,
+.stats .vote-down,
+.stats .vote-favorite {
+  cursor: pointer;
+}
+.stats .vote-up:hover,
+.stats .vote-down:hover,
+.stats .vote-favorite:hover {
+  color: #F2711C!important;
+}
 
 /* Cards */
 .card-post-item {
@@ -226,6 +236,27 @@ hr {
   background: transparent;
   position: relative;
   padding-top: 0;
+}
+.card-post-item .post-item-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1em 0;
+  width: 100%;
+  min-height: 0;
+  background: 0 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-transition: box-shadow .1s ease;
+  transition: box-shadow .1s ease;
+  z-index: '';
+}
+.card-post-item .post-item-content .stats {
+  line-height: 2rem;
+  font-size: 17px;
 }
 .card-footer .tags {
 

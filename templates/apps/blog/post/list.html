@@ -48,7 +48,7 @@
               <div class="col-md-11">
                 <div class="card-body pt-0 pb-2">
                   <h5 class="mb-0 card-title">
-                    <a class="no-underline" href="#FIXME">{{ post.title }}</a>
+                    <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">{{ post.title }}</a>
                   </h5>
                   <div class="mb-1 mt-1">
                     <span class="text-sm text-muted date">{% blocktrans with created_at=post.created_at since=post.created_at|timesince %}Posted at {{ since }} ago / <i>{{ created_at }}</i>{% endblocktrans %}</span>
@@ -64,7 +64,7 @@
                   </div>
                   <div class="float-right author">
                     <div class="name">
-                      <a class="text-bold no-underline" href="#FIXME">{{ post.author|truncatechars:"15" }}</a>
+                      <a class="text-bold no-underline" href="{% url 'apps.blog:post_list_author' username=post.author.username %}">{{ post.author|truncatechars:"15" }}</a>
                     </div>
                     <div class="author-ratings">
                       <span class="feeds">
@@ -130,7 +130,7 @@
         {% include "apps/blog/post/includes/paginator.html" %}
       </div>
 
-      {% include "apps/blog/post/includes/sidebar.html" %}
+      {% include "apps/blog/post/includes/sidebar_list.html" %}
 
     </div><!-- /.row-content -->
   </div>

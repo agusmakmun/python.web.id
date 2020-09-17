@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.db.models import (Q, Count)
+from django.contrib.auth.models import User
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
@@ -51,9 +52,43 @@ class PostListTaggedView(PostListView):
 
     def get_default_queryset(self):
         self.tag = get_object_or_404(Tag, slug=self.kwargs['slug'])
-        # return Post.objects.filter(tags=self.tag).published()
         return self.tag.post_set.published()
 
     @property
     def extra_context(self):
         return dict(tag=self.tag)
+
+
+class PostListAuthorView(PostListView):
+    template_name = 'apps/blog/post/author.html'
+
+    def get_default_queryset(self):
+        self.author = get_object_or_404(User, username=self.kwargs['username'])
+        return self.author.post_set.published()
+
+    @property
+    def extra_context(self):
+        return dict(author=self.author)
+
+
+class PostDetailView(DetailView):
+    template_name = 'apps/blog/post/detail.html'
+    context_object_name = 'post'
+    model = Post
+
+    def get_related_posts(self, limit=5):
+        """
+        function to get the related posts.
+        :param `limit` is integer limit of total posts.
+        :return posts object
+        """
+        queries = {'tags__in': self.object.tags.all()}
+        return self.model.objects.published()\
+                                 .filter(**queries)\
+                                 .exclude(id=self.object.id)\
+                                 .distinct()[:limit]
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data['related_posts'] = self.get_related_posts(limit=5)
+        return context_data

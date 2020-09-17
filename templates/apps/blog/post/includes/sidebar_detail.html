@@ -1,0 +1,46 @@
+{% load i18n %}
+
+<div class="col-md-3 sidebar-right">
+  <div class="sidebar-post-info">
+    <table class="table table-sm text-muted">
+      <tbody>
+        <tr>
+          <td class="no-border">{% trans "viewed" %}</td>
+          <td class="no-border">69</td>
+        </tr>
+        <tr>
+          <td class="no-border">{% trans "your ip" %}</td>
+          <td class="no-border">114.5.208.219</td>
+        </tr>
+        <tr>
+          <td class="no-border">{% trans "posted" %}</td>
+          <td class="no-border" title="{{ post.created_at }}">{{ post.created_at|timesince }} {% trans "ago" %}</td>
+        </tr>
+        <tr>
+          <td class="no-border">{% trans "active" %}</td>
+          <td class="no-border">
+            <a class="no-border" href="" title="{{ post.updated_at }}">{{ post.updated_at|timesince }} {% trans "ago" %}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr />
+
+  <div class="sidebar-related-posts">
+    <h6 class="text-secondary text-bold">{% trans "Related posts" %}</h6>
+    <ul class="list-group">
+      {% for post in related_posts %}
+        <li class="list-group-item p-0 mb-3 no-border d-flex justify-content-between align-items-center">
+          <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">
+            <span class="mr-2 text-muted">2</span>
+            <span class="content">{{ post.title }}</span>
+          </a>
+        </li>
+      {% empty %}
+        <div class="item">{% trans "Empty!" %}</div>
+      {% endfor %}
+    </ul>
+  </div><!-- end /.sidebar-related-posts -->
+</div>
