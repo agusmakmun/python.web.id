@@ -5,8 +5,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from app_blog.models.base import (TimeStampedModel, DefaultManager)
-from app_blog.models.post import Post
+from apps.blog.models.base import (TimeStampedModel, DefaultManager)
+from apps.blog.models.post import Post
 
 
 class Visitor(TimeStampedModel):

@@ -5,8 +5,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
-from app_blog.models.base import (TimeStampedModel, DefaultManager)
-from app_blog.utils.slug import generate_unique_slug
+from apps.blog.models.base import (TimeStampedModel, DefaultManager)
+from apps.blog.utils.slug import generate_unique_slug
 
 
 class Tag(TimeStampedModel):
@@ -21,8 +21,8 @@ class Tag(TimeStampedModel):
         return self.title
 
     def get_posts(self):
-        if hasattr(self, 'postset'):
-            return self.postset.published()
+        if hasattr(self, 'post_set'):
+            return self.post_set.published()
         return None
 
     @property

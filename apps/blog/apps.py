@@ -5,6 +5,6 @@ from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
 
-class AppBlogConfig(AppConfig):
-    name = 'app_blog'
+class BlogConfig(AppConfig):
+    name = 'apps.blog'
     verbose_name = _('App Blog')

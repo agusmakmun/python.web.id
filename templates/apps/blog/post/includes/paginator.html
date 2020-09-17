@@ -59,11 +59,13 @@
     </div>
 
     <div class="col-md-6">
-      <form class="float-right">
+      <form class="float-right" method="get" action="{% url 'apps.blog:post_list' %}">
         <div class="input-group input-group-sm">
-          <input type="number" min="1" class="form-control" placeholder="{% trans 'Jump to page' %}" aria-describedby="button-addon2">
+          <input name="page" type="number" min="1" class="form-control" placeholder="{% trans 'Jump to page' %}" aria-describedby="addon-go" required>
+          {% if query %}<input name="q" type="hidden" value="{{ query }}">{% endif %}
+          {% if sort %}<input name="sort" type="hidden" value="{{ sort }}">{% endif %}
           <div class="input-group-append">
-            <button type="submit" class="btn bg-gradient-default" type="button" id="button-addon2">{% trans "GO" %}</button>
+            <button type="submit" class="btn bg-gradient-default" type="button" id="addon-go">{% trans "GO" %}</button>
           </div>
         </div>
       </form>

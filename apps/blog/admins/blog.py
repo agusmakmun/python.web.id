@@ -4,11 +4,11 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from app_blog.models.tag import Tag
-from app_blog.models.post import (Post, Page)
-from app_blog.models.addons import (Visitor, Favorite, Gallery)
-from app_blog.admins.base import DefaultAdminMixin
-from app_blog.admins.admin import admin_site
+from apps.blog.models.tag import Tag
+from apps.blog.models.post import (Post, Page)
+from apps.blog.models.addons import (Visitor, Favorite, Gallery)
+from apps.blog.admins.base import DefaultAdminMixin
+from apps.blog.admins.admin import admin_site
 
 
 @admin.register(Tag, site=admin_site)

@@ -7,18 +7,27 @@ from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
 
-from app_blog.models.tag import Tag
-from app_blog.models.post import (Post, Page)
+from apps.blog.models.tag import Tag
+from apps.blog.models.post import (Post, Page)
 
 
 class PostListView(ListView):
     paginate_by = getattr(settings, 'DEFAULT_PAGINATION_NUMBER', 10)
-    template_name = 'app_blog/post/list.html'
+    template_name = 'apps/blog/post/list.html'
     queryset = Post.objects.published()
     context_object_name = 'posts'
 
+    def get_default_queryset(self):
+        """ need this to implement overwrite the default queryset """
+        return self.queryset
+
+    @property
+    def extra_context(self):
+        """ additional `context_data` for `get_context_data` """
+        return None
+
     def get_queryset(self):
-        queryset = self.queryset
+        queryset = self.get_default_queryset()
         self.query = self.request.GET.get('q')
 
         if self.query:
@@ -32,4 +41,19 @@ class PostListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
         context_data['query'] = self.query
+        if self.extra_context:
+            context_data.update(**self.extra_context)
         return context_data
+
+
+class PostListTaggedView(PostListView):
+    template_name = 'apps/blog/post/tagged.html'
+
+    def get_default_queryset(self):
+        self.tag = get_object_or_404(Tag, slug=self.kwargs['slug'])
+        # return Post.objects.filter(tags=self.tag).published()
+        return self.tag.post_set.published()
+
+    @property
+    def extra_context(self):
+        return dict(tag=self.tag)

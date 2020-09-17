@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 
-from app_blog.models.addons import Visitor
+from apps.blog.models.addons import Visitor
 
 
 def get_client_ip(request):

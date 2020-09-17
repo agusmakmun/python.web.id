@@ -7,7 +7,7 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from app_blog.models.base import (TimeStampedModel, DefaultManager)
+from apps.blog.models.base import (TimeStampedModel, DefaultManager)
 
 
 class Product(TimeStampedModel):

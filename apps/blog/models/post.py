@@ -12,8 +12,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from martor.models import MartorField
 
-from app_blog.models.base import (TimeStampedModel, DefaultManager)
-from app_blog.utils.slug import generate_unique_slug
+from apps.blog.models.base import (TimeStampedModel, DefaultManager)
+from apps.blog.utils.slug import generate_unique_slug
 
 
 class Post(TimeStampedModel):
@@ -39,8 +39,8 @@ class Post(TimeStampedModel):
         return reverse('posts_detail', kwargs={'slug': self.slug})
 
     def get_visitors(self):
-        if hasattr(self, 'visitorset'):
-            return self.visitorset.published()
+        if hasattr(self, 'visitor_set'):
+            return self.visitor_set.published()
         return None
 
     @property

@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 
-from app_blog.models.post import Post
+from apps.blog.models.post import Post
 
 
 class CorrectMimeTypeFeed(Rss201rev2Feed):
