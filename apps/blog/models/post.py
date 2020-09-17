@@ -7,9 +7,7 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-# from updown.models import Vote
-# from updown.fields import RatingField
-
+from updown.fields import RatingField
 from martor.models import MartorField
 
 from apps.blog.models.base import (TimeStampedModel, DefaultManager)
@@ -28,7 +26,7 @@ class Post(TimeStampedModel):
     meta_description = models.TextField(_('Meta Description'), null=True, blank=True)
     is_featured = models.BooleanField(_('Is Featured?'), default=False)
     publish = models.BooleanField(_('Publish'), default=True)
-    # rating = RatingField(can_change_vote=True)
+    rating = RatingField(can_change_vote=True)
 
     objects = DefaultManager()
 
@@ -36,7 +34,7 @@ class Post(TimeStampedModel):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('posts_detail', kwargs={'slug': self.slug})
+        return reverse('apps.blog:post_detail', kwargs={'slug': self.slug})
 
     def get_visitors(self):
         if hasattr(self, 'visitor_set'):

@@ -23,15 +23,15 @@
         <div class="card mb-3 card-post-item">
           <div class="post-item-content">
             <div class="stats">
-              <div class="text-center text-muted stats-inside-detail vote-up" data-target="/rating/121/rate/1" title="{% trans 'vote up' %}">
+              <div class="text-center text-{% if user_post_vote == 1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-up" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=1 %}" title="{% trans 'vote up' %}">
                 <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
                 </svg>
               </div>
               <div class="text-center text-muted stats-inside-detail" data-id="121">
-                <div class="value">97</div>
+                <div class="value">{{ post.rating.get_difference }}</div>
               </div>
-              <div class="text-center text-muted stats-inside-detail vote-down" data-target="/rating/121/rate/-1" title="{% trans 'vote down' %}">
+              <div class="text-center text-{% if user_post_vote == -1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-down" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=-1 %}" title="{% trans 'vote down' %}">
                 <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
@@ -73,7 +73,7 @@
                         </button>
                       </div>
                     </div>
-                    <div class="dropdown-divider"></div>
+                    <!-- <div class="dropdown-divider"></div> -->
                     <a role="button" class="dropdown-item text-sm" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;title={{ post.title }}&amp;description={{ post.description|striptags|truncatewords:"20"|wordsonly }}&amp;author={{ post.author.username }}', 'newwindow', 'width=555, height=315'); return false;">
                       <span>Facebook</span>
                     </a>
@@ -132,4 +132,11 @@
 
     </div><!-- /.row-content -->
   </div>
+{% endblock %}
+
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/notify.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/djangoblog.detail.js' %}"></script>
 {% endblock %}

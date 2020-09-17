@@ -11,21 +11,20 @@ from apps.blog.models.post import Post
 
 class Visitor(TimeStampedModel):
     id = models.BigAutoField(primary_key=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    ip = models.CharField(_('IP Address'), max_length=40)
     headers = models.TextField(_('Headers'), null=True, blank=True)
+    ip_address = models.CharField(_('IP Address'), max_length=40)
+    slug_url = models.TextField(_('Slug URL'))
 
     objects = DefaultManager()
 
     def __str__(self):
-        title = self.post.title
-        title = title if len(title) <= 50 else '%s ...' % title[:50]
-        return _('%(ip)s visited %(post)s') % {'ip': self.ip, 'post': title}
+        message = _('%(ip_address)s visited to %(slug_url)s')
+        return message % {'ip_address': self.ip_address, 'slug_url': slug_url}
 
     class Meta:
         verbose_name = _('Visitor')
         verbose_name_plural = _('Visitors')
-        unique_together = ('post', 'ip')
+        unique_together = ('ip_address', 'slug_url')
         ordering = ('-created_at',)
 
 

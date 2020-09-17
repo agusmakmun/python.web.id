@@ -8,6 +8,8 @@ from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
 
+from updown.models import Vote
+
 from apps.blog.models.tag import Tag
 from apps.blog.models.post import (Post, Page)
 
@@ -88,7 +90,16 @@ class PostDetailView(DetailView):
                                  .exclude(id=self.object.id)\
                                  .distinct()[:limit]
 
+    @property
+    def user_post_vote(self):
+        """
+        to check whenever user is voted the post.
+        {% if user_post_vote %}orange{% else %}grey{% endif %}
+        """
+        return self.object.rating.get_rating_for_user(user=self.request.user)
+
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
         context_data['related_posts'] = self.get_related_posts(limit=5)
+        context_data['user_post_vote'] = self.user_post_vote
         return context_data

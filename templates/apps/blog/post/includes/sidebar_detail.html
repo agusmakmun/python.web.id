@@ -34,7 +34,7 @@
       {% for post in related_posts %}
         <li class="list-group-item p-0 mb-3 no-border d-flex justify-content-between align-items-center">
           <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">
-            <span class="mr-2 text-muted">2</span>
+            <span class="mr-2 text-muted">{{ post.rating.get_difference }}</span>
             <span class="content">{{ post.title }}</span>
           </a>
         </li>
