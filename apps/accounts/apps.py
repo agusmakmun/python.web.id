@@ -5,6 +5,6 @@ from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
 
-class ProductConfig(AppConfig):
-    name = 'apps.product'
-    verbose_name = _('App Product')
+class AccountsConfig(AppConfig):
+    name = 'apps.accounts'
+    verbose_name = _('App Auth User')

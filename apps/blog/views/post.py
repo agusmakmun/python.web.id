@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.db.models import (Q, Count)
-from django.contrib.auth.models import User
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
@@ -12,6 +11,7 @@ from updown.models import Vote
 
 from apps.blog.models.tag import Tag
 from apps.blog.models.post import (Post, Page)
+from apps.accounts.models.user import User
 
 
 class PostListView(ListView):

@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from apps.blog.models.base import (TimeStampedModel, DefaultManager)
+from apps.authuser.models.user import User
 
 
 class Product(TimeStampedModel):

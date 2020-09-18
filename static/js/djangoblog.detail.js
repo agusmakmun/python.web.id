@@ -3,12 +3,12 @@ $('.martor-preview pre').each(function(i, block){
   hljs.highlightBlock(block)
 });
 
-var showNotif = function(response, className) {
+var showNotif = function(response, className, doReload) {
   $.notify(response, {
     globalPosition: 'top center',
     className: className
   });
-  if(className == 'success') {
+  if(doReload == true) {
     setTimeout(function(){
       location.reload();
     }, 3000);
@@ -23,10 +23,10 @@ $(document).on('click', '.vote-up, .vote-down', function() {
       url: voteUrl,
       type: 'GET',
       success: function(response) {
-        showNotif(response, 'success');
+        showNotif(response, 'success', true);
       },
       error: function(xhr, options, response) {
-        showNotif(response, 'error');
+        showNotif(response, 'error', false);
       }
   });
 });
@@ -39,14 +39,14 @@ $(document).on('click', '.undo-vote-up, .undo-vote-down', function() {
       type: 'GET',
       success: function(response) {
         if(response['success']) {
-          showNotif(response['message'], 'success');
+          showNotif(response['message'], 'success', true);
         }else {
-          showNotif(response['message'], 'warn');
+          showNotif(response['message'], 'warn', false);
         }
       },
       error: function(xhr, options, response) {
         console.log(xhr, options, response);
-        showNotif(response, 'error');
+        showNotif(response, 'error', false);
       }
   });
 });
@@ -65,13 +65,13 @@ $(document).on('click', '.favorite-icon', function() {
       type: 'GET',
       success: function(response) {
         if(response['success']) {
-          showNotif(response['message'], 'success');
+          showNotif(response['message'], 'success', true);
         }else {
-          showNotif(response['message'], 'warn');
+          showNotif(response['message'], 'warn', false);
         }
       },
       error: function(xhr, options, response) {
-        showNotif(response, 'error');
+        showNotif(response, 'error', false);
       }
   });
 });
@@ -85,13 +85,13 @@ $(document).on('click', '.mark-as-featured', function() {
       type: 'GET',
       success: function(response) {
         if(response['success']) {
-          showNotif(response['message'], 'success');
+          showNotif(response['message'], 'success', true);
         }else {
-          showNotif(response['message'], 'warn');
+          showNotif(response['message'], 'warn', false);
         }
       },
       error: function(xhr, options, response) {
-        showNotif(response, 'error');
+        showNotif(response, 'error', false);
       }
   });
 });
@@ -101,6 +101,8 @@ $(document).on('click', '.button-copy-link-post', function(e) {
   e.preventDefault(); // stop triggering the form
   $('.input-link-post').select();
   document.execCommand('copy');
+  let message = $(this).data('success-message');
+  showNotif(message, 'success', false);
 });
 
 // delete post action
@@ -129,14 +131,14 @@ $(document).on('click', '.delete-action', function() {
         type: 'GET',
         success: function(response) {
           if(response['success']) {
-            showNotif(response['message'], 'success');
+            showNotif(response['message'], 'success', true);
             window.location = '/';
           }else {
-            showNotif(response['message'], 'warn');
+            showNotif(response['message'], 'warn', false);
           }
         },
         error: function(xhr, options, response) {
-          showNotif(response, 'error');
+          showNotif(response, 'error', false);
         }
     });
     $(this).trigger('notify-hide');

@@ -8,7 +8,7 @@ from django.contrib.auth.models import (User, Group)
 from django.contrib.auth.admin import (UserAdmin, GroupAdmin)
 from django.utils.translation import ugettext_lazy as _
 
-from apps.blog.sites import AdminSite
+from apps.accounts.sites import AdminSite
 
 admin_site = AdminSite()
 admin_site.site_header = _('Django Blog')

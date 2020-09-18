@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from updown.fields import RatingField
@@ -12,6 +11,7 @@ from martor.models import MartorField
 
 from apps.blog.models.base import (TimeStampedModel, DefaultManager)
 from apps.blog.utils.slug import generate_unique_slug
+from apps.accounts.models.user import User
 
 
 class Post(TimeStampedModel):
