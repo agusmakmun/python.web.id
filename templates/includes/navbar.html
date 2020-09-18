@@ -23,11 +23,11 @@
 
     <div class="collapse navbar-collapse" id="navbar-toggle">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">{% trans "Posts" %} <span class="sr-only">(current)</span></a>
+        <li class="nav-item {% if request.resolver_match.url_name == 'post_list' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'apps.blog:post_list' %}">{% trans "Posts" %} <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">{% trans "Tags" %}</a>
+        <li class="nav-item {% if request.resolver_match.url_name == 'tag_list' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'apps.blog:tag_list' %}">{% trans "Tags" %}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">{% trans "Products" %}</a>

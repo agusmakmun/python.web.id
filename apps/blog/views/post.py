@@ -53,7 +53,7 @@ class PostListTaggedView(PostListView):
     template_name = 'apps/blog/post/tagged.html'
 
     def get_default_queryset(self):
-        self.tag = get_object_or_404(Tag, slug=self.kwargs['slug'])
+        self.tag = get_object_or_404(Tag, name=self.kwargs['name'])
         return self.tag.post_set.published()
 
     @property

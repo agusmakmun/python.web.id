@@ -59,7 +59,7 @@
                 <div class="card-footer card-footer-post-item">
                   <div class="float-left tags">
                     {% for tag in post.tags.all|slice:":5" %}
-                      <a class="badge badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' slug=tag.slug %}">{{ tag }}</a>
+                      <a class="badge badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
                     {% endfor %}
                   </div>
                   <div class="float-right author">
