@@ -18,7 +18,9 @@ class User(AbstractUser):
     @property
     def fullname(self):
         if hasattr(self, 'profile') and self.profile:
-            return self.profile.display_name
+            display_name = self.profile.display_name
+            if display_name:
+                return display_name
         return self.get_full_name() or self.username
 
 

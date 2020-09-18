@@ -4,11 +4,15 @@ from __future__ import unicode_literals
 import os
 
 from django.conf import settings
-from django.views.generic import TemplateView
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import TemplateView
+
+from apps.blog.models.post import Page
 
 
-class PageDetailView(TemplateView):
+class BasePageDetailView(TemplateView):
+    """ base class to show the detail of page """
     template_name = 'apps/blog/page/detail.html'
     content_path = None
     page_title = None
@@ -20,33 +24,56 @@ class PageDetailView(TemplateView):
             return open(file_path, 'r').read()
         return ''
 
+    @property
+    def extra_context(self):
+        """ additional `context_data` for `get_context_data` """
+        return None
+
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
         context_data['page_title'] = self.page_title
         context_data['content'] = self.get_content()
+        if self.extra_context:
+            context_data.update(**self.extra_context)
         return context_data
 
 
-class PageAboutView(PageDetailView):
+class PageAboutView(BasePageDetailView):
     content_path = '.ext/pages/about.md'
     page_title = _('About')
 
 
-class PageDisclaimerView(PageDetailView):
+class PageDisclaimerView(BasePageDetailView):
     content_path = '.ext/pages/disclaimer.md'
     page_title = _('Disclaimer')
 
 
-class PagePrivacyPolicyView(PageDetailView):
+class PagePrivacyPolicyView(BasePageDetailView):
     content_path = '.ext/pages/privacy-policy.md'
     page_title = _('Privacy Policy')
 
 
-class PageServiceView(PageDetailView):
+class PageServiceView(BasePageDetailView):
     content_path = '.ext/pages/service.md'
     page_title = _('Service')
 
 
-class PageTOSView(PageDetailView):
+class PageTOSView(BasePageDetailView):
     content_path = '.ext/pages/terms-of-service.md'
     page_title = _('Terms of Service')
+
+
+class PageFromDatabaseView(BasePageDetailView):
+
+    def get_object(self):
+        slug = self.kwargs['slug']
+        self.object = get_object_or_404(Page, slug=slug)
+        return self.object
+
+    def get_content(self):
+        return self.object.description
+
+    @property
+    def extra_context(self):
+        """ additional `context_data` for `get_context_data` """
+        return {'page': self.object}

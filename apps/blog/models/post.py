@@ -3,14 +3,12 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.urls import reverse
-from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from updown.fields import RatingField
 from martor.models import MartorField
 
 from apps.blog.models.base import (TimeStampedModel, DefaultManager)
-from apps.blog.utils.slug import generate_unique_slug
 from apps.accounts.models.user import User
 
 
@@ -53,15 +51,6 @@ class Post(TimeStampedModel):
     def total_favorites(self):
         return self.get_favorites().count()
 
-    def save(self, *args, **kwargs):
-        """ generate an unique slug """
-        if self.slug:  # edit
-            if slugify(self.title) != self.slug:
-                self.slug = generate_unique_slug(Post, self.title)
-        else:  # create
-            self.slug = generate_unique_slug(Post, self.title)
-        super(Post, self).save(*args, **kwargs)
-
     def delete(self, *args, **kwargs):
         """ run delete action for instanced objects """
 
@@ -94,14 +83,6 @@ class Page(TimeStampedModel):
 
     def __str__(self):
         return self.title
-
-    def save(self, *args, **kwargs):
-        if self.slug:  # edit
-            if slugify(self.title) != self.slug:
-                self.slug = generate_unique_slug(Page, self.title)
-        else:  # create
-            self.slug = generate_unique_slug(Page, self.title)
-        super(Page, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('Page')
