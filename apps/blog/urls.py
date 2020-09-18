@@ -9,10 +9,16 @@ from apps.blog.views.post import (
     PostListAuthorView, PostDetailView
 )
 from apps.blog.views.tag import TagListView
+from apps.blog.views.page import (
+    PageAboutView, PageDisclaimerView,
+    PagePrivacyPolicyView, PageServiceView,
+    PageTOSView
+)
 
 app_name = 'apps.blog'
 
 urlpatterns = [
+    # posts
     path('', PostListView.as_view(), name='post_list'),
     path('posts/tagged/<slug:name>/', PostListTaggedView.as_view(), name='post_list_tagged'),
     path('posts/author/<slug:username>/', PostListAuthorView.as_view(), name='post_list_author'),
@@ -23,5 +29,13 @@ urlpatterns = [
         'field_name': 'rating'
     }, name='post_rating'),
 
+    # tags
     path('tags/', TagListView.as_view(), name='tag_list'),
+
+    # pages
+    path('about/', PageAboutView.as_view(), name='page_about'),
+    path('disclaimer/', PageDisclaimerView.as_view(), name='page_disclaimer'),
+    path('privacy-policy/', PagePrivacyPolicyView.as_view(), name='page_privacy_policy'),
+    path('service/', PageServiceView.as_view(), name='page_service'),
+    path('terms-of-service/', PageTOSView.as_view(), name='page_terms_of_service'),
 ]
