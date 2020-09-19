@@ -20,7 +20,7 @@
 
     <div class="row mt-4 row-content">
       <div class="col-md-9">
-        <div class="card mb-3 card-post-item">
+        <div class="card p-3 mb-3 card-post-item">
           <div class="post-item-content">
             <div class="stats">
               <div class="text-center text-{% if user_post_vote == 1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-up" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=1 %}" title="{% trans 'vote up' %}">
@@ -52,7 +52,7 @@
               <div class="card-footer card-footer-post-item">
                 <div class="tags">
                   {% for tag in post.tags.all|slice:":5" %}
-                    <a class="badge badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
+                    <a class="badge badge-tag badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
                   {% endfor %}
                 </div>
 

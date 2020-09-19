@@ -20,10 +20,7 @@ Like many other Web sites, [Python Learning](https://python.web.id) makes use of
 
 #### Our Advertising Partners
 
-Some of our advertising partners may use cookies and web beacons on our site. Our advertising partners include from:
-
-- Google Adsense
-- Other Advertisers
+Some of our advertising partners may use cookies and web beacons on our site.
 
 While each of these advertising partners has their own Privacy Policy for their site, an updated and hyperlinked resource is maintained here: Privacy Policies.
 You may consult this listing to find the privacy policy for each of the advertising partners of [Python Learning](https://python.web.id).

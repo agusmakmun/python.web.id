@@ -22,9 +22,9 @@
             </div>
             <div class="p-2 bd-highlight">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <a role="button" class="btn bg-gradient-default text-sm disabled">{% trans "Popular" %}</a>
-                <a role="button" class="btn bg-gradient-default text-sm">{% trans "Name" %}</a>
-                <a role="button" class="btn bg-gradient-default text-sm">{% trans "New" %}</a>
+                <a href="?sort=popular" class="btn bg-gradient-default text-sm {% if sort == 'popular' %}disabled{% endif %}">{% trans "Popular" %}</a>
+                <a href="?sort=name" class="btn bg-gradient-default text-sm {% if sort == 'name' %}disabled{% endif %}">{% trans "Name" %}</a>
+                <a href="?sort=new" class="btn bg-gradient-default text-sm {% if sort == 'new' %}disabled{% endif %}">{% trans "New" %}</a>
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
           <div class="col-md-3 mb-4">
             <div class="card card-body p-3">
               <div class="card-title">
-                <a class="badge badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
+                <a class="badge badge-tag badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
               </div>
               <p class="card-text">{{ tag.description|truncatechars:"150" }}</p>
               <span class="text-muted">
@@ -53,7 +53,7 @@
         {% endfor %}
 
         <div class="col-md-12 tags-paginator">
-          {% include "apps/blog/post/includes/paginator.html" %}
+          {% include "apps/blog/tag/includes/paginator.html" %}
         </div>
       </div>
     </div><!-- /.row-content -->

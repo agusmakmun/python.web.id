@@ -6,11 +6,11 @@
       <tbody>
         <tr>
           <td class="no-border">{% trans "viewed" %}</td>
-          <td class="no-border">69</td>
+          <td class="no-border">{{ visitor_counter.total_visitors }}</td>
         </tr>
         <tr>
           <td class="no-border">{% trans "your ip" %}</td>
-          <td class="no-border">114.5.208.219</td>
+          <td class="no-border">{{ visitor_counter.client_ip }}</td>
         </tr>
         <tr>
           <td class="no-border">{% trans "posted" %}</td>

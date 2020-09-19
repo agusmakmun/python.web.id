@@ -15,7 +15,7 @@ from apps.blog.forms.tag import TagForm
 
 
 class TagListView(FormMixin, ListView):
-    template_name = 'apps/blog/tags/list.html'
+    template_name = 'apps/blog/tag/list.html'
     queryset = Tag.objects.published()
     context_object_name = 'tags'
     form_class = TagForm
@@ -23,9 +23,15 @@ class TagListView(FormMixin, ListView):
 
     def get_queryset(self):
         queryset = self.queryset
+        self.sort = self.request.GET.get('sort', 'popular')
         self.query = self.request.GET.get('q')
+
         if self.query:
             queryset = queryset.filter(name__icontains=self.query)
+        if self.sort == 'name':
+            return queryset.order_by('name')
+        elif self.sort == 'new':
+            return queryset.order_by('-created_at')
         return queryset.annotate(total=Count('post')).order_by('-total')
 
     def post(self, request, *args, **kwargs):
@@ -43,4 +49,5 @@ class TagListView(FormMixin, ListView):
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
         context_data['query'] = self.query
+        context_data['sort'] = self.sort
         return context_data

@@ -34,8 +34,8 @@ Menyediakan jasa pembuatan web app berbasis Python & Django sesuai dengan keingi
 
 #### Exceptional
 
-> But, for some reason wee need to filter that product/sevice that will be advertise
-> is not prohibited according islamic rules. It's contains with this belows:
+> But, for some reason wee need to filter the product/sevice that will be advertise
+> is not prohibited according islamic rules. Which contains with this belows:
 
 |                                                       |                                               |
 |-------------------------------------------------------|-----------------------------------------------|

@@ -1,18 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin);
 
-/* body {
-  margin: 0;
-  padding: 0;
-  overflow-x: visible;
-  min-width: 1049px;
-  background: #FFF;
-  font-family: Arial,'Helvetica Neue',Arial,Helvetica,sans-serif;
-  font-size: 13px;
-  line-height: 1.4285em;
-  color: rgba(0,0,0,.87);
-  font-smoothing: antialiased;
-} */
-
 body {
   margin: 0;
   padding: 0;
@@ -20,6 +7,7 @@ body {
   font-size: 13.5px;
   font-family: Arial,'Helvetica Neue',Arial,Helvetica,sans-serif;
   background: #FFF;
+  background-image: url('/static/images/subtle_dots.png');
   line-height: 1.4285em;
   color: rgba(0,0,0,.87);
   font-smoothing: antialiased;
@@ -184,6 +172,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
+/* Navbar */
+.navbar-top {
+  border-bottom: 1px solid #fff;
+  box-shadow: 0 0 5px #b3b3b3;
+}
+
 /* Nav Tabs */
 .nav-tabs-post-list.nav-tabs .nav-link:focus,
 .nav-tabs-post-list.nav-tabs .nav-link:hover {
@@ -281,7 +275,7 @@ h1,h2,h3,h4,h5,h6 {
 .card-footer .tags {
 
 }
-.badge {
+.badge-tag {
   display: inline-block;
   line-height: 1;
   vertical-align: baseline;

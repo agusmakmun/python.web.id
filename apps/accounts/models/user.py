@@ -26,7 +26,7 @@ class User(AbstractUser):
 
 class Profile(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     display_name = models.CharField(_('Display name'), max_length=200, null=True, blank=True)
     location = models.CharField(_('Location'), max_length=200, null=True, blank=True)
     about_me = models.TextField(_('About Me'), null=True, blank=True)

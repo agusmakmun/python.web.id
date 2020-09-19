@@ -22,15 +22,21 @@
 
     <div class="row mt-4 row-content">
       <div class="col-md-9">
-        <div class="ads ads-post-item">
-          <div class="alert alert-light pl-0">{% lorem p %}</div>
-        </div>
+
+        {% if tag and tag.description %}
+          <p class="alert alert-light">{{ tag.description }}</p>
+        {% endif %}
+
+        <!-- FIXME: UPDATE IMAGE FOR ADS -->
+        <!-- <div class="ads ads-post-item">
+          <div class="alert alert-light">{% lorem p %}</div>
+        </div> -->
 
         {% for post in posts %}
-          <div class="card mb-3 card-post-item">
+          <div class="card p-2 mb-3 card-post-item">
             <div class="row no-gutters">
               <div class="col-md-1">
-                <div class="stats">
+                <div class="stats mb-3">
                   <div class="votes stats-inside">
                     <div class="ui mini statistic">
                       <div class="value">{{ post.rating.get_difference }}</div>
@@ -39,7 +45,7 @@
                   </div>
                   <div class="views stats-inside">
                     <div class="ui mini statistic">
-                      <div class="value">63</div>
+                      <div class="value">{{ post.total_visitors }}</div>
                       <div class="label">{% trans "views" %}</div>
                     </div>
                   </div>
@@ -59,7 +65,7 @@
                 <div class="card-footer card-footer-post-item">
                   <div class="float-left tags">
                     {% for tag in post.tags.all|slice:":5" %}
-                      <a class="badge badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
+                      <a class="badge badge-tag badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
                     {% endfor %}
                   </div>
                   <div class="float-right author">
@@ -117,10 +123,11 @@
                 <h5 class="card-title">{% trans "No posts!" %}</h5>
                 <p class="card-text">{% trans "The posts with current filter doesn't exist!" %}</p>
                 <a class="btn btn-sm bg-gradient-primary" href="{% url 'apps.blog:post_list' %}" role="button">
-                  <span>&nbsp; {% trans "See other posts" %} &nbsp;</span>
+                  <span>&nbsp; {% trans "See other posts" %}</span>
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                   </svg>
+                  <span>&nbsp;</span>
                 </a>
               {% endif %}
             </div>

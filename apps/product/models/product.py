@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
@@ -12,6 +13,7 @@ from apps.authuser.models.user import User
 
 class Product(TimeStampedModel):
     id = models.BigAutoField(primary_key=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     description = models.TextField(_('Description'))
     image_urls = models.TextField(_('Image URL\s'), blank=True)

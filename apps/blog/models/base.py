@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.db.models import Q
 from django.utils.html import strip_tags
+from django.contrib.contenttypes.models import ContentType
 
 
 class TimeStampedModel(models.Model):
@@ -50,7 +51,14 @@ class DefaultManager(models.Manager):
             return None
 
 
-class ContentTypeToGetModel(object):
+class ContentTypeModel(object):
+
+    def get_content_type(self):
+        """ function to get the content_type object for current model """
+        return ContentType.objects.get_for_model(self)
+
+
+class ContentTypeToGetModel(ContentTypeModel):
 
     """
     requires fields:

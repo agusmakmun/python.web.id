@@ -5,7 +5,7 @@
     <div class="col-md-6">
       <ul class="pagination pagination-sm m-0 float-left">
         <li class="page-item {% if request.GET.page|default:'1' == '1' %}disabled{% endif %}">
-          <a class="page-link" href="{% url 'apps.blog:post_list' %}?page=1{% if query %}&amp;q={{ query }}{% endif %}" title="{% trans 'First' %}">
+          <a class="page-link" href="{% url 'apps.blog:tag_list' %}?page=1{% if query %}&amp;q={{ query }}{% endif %}" title="{% trans 'First' %}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-double-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
               <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
@@ -15,7 +15,7 @@
 
         <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
           <a class= "page-link" title="{% trans 'Previous' %}"
-             {% if page_obj.has_previous %}href="{% url 'apps.blog:post_list' %}?page={{ page_obj.previous_page_number }}{% if query %}&amp;q={{ query }}{% endif %}"{% endif %}>
+             {% if page_obj.has_previous %}href="{% url 'apps.blog:tag_list' %}?page={{ page_obj.previous_page_number }}{% if query %}&amp;q={{ query }}{% endif %}"{% endif %}>
              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
              </svg>
@@ -29,14 +29,14 @@
             </li>
           {% else %}
             <li class="page-item">
-              <a class="page-link" href="{% url 'apps.blog:post_list' %}?page={{ linkpage }}{% if query %}&amp;q={{ query }}{% endif %}">{{ linkpage }}</a>
+              <a class="page-link" href="{% url 'apps.blog:tag_list' %}?page={{ linkpage }}{% if query %}&amp;q={{ query }}{% endif %}">{{ linkpage }}</a>
             </li>
           {% endif %}
         {% endfor %}
 
         <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
           <a class= "page-link" title="{% trans 'Next' %}"
-             {% if page_obj.has_next %}href="{% url 'apps.blog:post_list' %}?page={{ page_obj.next_page_number }}{% if query %}&amp;q={{ query }}{% endif %}"{% endif %}>
+             {% if page_obj.has_next %}href="{% url 'apps.blog:tag_list' %}?page={{ page_obj.next_page_number }}{% if query %}&amp;q={{ query }}{% endif %}"{% endif %}>
              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
              </svg>
@@ -44,7 +44,7 @@
         </li>
 
         <li class="page-item {% if request.GET.page|default:'1' == page_obj.paginator.num_pages|stringformat:'i' %}disabled{% endif %}">
-          <a class="page-link" href="{% url 'apps.blog:post_list' %}?page={{ page_obj.paginator.num_pages }}{% if query %}&amp;q={{ query }}{% endif %}" title="{% trans 'Last' %}">
+          <a class="page-link" href="{% url 'apps.blog:tag_list' %}?page={{ page_obj.paginator.num_pages }}{% if query %}&amp;q={{ query }}{% endif %}" title="{% trans 'Last' %}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-double-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
               <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -59,7 +59,7 @@
     </div>
 
     <div class="col-md-6">
-      <form class="float-right" method="get" action="{% url 'apps.blog:post_list' %}">
+      <form class="float-right" method="get" action="{% url 'apps.blog:tag_list' %}">
         <div class="input-group input-group-sm">
           <input name="page" type="number" min="1" class="form-control" placeholder="{% trans 'Jump to page' %}" aria-describedby="addon-go" required>
           {% if query %}<input name="q" type="hidden" value="{{ query }}">{% endif %}

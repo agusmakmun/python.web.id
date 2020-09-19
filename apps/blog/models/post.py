@@ -3,18 +3,21 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes.models import ContentType
 
 from updown.fields import RatingField
 from martor.models import MartorField
 
-from apps.blog.models.base import (TimeStampedModel, DefaultManager)
-from apps.accounts.models.user import User
+from apps.blog.models.base import (TimeStampedModel, DefaultManager,
+                                   ContentTypeModel)
+from apps.blog.models.addons import (Visitor, Favorite)
 
 
-class Post(TimeStampedModel):
+class Post(TimeStampedModel, ContentTypeModel):
     id = models.BigAutoField(primary_key=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)
     description = MartorField(_('Description'))
@@ -34,21 +37,37 @@ class Post(TimeStampedModel):
     def get_absolute_url(self):
         return reverse('apps.blog:post_detail', kwargs={'slug': self.slug})
 
+    def get_content_type(self):
+        """ function to get the content_type object for this model """
+        self.content_type = super().get_content_type()
+        return self.content_type
+
     def get_visitors(self):
-        if hasattr(self, 'visitor_set'):
-            return self.visitor_set.published()
-        return None
+        """ function to get the queryset of visitors """
+        if hasattr(self, 'content_type'):
+            content_type = self.content_type
+        else:
+            content_type = self.get_content_type()
+        queries = {'content_type': content_type, 'object_id': self.id}
+        return Visitor.objects.published().filter(**queries)
 
     @property
     def total_visitors(self):
-        visitors = self.get_visitors()
-        return visitors.count() if visitors else 0
+        """ count the total of visitors """
+        return self.get_visitors().count()
 
     def get_favorites(self):
-        return Favorite.objects.filter(post=self)
+        """ function to get the queryset of favorites """
+        if hasattr(self, 'content_type'):
+            content_type = self.content_type
+        else:
+            content_type = self.get_content_type()
+        queries = {'content_type': content_type, 'object_id': self.id}
+        return Favorite.objects.published().filter(**queries)
 
     @property
     def total_favorites(self):
+        """ count the total of favorites """
         return self.get_favorites().count()
 
     def delete(self, *args, **kwargs):
@@ -67,7 +86,7 @@ class Post(TimeStampedModel):
 
 class Page(TimeStampedModel):
     id = models.BigAutoField(primary_key=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)
     description = MartorField(_('Description'))
