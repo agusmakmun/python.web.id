@@ -2,12 +2,20 @@
 {% load static i18n %}
 {% load martortags %}
 
+{% block css %}
+  <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" rel="stylesheet" media="all">
+  <style>.martor-preview {border: 1px dashed #ddd}</style>
+{% endblock %}
+
+
 {% block content %}
   <div class="container p-3">
     <h5><a class="no-underline" href="">{{ page_title }}</a></h5>
 
     <div class="mt-4 row-content">
-      {{ content|safe_markdown }}
+      <div class="martor-preview">
+        {{ content|safe_markdown }}
+      </div>
     </div><!-- /.row-content -->
   </div>
 {% endblock %}
@@ -15,4 +23,9 @@
 
 {% block js %}
   <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script>
+    $('.martor-preview pre').each(function(i, block){
+      hljs.highlightBlock(block)
+    });
+  </script>
 {% endblock %}

@@ -45,7 +45,9 @@
 
             <div class="post-content">
               <div class="card-body pt-0 pb-2">
-                <div class="card-text">{{ post.description|safe_markdown }}</div>
+                <div class="card-text martor-preview">
+                  {{ post.description|safe_markdown }}
+                </div>
               </div>
               <div class="card-footer card-footer-post-item">
                 <div class="tags">

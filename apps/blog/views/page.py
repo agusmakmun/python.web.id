@@ -53,9 +53,9 @@ class PagePrivacyPolicyView(BasePageDetailView):
     page_title = _('Privacy Policy')
 
 
-class PageServiceView(BasePageDetailView):
-    content_path = '.ext/pages/service.md'
-    page_title = _('Service')
+class PageServicesView(BasePageDetailView):
+    content_path = '.ext/pages/services.md'
+    page_title = _('Services')
 
 
 class PageTOSView(BasePageDetailView):
@@ -68,6 +68,7 @@ class PageFromDatabaseView(BasePageDetailView):
     def get_object(self):
         slug = self.kwargs['slug']
         self.object = get_object_or_404(Page, slug=slug)
+        self.page_title = self.object.title
         return self.object
 
     def get_content(self):

@@ -8,7 +8,7 @@
 | S-01 | Right sidebar, top of donate button  | Rp 1.00.000,- _or_ $70 / month   | 257x100       | :heavy_check_mark: |
 
 
-> Fast Response: **0821-3731-3028** or _summon.agus@gmail.com_
+> Contact me: _summon.agus@gmail.com_
 > Payment: Bank Transfer / via [**PayPal**](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGSP6KUSKUEBE)
 
 -----------------------------
@@ -32,18 +32,21 @@ Menyediakan jasa pembuatan web app berbasis Python & Django sesuai dengan keingi
 > You can also found this service at [projects.co.id](https://projects.co.id/public/browse_services/view/6c7311/pembuatan-web-app-berbasis-python-amp-django)
 > Payment: Bank Transfer / via [**PayPal**](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGSP6KUSKUEBE)
 
-#### Kami tidak menerima proyek/iklan yang berisi dengan kasus-kasus berikut ini:
+#### Exceptional
 
-|                                            |                                               |
-|--------------------------------------------|-----------------------------------------------|
-| 1. Lukisan Bernyawa, Kartun, Manga & Anime | 12. Bitcoin                                   |
-| 2. Paytren & MLM (Multi Level Marketing)   | 13. Dropship                                  |
-| 3. Pornografi, Provokasi, Gosip & Fitnah   | 14. Selebgram                                 |
-| 4. Kredit Pemilikan Rumah Non-Syariah      | 15. Kartu Kredit                              |
-| 5. Web Crawling/Grabbing secara Ilegal     | 16. Musik & Lagu                              |
-| 6. Bank Konvensional & Jasa Asuransi       | 17. Perjudian & Togel                         |
-| 7. Trading Forex/Bursa Efek/Obligasi       | 18. Film/Movies & Game                        |
-| 8. Alkohol & Obat-obatan terlarang         | 19. Pegadaian, Koperasi & Lesing              |
-| 9. Sistem Autolike/Autofollow              | 20. Seluruh yang mengumbar Aurat              |
-| 10. E-Money/E-Wallet/GoPay                 | 21. Seluruh yang haram & syubhat dalam Islam  |
-| 11. Cracking & Hacking                     | 22. Seluruh yang melanggar UUD & UU ITE       |
+> But, for some reason wee need to filter that product/sevice that will be advertise
+> is not prohibited according islamic rules. It's contains with this belows:
+
+|                                                       |                                               |
+|-------------------------------------------------------|-----------------------------------------------|
+| Trading Forex/Stock Exchange/Obligation Money         | Conventional Banking & Insurance Service      |
+| Paytren & MLM (Multi Level Marketing)                 | House Ownership Credit (Non-Syariah)          |
+| Soul Drawing/Cartoon/Manga/Anime                      | Pawnshops, Cooperative & Leasing              |
+| Autolike/Autofollow System                            | Illegal Cracking & Hacking                    |
+| E-Money/E-Wallet/GoPay                                | Porn & Provocation                            |
+| Alcohol & Drugs                                       | Credit Card                                   |
+| Selebgram                                             | Dropship                                      |
+| Bitcoin/Blockhain                                     | Music & Songs                                 |
+| Gambling & Togel                                      | Film/Movies & Game                            |
+| All cases about showing Aurat                         | All cases which is haram & syubhat in Islam   |
+| All cases that violates with Government Law & IT Law. |                                               |

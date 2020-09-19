@@ -11,7 +11,7 @@ from apps.blog.views.post import (
 from apps.blog.views.tag import TagListView
 from apps.blog.views.page import (
     PageAboutView, PageDisclaimerView,
-    PagePrivacyPolicyView, PageServiceView,
+    PagePrivacyPolicyView, PageServicesView,
     PageTOSView
 )
 
@@ -36,6 +36,6 @@ urlpatterns = [
     path('about/', PageAboutView.as_view(), name='page_about'),
     path('disclaimer/', PageDisclaimerView.as_view(), name='page_disclaimer'),
     path('privacy-policy/', PagePrivacyPolicyView.as_view(), name='page_privacy_policy'),
-    path('service/', PageServiceView.as_view(), name='page_service'),
+    path('services/', PageServicesView.as_view(), name='page_services'),
     path('terms-of-service/', PageTOSView.as_view(), name='page_terms_of_service'),
 ]
