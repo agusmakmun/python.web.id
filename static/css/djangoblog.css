@@ -91,6 +91,9 @@ h1,h2,h3,h4,h5,h6 {
 .text-orange {
   color: #ea9256;
 }
+.text-red {
+  color: #ff0000;
+}
 
 /* Buttons */
 .bg-gradient-default {

@@ -1,0 +1,23 @@
+{% load static i18n %}<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Python Learning{% endblock %}</title>
+
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'bootstrap/css/bootstrap-floating-labels.css' %}" rel="stylesheet">
+    <link href="{% static 'css/djangoblog.css' %}" rel="stylesheet">
+    {% block css %}{% endblock %}
+
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+
+  <script src="{% static 'plugins/js/jquery.min.js' %}"></script>
+  <script src="{% static 'plugins/js/popper.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+  {% block js %}{% endblock %}
+</html>
