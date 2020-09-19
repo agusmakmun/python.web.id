@@ -4,9 +4,7 @@
 
 {% block content %}
   <div class="container p-3">
-    {% lorem p %}
-
-    <h5>
+    <h5 class="mt-2 mb-4">
       <a class="no-underline" href="">{{ post.title }}</a>
       <span class="float-right">
         <a class="btn btn-sm bg-gradient-success" href="#" role="button" style="line-height:1.5rem">
@@ -30,7 +28,7 @@
               <div class="ribbon-green">FEATURED</div>
             </div>
           {% endif %}
-          
+
           <div class="post-item-content">
             <div class="stats">
               <div class="text-center text-{% if user_post_vote == 1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-up" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=1 %}" title="{% trans 'vote up' %}">
@@ -39,7 +37,7 @@
                 </svg>
               </div>
               <div class="text-center text-muted stats-inside-detail" data-id="121">
-                <div class="value">{{ post.rating.get_difference }}</div>
+                <div class="value">{{ post.rating.get_difference|numberize }}</div>
               </div>
               <div class="text-center text-{% if user_post_vote == -1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-down" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=-1 %}" title="{% trans 'vote down' %}">
                 <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

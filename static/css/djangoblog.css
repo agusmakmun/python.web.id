@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin);
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
 
 body {
   margin: 0;
@@ -73,6 +73,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 .no-border {
   border: none!important;
+}
+.no-bg, .no-background {
+  background: none!important;
+  background-color: none!important;
+  background-image: none!important;
 }
 
 /* Text */

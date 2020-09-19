@@ -8,7 +8,7 @@
 | S-01 | Right sidebar, top of donate button  | Rp 1.00.000,- _or_ $70 / month   | 257x100       | :heavy_check_mark: |
 
 
-> Contact me: _summon.agus@gmail.com_
+> Contact me: _[summon.agus@gmail.com](mailto:summon.agus@gmail.com)_
 > Payment: Bank Transfer / via [**PayPal**](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGSP6KUSKUEBE)
 
 -----------------------------
@@ -28,8 +28,7 @@ Menyediakan jasa pembuatan web app berbasis Python & Django sesuai dengan keingi
 |                                                                |                 |            |
 | Problem Solving                                                | Flexible        | Flexible   |
 
-> Fast Response: **0821-3731-3028** or _summon.agus@gmail.com_
-> You can also found this service at [projects.co.id](https://projects.co.id/public/browse_services/view/6c7311/pembuatan-web-app-berbasis-python-amp-django)
+> Contact me: _[summon.agus@gmail.com](mailto:summon.agus@gmail.com)_
 > Payment: Bank Transfer / via [**PayPal**](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGSP6KUSKUEBE)
 
 #### Exceptional

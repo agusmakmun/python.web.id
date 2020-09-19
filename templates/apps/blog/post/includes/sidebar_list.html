@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load ads_tags %}
+{% load common_tags ads_tags post_tags %}
 
 <div class="col-md-3 sidebar-right">
   <h3 class="text-muted">
@@ -14,9 +14,29 @@
     </div>
   </h3>
 
-  <hr />
+  <hr class="no-border no-bg" />
 
   <div class="ad-sidebar_top">
     {{ 'sidebar_top'|get_ads|safe }}
+  </div>
+
+  <hr />
+
+  <div class="random-posts">
+    {% random_posts as random_posts_list %}
+    <ul class="list-group">
+      {% for post in random_posts_list %}
+        <li class="list-group-item p-0 mb-3 no-border d-flex justify-content-between align-items-center no-bg">
+          <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">
+            <span class="mr-2 text-muted" style="display:table-cell">{{ post.rating.get_difference|numberize }}</span>
+            <span class="content" style="display:table-cell;padding: 0 0 0 .5em">{{ post.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="ad-sidebar_bottom">
+    {{ 'sidebar_bottom'|get_ads|safe }}
   </div>
 </div>

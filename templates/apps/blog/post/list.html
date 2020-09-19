@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% load martortags ads_tags %}
+{% load common_tags martortags ads_tags %}
 
 {% block content %}
   <div class="container p-3">
-    {% lorem p %}
-
-    <h5>
+    <h5 class="mt-2 mb-4">
       <span>{% trans "All Posts" %}</span>
       <span class="float-right">
         <a class="btn btn-sm bg-gradient-success" href="#" role="button" style="line-height:1.5rem">
@@ -44,13 +42,13 @@
                 <div class="stats mb-3">
                   <div class="votes stats-inside">
                     <div class="ui mini statistic">
-                      <div class="value">{{ post.rating.get_difference }}</div>
+                      <div class="value">{{ post.rating.get_difference|numberize }}</div>
                       <div class="label">{% trans "votes" %}</div>
                     </div>
                   </div>
                   <div class="views stats-inside">
                     <div class="ui mini statistic">
-                      <div class="value">{{ post.total_visitors }}</div>
+                      <div class="value">{{ post.total_visitors|numberize }}</div>
                       <div class="label">{% trans "views" %}</div>
                     </div>
                   </div>

@@ -62,15 +62,15 @@ def popular_tags(limit=5, query=None):
 #     return queryset[:limit]
 
 
-# @register.simple_tag
-# def random_posts(limit=5):
-#     """
-#     {% load post_tags %}
-#     {% random_posts as random_posts_list %}
-#     {% for post in random_posts_list %}
-#       <a href="{% url 'posts_detail' slug=post.slug %}">{{ post.title }}</a>
-#     {% endfor %}
-#     used in:
-#         - apps/blog/posts_list.html
-#     """
-#     return Post.objects.published().order_by('-rating_likes').order_by('?')[:limit]
+@register.simple_tag
+def random_posts(limit=5):
+    """
+    {% load post_tags %}
+    {% random_posts as random_posts_list %}
+    {% for post in random_posts_list %}
+      <a href="{% url 'posts_detail' slug=post.slug %}">{{ post.title }}</a>
+    {% endfor %}
+    used in:
+        - templates/apps/blog/post/includes/sidebar_list.html
+    """
+    return Post.objects.published().order_by('-rating_likes').order_by('?')[:limit]

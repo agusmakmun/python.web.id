@@ -15,9 +15,9 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="addon-searh-post">{% trans "Posts" %}</span>
         </div>
+        {% csrf_token %}
         <input name="q" type="text" class="form-control" placeholder='{% trans "Search..." %}'
                aria-label="Username" aria-describedby="addon-searh-post" {% if request.GET.q %}value="{{ request.GET.q }}"{% endif %}>
-        {% csrf_token %}
       </div>
     </form>
 
