@@ -118,7 +118,9 @@ class PostDetailView(DetailView):
         to check whenever user is voted the post.
         {% if user_post_vote %}orange{% else %}grey{% endif %}
         """
-        return self.object.rating.get_rating_for_user(user=self.request.user)
+        if self.request.user.is_authenticated:
+            return self.object.rating.get_rating_for_user(user=self.request.user)
+        return False
 
     def get_visitors(self):
         """

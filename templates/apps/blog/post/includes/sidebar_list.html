@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load ads_tags %}
 
 <div class="col-md-3 sidebar-right">
   <h3 class="text-muted">
@@ -15,5 +16,7 @@
 
   <hr />
 
-  {% lorem p %}
+  <div class="ad-sidebar_top">
+    {{ 'sidebar_top'|get_ads|safe }}
+  </div>
 </div>

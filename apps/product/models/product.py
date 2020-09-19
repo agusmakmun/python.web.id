@@ -20,6 +20,8 @@ class Product(TimeStampedModel):
     demo_url = models.URLField(_('Demo URL'), null=True, blank=True)
     download_url = models.URLField(_('Download URL'), null=True, blank=True)
 
+    objects = DefaultManager()
+
     def __str__(self):
         return self.title
 

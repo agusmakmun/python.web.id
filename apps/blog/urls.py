@@ -12,7 +12,7 @@ from apps.blog.views.tag import TagListView
 from apps.blog.views.page import (
     PageAboutView, PageDisclaimerView,
     PagePrivacyPolicyView, PageServicesView,
-    PageTOSView
+    PageSponsorView, PageTOSView
 )
 
 app_name = 'apps.blog'
@@ -37,5 +37,6 @@ urlpatterns = [
     path('disclaimer/', PageDisclaimerView.as_view(), name='page_disclaimer'),
     path('privacy-policy/', PagePrivacyPolicyView.as_view(), name='page_privacy_policy'),
     path('services/', PageServicesView.as_view(), name='page_services'),
+    path('sponsor/', PageSponsorView.as_view(), name='page_sponsor'),
     path('terms-of-service/', PageTOSView.as_view(), name='page_terms_of_service'),
 ]

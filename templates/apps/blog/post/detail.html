@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% load common_tags martortags %}
+{% load martortags common_tags ads_tags %}
 
 {% block content %}
   <div class="container p-3">
@@ -20,7 +20,17 @@
 
     <div class="row mt-4 row-content">
       <div class="col-md-9">
+        <div class="ad-post_detail_top">
+          {{ 'post_detail_top'|get_ads|safe }}
+        </div>
+
         <div class="card p-3 mb-3 card-post-item">
+          {% if post.is_featured %}
+            <div class="ribbon-wrapper-green">
+              <div class="ribbon-green">FEATURED</div>
+            </div>
+          {% endif %}
+          
           <div class="post-item-content">
             <div class="stats">
               <div class="text-center text-{% if user_post_vote == 1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-up" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=1 %}" title="{% trans 'vote up' %}">
@@ -126,6 +136,13 @@
               </div>
             </div>
           </div>
+
+          <div class="ad-post_detail_bottom">
+            {{ 'post_detail_bottom'|get_ads|safe }}
+          </div>
+
+          <div class="comments">
+          </div><!-- /.comments -->
         </div>
 
       </div>

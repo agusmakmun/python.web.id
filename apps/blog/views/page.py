@@ -58,6 +58,11 @@ class PageServicesView(BasePageDetailView):
     page_title = _('Services')
 
 
+class PageSponsorView(BasePageDetailView):
+    content_path = '.ext/pages/sponsor.md'
+    page_title = _('Sponsor')
+
+
 class PageTOSView(BasePageDetailView):
     content_path = '.ext/pages/terms-of-service.md'
     page_title = _('Terms of Service')

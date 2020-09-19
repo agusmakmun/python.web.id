@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% load martortags %}
+{% load martortags ads_tags %}
 
 {% block content %}
   <div class="container p-3">
@@ -27,12 +27,17 @@
           <p class="alert alert-light">{{ tag.description }}</p>
         {% endif %}
 
-        <!-- FIXME: UPDATE IMAGE FOR ADS -->
-        <!-- <div class="ads ads-post-item">
-          <div class="alert alert-light">{% lorem p %}</div>
-        </div> -->
+        <div class="ad-post_list_top">
+          {{ 'post_list_top'|get_ads|safe }}
+        </div>
 
         {% for post in posts %}
+          {% if forloop.counter == 5 %}
+            <div class="ad-post_list_middle">
+              {{ 'post_list_middle'|get_ads|safe }}
+            </div>
+          {% endif %}
+
           <div class="card p-2 mb-3 card-post-item">
             <div class="row no-gutters">
               <div class="col-md-1">
@@ -133,6 +138,10 @@
             </div>
           </div>
         {% endfor %}
+
+        <div class="ad-post_list_bottom">
+          {{ 'post_list_bottom'|get_ads|safe }}
+        </div>
 
         {% include "apps/blog/post/includes/paginator.html" %}
       </div>

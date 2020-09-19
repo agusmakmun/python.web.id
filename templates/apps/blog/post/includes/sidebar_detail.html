@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load ads_tags %}
 
 <div class="col-md-3 sidebar-right">
   <div class="sidebar-post-info">
@@ -26,6 +27,10 @@
     </table>
   </div>
 
+  <div class="ad-sidebar_top">
+    {{ 'sidebar_top'|get_ads|safe }}
+  </div>
+
   <hr />
 
   <div class="sidebar-related-posts">
@@ -43,4 +48,8 @@
       {% endfor %}
     </ul>
   </div><!-- end /.sidebar-related-posts -->
+
+  <div class="ad-sidebar_bottom">
+    {{ 'sidebar_bottom'|get_ads|safe }}
+  </div>
 </div>
