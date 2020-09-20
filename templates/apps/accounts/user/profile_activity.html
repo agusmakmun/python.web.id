@@ -65,10 +65,37 @@
           {% endfor %}
         </div>
       </div>
-      <div class="tab-pane fade" id="tab-votes" role="tabpanel" aria-labelledby="tags-votes">...</div>
+      <div class="tab-pane fade" id="tab-votes" role="tabpanel" aria-labelledby="tags-votes">
+        <ul class="list-group list-group-flush">
+          {% for vote in votes %}
+            <li class="list-group-item">
+              <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=vote.content_object.slug %}">
+                {% if vote.score > 0 %}
+                  <span class="badge badge-success">{% trans "upvote" %}</span>
+                {% else %}
+                  <span class="badge badge-danger">{% trans "downvote" %}</span>
+                {% endif %}
+                <span>{{ vote.content_object }}</span>
+                <span class="float-right">{{ vote.date_added }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
 
       {% if profile.user == request.user %}
-        <div class="tab-pane fade" id="tab-favorites" role="tabpanel" aria-labelledby="tab-favorites">...</div>
+        <div class="tab-pane fade" id="tab-favorites" role="tabpanel" aria-labelledby="tab-favorites">
+          <ul class="list-group list-group-flush">
+            {% for favorite in favorites %}
+              <li class="list-group-item">
+                <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=favorite.content_object.slug %}">
+                  <span>{{ favorite.content_object }}</span>
+                  <span class="float-right">{{ favorite.created_at }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
       {% endif %}
     </div>
 

@@ -58,11 +58,12 @@ $(document).on('click', '.vote-total-public-value', function() {
 });
 
 // bookmark action
-$(document).on('click', '.favorite-icon', function() {
+$(document).on('click', '.vote-favorite', function() {
   var favoriteUrl = $(this).data('target');
+  var object_id = $(this).data('object-id');
   $.ajax({
-      url: favoriteUrl,
-      type: 'GET',
+      url: favoriteUrl + '?content_type=post&object_id=' + object_id,
+      type: 'get',
       success: function(response) {
         if(response['success']) {
           showNotif(response['message'], 'success', true);

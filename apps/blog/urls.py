@@ -19,6 +19,7 @@ from apps.blog.views.tag import (
     TagListView, TagJSONSearchView,
     TagJSONCreateView
 )
+from apps.blog.views.addons import FavoriteCreateDeleteJSONView
 
 
 app_name = 'apps.blog'
@@ -50,4 +51,8 @@ urlpatterns = [
     path('tags/', TagListView.as_view(), name='tag_list'),
     path('tags/search/json/', TagJSONSearchView.as_view(), name='tag_json_search'),
     path('tags/create/json/', TagJSONCreateView.as_view(), name='tag_json_create'),
+
+    # addons
+    path('favorite/json/', FavoriteCreateDeleteJSONView.as_view(), name='favorite_json_create_delete'),
+
 ]
