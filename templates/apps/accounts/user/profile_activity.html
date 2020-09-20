@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load common_tags user_info %}
+
+{% block title %}{% trans "Profile" %} {{ profile }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    {% include "apps/accounts/user/includes/nav_tabs.html" %}
+
+
+    <ul class="nav nav-tabs mt-3 nav-tabs-profile" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#tab-posts" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">
+          <span>{% trans "posts" %}</span>
+          <span class="badge badge-light">{{ posts.count }}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#tab-tags" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false">
+          <span>{% trans "tags" %}</span>
+          <span class="badge badge-light">{{ tags_list|length }}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#tab-votes" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false">
+          <span>{% trans "votes" %}</span>
+          <span class="badge badge-light">{{ votes.count }}</span>
+        </a>
+      </li>
+
+      {% if profile.user == request.user %}
+        <li class="nav-item">
+          <a class="nav-link" href="#tab-favorites" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false">
+            <span>{% trans "favorites" %}</span>
+            <span class="badge badge-light">{{ favorites.count }}</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="tab-posts" role="tabpanel" aria-labelledby="home-tab">
+        <ul class="list-group list-group-flush">
+          {% for post in posts %}
+            <li class="list-group-item">
+              <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">
+                <span>{{ post }}</span>
+                <span class="float-right">{{ post.created_at }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="tab-tags" role="tabpanel" aria-labelledby="profile-tab">...</div>
+      <div class="tab-pane fade" id="tab-votes" role="tabpanel" aria-labelledby="contact-tab">...</div>
+
+      {% if profile.user == request.user %}
+        <div class="tab-pane fade" id="tab-favorites" role="tabpanel" aria-labelledby="contact-tab">...</div>
+      {% endif %}
+    </div>
+
+  </div>
+{% endblock %}
