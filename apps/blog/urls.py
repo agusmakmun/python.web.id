@@ -4,20 +4,34 @@ from __future__ import unicode_literals
 from django.urls import path
 
 from updown.views import AddRatingFromModel
-from apps.blog.views.post import (
-    PostListView, PostListTaggedView,
-    PostListAuthorView, PostDetailView
-)
-from apps.blog.views.tag import TagListView
+
 from apps.blog.views.page import (
     PageAboutView, PageDisclaimerView,
     PagePrivacyPolicyView, PageServicesView,
     PageSponsorView, PageTOSView
 )
+from apps.blog.views.post import (
+    PostListView, PostListTaggedView,
+    PostListAuthorView, PostDetailView,
+    PostCreateView, PostUpdateView
+)
+from apps.blog.views.tag import (
+    TagListView, TagJSONSearchView,
+    TagJSONCreateView
+)
+
 
 app_name = 'apps.blog'
 
 urlpatterns = [
+    # pages
+    path('about/', PageAboutView.as_view(), name='page_about'),
+    path('disclaimer/', PageDisclaimerView.as_view(), name='page_disclaimer'),
+    path('privacy-policy/', PagePrivacyPolicyView.as_view(), name='page_privacy_policy'),
+    path('services/', PageServicesView.as_view(), name='page_services'),
+    path('sponsor/', PageSponsorView.as_view(), name='page_sponsor'),
+    path('terms-of-service/', PageTOSView.as_view(), name='page_terms_of_service'),
+
     # posts
     path('', PostListView.as_view(), name='post_list'),
     path('posts/tagged/<slug:name>/', PostListTaggedView.as_view(), name='post_list_tagged'),
@@ -29,14 +43,11 @@ urlpatterns = [
         'field_name': 'rating'
     }, name='post_rating'),
 
+    path('posts/create/', PostCreateView.as_view(), name='post_create'),
+    path('posts/update/<slug:slug>/', PostUpdateView.as_view(), name='post_update'),
+
     # tags
     path('tags/', TagListView.as_view(), name='tag_list'),
-
-    # pages
-    path('about/', PageAboutView.as_view(), name='page_about'),
-    path('disclaimer/', PageDisclaimerView.as_view(), name='page_disclaimer'),
-    path('privacy-policy/', PagePrivacyPolicyView.as_view(), name='page_privacy_policy'),
-    path('services/', PageServicesView.as_view(), name='page_services'),
-    path('sponsor/', PageSponsorView.as_view(), name='page_sponsor'),
-    path('terms-of-service/', PageTOSView.as_view(), name='page_terms_of_service'),
+    path('tags/search/json/', TagJSONSearchView.as_view(), name='tag_json_search'),
+    path('tags/create/json/', TagJSONCreateView.as_view(), name='tag_json_create'),
 ]

@@ -43,7 +43,7 @@
       <div class="col-md-6">
         <div class="form-group form-label-group">
           {{ form.username }}
-          <label for="inputPassword">{% trans 'Username' %}</label>
+          <label for="id_username">{% trans 'Username' %}</label>
           {% if form.username.errors %}
             <div class="invalid-feedback" style="display:block">
               {% for error in form.username.errors %}
@@ -56,7 +56,7 @@
       <div class="col-md-6">
         <div class="form-group form-label-group">
           {{ form.email }}
-          <label for="inputUsername">{% trans 'Email' %}</label>
+          <label for="id_email">{% trans 'Email' %}</label>
           {% if form.email.errors %}
             <div class="invalid-feedback" style="display:block">
               {% for error in form.email.errors %}
@@ -72,7 +72,7 @@
       <div class="col-md-6">
         <div class="form-group form-label-group">
           {{ form.password1 }}
-          <label for="inputUsername">{% trans 'Password' %}</label>
+          <label for="id_password1">{% trans 'Password' %}</label>
           {% if form.password1.errors %}
             <div class="invalid-feedback" style="display:block">
               {% for error in form.password1.errors %}
@@ -85,7 +85,7 @@
       <div class="col-md-6">
         <div class="form-group form-label-group">
           {{ form.password2 }}
-          <label for="inputPassword">{% trans 'Password (again)' %}</label>
+          <label for="id_password2">{% trans 'Password (again)' %}</label>
           {% if form.password2.errors %}
             <div class="invalid-feedback" style="display:block">
               {% for error in form.password2.errors %}

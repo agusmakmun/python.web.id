@@ -1,17 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.urls import reverse
 from django.conf import settings
+from django.contrib import messages
 from django.db.models import (Q, F, Count)
+from django.utils.text import slugify
+from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from updown.models import Vote
 
 from apps.blog.models.tag import Tag
 from apps.blog.models.addons import Visitor
 from apps.blog.models.post import (Post, Page)
+from apps.blog.forms.post import PostForm
 from apps.blog.utils.visitor import (visitor_counter, get_popular_objects)
 from apps.accounts.models.user import User
 
@@ -138,3 +144,53 @@ class PostDetailView(DetailView):
         context_data['user_post_vote'] = self.user_post_vote
         context_data['visitor_counter'] = self.get_visitors()
         return context_data
+
+
+class PostCreateView(LoginRequiredMixin, FormView):
+    template_name = 'apps/blog/post/create.html'
+    form_class = PostForm
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.author = self.request.user
+        instance.save()
+        form.save_m2m()
+        messages.success(self.request, _('Post successfully created!'))
+        return redirect(reverse('apps.blog:post_detail', kwargs={'slug': instance.slug}))
+
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    template_name = 'apps/blog/post/update.html'
+    context_object_name = 'post'
+    form_class = PostForm
+    model = Post
+
+    def get_object(self):
+        """ handle the object for specific permission """
+        if self.request.user.is_superuser:
+            return get_object_or_404(self.model, slug=self.kwargs['slug'])
+        return get_object_or_404(self.model, slug=self.kwargs['slug'], author=self.request.user)
+
+    def form_valid(self, form):
+        post = self.get_object()
+        instance = form.save(commit=False)
+        instance.author = post.author
+        instance.save()
+        form.save_m2m()
+        messages.success(self.request, _('"%(post)s" successfully updated!') % {'post': instance})
+        return redirect(reverse('apps.blog:post_detail', kwargs={'slug': instance.slug}))
+
+    def get_initial(self):
+        initial = super().get_initial()
+        for field, _cls in self.form_class.base_fields.items():
+            if field == 'tags':
+                value = self.get_object().tags.all()
+            else:
+                value = getattr(self.get_object(), field)
+            initial.update({field: value})
+        return initial
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['post'] = self.get_object()
+        return context

@@ -23,7 +23,7 @@ class Post(TimeStampedModel, ContentTypeModel):
     description = MartorField(_('Description'))
     tags = models.ManyToManyField('Tag')
     keywords = models.CharField(_('Keywords'), null=True, blank=True,
-                                max_length=200, help_text=_('Keywords sparate by comma.'))
+                                max_length=200, help_text=_('Separate by comma (,)'))
     meta_description = models.TextField(_('Meta Description'), null=True, blank=True)
     is_featured = models.BooleanField(_('Is Featured?'), default=False)
     publish = models.BooleanField(_('Publish'), default=True)

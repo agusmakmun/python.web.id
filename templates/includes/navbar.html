@@ -101,7 +101,7 @@
               </svg>
             </a>
             <div class="dropdown-menu dropdown-menu-right text-sm" aria-labelledby="dropdown-signed-user">
-              <a class="dropdown-item" href="#">{% trans "New Post" %}</a>
+              <a class="dropdown-item" href="{% url 'apps.blog:post_create' %}">{% trans "New Post" %}</a>
               <a class="dropdown-item" href="#">{% trans "New Tag" %}</a>
 
               {% if request.user.is_superuser %}

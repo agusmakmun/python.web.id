@@ -81,6 +81,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /* Text */
+.text-normal {
+  font-size: 14px;
+}
 .text-sm,
 .text-small {
   font-size: 12px;
@@ -379,6 +382,16 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
+/* Sidebar */
+.sidebar-bulletin {
+  margin: 2em 0;
+  padding: 15px 15px 10px;
+  background-color: #FFF8DC;
+  border: 1px solid #E0DCBF;
+}
+
+
+/* Footer */
 .footer.container {
   position: relative;
   margin-top: 60px;

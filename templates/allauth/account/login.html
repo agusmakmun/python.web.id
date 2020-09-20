@@ -44,7 +44,7 @@
       <div class="col-md-6">
         <div class="form-group form-label-group">
           {{ form.login }}
-          <label for="inputUsername">{% trans 'Username' %}</label>
+          <label for="id_login">{% trans 'Username' %}</label>
           {% if form.login.errors %}
             <div class="invalid-feedback" style="display:block">
               {% for error in form.login.errors %}
@@ -57,7 +57,7 @@
       <div class="col-md-6">
         <div class="form-group form-label-group">
           {{ form.password }}
-          <label for="inputPassword">{% trans 'Password' %}</label>
+          <label for="id_password">{% trans 'Password' %}</label>
           {% if form.password.errors %}
             <div class="invalid-feedback" style="display:block">
               {% for error in form.password.errors %}
