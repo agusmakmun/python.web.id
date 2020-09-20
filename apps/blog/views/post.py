@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.urls import reverse
 from django.conf import settings
+from django.utils import timezone
 from django.contrib import messages
 from django.db.models import (Q, F, Count)
 from django.utils.text import slugify
@@ -18,6 +19,7 @@ from apps.blog.models.tag import Tag
 from apps.blog.models.post import (Post, Page)
 from apps.blog.models.addons import (Visitor, Favorite)
 from apps.blog.utils.visitor import (visitor_counter, get_popular_objects)
+from apps.blog.utils.json import JSONResponseMixin
 from apps.blog.forms.post import PostForm
 from apps.accounts.models.user import User
 
@@ -137,6 +139,10 @@ class PostDetailView(DetailView):
     context_object_name = 'post'
     model = Post
 
+    def get_object(self):
+        return get_object_or_404(self.model, slug=self.kwargs['slug'],
+                                 deleted_at__isnull=True)
+
     def get_related_posts(self, limit=5):
         """
         function to get the related posts.
@@ -225,3 +231,46 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(*args, **kwargs)
         context['post'] = self.get_object()
         return context
+
+
+class PostDeleteJSONView(JSONResponseMixin, TemplateView):
+    model = Post
+
+    def soft_delete_post(self, id):
+        """
+        function to delete the post object with soft delete method
+        :param `id` is integer id of `Post`.
+        """
+        # soft delete the related objects
+        queries = {'content_type__model': 'post', 'object_id': id}
+        Visitor.objects.filter(**queries).update(deleted_at=timezone.now())
+        Favorite.objects.filter(**queries).update(deleted_at=timezone.now())
+
+        # soft delete the object
+        post = get_object_or_404(self.model, id=id)
+        post.deleted_at = timezone.now()
+        post.save()
+
+        return True
+
+    def get(self, request, *args, **kwargs):
+        context_data = {'success': False, 'message': None}
+        id = request.GET.get('id')
+
+        if str(id).isdigit():
+            if not request.user.is_authenticated:
+                context_data['message'] = _('You must login to delete this post!')
+            elif request.user.is_superuser:
+                self.soft_delete_post(id)
+                context_data['success'] = True
+                context_data['message'] = _('The successfully post deleted!')
+            elif request.user != post.author:
+                context_data['message'] = _('You are not allowed to access this method!')
+            else:
+                self.soft_delete_post(id)
+                context_data['success'] = True
+                context_data['message'] = _('The successfully post deleted!')
+        else:
+            context_data['message'] = _('Param `id` should be integer!')
+
+        return self.render_to_json_response(context_data)

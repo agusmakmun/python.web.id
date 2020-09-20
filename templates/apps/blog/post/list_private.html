@@ -13,8 +13,8 @@
     {% include "apps/accounts/user/includes/nav_tabs.html" %}
 
     <nav class="navbar navbar-light bg-light mt-3">
-      <form class="form-inline">
-        <input class="form-control mr-sm-2 text-sm" type="search" placeholder="{% trans 'Search...' %}" aria-label="Search">
+      <form class="form-inline" method="get">{% csrf_token %}
+        <input name="q" class="form-control mr-sm-2 text-sm" type="search" placeholder="{% trans 'Search...' %}" aria-label="Search">
         <button class="btn bg-gradient-default text-normal" type="submit">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
@@ -118,7 +118,7 @@
                 {% endif %}
               </td>
               <td>
-                <span role="button" class="mr-1 delete-post" data-target="" title="{% trans 'Delete' %}">
+                <span role="button" class="mr-1 delete-post-icon" data-target="" title="{% trans 'Delete' %}" data-url="{% url 'apps.blog:post_json_delete' %}?id={{ post.id }}">
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="#DB2828" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                   </svg>
@@ -148,6 +148,22 @@
     $(document).ready(function() {
       // come from `js/djangoblog.js`
       changeBaseURLPaginator(url='{% url "apps.blog:posts_me" %}', element='.main-pagination');
+
+      // delete mode
+      $(document).on('click', '.delete-post-icon', function(){
+        var button = $(this);
+        var confirmed = confirm('{% trans "Are you sure to delete this post?" %}');
+        if(confirmed) {
+          $.ajax({
+            type: 'GET',
+            url: $(this).data('url'),
+            success: function(response) {
+              button.closest('tr').remove();
+              showNotif(response['message'], 'success', false);
+            }
+          });
+        }
+      });
     });
   </script>
 {% endblock %}

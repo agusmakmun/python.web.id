@@ -13,7 +13,8 @@ from apps.blog.views.page import (
 from apps.blog.views.post import (
     PostListView, PostListTaggedView,
     PostListAuthorView, PostListAuthorPrivateView,
-    PostDetailView, PostCreateView, PostUpdateView
+    PostDetailView, PostCreateView, PostUpdateView,
+    PostDeleteJSONView
 )
 from apps.blog.views.tag import (
     TagListView, TagJSONSearchView,
@@ -47,6 +48,7 @@ urlpatterns = [
 
     path('posts/create/', PostCreateView.as_view(), name='post_create'),
     path('posts/update/<slug:slug>/', PostUpdateView.as_view(), name='post_update'),
+    path('posts/delete/json/', PostDeleteJSONView.as_view(), name='post_json_delete'),
 
     # tags
     path('tags/', TagListView.as_view(), name='tag_list'),

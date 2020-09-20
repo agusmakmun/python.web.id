@@ -1,19 +1,13 @@
+
+// come from `js/djangoblog.js`
+var showNotif = showNotif;
+
+
 // highlight pre
 $('.martor-preview pre').each(function(i, block){
   hljs.highlightBlock(block)
 });
 
-var showNotif = function(response, className, doReload) {
-  $.notify(response, {
-    globalPosition: 'top center',
-    className: className
-  });
-  if(doReload == true) {
-    setTimeout(function(){
-      location.reload();
-    }, 3000);
-  }
-}
 
 // vote up and vote down
 $(document).on('click', '.vote-up, .vote-down', function() {
