@@ -15,10 +15,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from updown.models import Vote
 
 from apps.blog.models.tag import Tag
-from apps.blog.models.addons import Visitor
 from apps.blog.models.post import (Post, Page)
-from apps.blog.forms.post import PostForm
+from apps.blog.models.addons import (Visitor, Favorite)
 from apps.blog.utils.visitor import (visitor_counter, get_popular_objects)
+from apps.blog.forms.post import PostForm
 from apps.accounts.models.user import User
 
 
@@ -35,11 +35,6 @@ class PostListView(ListView):
     def featured_posts(self):
         """ specific featured posts """
         return self.get_default_queryset().filter(is_featured=True)
-
-    @property
-    def extra_context(self):
-        """ additional `context_data` for `get_context_data` """
-        return None
 
     def get_queryset(self):
         queryset = self.get_default_queryset()
@@ -59,13 +54,23 @@ class PostListView(ListView):
             # this queryset below will return as list objects, e.g:
             # [<Post: NMD R1 Black and Blue Shoes>, <Post: Lorem ipsum>, ...]
             # so, the `total_posts` should not handled with `.count()` method.
-            queryset = get_popular_objects(queryset=queryset)
+            queryset = get_popular_objects(queryset=queryset, addon_model=Visitor)
+        elif self.sort == 'favorites':
+            # this queryset below will return as list objects, e.g:
+            # [<Post: NMD R1 Black and Blue Shoes>, <Post: Lorem ipsum>, ...]
+            # so, the `total_posts` should not handled with `.count()` method.
+            queryset = get_popular_objects(queryset=queryset, addon_model=Favorite)
         elif self.sort == 'votes':
             queryset = queryset.order_by('-rating_likes')
         elif self.sort == 'active':
             queryset = queryset.order_by('-updated_at')
 
         return queryset
+
+    @property
+    def extra_context(self):
+        """ additional `context_data` for `get_context_data` """
+        return None
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
@@ -99,6 +104,32 @@ class PostListAuthorView(PostListView):
     @property
     def extra_context(self):
         return dict(author=self.author)
+
+
+class PostListAuthorPrivateView(LoginRequiredMixin, PostListView):
+    template_name = 'apps/blog/post/list_private.html'
+
+    def get_default_queryset(self):
+        queryset = self.queryset.filter(author=self.request.user)
+        self.publish = self.request.GET.get('publish')
+        self.is_featured = self.request.GET.get('is_featured')
+
+        if self.publish == 'yes':
+            queryset = queryset.filter(publish=True)
+        elif self.publish == 'no':
+            queryset = queryset.filter(publish=False)
+
+        if self.is_featured == 'yes':
+            queryset = queryset.filter(is_featured=True)
+        elif self.is_featured == 'no':
+            queryset = queryset.filter(is_featured=False)
+
+        return queryset
+
+    @property
+    def extra_context(self):
+        return dict(publish=self.publish,
+                    is_featured=self.is_featured)
 
 
 class PostDetailView(DetailView):

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import operator
+
 from django.conf import settings
 from django.db.models import Count
 from django.contrib.contenttypes.models import ContentType
@@ -46,11 +48,12 @@ def visitor_counter(request, content_type, object_id):
     return dict(client_ip=client_ip, total_visitors=visitors.count())
 
 
-def get_popular_objects(queryset, year=None):
+def get_popular_objects(queryset, addon_model=Visitor, year=None):
     """
     function to get the popular queryset objects
     by counting the total visits.
     :param `queryset` is queryset objects, e.g: <QuerySet: ...>
+    :param `addon_model` is optional class addons model, e.g: Visitor, Favorite
     :param `year` is optional integer to filter by specific year (default:None)
     :return list objects of the popular queryset.
 
@@ -67,12 +70,19 @@ def get_popular_objects(queryset, year=None):
         queryset = queryset.filter(updated_at__year=year)
 
     object_ids = queryset.values_list('id', flat=True)
-    object_ids_top = Visitor.objects.published()\
-                                    .filter(content_type=content_type, object_id__in=object_ids)\
-                                    .annotate(total=Count('object_id'))\
-                                    .values_list('object_id', flat=True)\
-                                    .order_by('-total')
+    object_ids_top = addon_model.objects.published()\
+                                        .filter(content_type=content_type, object_id__in=object_ids)\
+                                        .annotate(total=Count('object_id'))\
+                                        .values_list('object_id', flat=True)\
+                                        .order_by('-total')
     object_ids_top = list(object_ids_top)
+
+    # method 1
+    # queryset_includes = list(queryset.filter(id__in=object_ids_top))
+    # queryset_includes.sort(key=lambda i: object_ids_top.index(i.id))
+
+    # method 2
     queryset_includes = list(queryset.filter(id__in=object_ids_top))
-    queryset = sorted(queryset_includes, key=lambda i: object_ids_top.index(i.id))
-    return queryset
+    queryset = sorted(queryset_includes, key=lambda i: object_ids_top.index(i.pk))
+
+    return queryset_includes

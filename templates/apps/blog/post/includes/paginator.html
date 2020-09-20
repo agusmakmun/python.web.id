@@ -59,7 +59,7 @@
     </div>
 
     <div class="col-md-6">
-      <form class="float-right" method="get" action="{% url 'apps.blog:post_list' %}">
+      <form class="float-right form-go-to-page" method="get" action="{% url 'apps.blog:post_list' %}">
         <div class="input-group input-group-sm">
           <input name="page" type="number" min="1" class="form-control" placeholder="{% trans 'Jump to page' %}" aria-describedby="addon-go" required>
           {% if query %}<input name="q" type="hidden" value="{{ query }}">{% endif %}
