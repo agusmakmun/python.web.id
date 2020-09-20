@@ -31,9 +31,10 @@ class Profile(models.Model):
     location = models.CharField(_('Location'), max_length=200, null=True, blank=True)
     about_me = models.TextField(_('About Me'), null=True, blank=True)
     website = models.URLField(_('Website'), blank=True, null=True)
-    twitter = models.URLField(_('Twitter'), null=True, blank=True)
-    linkedin = models.URLField(_('Linkedin'), null=True, blank=True)
     github = models.URLField(_('Github'), null=True, blank=True)
+    linkedin = models.URLField(_('Linkedin'), null=True, blank=True)
+    instagram = models.URLField(_('Instagram'), null=True, blank=True)
+    twitter = models.URLField(_('Twitter'), null=True, blank=True)
     birth_date = models.DateField(_('Birth date'), null=True, blank=True)
 
     def get_user_posts(self):

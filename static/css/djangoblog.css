@@ -94,6 +94,15 @@ h1,h2,h3,h4,h5,h6 {
 .text-red {
   color: #ff0000;
 }
+.text-yellow {
+  color: #FBBD08;
+}
+.text-brown {
+  color: #A5673F;
+}
+.text-green {
+  color: #28a745;
+}
 
 /* Buttons */
 .bg-gradient-default {
@@ -181,7 +190,7 @@ h1,h2,h3,h4,h5,h6 {
 
 
 /* Ribbon */
-.ribbon-wrapper-green {
+.ribbon-wrapper-orange {
   width: 85px;
   height: 88px;
   overflow: hidden;
@@ -190,7 +199,7 @@ h1,h2,h3,h4,h5,h6 {
   right: -3px;
 }
 
-.ribbon-green {
+.ribbon-orange {
   font: bold 10px Sans-Serif;
   text-align: center;
   text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
@@ -215,7 +224,7 @@ h1,h2,h3,h4,h5,h6 {
   box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
 }
 
-.ribbon-green:before, .ribbon-green:after {
+.ribbon-orange:before, .ribbon-orange:after {
   content: "";
   border-top:   3px solid #6e8900;
   border-left:  3px solid transparent;
@@ -224,10 +233,10 @@ h1,h2,h3,h4,h5,h6 {
   bottom: -3px;
 }
 
-.ribbon-green:before {
+.ribbon-orange:before {
   left: 0;
 }
-.ribbon-green:after {
+.ribbon-orange:after {
   right: 0;
 }
 
@@ -240,12 +249,16 @@ h1,h2,h3,h4,h5,h6 {
 
 /* Nav Tabs */
 .nav-tabs-post-list.nav-tabs .nav-link:focus,
-.nav-tabs-post-list.nav-tabs .nav-link:hover {
+.nav-tabs-post-list.nav-tabs .nav-link:hover,
+.nav-tabs-profile.nav-tabs .nav-link:focus,
+.nav-tabs-profile.nav-tabs .nav-link:hover {
   border-color: transparent;
 }
 
 .nav-tabs-post-list.nav-tabs .nav-link.active:focus,
-.nav-tabs-post-list.nav-tabs .nav-link.active:hover {
+.nav-tabs-post-list.nav-tabs .nav-link.active:hover,
+.nav-tabs-profile.nav-tabs .nav-link.active:focus,
+.nav-tabs-profile.nav-tabs .nav-link.active:hover {
   border-color: #dee2e6 #dee2e6 #fff;
 }
 

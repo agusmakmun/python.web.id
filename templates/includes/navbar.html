@@ -118,7 +118,7 @@
             <div class="dropdown-menu dropdown-menu-right text-sm" aria-labelledby="dropdown-signed-user">
               <div class="dropdown-item">{% trans "Signed in as" %} <b>{{ request.user }}</b></div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">{% trans "Your Profile" %}</a>
+              <a class="dropdown-item" href="{% url 'apps.accounts:profile_detail' username=request.user.username %}">{% trans "Your Profile" %}</a>
               <a class="dropdown-item" href="#">{% trans "Your Activity" %}</a>
               <a class="dropdown-item" href="#">{% trans "Your Posts" %}</a>
               <div class="dropdown-divider"></div>

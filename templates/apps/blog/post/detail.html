@@ -2,6 +2,11 @@
 {% load static i18n %}
 {% load martortags common_tags ads_tags %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'martor/css/martor.bootstrap.min.css' %}" />
+  <style>div.martor-preview {padding:0;background:transparent}</style>
+{% endblock %}
+
 {% block content %}
   <div class="container p-3">
     <h5 class="mt-2 mb-4">
@@ -24,8 +29,8 @@
 
         <div class="card p-3 mb-3 card-post-item">
           {% if post.is_featured %}
-            <div class="ribbon-wrapper-green">
-              <div class="ribbon-green">FEATURED</div>
+            <div class="ribbon-wrapper-orange">
+              <div class="ribbon-orange">FEATURED</div>
             </div>
           {% endif %}
 

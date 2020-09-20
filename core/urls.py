@@ -21,5 +21,6 @@ urlpatterns = [
     path('martor/', include('martor.urls')),
 
     path('accounts/', include('allauth.urls')),
+    path('', include('apps.accounts.urls')),
     path('', include('apps.blog.urls')),
 ]
