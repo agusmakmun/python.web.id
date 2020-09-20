@@ -33,10 +33,10 @@ class ProfileDetailView(DetailView):
     def author_posts(self):
         posts = self.default_queryset()
         self.filter = self.request.GET.get('filter', 'votes')
-        if self.filter == 'activity':
-            posts = posts.order_by('-modified')
+        if self.filter == 'updates':
+            posts = posts.order_by('-updated_at')
         elif self.filter == 'newest':
-            posts = posts.order_by('-created')
+            posts = posts.order_by('-created_at')
         else:
             posts = posts.order_by('-rating_likes')
         return posts
@@ -65,9 +65,9 @@ class ProfileDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
         context_data['posts'] = self.author_posts()[:self.widget_list_limit]
-        context_data['total_posts'] = context_data['posts'].count()
+        context_data['total_posts'] = self.author_posts().count()
         context_data['favorites'] = self.get_favorites()[:self.widget_list_limit]
-        context_data['total_favorites'] = context_data['favorites'].count()
+        context_data['total_favorites'] = self.get_favorites().count()
         context_data['tags_list'] = self.get_tags()[:10]
         context_data['total_tags'] = len(context_data['tags_list'])
         context_data['votes'] = self.get_votes()
@@ -80,7 +80,7 @@ class ProfileDetailView(DetailView):
 
 class ProfileDetailActivityView(ProfileDetailView):
     template_name = 'apps/accounts/user/profile_activity.html'
-    maximum_posts = 20
+    maximum_posts = 3
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)

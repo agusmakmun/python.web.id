@@ -119,8 +119,8 @@
               <div class="dropdown-item">{% trans "Signed in as" %} <b>{{ request.user }}</b></div>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'apps.accounts:profile_detail' username=request.user.username %}">{% trans "Your Profile" %}</a>
-              <a class="dropdown-item" href="#">{% trans "Your Activity" %}</a>
-              <a class="dropdown-item" href="#">{% trans "Your Posts" %}</a>
+              <a class="dropdown-item" href="{% url 'apps.accounts:profile_activity' username=request.user.username %}">{% trans "Your Activity" %}</a>
+              <a class="dropdown-item" href="{% url 'apps.blog:post_list_author' username=request.user.username %}">{% trans "Your Posts" %}</a>
               <div class="dropdown-divider"></div>
               {% if request.user.is_superuser %}
                 <a class="dropdown-item" href="#">{% trans "Dashboard" %}</a>

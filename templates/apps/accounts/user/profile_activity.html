@@ -8,7 +8,6 @@
   <div class="container p-3">
     {% include "apps/accounts/user/includes/nav_tabs.html" %}
 
-
     <ul class="nav nav-tabs mt-3 nav-tabs-profile" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" href="#tab-posts" data-toggle="tab" role="tab" aria-controls="tab-posts" aria-selected="true">
@@ -39,19 +38,46 @@
       {% endif %}
     </ul>
 
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="tab-posts" role="tabpanel" aria-labelledby="tab-posts">
-        <ul class="list-group list-group-flush">
+    <div class="tab-content" id="tabAjaxPosts">
+      <div class="tab-pane fade show active" id="tab-posts" role="tabpanel" aria-labelledby="tab-posts" style="border:1px solid #dee2e6;border-top:none">
+        <div class="nav justify-content-end bg-white main-post-filter-menu">
+          <li class="nav-item">
+            <a role="button" data-filter="votes" class="nav-link post-filter-menu disabled">{% trans "votes" %}</a>
+          </li>
+          <li class="nav-item">
+            <a role="button" data-filter="updates" class="nav-link post-filter-menu">{% trans "updates" %}</a>
+          </li>
+          <li class="nav-item">
+            <a role="button" data-filter="newest" class="nav-link post-filter-menu">{% trans "newest" %}</a>
+          </li>
+        </div>
+        <hr class="m-0" />
+        <ul class="list-group list-group-flush list-group-posts">
           {% for post in posts %}
             <li class="list-group-item">
               <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">
+                {% with post.rating.get_difference as total_ratings %}
+                  <span class="badge badge-light {% if total_ratings > 0 %}text-green{% endif %}">{{ total_ratings }}</span>
+                {% endwith %}
                 <span>{{ post }}</span>
                 <span class="float-right">{{ post.created_at }}</span>
               </a>
             </li>
+          {% empty %}
+            <li class="list-group-item">
+              <span>{% blocktrans with user=user %}{{ user }} dosen't have posts!{% endblocktrans %}</span>
+            </li>
           {% endfor %}
         </ul>
+        {% if total_posts > maximum_posts %}
+          <div class="p-3 pl-4 bg-white">
+            <a class="no-underline" href="{% url 'apps.blog:post_list_author' username=profile.user.username %}">
+              <span>{% trans "View more" %} &rarr;</span>
+            </a>
+          </div>
+        {% endif %}
       </div>
+
       <div class="tab-pane fade" id="tab-tags" role="tabpanel" aria-labelledby="tab-tags">
         <div class="row mt-3">
           {% for tag_data in tags_list %}
@@ -60,15 +86,29 @@
                  href="{% url 'apps.blog:post_list_tagged' name=tag_data.tag.name %}">
                 <span>{{ tag_data.tag }}</span>
                </a>
+               <span>x</span>
                <span class="badge badge-light">{{ tag_data.total }}</span>
             </div>
           {% endfor %}
         </div>
       </div>
+
       <div class="tab-pane fade" id="tab-votes" role="tabpanel" aria-labelledby="tags-votes">
-        <ul class="list-group list-group-flush">
+        <div class="nav justify-content-end bg-white main-vote-filter-menu">
+          <li class="nav-item">
+            <a role="button" data-filter="all" class="nav-link vote-filter-menu disabled">{% trans "all" %}</a>
+          </li>
+          <li class="nav-item">
+            <a role="button" data-filter="up" class="nav-link vote-filter-menu">{% trans "up" %}</a>
+          </li>
+          <li class="nav-item">
+            <a role="button" data-filter="down" class="nav-link vote-filter-menu">{% trans "down" %}</a>
+          </li>
+        </div>
+        <hr class="m-0" />
+        <ul class="list-group list-group-flush list-group-votes">
           {% for vote in votes %}
-            <li class="list-group-item">
+            <li class="list-group-item item-vote item-vote-{% if vote.score > 0 %}up{% else %}down{% endif %}">
               <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=vote.content_object.slug %}">
                 {% if vote.score > 0 %}
                   <span class="badge badge-success">{% trans "upvote" %}</span>
@@ -78,6 +118,10 @@
                 <span>{{ vote.content_object }}</span>
                 <span class="float-right">{{ vote.date_added }}</span>
               </a>
+            </li>
+          {% empty %}
+            <li class="list-group-item">
+              <span>{% blocktrans with user=user %}{{ user }} dosen't votes anything!{% endblocktrans %}</span>
             </li>
           {% endfor %}
         </ul>
@@ -100,4 +144,49 @@
     </div>
 
   </div>
+{% endblock %}
+
+
+{% block js %}
+  <script>
+    $('.post-filter-menu').click(function(){
+      var button = $(this);
+      $.ajax({
+        type: 'GET',
+        url: '?filter='+button.data('filter'),
+        success: function(reponse){
+          button.closest('.main-post-filter-menu').find('.post-filter-menu').removeClass('disabled');
+          button.addClass('disabled');
+          $('.list-group-posts').html(
+            $(reponse).find('.list-group-posts').children()
+          );
+        }
+      });
+    });
+
+    $('.vote-filter-menu').click(function(){
+      $(this).closest('.main-vote-filter-menu')
+             .find('.vote-filter-menu')
+             .removeClass('disabled');
+      $(this).addClass('disabled');
+
+      var target = $(this).data('filter');
+      if(target == 'all') {
+        $('.item-vote').show();
+      }else {
+        $('.item-vote').hide();
+        $('.item-vote-'+target).show();
+      }
+    });
+
+    {% if request.GET.tab == 'posts' %}
+      $('.nav-tabs-profile li a.nav-link[aria-controls="tab-posts"]').trigger('click');
+    {% elif request.GET.tab == 'tags' %}
+      $('.nav-tabs-profile li a.nav-link[aria-controls="tab-tags"]').trigger('click');
+    {% elif request.GET.tab == 'votes' %}
+      $('.nav-tabs-profile li a.nav-link[aria-controls="tab-votes"]').trigger('click');
+    {% elif request.GET.tab == 'favorites' %}
+      $('.nav-tabs-profile li a.nav-link[aria-controls="tab-favorites"]').trigger('click');
+    {% endif %}
+  </script>
 {% endblock %}
