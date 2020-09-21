@@ -15,6 +15,14 @@ from apps.blog.models.base import (TimeStampedModel, DefaultManager,
 from apps.blog.models.addons import (Visitor, Favorite)
 
 
+class PostManager(DefaultManager):
+
+    def published(self):
+        """ update publish manager for post """
+        queryset = super().published()
+        return queryset.filter(publish=True)
+
+
 class Post(TimeStampedModel, ContentTypeModel):
     id = models.BigAutoField(primary_key=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -29,7 +37,7 @@ class Post(TimeStampedModel, ContentTypeModel):
     publish = models.BooleanField(_('Publish'), default=True)
     rating = RatingField(can_change_vote=True)
 
-    objects = DefaultManager()
+    objects = PostManager()
 
     def __str__(self):
         return self.title

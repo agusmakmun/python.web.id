@@ -11,6 +11,14 @@ from apps.blog.models.base import (TimeStampedModel, DefaultManager)
 from apps.accounts.models.user import User
 
 
+class ProductManager(DefaultManager):
+
+    def published(self):
+        """ update publish manager for post """
+        queryset = super().published()
+        return queryset.filter(publish=True)
+
+
 class Product(TimeStampedModel):
     id = models.BigAutoField(primary_key=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -54,7 +62,7 @@ class Product(TimeStampedModel):
     download_url = models.URLField(_('Download URL'), null=True, blank=True)
     publish = models.BooleanField(_('Publish'), default=True)
 
-    objects = DefaultManager()
+    objects = ProductManager()
 
     def __str__(self):
         return self.title
