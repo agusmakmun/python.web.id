@@ -24,6 +24,10 @@
               </div>
             </div>
             <h4 class="card-title text-secondary">{{ profile }}</h4>
+            {% if profile.location %}
+              <small class="text-secondary">{{ profile.location }}</small>
+            {% endif %}
+
             <p class="card-text mb-3">{% if profile.about_me %}{{ profile.about_me }}{% else %}{% trans "No about me!" %}{% endif %}</p>
             <h6 class="card-subtitle text-secondary mb-2">{% trans "Social Accounts" %}</h6>
             <p class="card-text">
@@ -277,4 +281,24 @@
       </div>
     </div>
   </div>
+{% endblock %}
+
+
+{% block js %}
+  <script>
+    $('.post-filter-menu').click(function(){
+      var button = $(this);
+      $.ajax({
+        type: 'GET',
+        url: '?filter='+button.data('filter'),
+        success: function(reponse){
+          button.closest('.main-post-filter-menu').find('.post-filter-menu').removeClass('disabled');
+          button.addClass('disabled');
+          $('.list-group-posts').html(
+            $(reponse).find('.list-group-posts').children()
+          );
+        }
+      });
+    });
+  </script>
 {% endblock %}

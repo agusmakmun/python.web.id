@@ -11,10 +11,11 @@ from django.views.generic import (ListView, UpdateView, DetailView)
 
 from updown.models import Vote
 
-from apps.accounts.models.user import (User, Profile)
-from apps.blog.models.addons import Favorite
-from apps.blog.models.post import Post
 from apps.blog.models.tag import Tag
+from apps.blog.models.post import Post
+from apps.blog.models.addons import Favorite
+from apps.accounts.models.user import (User, Profile)
+from apps.accounts.forms.profile import ProfileForm
 
 
 class ProfileDetailView(DetailView):
@@ -86,3 +87,31 @@ class ProfileDetailActivityView(ProfileDetailView):
         context_data = super().get_context_data(*args, **kwargs)
         context_data['maximum_posts'] = self.maximum_posts
         return context_data
+
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    template_name = 'apps/accounts/user/profile_update.html'
+    context_object_name = 'profile'
+    form_class = ProfileForm
+    model = Profile
+
+    def get_success_url(self):
+        return reverse('apps.accounts:profile_update')
+
+    def get_object(self, queryset=None):
+        profile, tf = self.model.objects.get_or_create(user=self.request.user)
+        return profile
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.user = self.request.user
+        instance.save()
+        messages.success(self.request, _('Profile successfully updated!'))
+        return super().form_valid(form)
+
+    def get_initial(self):
+        initial = super().get_initial()
+        for field, _cls in self.form_class.base_fields.items():
+            value = getattr(self.get_object(), field)
+            initial.update({field: value})
+        return initial

@@ -249,6 +249,19 @@ h1,h2,h3,h4,h5,h6 {
   border-bottom: 1px solid #fff;
   box-shadow: 0 0 5px #b3b3b3;
 }
+.nav-profile-left {
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: rgba(0,0,0,.13);
+}
+.nav-profile-left a.nav-link {
+  margin: 0 -2px 0 0;
+}
+.nav-profile-left a.nav-link.disabled {
+  border-right-color: #333;
+  border-right-width: 2px;
+  border-right-style: solid;
+}
 
 /* Nav Tabs */
 .nav-tabs-post-list.nav-tabs .nav-link:focus,
