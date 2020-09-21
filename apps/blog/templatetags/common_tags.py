@@ -260,11 +260,13 @@ def in_list(value, list_comma, pattern=','):
     """
     :param `value` is string text, eg: "you"
     :param `list_comma` is string text, eg: "you,and,me"
+    :param `pattern` is split pattern in strin, e.g: ,
 
     {% if object.status|in_list:"pending,paid,bought" %}
       {# do_stuff #}
     {% endif %}
     """
+    list_comma = str(list_comma)
     return value in list_comma.split(pattern)
 
 

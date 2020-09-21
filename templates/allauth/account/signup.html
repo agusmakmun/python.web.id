@@ -7,7 +7,7 @@
   <form class="form-center" method="post" action="{% url 'account_signup' %}">{% csrf_token %}
     <div class="text-center mb-3">
       <a href="/">
-        <img class="mb-4" src="{% static 'images/large-logo-orange.png' %}" alt="" width="72" height="72">
+        <img class="mb-4" src="{% static 'images/large-logo-orange.png' %}" alt="python.web.id" width="72" height="72">
       </a>
       <h1 class="h6 mb-3 font-weight-bold">{% trans "Welcome to Python Learning!" %}</h1>
       <p>{% blocktrans %}You can use one of your existing third party accounts, <br>or fill out the form below to sign-up:{% endblocktrans %}</p>

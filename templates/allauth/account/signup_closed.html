@@ -1,11 +1,20 @@
 {% extends "allauth/account/base.html" %}
+{% load static i18n %}
 
-{% load i18n %}
-
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block title %}{% trans "Sign Up Closed" %} - {{ block.super }}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
+  <div class="form-center">
+    <div class="text-center mb-3">
+      <a href="/">
+        <img class="mb-4" src="{% static 'images/large-logo-orange.png' %}" alt="" width="72" height="72">
+      </a>
+      <h1 class="h6 mb-3 font-weight-bold">{% trans "Sign Up Closed" %}</h1>
+      <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
 
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+      <div class="mt-3 mb-3 text-muted text-center">
+        <p>&larr; {% blocktrans %}<a href="/">Go to homepage</a>{% endblocktrans %}</p>
+      </div>
+    </div>
+  </div>
 {% endblock %}

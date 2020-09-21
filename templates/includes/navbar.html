@@ -125,7 +125,7 @@
               {% if request.user.is_superuser %}
                 <a class="dropdown-item" href="#">{% trans "Dashboard" %}</a>
               {% endif %}
-              <a class="dropdown-item" href="#">{% trans "Settings" %}</a>
+              <a class="dropdown-item" href="{% url 'apps.accounts:profile_update' %}">{% trans "Settings" %}</a>
               <a class="dropdown-item" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
             </div>
           </li>
