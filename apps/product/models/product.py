@@ -52,6 +52,7 @@ class Product(TimeStampedModel):
                                               'e.g: ["https://google.com/image.png"]'))
     demo_url = models.URLField(_('Demo URL'), null=True, blank=True)
     download_url = models.URLField(_('Download URL'), null=True, blank=True)
+    publish = models.BooleanField(_('Publish'), default=True)
 
     objects = DefaultManager()
 
