@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
+{% load common_tags %}
 
 {% block title %}{% trans "Products" %} - {{ block.super }}{% endblock %}
 
@@ -10,40 +11,62 @@
       <div class="row">
         {% for product in products %}
           <div class="col-md-4 mb-5">
-            <div class="card text-center">
+            <div class="card text-center no-radius">
               {% if product.type == 'premium' %}
                 <div class="ribbon-wrapper-orange" style="z-index:100">
                   <div class="ribbon-orange">{{ product.get_type_display }}</div>
                 </div>
               {% endif %}
 
-              {% if product.list_image_urls|length > 0 %}
-                <div id="carouselImageProducts" class="carousel slide" data-ride="carousel" style="max-height:200px;overflow:hidden">
-                  <ol class="carousel-indicators">
-                    {% for image_url in product.list_image_urls %}
-                      <li data-target="#carouselImageProducts" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
-                    {% endfor %}
-                  </ol>
-                  <div class="carousel-inner">
-                    {% for image_url in product.list_image_urls %}
-                      <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <img src="{{ image_url }}" class="d-block w-100" alt="{{ product.title }}">
-                      </div>
-                    {% endfor %}
+              <div class="card-header border-bottom-0" style="background:#ffffff linear-gradient(180deg,#fbfbfb,#ffffff) repeat-x!important">
+                <h5 class="my-0 font-weight-normal">{{ product.title }}</h5>
+              </div>
+
+              {% if product.list_image_urls|length == 1 %}
+                <div class="product-image p-2" style="max-height:200px;overflow:hidden">
+                  <img src="{{ product.list_image_urls.0 }}" class="d-block w-100" alt="{{ product.title }}">
+                </div>
+              {% elif product.list_image_urls|length > 1 %}
+                <div class="product-image p-2">
+                  <div id="carouselImageProducts-{{ forloop.counter0 }} p-2" class="carousel slide" data-ride="carousel" style="max-height:200px;overflow:hidden">
+                    <ol class="carousel-indicators">
+                      {% for image_url in product.list_image_urls %}
+                        <li data-target="#carouselImageProducts-{{ forloop.counter0 }}" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                      {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                      {% for image_url in product.list_image_urls %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                          <img src="{{ image_url }}" class="d-block w-100" alt="{{ product.title }}">
+                        </div>
+                      {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselImageProducts-{{ forloop.counter0 }}" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">{% trans "Previous" %}</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselImageProducts-{{ forloop.counter0 }}" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">{% trans "Next" %}</span>
+                    </a>
                   </div>
-                  <a class="carousel-control-prev" href="#carouselImageProducts" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">{% trans "Previous" %}</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselImageProducts" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">{% trans "Next" %}</span>
-                  </a>
                 </div>
               {% endif %}
 
               <div class="card-body">
-                <h5 class="card-title">{{ product.title }}</h5>
+                <h4 class="card-title">
+                  {% if product.price > 0 %}
+                    {% if product.price_discount %}
+                      <span class="price text-normal" style="text-decoration:line-through;color:#8a8484">{{ product.currency_code_label|is_exist }}{{ product.price }}</span>
+                      <span class="price">{{ product.currency_code_label|is_exist }}{{ product.price_discount }}</span>
+                    {% else %}
+                      <span class="price">{{ product.currency_code_label|is_exist }}{{ product.price }}</span>
+                    {% endif %}
+                  {% else %}
+                    <span class="price">{% trans "Free" %}</span>
+                  {% endif %}
+                </h4>
+
                 <small class="text-muted">{{ product.created_at }}</small>
                 <p class="card-text">{{ product.description|striptags|truncatechars:"90" }}</p>
 
@@ -61,7 +84,7 @@
                   {# eof #}
 
                   {% if product.buy_url %}
-                    <a href="#" class="btn bg-gradient-primary text-normal">
+                    <a href="{{ product.buy_url }}" class="btn bg-gradient-primary text-normal" target="_blank">
                   {% else %}
                     <a class="btn bg-gradient-primary text-normal disabled">
                   {% endif %}
@@ -76,7 +99,7 @@
 
                 <div class="btn-demo mt-2">
                   {% if product.demo_url %}
-                    <a href="#" class="btn btn-block bg-gradient-default text-normal">
+                    <a href="{{ product.demo_url }}" class="btn btn-block bg-gradient-default text-normal" target="_blank">
                   {% else %}
                     <a class="btn btn-block bg-gradient-default text-normal disabled">
                   {% endif %}

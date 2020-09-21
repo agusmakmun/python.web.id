@@ -41,13 +41,15 @@ class Product(TimeStampedModel):
                             default=TypeOptions.premium)
 
     price = models.PositiveIntegerField(_('Price'), default=0)
+    price_discount = models.PositiveIntegerField(_('Price Discount'), null=True, blank=True,
+                                                 help_text=_('Fixed price after discount.'))
 
     class CurrencyOptions(models.TextChoices):
-        usd = 'usd', _('USD')
-        idr = 'idr', _('IDR')
-        sgd = 'sgd', _('SGD')
-        gbp = 'gbp', _('GBP')
-        eur = 'eur', _('EUR')
+        usd = 'usd', _('USD-$')
+        idr = 'idr', _('IDR-Rp')
+        sgd = 'sgd', _('SGD-S$')
+        gbp = 'gbp', _('GBP-£')
+        eur = 'eur', _('EUR-€')
 
     currency_code = models.CharField(_('Currency Code'), max_length=5,
                                      choices=CurrencyOptions.choices,
@@ -66,6 +68,16 @@ class Product(TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+    @property
+    def currency_code_label(self):
+        """ function to get the currency code icon, e.g: $, Rp, £ """
+        code = getattr(self.CurrencyOptions, self.currency_code)
+        print('code', code)
+        if code and hasattr(code, 'label'):
+            if code.label:
+                return code.label.split('-')[-1]
+        return
 
     @property
     def list_image_urls(self):
