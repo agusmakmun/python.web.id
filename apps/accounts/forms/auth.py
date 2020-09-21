@@ -91,7 +91,7 @@ class SignUpForm(SignupForm):
     email = forms.EmailField(label=_('Email'), required=True,
                              widget=forms.EmailInput(attrs={'placeholder': _('Email')}))
 
-    if settings.DEBUG:
+    if not settings.DEBUG:
         captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(
             attrs={
                 'data-theme': 'light',
@@ -148,7 +148,7 @@ class ResetPasswordForm(ResetPasswordForm):
         super().__init__(*args, **kwargs)
         self.request = kwargs.pop('request', None)
 
-    if settings.DEBUG:
+    if not settings.DEBUG:
         captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(
             attrs={
                 'data-theme': 'light',

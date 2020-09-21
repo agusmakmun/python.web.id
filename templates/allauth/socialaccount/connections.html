@@ -7,6 +7,10 @@
   <meta name="robots" content="NONE,NOARCHIVE" />
 {% endblock %}
 
+{% block css %}
+  <style>.form-check-input{margin-top:.2rem}</style>
+{% endblock %}
+
 {% block content %}
   <div class="container p-3">
     {% include "apps/accounts/user/includes/nav_tabs.html" %}
@@ -25,7 +29,12 @@
               </div>
             {% endif %}
 
-            <p>{% blocktrans %}You can sign in to your account using any of the following third party accounts:{% endblocktrans %}</p>
+            <div class="sidebar-bulletin m-0 mb-3 p-3">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+              </svg>
+              <span>{% blocktrans %}You can sign in to your account using any of the following third party accounts:{% endblocktrans %}</span>
+            </div>
 
             <form method="post" action="{% url 'socialaccount_connections' %}">
               {% csrf_token %}
@@ -44,16 +53,13 @@
                 {% endwith %}
               {% endfor %}
 
-              <div class="form-group row">
-                <label class="col-sm-3"></label>
-                <div class="col-sm-9">
-                  <button class="btn btn-sm bg-gradient-danger" type="submit">
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
-                    </svg>
-                    <span>{% trans 'Remove' %}</span>
-                  </button>
-                </div>
+              <div class="form-group mt-4">
+                <button class="btn btn-sm bg-gradient-danger" type="submit">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                  </svg>
+                  <span>{% trans 'Remove' %}</span>
+                </button>
               </div>
             </form>
           </div>
