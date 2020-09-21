@@ -1,0 +1,1559 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-21 17:26+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/accounts/apps.py:10
+msgid "App Auth User"
+msgstr ""
+
+#: apps/accounts/forms/auth.py:40
+msgid "User is not registered!"
+msgstr ""
+
+#: apps/accounts/forms/auth.py:81
+msgid "Username with white space forbidden to use!"
+msgstr ""
+
+#: apps/accounts/forms/auth.py:82
+msgid "This username forbidden to use!"
+msgstr ""
+
+#: apps/accounts/forms/auth.py:83
+msgid "E-mail already exist, please use another email!"
+msgstr ""
+
+#: apps/accounts/forms/auth.py:84 apps/accounts/forms/auth.py:169
+msgid "The two password didn't match."
+msgstr ""
+
+#: apps/accounts/forms/auth.py:91 apps/accounts/forms/auth.py:92
+#: templates/allauth/account/email.html:84
+#: templates/allauth/account/email.html:87
+#: templates/allauth/account/password_reset.html:31
+#: templates/allauth/account/signup.html:59
+#: templates/allauth/socialaccount/signup.html:29
+msgid "E-mail"
+msgstr ""
+
+#: apps/accounts/forms/auth.py:170
+msgid "Password with space forbidden to use."
+msgstr ""
+
+#: apps/accounts/forms/profile.py:16
+msgid "Steve Jobs"
+msgstr ""
+
+#: apps/accounts/forms/profile.py:17
+msgid "City, Country"
+msgstr ""
+
+#: apps/accounts/forms/profile.py:19
+msgid "Tell us about you ..."
+msgstr ""
+
+#: apps/accounts/models/user.py:30
+msgid "Display name"
+msgstr ""
+
+#: apps/accounts/models/user.py:31
+msgid "Location"
+msgstr ""
+
+#: apps/accounts/models/user.py:32
+msgid "Birth date"
+msgstr ""
+
+#: apps/accounts/models/user.py:33
+msgid "About Me"
+msgstr ""
+
+#: apps/accounts/models/user.py:34
+msgid "Website"
+msgstr ""
+
+#: apps/accounts/models/user.py:35 templates/allauth/account/login.html:30
+#: templates/allauth/account/signup.html:29
+msgid "Github"
+msgstr ""
+
+#: apps/accounts/models/user.py:36
+msgid "Linkedin"
+msgstr ""
+
+#: apps/accounts/models/user.py:37
+msgid "Instagram"
+msgstr ""
+
+#: apps/accounts/models/user.py:38
+msgid "Twitter"
+msgstr ""
+
+#: apps/accounts/models/user.py:64
+#: templates/apps/accounts/user/includes/nav_left.html:10
+#: templates/apps/accounts/user/includes/nav_tabs.html:9
+#: templates/apps/accounts/user/profile.html:5
+#: templates/apps/accounts/user/profile_activity.html:5
+#: templates/apps/accounts/user/profile_update.html:5
+msgid "Profile"
+msgstr ""
+
+#: apps/accounts/models/user.py:65
+msgid "Profiles"
+msgstr ""
+
+#: apps/accounts/views/profile.py:109
+msgid "Profile successfully updated!"
+msgstr ""
+
+#: apps/blog/admins/admin.py:14 apps/blog/admins/admin.py:15
+msgid "Django Blog"
+msgstr ""
+
+#: apps/blog/apps.py:10
+msgid "App Blog"
+msgstr ""
+
+#: apps/blog/forms/tag.py:16
+#, python-format
+msgid "%(tag)s already exist!"
+msgstr ""
+
+#: apps/blog/models/addons.py:15
+msgid "Headers"
+msgstr ""
+
+#: apps/blog/models/addons.py:16
+msgid "IP Address"
+msgstr ""
+
+#: apps/blog/models/addons.py:25
+#, python-format
+msgid "%(ip_address)s visited to %(content_object)s"
+msgstr ""
+
+#: apps/blog/models/addons.py:30
+msgid "Visitor"
+msgstr ""
+
+#: apps/blog/models/addons.py:31
+msgid "Visitors"
+msgstr ""
+
+#: apps/blog/models/addons.py:49
+#, python-format
+msgid "%(title)s marked as favorite by %(user)s"
+msgstr ""
+
+#: apps/blog/models/addons.py:52
+msgid "Favorite"
+msgstr ""
+
+#: apps/blog/models/addons.py:53 templates/apps/blog/post/list_private.html:80
+msgid "Favorites"
+msgstr ""
+
+#: apps/blog/models/addons.py:61 apps/blog/models/post.py:21
+#: apps/blog/models/post.py:90 apps/product/models/product.py:17
+#: templates/apps/blog/post/list_private.html:39
+msgid "Title"
+msgstr ""
+
+#: apps/blog/models/addons.py:62
+msgid "Attachment"
+msgstr ""
+
+#: apps/blog/models/addons.py:68
+msgid "Gallery"
+msgstr ""
+
+#: apps/blog/models/addons.py:69
+msgid "Galleries"
+msgstr ""
+
+#: apps/blog/models/post.py:22 apps/blog/models/post.py:91
+msgid "Slug"
+msgstr ""
+
+#: apps/blog/models/post.py:23 apps/blog/models/post.py:92
+#: apps/blog/models/tag.py:14 apps/product/models/product.py:18
+#: templates/apps/blog/tag/includes/modal_create.html:22
+msgid "Description"
+msgstr ""
+
+#: apps/blog/models/post.py:25
+msgid "Keywords"
+msgstr ""
+
+#: apps/blog/models/post.py:26
+msgid "Separate by comma (,)"
+msgstr ""
+
+#: apps/blog/models/post.py:27
+msgid "Meta Description"
+msgstr ""
+
+#: apps/blog/models/post.py:28
+msgid "Is Featured?"
+msgstr ""
+
+#: apps/blog/models/post.py:29 apps/blog/models/post.py:100
+#: templates/apps/blog/post/list_private.html:84
+msgid "Publish"
+msgstr ""
+
+#: apps/blog/models/post.py:82
+msgid "Post"
+msgstr ""
+
+#: apps/blog/models/post.py:83 templates/apps/accounts/user/profile.html:216
+#: templates/includes/navbar.html:17 templates/includes/navbar.html:28
+msgid "Posts"
+msgstr ""
+
+#: apps/blog/models/post.py:94
+msgid "Site"
+msgstr ""
+
+#: apps/blog/models/post.py:95
+msgid "Private"
+msgstr ""
+
+#: apps/blog/models/post.py:96
+msgid "Documentation"
+msgstr ""
+
+#: apps/blog/models/post.py:98
+msgid "Status"
+msgstr ""
+
+#: apps/blog/models/post.py:107
+msgid "Page"
+msgstr ""
+
+#: apps/blog/models/post.py:108
+msgid "Pages"
+msgstr ""
+
+#: apps/blog/models/tag.py:13
+#: templates/apps/blog/tag/includes/modal_create.html:17
+#: templates/apps/blog/tag/list.html:26
+msgid "Name"
+msgstr ""
+
+#: apps/blog/models/tag.py:32
+msgid "Tag"
+msgstr ""
+
+#: apps/blog/models/tag.py:33 templates/apps/accounts/user/profile.html:261
+#: templates/apps/blog/tag/list.html:4 templates/apps/blog/tag/list.html:8
+#: templates/includes/navbar.html:31
+msgid "Tags"
+msgstr ""
+
+#: apps/blog/views/addons.py:30
+msgid "`object_id` and `content_type` must filled!"
+msgstr ""
+
+#: apps/blog/views/addons.py:34
+msgid "`object_id` should be integer!"
+msgstr ""
+
+#: apps/blog/views/addons.py:38
+msgid "You must login to mark as favorite!"
+msgstr ""
+
+#: apps/blog/views/addons.py:44
+msgid "This `content_type` doesn't exist!"
+msgstr ""
+
+#: apps/blog/views/addons.py:53
+msgid "The post marked as favorite!"
+msgstr ""
+
+#: apps/blog/views/addons.py:56
+msgid "The post removed from favorite!"
+msgstr ""
+
+#: apps/blog/views/page.py:43 templates/includes/footer.html:36
+#: templates/includes/navbar.html:44
+msgid "About"
+msgstr ""
+
+#: apps/blog/views/page.py:48 templates/includes/footer.html:54
+msgid "Disclaimer"
+msgstr ""
+
+#: apps/blog/views/page.py:53
+msgid "Privacy Policy"
+msgstr ""
+
+#: apps/blog/views/page.py:58 templates/includes/footer.html:16
+#: templates/includes/navbar.html:41
+msgid "Services"
+msgstr ""
+
+#: apps/blog/views/page.py:63 templates/includes/footer.html:19
+#: templates/includes/navbar.html:42
+msgid "Sponsor"
+msgstr ""
+
+#: apps/blog/views/page.py:68
+msgid "Terms of Service"
+msgstr ""
+
+#: apps/blog/views/post.py:195
+msgid "Post successfully created!"
+msgstr ""
+
+#: apps/blog/views/post.py:217
+#, python-format
+msgid "\"%(post)s\" successfully updated!"
+msgstr ""
+
+#: apps/blog/views/post.py:262
+msgid "You must login to delete this post!"
+msgstr ""
+
+#: apps/blog/views/post.py:266 apps/blog/views/post.py:272
+msgid "The successfully post deleted!"
+msgstr ""
+
+#: apps/blog/views/post.py:268
+msgid "You are not allowed to access this feature!"
+msgstr ""
+
+#: apps/blog/views/post.py:274
+msgid "Param `id` should be integer!"
+msgstr ""
+
+#: apps/blog/views/tag.py:70
+msgid "You must login to create a tag!"
+msgstr ""
+
+#: apps/blog/views/tag.py:72
+msgid "Tag should not empty!"
+msgstr ""
+
+#: apps/blog/views/tag.py:74
+msgid "Tag already exist!"
+msgstr ""
+
+#: apps/blog/views/tag.py:78
+#, python-format
+msgid "Tag \"%(tag)s\" successfuly created!"
+msgstr ""
+
+#: apps/product/apps.py:10
+msgid "App Product"
+msgstr ""
+
+#: apps/product/models/ads.py:14
+msgid "Navbar (Top)"
+msgstr ""
+
+#: apps/product/models/ads.py:16
+msgid "Post List (Top)"
+msgstr ""
+
+#: apps/product/models/ads.py:17
+msgid "Post List (Middle)"
+msgstr ""
+
+#: apps/product/models/ads.py:18
+msgid "Post List (Bottom)"
+msgstr ""
+
+#: apps/product/models/ads.py:20
+msgid "Post Detail (Top)"
+msgstr ""
+
+#: apps/product/models/ads.py:21
+msgid "Post Detail (Middle)"
+msgstr ""
+
+#: apps/product/models/ads.py:22
+msgid "Post Detail (Bottom)"
+msgstr ""
+
+#: apps/product/models/ads.py:24
+msgid "Sidebar (Top)"
+msgstr ""
+
+#: apps/product/models/ads.py:25
+msgid "Sidebar (Middle)"
+msgstr ""
+
+#: apps/product/models/ads.py:26
+msgid "Sidebar (Bottom)"
+msgstr ""
+
+#: apps/product/models/ads.py:28
+msgid "Footer"
+msgstr ""
+
+#: apps/product/models/ads.py:30
+msgid "Place"
+msgstr ""
+
+#: apps/product/models/ads.py:34
+msgid "Raw HTML"
+msgstr ""
+
+#: apps/product/models/ads.py:35
+msgid "Please do not use javascript syntax."
+msgstr ""
+
+#: apps/product/models/ads.py:43
+msgid "Advertisement"
+msgstr ""
+
+#: apps/product/models/ads.py:44
+msgid "Advertisements"
+msgstr ""
+
+#: apps/product/models/product.py:19
+msgid "Image URL's"
+msgstr ""
+
+#: apps/product/models/product.py:20
+msgid "Demo URL"
+msgstr ""
+
+#: apps/product/models/product.py:21
+msgid "Download URL"
+msgstr ""
+
+#: apps/product/models/product.py:37
+msgid "Product"
+msgstr ""
+
+#: apps/product/models/product.py:38 templates/includes/footer.html:13
+#: templates/includes/navbar.html:34
+msgid "Products"
+msgstr ""
+
+#: templates/allauth/account/account_inactive.html:4
+#: templates/allauth/account/account_inactive.html:12
+msgid "Account Inactive"
+msgstr ""
+
+#: templates/allauth/account/account_inactive.html:13
+msgid "This account is inactive."
+msgstr ""
+
+#: templates/allauth/account/account_inactive.html:16
+#: templates/allauth/account/email_confirm.html:36
+#: templates/allauth/account/logout.html:25
+#: templates/allauth/account/password_reset.html:59
+#: templates/allauth/account/password_reset_done.html:21
+#: templates/allauth/account/password_reset_from_key.html:20
+#: templates/allauth/account/password_reset_from_key.html:51
+#: templates/allauth/account/password_reset_from_key_done.html:16
+#: templates/allauth/account/signup_closed.html:16
+#: templates/allauth/account/verification_sent.html:16
+#: templates/allauth/account/verified_email_required.html:21
+#: templates/allauth/socialaccount/authentication_error.html:16
+#: templates/allauth/socialaccount/login_cancelled.html:18
+msgid "<a href=\"/\">Go to homepage</a>"
+msgstr ""
+
+#: templates/allauth/account/email.html:4
+msgid "E-mail Addresses"
+msgstr ""
+
+#: templates/allauth/account/email.html:24
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: templates/allauth/account/email.html:37
+msgid "Verified"
+msgstr ""
+
+#: templates/allauth/account/email.html:39
+msgid "Unverified"
+msgstr ""
+
+#: templates/allauth/account/email.html:43
+msgid "Primary"
+msgstr ""
+
+#: templates/allauth/account/email.html:55
+msgid "Make Primary"
+msgstr ""
+
+#: templates/allauth/account/email.html:61
+msgid "Re-send Verification"
+msgstr ""
+
+#: templates/allauth/account/email.html:67
+#: templates/allauth/socialaccount/connections.html:61
+msgid "Remove"
+msgstr ""
+
+#: templates/allauth/account/email.html:77
+msgid "Warning:"
+msgstr ""
+
+#: templates/allauth/account/email.html:77
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: templates/allauth/account/email.html:88
+msgid "E-mail address"
+msgstr ""
+
+#: templates/allauth/account/email.html:94
+msgid "Add E-mail"
+msgstr ""
+
+#: templates/allauth/account/email.html:107
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: templates/allauth/account/email/email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because user %(user_display)s has given yours "
+"as an e-mail address to connect their account.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+
+#: templates/allauth/account/email/email_confirmation_message.txt:7
+#, python-format
+msgid ""
+"Thank you from %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: templates/allauth/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: templates/allauth/account/email/password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: templates/allauth/account/email/password_reset_key_message.txt:8
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: templates/allauth/account/email/password_reset_key_message.txt:10
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: templates/allauth/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: templates/allauth/account/email_confirm.html:5
+#: templates/allauth/account/email_confirm.html:15
+#: templates/allauth/account/email_confirm.html:30
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: templates/allauth/account/email_confirm.html:18
+#: templates/allauth/account/password_reset_from_key.html:35
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: templates/allauth/account/email_confirm.html:21
+#: templates/allauth/account/password_reset_from_key.html:38
+msgid "Confirm"
+msgstr ""
+
+#: templates/allauth/account/email_confirm.html:33
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: templates/allauth/account/login.html:5 templates/includes/navbar.html:139
+msgid "Sign In"
+msgstr ""
+
+#: templates/allauth/account/login.html:13
+#: templates/allauth/account/signup.html:12
+#: templates/allauth/socialaccount/signup.html:12
+msgid "Welcome to Python Learning!"
+msgstr ""
+
+#: templates/allauth/account/login.html:14
+msgid ""
+"Please sign in with one of your existing third party accounts, <br>or use "
+"login form below:"
+msgstr ""
+
+#: templates/allauth/account/login.html:32
+#: templates/allauth/account/signup.html:31
+msgid "OR"
+msgstr ""
+
+#: templates/allauth/account/login.html:34
+#: templates/allauth/account/signup.html:33
+msgid "LinkedIn"
+msgstr ""
+
+#: templates/allauth/account/login.html:47
+#: templates/allauth/account/signup.html:46
+#: templates/apps/accounts/user/profile_update.html:39
+msgid "Username"
+msgstr ""
+
+#: templates/allauth/account/login.html:60
+#: templates/allauth/account/password_set.html:22
+#: templates/allauth/account/password_set.html:24
+#: templates/allauth/account/signup.html:75
+#: templates/allauth/socialaccount/signup.html:42
+#: templates/apps/accounts/user/includes/nav_left.html:23
+msgid "Password"
+msgstr ""
+
+#: templates/allauth/account/login.html:90
+msgid "Sign in"
+msgstr ""
+
+#: templates/allauth/account/login.html:94
+#, python-format
+msgid ""
+"If you have not created an account yet, <br>then please <a href="
+"\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: templates/allauth/account/login.html:95
+#: templates/allauth/account/signup.html:119
+msgid "Forgot Password?"
+msgstr ""
+
+#: templates/allauth/account/logout.html:4
+#: templates/allauth/account/logout.html:13
+#: templates/allauth/account/logout.html:21 templates/includes/navbar.html:129
+msgid "Sign Out"
+msgstr ""
+
+#: templates/allauth/account/logout.html:14
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: templates/allauth/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: templates/allauth/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: templates/allauth/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: templates/allauth/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: templates/allauth/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: templates/allauth/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: templates/allauth/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr ""
+
+#: templates/allauth/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr ""
+
+#: templates/allauth/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: templates/allauth/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: templates/allauth/account/password_change.html:4
+#: templates/allauth/account/password_change.html:46
+#: templates/allauth/account/password_reset_from_key.html:5
+#: templates/allauth/account/password_reset_from_key.html:32
+#: templates/allauth/account/password_reset_from_key.html:47
+#: templates/allauth/account/password_reset_from_key_done.html:4
+#: templates/allauth/account/password_reset_from_key_done.html:12
+msgid "Change Password"
+msgstr ""
+
+#: templates/allauth/account/password_change.html:22
+#: templates/allauth/account/password_change.html:24
+msgid "Current Password"
+msgstr ""
+
+#: templates/allauth/account/password_change.html:28
+#: templates/allauth/account/password_change.html:30
+msgid "New Password"
+msgstr ""
+
+#: templates/allauth/account/password_change.html:34
+#: templates/allauth/account/password_change.html:36
+#: templates/allauth/account/password_set.html:28
+#: templates/allauth/account/password_set.html:30
+msgid "New Password (again)"
+msgstr ""
+
+#: templates/allauth/account/password_change.html:50
+#, python-format
+msgid "or need to <a href=\"%(reset_url)s\">reset</a> the password?"
+msgstr ""
+
+#: templates/allauth/account/password_reset.html:5
+#: templates/allauth/account/password_reset.html:13
+#: templates/allauth/account/password_reset_done.html:5
+#: templates/allauth/account/password_reset_done.html:13
+msgid "Password Reset"
+msgstr ""
+
+#: templates/allauth/account/password_reset.html:14
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: templates/allauth/account/password_reset.html:55
+msgid "Reset My Password"
+msgstr ""
+
+#: templates/allauth/account/password_reset_done.html:14
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/allauth/account/password_reset_from_key.html:14
+msgid "Bad Token"
+msgstr ""
+
+#: templates/allauth/account/password_reset_from_key.html:17
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: templates/allauth/account/password_reset_from_key.html:48
+#: templates/allauth/account/password_reset_from_key_done.html:13
+msgid "Your password is now changed."
+msgstr ""
+
+#: templates/allauth/account/password_set.html:4
+#: templates/allauth/account/password_set.html:40
+msgid "Set Password"
+msgstr ""
+
+#: templates/allauth/account/signup.html:4
+msgid "Signup"
+msgstr ""
+
+#: templates/allauth/account/signup.html:13
+msgid ""
+"You can use one of your existing third party accounts, <br>or fill out the "
+"form below to sign-up:"
+msgstr ""
+
+#: templates/allauth/account/signup.html:88
+msgid "Password (again)"
+msgstr ""
+
+#: templates/allauth/account/signup.html:114
+msgid "Sign up"
+msgstr ""
+
+#: templates/allauth/account/signup.html:118
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">sign in</a>"
+msgstr ""
+
+#: templates/allauth/account/signup_closed.html:4
+#: templates/allauth/account/signup_closed.html:12
+msgid "Sign Up Closed"
+msgstr ""
+
+#: templates/allauth/account/signup_closed.html:13
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: templates/allauth/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr ""
+
+#: templates/allauth/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: templates/allauth/account/verification_sent.html:4
+#: templates/allauth/account/verification_sent.html:12
+#: templates/allauth/account/verified_email_required.html:4
+#: templates/allauth/account/verified_email_required.html:12
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: templates/allauth/account/verification_sent.html:13
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/allauth/account/verified_email_required.html:16
+msgid ""
+"This part of the site requires us to verify that you are who you claim to "
+"be. For this purpose, we require that you verify ownership of your e-mail "
+"address. "
+msgstr ""
+
+#: templates/allauth/account/verified_email_required.html:17
+msgid ""
+"We have sent an e-mail to you for verification. Please click on the link "
+"inside this e-mail. Please contact us if you do not receive it within a few "
+"minutes."
+msgstr ""
+
+#: templates/allauth/account/verified_email_required.html:18
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: templates/allauth/openid/login.html:9
+msgid "OpenID Sign In"
+msgstr ""
+
+#: templates/allauth/socialaccount/authentication_error.html:4
+#: templates/allauth/socialaccount/authentication_error.html:12
+msgid "Social Network Login Failure"
+msgstr ""
+
+#: templates/allauth/socialaccount/authentication_error.html:13
+msgid ""
+"An error occurred while attempting to login via your social network account."
+msgstr ""
+
+#: templates/allauth/socialaccount/connections.html:4
+msgid "Account Connections"
+msgstr ""
+
+#: templates/allauth/socialaccount/connections.html:36
+msgid ""
+"You can sign in to your account using any of the following third party "
+"accounts:"
+msgstr ""
+
+#: templates/allauth/socialaccount/connections.html:71
+msgid ""
+"You currently have no social network accounts connected to this account."
+msgstr ""
+
+#: templates/allauth/socialaccount/connections.html:76
+msgid "Add a 3rd Party Account"
+msgstr ""
+
+#: templates/allauth/socialaccount/login_cancelled.html:4
+#: templates/allauth/socialaccount/login_cancelled.html:12
+msgid "Login Cancelled"
+msgstr ""
+
+#: templates/allauth/socialaccount/login_cancelled.html:15
+#, python-format
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+
+#: templates/allauth/socialaccount/messages/account_connected.txt:2
+msgid "The social account has been connected."
+msgstr ""
+
+#: templates/allauth/socialaccount/messages/account_connected_other.txt:2
+msgid "The social account is already connected to a different account."
+msgstr ""
+
+#: templates/allauth/socialaccount/messages/account_disconnected.txt:2
+msgid "The social account has been disconnected."
+msgstr ""
+
+#: templates/allauth/socialaccount/signup.html:4
+#: templates/allauth/socialaccount/signup.html:59
+msgid "Sign Up"
+msgstr ""
+
+#: templates/allauth/socialaccount/signup.html:13
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to\n"
+"      %(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: templates/apps/accounts/admin/login.html:24
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/apps/accounts/admin/login.html:24
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/apps/accounts/admin/login.html:40
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/apps/accounts/admin/login.html:64
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/apps/accounts/admin/login.html:68
+msgid "Log in"
+msgstr ""
+
+#: templates/apps/accounts/user/includes/nav_left.html:16
+msgid "E-mails"
+msgstr ""
+
+#: templates/apps/accounts/user/includes/nav_left.html:29
+msgid "Connections"
+msgstr ""
+
+#: templates/apps/accounts/user/includes/nav_tabs.html:18
+msgid "Activity"
+msgstr ""
+
+#: templates/apps/accounts/user/includes/nav_tabs.html:30
+#: templates/apps/blog/post/list_private.html:5
+msgid "My Posts"
+msgstr ""
+
+#: templates/apps/accounts/user/includes/nav_tabs.html:38
+msgid "Edit Profile & Settings"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:18
+msgid "Marshal"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:20
+msgid "Captain"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:22
+msgid "Soldier"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:31
+msgid "No about me!"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:32
+msgid "Social Accounts"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:36
+msgid "No social accounts!"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:96
+msgid "BADGES"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:99
+msgid "Reputation score"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:108
+#: templates/includes/navbar.html:55
+msgid "Total posts"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:119
+msgid "Total featured posts"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:129
+#: templates/apps/blog/post/includes/nav_tabs.html:39
+#: templates/apps/blog/post/list_private.html:52
+msgid "Votes"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:132
+#: templates/includes/navbar.html:75
+msgid "Total votes up"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:141
+#: templates/includes/navbar.html:85
+msgid "Total votes down"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:158
+msgid "IMPACT"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:161
+msgid "posts created"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:173
+msgid "votes cast"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:185
+#: templates/apps/accounts/user/profile_activity.html:34
+msgid "favorites"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:198
+#: templates/apps/accounts/user/profile_activity.html:20
+msgid "tags"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:219
+#: templates/apps/accounts/user/profile_activity.html:26
+#: templates/apps/accounts/user/profile_activity.html:45
+#: templates/apps/blog/post/list.html:46
+msgid "votes"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:222
+#: templates/apps/accounts/user/profile_activity.html:48
+msgid "updates"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:225
+#: templates/apps/accounts/user/profile_activity.html:51
+msgid "newest"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:241
+#: templates/apps/accounts/user/profile_activity.html:68
+#, python-format
+msgid "%(user)s dosen't have posts!"
+msgstr ""
+
+#: templates/apps/accounts/user/profile.html:248
+#: templates/apps/accounts/user/profile_activity.html:75
+msgid "View more"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:14
+#: templates/apps/blog/post/includes/sidebar_list.html:12
+#: templates/apps/blog/tag/list.html:45
+msgid "posts"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:99
+msgid "all"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:102
+msgid "up"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:105
+msgid "down"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:114
+msgid "upvote"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:116
+msgid "downvote"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:124
+#, python-format
+msgid "%(user)s dosen't votes anything!"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_update.html:41
+msgid "Please contact admin to change."
+msgstr ""
+
+#: templates/apps/accounts/user/profile_update.html:151
+msgid "Update Profile"
+msgstr ""
+
+#: templates/apps/blog/post/author.html:5
+msgid "Posts by"
+msgstr ""
+
+#: templates/apps/blog/post/create.html:7
+#: templates/apps/blog/post/create.html:27
+#, python-format
+msgid "Edit Post \"%(title)s\""
+msgstr ""
+
+#: templates/apps/blog/post/create.html:9
+#: templates/apps/blog/post/create.html:27
+#: templates/apps/blog/post/create.html:142
+#: templates/apps/blog/post/detail.html:19
+#: templates/apps/blog/post/list.html:14 templates/apps/blog/post/list.html:123
+#: templates/apps/blog/post/list_private.html:30
+msgid "Create a Post"
+msgstr ""
+
+#: templates/apps/blog/post/create.html:33
+msgid "Go Back"
+msgstr ""
+
+#: templates/apps/blog/post/create.html:79
+msgid "Combine multiple words into single-words with hyphens."
+msgstr ""
+
+#: templates/apps/blog/post/create.html:80
+msgid ""
+"Click here to <a href=\"#\" data-toggle=\"modal\" data-target="
+"\"#modalCreateTag\">create new tag</a>"
+msgstr ""
+
+#: templates/apps/blog/post/create.html:129
+msgid "Cancel"
+msgstr ""
+
+#: templates/apps/blog/post/create.html:135
+msgid "Update Post"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:39
+msgid "vote up"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:47
+msgid "vote down"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:52
+msgid "Click to mark as favorite or undo"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:77
+msgid "share"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:83
+msgid "Copy Link"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:83
+msgid "Link successfully copied!"
+msgstr ""
+
+#: templates/apps/blog/post/includes/nav_tabs.html:11
+#: templates/apps/blog/tag/list.html:27
+msgid "Newest"
+msgstr ""
+
+#: templates/apps/blog/post/includes/nav_tabs.html:20
+#: templates/apps/blog/post/list_private.html:83
+msgid "Featured"
+msgstr ""
+
+#: templates/apps/blog/post/includes/nav_tabs.html:31
+#: templates/apps/blog/post/list_private.html:66
+msgid "Views"
+msgstr ""
+
+#: templates/apps/blog/post/includes/nav_tabs.html:48
+msgid "Active"
+msgstr ""
+
+#: templates/apps/blog/post/includes/paginator.html:8
+#: templates/apps/blog/tag/includes/paginator.html:8
+msgid "First"
+msgstr ""
+
+#: templates/apps/blog/post/includes/paginator.html:17
+#: templates/apps/blog/tag/includes/paginator.html:17
+msgid "Previous"
+msgstr ""
+
+#: templates/apps/blog/post/includes/paginator.html:38
+#: templates/apps/blog/tag/includes/paginator.html:38
+msgid "Next"
+msgstr ""
+
+#: templates/apps/blog/post/includes/paginator.html:47
+#: templates/apps/blog/tag/includes/paginator.html:47
+msgid "Last"
+msgstr ""
+
+#: templates/apps/blog/post/includes/paginator.html:57
+#: templates/apps/blog/tag/includes/paginator.html:57
+#, python-format
+msgid "Page %(current_page)s of %(total_pages)s"
+msgstr ""
+
+#: templates/apps/blog/post/includes/paginator.html:64
+#: templates/apps/blog/tag/includes/paginator.html:64
+msgid "Jump to page"
+msgstr ""
+
+#: templates/apps/blog/post/includes/paginator.html:68
+#: templates/apps/blog/tag/includes/paginator.html:68
+msgid "GO"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:5
+msgid "How to Post"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:13
+msgid "is your post about programming?"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:21
+msgid "provide more details"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:29
+#: templates/apps/blog/post/includes/sidebar_create.html:75
+msgid "add related resources or links"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:37
+msgid "we prefer posts that can be posted, not just dummy."
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:43
+msgid "How to Update"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:51
+msgid "fix grammatical or spelling errors"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:59
+msgid "clarify meaning without changing"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:67
+msgid "correct minor mistakes"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:81
+msgid "How to Format"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:89
+msgid "put returns between paragraphs"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:97
+msgid "for linebreak add 2 spaces at end"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:105
+msgid "or"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:113
+msgid "indent code by 4 spaces"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:121
+msgid "backtick escapes"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:129
+msgid "quote by placing > at start of line"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:137
+msgid "to make links"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:143
+msgid "How to Tag"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:145
+msgid ""
+"A tag is a keyword or label that categorizes your post with other, similar "
+"posts."
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:146
+msgid ""
+"Choose one or more (up to 5) tags that will help posters to find and "
+"interpret your post."
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:155
+msgid "complete the sentence: <i>my post is about...</i>"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:163
+msgid ""
+"use tags that describe things or concepts that are essential, not incidental "
+"to your post"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:171
+msgid "favor using existing popular tags"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:175
+msgid "If your post is primarily about a topic for which you can't find a tag:"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:185
+msgid "combine multiple words into single-words with hyphens"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_create.html:186
+msgid "up to a maximum of 35"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:9
+msgid "viewed"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:13
+msgid "your ip"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:17
+msgid "posted"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:18
+#: templates/apps/blog/post/includes/sidebar_detail.html:23
+msgid "ago"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:21
+msgid "active"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:37
+msgid "Related posts"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:47
+msgid "Empty!"
+msgstr ""
+
+#: templates/apps/blog/post/includes/sidebar_list.html:9
+msgid "posts tagged"
+msgstr ""
+
+#: templates/apps/blog/post/list.html:8
+msgid "All Posts"
+msgstr ""
+
+#: templates/apps/blog/post/list.html:52
+msgid "views"
+msgstr ""
+
+#: templates/apps/blog/post/list.html:63
+#, python-format
+msgid "Posted at %(since)s ago / <i>%(created_at)s</i>"
+msgstr ""
+
+#: templates/apps/blog/post/list.html:117
+msgid "No posts yet!"
+msgstr ""
+
+#: templates/apps/blog/post/list.html:118
+msgid "Upps, no posts yet! Be the first to contribute a new post."
+msgstr ""
+
+#: templates/apps/blog/post/list.html:126
+msgid "No posts!"
+msgstr ""
+
+#: templates/apps/blog/post/list.html:127
+msgid "The posts with current filter doesn't exist!"
+msgstr ""
+
+#: templates/apps/blog/post/list.html:129
+msgid "See other posts"
+msgstr ""
+
+#: templates/apps/blog/post/list_private.html:17
+#: templates/includes/navbar.html:20
+msgid "Search..."
+msgstr ""
+
+#: templates/apps/blog/post/list_private.html:40
+msgid "Created"
+msgstr ""
+
+#: templates/apps/blog/post/list_private.html:85
+msgid "Actions"
+msgstr ""
+
+#: templates/apps/blog/post/list_private.html:121
+msgid "Delete"
+msgstr ""
+
+#: templates/apps/blog/post/list_private.html:126
+msgid "Update"
+msgstr ""
+
+#: templates/apps/blog/post/list_private.html:155
+msgid "Are you sure to delete this post?"
+msgstr ""
+
+#: templates/apps/blog/post/tagged.html:4
+msgid "Posts tagged by"
+msgstr ""
+
+#: templates/apps/blog/tag/includes/modal_create.html:7
+#: templates/apps/blog/tag/includes/modal_create.html:38
+msgid "Create a Tag"
+msgstr ""
+
+#: templates/apps/blog/tag/includes/modal_create.html:19
+msgid "Example"
+msgstr ""
+
+#: templates/apps/blog/tag/includes/modal_create.html:32
+msgid "Close"
+msgstr ""
+
+#: templates/apps/blog/tag/list.html:10
+msgid "A tag is a keyword or label that categorizes the posts with other."
+msgstr ""
+
+#: templates/apps/blog/tag/list.html:11
+msgid "Using the right tags makes it easier for users to find the posts."
+msgstr ""
+
+#: templates/apps/blog/tag/list.html:20
+msgid "Search by tag name"
+msgstr ""
+
+#: templates/apps/blog/tag/list.html:25
+msgid "Popular"
+msgstr ""
+
+#: templates/apps/blog/tag/list.html:47
+msgid "post"
+msgstr ""
+
+#: templates/error_page.html:148
+#, python-format
+msgid "You have an error %(message)s."
+msgstr ""
+
+#: templates/error_page.html:149
+msgid "Please go back to <a href=\"/\">homepage</a>."
+msgstr ""
+
+#: templates/includes/footer.html:39 templates/includes/navbar.html:45
+msgid "Contact"
+msgstr ""
+
+#: templates/includes/footer.html:42 templates/includes/navbar.html:46
+msgid "Developers"
+msgstr ""
+
+#: templates/includes/footer.html:57
+msgid "Terms"
+msgstr ""
+
+#: templates/includes/footer.html:60
+msgid "Privacy"
+msgstr ""
+
+#: templates/includes/navbar.html:38
+msgid "More"
+msgstr ""
+
+#: templates/includes/navbar.html:66
+msgid "Reputation scores"
+msgstr ""
+
+#: templates/includes/navbar.html:104
+msgid "Add Post"
+msgstr ""
+
+#: templates/includes/navbar.html:108
+msgid "Add Product"
+msgstr ""
+
+#: templates/includes/navbar.html:109
+msgid "Add Page"
+msgstr ""
+
+#: templates/includes/navbar.html:110
+msgid "Add File"
+msgstr ""
+
+#: templates/includes/navbar.html:119
+msgid "Signed in as"
+msgstr ""
+
+#: templates/includes/navbar.html:121
+msgid "Your Profile"
+msgstr ""
+
+#: templates/includes/navbar.html:122
+msgid "Your Activity"
+msgstr ""
+
+#: templates/includes/navbar.html:123
+msgid "Your Posts"
+msgstr ""
+
+#: templates/includes/navbar.html:126
+msgid "Dashboard"
+msgstr ""
+
+#: templates/includes/navbar.html:128
+msgid "Settings"
+msgstr ""

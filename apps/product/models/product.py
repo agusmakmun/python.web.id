@@ -16,7 +16,7 @@ class Product(TimeStampedModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)
     description = models.TextField(_('Description'))
-    image_urls = models.TextField(_('Image URL\s'), blank=True)
+    image_urls = models.TextField(_("Image URL's"), blank=True)
     demo_url = models.URLField(_('Demo URL'), null=True, blank=True)
     download_url = models.URLField(_('Download URL'), null=True, blank=True)
 

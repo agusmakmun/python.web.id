@@ -80,7 +80,7 @@ class SignUpForm(SignupForm):
     error_message = {
         'username_misspace': _("Username with white space forbidden to use!"),
         'username_forbidden': _("This username forbidden to use!"),
-        'email_exist': _("Email already exist, please use another email!"),
+        'email_exist': _("E-mail already exist, please use another email!"),
         'password_mismatch': _("The two password didn't match."),
     }
 
@@ -88,8 +88,8 @@ class SignUpForm(SignupForm):
         super().__init__(*args, **kwargs)
         self.request = kwargs.pop('request', None)
 
-    email = forms.EmailField(label=_('Email'), required=True,
-                             widget=forms.EmailInput(attrs={'placeholder': _('Email')}))
+    email = forms.EmailField(label=_('E-mail'), required=True,
+                             widget=forms.EmailInput(attrs={'placeholder': _('E-mail')}))
 
     if not settings.DEBUG:
         captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(

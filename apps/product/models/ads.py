@@ -27,7 +27,7 @@ class Advertisement(TimeStampedModel):
 
         footer = 'footer', _('Footer')
 
-    place = models.CharField(_('Jenis'), max_length=20, unique=True,
+    place = models.CharField(_('Place'), max_length=20, unique=True,
                              choices=PlaceOptions.choices,
                              default=PlaceOptions.navbar_top)
 

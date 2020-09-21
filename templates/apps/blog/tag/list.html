@@ -24,7 +24,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <a href="?sort=popular" class="btn bg-gradient-default text-sm {% if sort == 'popular' %}disabled{% endif %}">{% trans "Popular" %}</a>
                 <a href="?sort=name" class="btn bg-gradient-default text-sm {% if sort == 'name' %}disabled{% endif %}">{% trans "Name" %}</a>
-                <a href="?sort=new" class="btn bg-gradient-default text-sm {% if sort == 'new' %}disabled{% endif %}">{% trans "New" %}</a>
+                <a href="?sort=new" class="btn bg-gradient-default text-sm {% if sort == 'new' %}disabled{% endif %}">{% trans "Newest" %}</a>
               </div>
             </div>
           </div>
@@ -42,9 +42,9 @@
               <span class="text-muted">
                 {% with tag.post_set.published.count as total %}
                   {% if total > 1 %}
-                    <span>{{ total }} {% trans "questions" %}</span>
+                    <span>{{ total }} {% trans "posts" %}</span>
                   {% else %}
-                    <span>{{ total }} {% trans "question" %}</span>
+                    <span>{{ total }} {% trans "post" %}</span>
                   {% endif %}
                 {% endwith %}
               </span>

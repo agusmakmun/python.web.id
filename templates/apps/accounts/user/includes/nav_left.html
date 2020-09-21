@@ -7,25 +7,25 @@
       <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
       <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
     </svg>
-    <span>&nbsp;{% trans "Edit Profile" %}</span>
+    <span>&nbsp;{% trans "Profile" %}</span>
   </a>
   <a class="nav-link {% if request.resolver_match.url_name == 'account_email' %}active{% endif %}" href="{% url 'account_email' %}">
     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
     </svg>
-    <span>&nbsp;{% trans "Edit E-mails" %}</span>
+    <span>&nbsp;{% trans "E-mails" %}</span>
   </a>
   <a class="nav-link {% if request.resolver_match.url_name == 'account_change_password' %}active{% endif %}" href="{% url 'account_change_password' %}">
     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
       <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
     </svg>
-    <span>&nbsp;{% trans "Edit Password" %}</span>
+    <span>&nbsp;{% trans "Password" %}</span>
   </a>
   <a class="nav-link {% if request.resolver_match.url_name == 'socialaccount_connections' %}active{% endif %}" href="{% url 'socialaccount_connections' %}">
     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-share-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
     </svg>
-    <span>&nbsp;{% trans "Edit Connections" %}</span>
+    <span>&nbsp;{% trans "Connections" %}</span>
   </a>
 </nav>

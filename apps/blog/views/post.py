@@ -265,7 +265,7 @@ class PostDeleteJSONView(JSONResponseMixin, TemplateView):
                 context_data['success'] = True
                 context_data['message'] = _('The successfully post deleted!')
             elif request.user != post.author:
-                context_data['message'] = _('You are not allowed to access this method!')
+                context_data['message'] = _('You are not allowed to access this feature!')
             else:
                 self.soft_delete_post(id)
                 context_data['success'] = True
