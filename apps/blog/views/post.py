@@ -6,7 +6,6 @@ from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
 from django.db.models import (Q, F, Count)
-from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,

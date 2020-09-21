@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Products" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    <h5>{% trans "Products" %}</h5>
+    <div class="mt-4">
+      <div class="row">
+        {% for product in products %}
+          <div class="col-md-4 mb-5">
+            <div class="card text-center">
+              {% if product.type == 'premium' %}
+                <div class="ribbon-wrapper-orange" style="z-index:100">
+                  <div class="ribbon-orange">{{ product.get_type_display }}</div>
+                </div>
+              {% endif %}
+
+              {% if product.list_image_urls|length > 0 %}
+                <div id="carouselImageProducts" class="carousel slide" data-ride="carousel" style="max-height:200px;overflow:hidden">
+                  <ol class="carousel-indicators">
+                    {% for image_url in product.list_image_urls %}
+                      <li data-target="#carouselImageProducts" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                    {% endfor %}
+                  </ol>
+                  <div class="carousel-inner">
+                    {% for image_url in product.list_image_urls %}
+                      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ image_url }}" class="d-block w-100" alt="{{ product.title }}">
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselImageProducts" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">{% trans "Previous" %}</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselImageProducts" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">{% trans "Next" %}</span>
+                  </a>
+                </div>
+              {% endif %}
+
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <small class="text-muted">{{ product.created_at }}</small>
+                <p class="card-text">{{ product.description|striptags|truncatechars:"90" }}</p>
+
+                <div class="btn-buy-download">
+                  {% if product.download_url %}
+                    <a href="#" class="btn bg-gradient-success text-normal text-center">
+                  {% else %}
+                    <a class="btn bg-gradient-success text-normal text-center disabled">
+                  {% endif %}
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cloud-arrow-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+                      </svg>
+                      <span>&nbsp;{% trans "Download" %}&nbsp;</span>
+                    </a>
+                  {# eof #}
+
+                  {% if product.buy_url %}
+                    <a href="#" class="btn bg-gradient-primary text-normal">
+                  {% else %}
+                    <a class="btn bg-gradient-primary text-normal disabled">
+                  {% endif %}
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-credit-card-2-back-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2z"/>
+                        <path d="M0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z"/>
+                      </svg>
+                      <span>&nbsp;{% trans "Buy now" %}&nbsp;</span>
+                    </a>
+                  {# eof #}
+                </div><!-- /.btn-buy-download -->
+
+                <div class="btn-demo mt-2">
+                  {% if product.demo_url %}
+                    <a href="#" class="btn btn-block bg-gradient-default text-normal">
+                  {% else %}
+                    <a class="btn btn-block bg-gradient-default text-normal disabled">
+                  {% endif %}
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                        <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                      </svg>
+                      <span>&nbsp;{% trans "View Demo" %}&nbsp;</span>
+                    </a>
+                  {# eof #}
+                </div><!-- /.btn-demo -->
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div><!-- /.row-content -->
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script>
+
+  </script>
+{% endblock %}
