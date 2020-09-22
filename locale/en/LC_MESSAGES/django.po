@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-21 17:26+0700\n"
+"POT-Creation-Date: 2020-09-22 20:47+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,6 +43,7 @@ msgid "The two password didn't match."
 msgstr ""
 
 #: apps/accounts/forms/auth.py:91 apps/accounts/forms/auth.py:92
+#: apps/blog/forms/contact.py:15 apps/blog/forms/contact.py:40
 #: templates/allauth/account/email.html:84
 #: templates/allauth/account/email.html:87
 #: templates/allauth/account/password_reset.html:31
@@ -83,7 +84,7 @@ msgstr ""
 msgid "About Me"
 msgstr ""
 
-#: apps/accounts/models/user.py:34
+#: apps/accounts/models/user.py:34 apps/product/models/product.py:30
 msgid "Website"
 msgstr ""
 
@@ -129,6 +130,18 @@ msgstr ""
 msgid "App Blog"
 msgstr ""
 
+#: apps/blog/forms/contact.py:16
+msgid "Sender"
+msgstr ""
+
+#: apps/blog/forms/contact.py:17
+msgid "Subject"
+msgstr ""
+
+#: apps/blog/forms/contact.py:18
+msgid "Message"
+msgstr ""
+
 #: apps/blog/forms/tag.py:16
 #, python-format
 msgid "%(tag)s already exist!"
@@ -168,9 +181,10 @@ msgstr ""
 msgid "Favorites"
 msgstr ""
 
-#: apps/blog/models/addons.py:61 apps/blog/models/post.py:21
-#: apps/blog/models/post.py:90 apps/product/models/product.py:17
+#: apps/blog/models/addons.py:61 apps/blog/models/post.py:29
+#: apps/blog/models/post.py:98 apps/product/models/product.py:26
 #: templates/apps/blog/post/list_private.html:39
+#: templates/apps/product/list_private.html:39
 msgid "Title"
 msgstr ""
 
@@ -186,67 +200,69 @@ msgstr ""
 msgid "Galleries"
 msgstr ""
 
-#: apps/blog/models/post.py:22 apps/blog/models/post.py:91
+#: apps/blog/models/post.py:30 apps/blog/models/post.py:99
 msgid "Slug"
 msgstr ""
 
-#: apps/blog/models/post.py:23 apps/blog/models/post.py:92
-#: apps/blog/models/tag.py:14 apps/product/models/product.py:18
+#: apps/blog/models/post.py:31 apps/blog/models/post.py:100
+#: apps/blog/models/tag.py:14
 #: templates/apps/blog/tag/includes/modal_create.html:22
 msgid "Description"
 msgstr ""
 
-#: apps/blog/models/post.py:25
+#: apps/blog/models/post.py:33
 msgid "Keywords"
 msgstr ""
 
-#: apps/blog/models/post.py:26
+#: apps/blog/models/post.py:34
 msgid "Separate by comma (,)"
 msgstr ""
 
-#: apps/blog/models/post.py:27
+#: apps/blog/models/post.py:35
 msgid "Meta Description"
 msgstr ""
 
-#: apps/blog/models/post.py:28
+#: apps/blog/models/post.py:36
 msgid "Is Featured?"
 msgstr ""
 
-#: apps/blog/models/post.py:29 apps/blog/models/post.py:100
+#: apps/blog/models/post.py:37 apps/blog/models/post.py:108
+#: apps/product/models/product.py:69
 #: templates/apps/blog/post/list_private.html:84
+#: templates/apps/product/list_private.html:44
 msgid "Publish"
 msgstr ""
 
-#: apps/blog/models/post.py:82
+#: apps/blog/models/post.py:90
 msgid "Post"
 msgstr ""
 
-#: apps/blog/models/post.py:83 templates/apps/accounts/user/profile.html:216
+#: apps/blog/models/post.py:91 templates/apps/accounts/user/profile.html:216
 #: templates/includes/navbar.html:17 templates/includes/navbar.html:28
 msgid "Posts"
 msgstr ""
 
-#: apps/blog/models/post.py:94
+#: apps/blog/models/post.py:102
 msgid "Site"
 msgstr ""
 
-#: apps/blog/models/post.py:95
+#: apps/blog/models/post.py:103
 msgid "Private"
 msgstr ""
 
-#: apps/blog/models/post.py:96
+#: apps/blog/models/post.py:104
 msgid "Documentation"
 msgstr ""
 
-#: apps/blog/models/post.py:98
+#: apps/blog/models/post.py:106
 msgid "Status"
 msgstr ""
 
-#: apps/blog/models/post.py:107
+#: apps/blog/models/post.py:115
 msgid "Page"
 msgstr ""
 
-#: apps/blog/models/post.py:108
+#: apps/blog/models/post.py:116
 msgid "Pages"
 msgstr ""
 
@@ -290,55 +306,70 @@ msgstr ""
 msgid "The post removed from favorite!"
 msgstr ""
 
-#: apps/blog/views/page.py:43 templates/includes/footer.html:36
-#: templates/includes/navbar.html:44
+#: apps/blog/views/page.py:47
+#: templates/apps/blog/page/includes/right_sidebar.html:31
+#: templates/includes/footer.html:36 templates/includes/navbar.html:44
 msgid "About"
 msgstr ""
 
-#: apps/blog/views/page.py:48 templates/includes/footer.html:54
+#: apps/blog/views/page.py:52
+#: templates/apps/blog/page/includes/right_sidebar.html:64
+#: templates/includes/footer.html:54
 msgid "Disclaimer"
 msgstr ""
 
-#: apps/blog/views/page.py:53
+#: apps/blog/views/page.py:57
 msgid "Privacy Policy"
 msgstr ""
 
-#: apps/blog/views/page.py:58 templates/includes/footer.html:16
-#: templates/includes/navbar.html:41
+#: apps/blog/views/page.py:62
+#: templates/apps/blog/page/includes/right_sidebar.html:16
+#: templates/includes/footer.html:16 templates/includes/navbar.html:41
 msgid "Services"
 msgstr ""
 
-#: apps/blog/views/page.py:63 templates/includes/footer.html:19
-#: templates/includes/navbar.html:42
+#: apps/blog/views/page.py:67
+#: templates/apps/blog/page/includes/right_sidebar.html:9
+#: templates/includes/footer.html:19 templates/includes/navbar.html:42
 msgid "Sponsor"
 msgstr ""
 
-#: apps/blog/views/page.py:68
+#: apps/blog/views/page.py:72 apps/product/models/product.py:72
+#: templates/apps/product/detail.html:145
 msgid "Terms of Service"
 msgstr ""
 
-#: apps/blog/views/post.py:195
+#: apps/blog/views/page.py:108
+#, python-format
+msgid "%(subject)s from %(email)s by %(sender)s"
+msgstr ""
+
+#: apps/blog/views/page.py:113
+msgid "Your message successfully sended!"
+msgstr ""
+
+#: apps/blog/views/post.py:194
 msgid "Post successfully created!"
 msgstr ""
 
-#: apps/blog/views/post.py:217
+#: apps/blog/views/post.py:216
 #, python-format
 msgid "\"%(post)s\" successfully updated!"
 msgstr ""
 
-#: apps/blog/views/post.py:262
+#: apps/blog/views/post.py:261
 msgid "You must login to delete this post!"
 msgstr ""
 
-#: apps/blog/views/post.py:266 apps/blog/views/post.py:272
+#: apps/blog/views/post.py:265 apps/blog/views/post.py:271
 msgid "The successfully post deleted!"
 msgstr ""
 
-#: apps/blog/views/post.py:268
+#: apps/blog/views/post.py:267 apps/product/views/product.py:170
 msgid "You are not allowed to access this feature!"
 msgstr ""
 
-#: apps/blog/views/post.py:274
+#: apps/blog/views/post.py:273 apps/product/views/product.py:176
 msgid "Param `id` should be integer!"
 msgstr ""
 
@@ -427,25 +458,137 @@ msgstr ""
 msgid "Advertisements"
 msgstr ""
 
-#: apps/product/models/product.py:19
+#: apps/product/models/product.py:29
+msgid "Plugin"
+msgstr ""
+
+#: apps/product/models/product.py:31
+msgid "E-Book"
+msgstr ""
+
+#: apps/product/models/product.py:33
+#: templates/apps/product/list_private.html:41
+msgid "Category"
+msgstr ""
+
+#: apps/product/models/product.py:38
+msgid "Premium"
+msgstr ""
+
+#: apps/product/models/product.py:39 templates/apps/product/detail.html:56
+#: templates/apps/product/list.html:66
+msgid "Free"
+msgstr ""
+
+#: apps/product/models/product.py:41
+#: templates/apps/product/list_private.html:42
+msgid "Type"
+msgstr ""
+
+#: apps/product/models/product.py:45
+#: templates/apps/product/list_private.html:43
+msgid "Price"
+msgstr ""
+
+#: apps/product/models/product.py:46
+msgid "Currently price, e.g: 75000"
+msgstr ""
+
+#: apps/product/models/product.py:47
+msgid "Price Discount"
+msgstr ""
+
+#: apps/product/models/product.py:48
+msgid "Fixed price after discount"
+msgstr ""
+
+#: apps/product/models/product.py:51
+msgid "USD $"
+msgstr ""
+
+#: apps/product/models/product.py:52
+msgid "IDR Rp"
+msgstr ""
+
+#: apps/product/models/product.py:53
+msgid "SGD S$"
+msgstr ""
+
+#: apps/product/models/product.py:54
+msgid "GBP £"
+msgstr ""
+
+#: apps/product/models/product.py:55
+msgid "EUR €"
+msgstr ""
+
+#: apps/product/models/product.py:57
+msgid "Currency Code"
+msgstr ""
+
+#: apps/product/models/product.py:60
+msgid "Price currency code"
+msgstr ""
+
+#: apps/product/models/product.py:62
+msgid "Buy URL"
+msgstr ""
+
+#: apps/product/models/product.py:63
+msgid "e.g: https://www.paypal.com/paypalme/summonagus"
+msgstr ""
+
+#: apps/product/models/product.py:64
 msgid "Image URL's"
 msgstr ""
 
-#: apps/product/models/product.py:20
+#: apps/product/models/product.py:65
+msgid "Please use list string format, e.g: [\"https://google.com/image.png\"]"
+msgstr ""
+
+#: apps/product/models/product.py:67
 msgid "Demo URL"
 msgstr ""
 
-#: apps/product/models/product.py:21
+#: apps/product/models/product.py:68
 msgid "Download URL"
 msgstr ""
 
-#: apps/product/models/product.py:37
+#: apps/product/models/product.py:70
+msgid "Sort Description"
+msgstr ""
+
+#: apps/product/models/product.py:71
+msgid "Long Description"
+msgstr ""
+
+#: apps/product/models/product.py:98
 msgid "Product"
 msgstr ""
 
-#: apps/product/models/product.py:38 templates/includes/footer.html:13
+#: apps/product/models/product.py:99
+#: templates/apps/blog/page/includes/right_sidebar.html:23
+#: templates/apps/product/detail.html:15 templates/apps/product/list.html:5
+#: templates/apps/product/list.html:9 templates/includes/footer.html:13
 #: templates/includes/navbar.html:34
 msgid "Products"
+msgstr ""
+
+#: apps/product/views/product.py:107
+msgid "Product successfully created!"
+msgstr ""
+
+#: apps/product/views/product.py:129
+#, python-format
+msgid "\"%(product)s\" successfully updated!"
+msgstr ""
+
+#: apps/product/views/product.py:164
+msgid "You must login to delete this product!"
+msgstr ""
+
+#: apps/product/views/product.py:168 apps/product/views/product.py:174
+msgid "The product successfully deleted!"
 msgstr ""
 
 #: templates/allauth/account/account_inactive.html:4
@@ -603,7 +746,7 @@ msgid ""
 "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
 
-#: templates/allauth/account/login.html:5 templates/includes/navbar.html:139
+#: templates/allauth/account/login.html:5 templates/includes/navbar.html:143
 msgid "Sign In"
 msgstr ""
 
@@ -662,7 +805,7 @@ msgstr ""
 
 #: templates/allauth/account/logout.html:4
 #: templates/allauth/account/logout.html:13
-#: templates/allauth/account/logout.html:21 templates/includes/navbar.html:129
+#: templates/allauth/account/logout.html:21 templates/includes/navbar.html:133
 msgid "Sign Out"
 msgstr ""
 
@@ -976,7 +1119,12 @@ msgstr ""
 msgid "My Posts"
 msgstr ""
 
-#: templates/apps/accounts/user/includes/nav_tabs.html:38
+#: templates/apps/accounts/user/includes/nav_tabs.html:40
+#: templates/apps/product/list_private.html:5
+msgid "My Products"
+msgstr ""
+
+#: templates/apps/accounts/user/includes/nav_tabs.html:50
 msgid "Edit Profile & Settings"
 msgstr ""
 
@@ -1126,6 +1274,47 @@ msgstr ""
 msgid "Update Profile"
 msgstr ""
 
+#: templates/apps/blog/page/contact.html:4
+#: templates/apps/blog/page/contact.html:8
+msgid "Contact Us"
+msgstr ""
+
+#: templates/apps/blog/page/contact.html:13
+msgid "What's in a great support request?"
+msgstr ""
+
+#: templates/apps/blog/page/contact.html:14
+msgid "Provide us with as much essential information as possible."
+msgstr ""
+
+#: templates/apps/blog/page/contact.html:15
+msgid "Include any screenshots or links that are related to your problem."
+msgstr ""
+
+#: templates/apps/blog/page/contact.html:73
+msgid "Send Email"
+msgstr ""
+
+#: templates/apps/blog/page/includes/right_sidebar.html:37
+#: templates/includes/footer.html:39 templates/includes/navbar.html:45
+msgid "Contact"
+msgstr ""
+
+#: templates/apps/blog/page/includes/right_sidebar.html:43
+#: templates/includes/footer.html:42 templates/includes/navbar.html:46
+msgid "Developers"
+msgstr ""
+
+#: templates/apps/blog/page/includes/right_sidebar.html:50
+#: templates/includes/footer.html:57
+msgid "Terms"
+msgstr ""
+
+#: templates/apps/blog/page/includes/right_sidebar.html:57
+#: templates/includes/footer.html:60
+msgid "Privacy"
+msgstr ""
+
 #: templates/apps/blog/post/author.html:5
 msgid "Posts by"
 msgstr ""
@@ -1139,13 +1328,15 @@ msgstr ""
 #: templates/apps/blog/post/create.html:9
 #: templates/apps/blog/post/create.html:27
 #: templates/apps/blog/post/create.html:142
-#: templates/apps/blog/post/detail.html:19
+#: templates/apps/blog/post/detail.html:21
 #: templates/apps/blog/post/list.html:14 templates/apps/blog/post/list.html:123
 #: templates/apps/blog/post/list_private.html:30
+#: templates/apps/product/list_private.html:30
 msgid "Create a Post"
 msgstr ""
 
 #: templates/apps/blog/post/create.html:33
+#: templates/apps/product/create.html:29
 msgid "Go Back"
 msgstr ""
 
@@ -1160,6 +1351,7 @@ msgid ""
 msgstr ""
 
 #: templates/apps/blog/post/create.html:129
+#: templates/apps/product/create.html:229
 msgid "Cancel"
 msgstr ""
 
@@ -1167,27 +1359,27 @@ msgstr ""
 msgid "Update Post"
 msgstr ""
 
-#: templates/apps/blog/post/detail.html:39
+#: templates/apps/blog/post/detail.html:41
 msgid "vote up"
 msgstr ""
 
-#: templates/apps/blog/post/detail.html:47
+#: templates/apps/blog/post/detail.html:49
 msgid "vote down"
 msgstr ""
 
-#: templates/apps/blog/post/detail.html:52
+#: templates/apps/blog/post/detail.html:54
 msgid "Click to mark as favorite or undo"
 msgstr ""
 
-#: templates/apps/blog/post/detail.html:77
+#: templates/apps/blog/post/detail.html:79
 msgid "share"
 msgstr ""
 
-#: templates/apps/blog/post/detail.html:83
+#: templates/apps/blog/post/detail.html:85
 msgid "Copy Link"
 msgstr ""
 
-#: templates/apps/blog/post/detail.html:83
+#: templates/apps/blog/post/detail.html:85
 msgid "Link successfully copied!"
 msgstr ""
 
@@ -1217,11 +1409,13 @@ msgstr ""
 
 #: templates/apps/blog/post/includes/paginator.html:17
 #: templates/apps/blog/tag/includes/paginator.html:17
+#: templates/apps/product/detail.html:125 templates/apps/product/list.html:46
 msgid "Previous"
 msgstr ""
 
 #: templates/apps/blog/post/includes/paginator.html:38
 #: templates/apps/blog/tag/includes/paginator.html:38
+#: templates/apps/product/detail.html:129 templates/apps/product/list.html:50
 msgid "Next"
 msgstr ""
 
@@ -1255,11 +1449,13 @@ msgid "is your post about programming?"
 msgstr ""
 
 #: templates/apps/blog/post/includes/sidebar_create.html:21
+#: templates/apps/product/includes/sidebar_create.html:21
 msgid "provide more details"
 msgstr ""
 
 #: templates/apps/blog/post/includes/sidebar_create.html:29
 #: templates/apps/blog/post/includes/sidebar_create.html:75
+#: templates/apps/product/includes/sidebar_create.html:29
 msgid "add related resources or links"
 msgstr ""
 
@@ -1424,23 +1620,29 @@ msgid "See other posts"
 msgstr ""
 
 #: templates/apps/blog/post/list_private.html:17
+#: templates/apps/product/list_private.html:17
 #: templates/includes/navbar.html:20
 msgid "Search..."
 msgstr ""
 
 #: templates/apps/blog/post/list_private.html:40
+#: templates/apps/product/list_private.html:40
 msgid "Created"
 msgstr ""
 
 #: templates/apps/blog/post/list_private.html:85
+#: templates/apps/product/list_private.html:45
 msgid "Actions"
 msgstr ""
 
 #: templates/apps/blog/post/list_private.html:121
+#: templates/apps/product/list_private.html:80
 msgid "Delete"
 msgstr ""
 
 #: templates/apps/blog/post/list_private.html:126
+#: templates/apps/product/detail.html:27
+#: templates/apps/product/list_private.html:85
 msgid "Update"
 msgstr ""
 
@@ -1485,6 +1687,57 @@ msgstr ""
 msgid "post"
 msgstr ""
 
+#: templates/apps/product/create.html:7 templates/apps/product/create.html:23
+#, python-format
+msgid "Edit Product \"%(title)s\""
+msgstr ""
+
+#: templates/apps/product/create.html:9 templates/apps/product/create.html:23
+#: templates/apps/product/create.html:242
+msgid "Create a Product"
+msgstr ""
+
+#: templates/apps/product/create.html:235
+msgid "Update Product"
+msgstr ""
+
+#: templates/apps/product/detail.html:31
+#, python-format
+msgid "viewed in %(visitors)s times."
+msgstr ""
+
+#: templates/apps/product/detail.html:70
+msgid "View Demo"
+msgstr ""
+
+#: templates/apps/product/detail.html:82 templates/apps/product/list.html:82
+msgid "Download"
+msgstr ""
+
+#: templates/apps/product/detail.html:95 templates/apps/product/list.html:95
+msgid "Buy now"
+msgstr ""
+
+#: templates/apps/product/includes/sidebar_create.html:5
+msgid "How to create Product"
+msgstr ""
+
+#: templates/apps/product/includes/sidebar_create.html:13
+msgid "makesure the product is valid."
+msgstr ""
+
+#: templates/apps/product/includes/sidebar_create.html:37
+msgid "we prefer products that can be posted, not just dummy."
+msgstr ""
+
+#: templates/apps/product/list.html:108
+msgid "Read more"
+msgstr ""
+
+#: templates/apps/product/list_private.html:114
+msgid "Are you sure to delete this product?"
+msgstr ""
+
 #: templates/error_page.html:148
 #, python-format
 msgid "You have an error %(message)s."
@@ -1492,22 +1745,6 @@ msgstr ""
 
 #: templates/error_page.html:149
 msgid "Please go back to <a href=\"/\">homepage</a>."
-msgstr ""
-
-#: templates/includes/footer.html:39 templates/includes/navbar.html:45
-msgid "Contact"
-msgstr ""
-
-#: templates/includes/footer.html:42 templates/includes/navbar.html:46
-msgid "Developers"
-msgstr ""
-
-#: templates/includes/footer.html:57
-msgid "Terms"
-msgstr ""
-
-#: templates/includes/footer.html:60
-msgid "Privacy"
 msgstr ""
 
 #: templates/includes/navbar.html:38
@@ -1522,38 +1759,42 @@ msgstr ""
 msgid "Add Post"
 msgstr ""
 
-#: templates/includes/navbar.html:108
+#: templates/includes/navbar.html:107
 msgid "Add Product"
 msgstr ""
 
-#: templates/includes/navbar.html:109
+#: templates/includes/navbar.html:112
 msgid "Add Page"
 msgstr ""
 
-#: templates/includes/navbar.html:110
+#: templates/includes/navbar.html:113
 msgid "Add File"
 msgstr ""
 
-#: templates/includes/navbar.html:119
+#: templates/includes/navbar.html:122
 msgid "Signed in as"
 msgstr ""
 
-#: templates/includes/navbar.html:121
+#: templates/includes/navbar.html:124
 msgid "Your Profile"
 msgstr ""
 
-#: templates/includes/navbar.html:122
+#: templates/includes/navbar.html:125
 msgid "Your Activity"
 msgstr ""
 
-#: templates/includes/navbar.html:123
+#: templates/includes/navbar.html:126
 msgid "Your Posts"
 msgstr ""
 
-#: templates/includes/navbar.html:126
+#: templates/includes/navbar.html:127
+msgid "Your Products"
+msgstr ""
+
+#: templates/includes/navbar.html:130
 msgid "Dashboard"
 msgstr ""
 
-#: templates/includes/navbar.html:128
+#: templates/includes/navbar.html:132
 msgid "Settings"
 msgstr ""

@@ -165,13 +165,13 @@ class ProductDeleteJSONView(JSONResponseMixin, TemplateView):
             elif request.user.is_superuser:
                 self.soft_delete_product(id)
                 context_data['success'] = True
-                context_data['message'] = _('The successfully product deleted!')
+                context_data['message'] = _('The product successfully deleted!')
             elif request.user != product.author:
                 context_data['message'] = _('You are not allowed to access this feature!')
             else:
                 self.soft_delete_product(id)
                 context_data['success'] = True
-                context_data['message'] = _('The successfully product deleted!')
+                context_data['message'] = _('The product successfully deleted!')
         else:
             context_data['message'] = _('Param `id` should be integer!')
 
