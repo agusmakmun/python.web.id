@@ -368,6 +368,11 @@ h1,h2,h3,h4,h5,h6 {
 .card-footer .tags {
 
 }
+.card-shadow {
+  border: 1px solid #dee2e6;
+  border-top: none;
+  box-shadow: 0 3px 5px #eaeaea
+}
 .badge-tag {
   display: inline-block;
   line-height: 1;
@@ -470,4 +475,13 @@ h1,h2,h3,h4,h5,h6 {
   border-top: 1px solid rgba(0,0,0,.06);
   height: 0;
   margin: .61538462em 0;
+}
+
+
+/* Form */
+.form-important {
+  background: #f9f9f9;
+  padding: 7px 10px;
+  border: 1px dashed #ddd;
+  margin-bottom: 1rem;
 }

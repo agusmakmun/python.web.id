@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load martortags common_tags %}
+
+{% block title %}
+  {% if product %}
+    {% blocktrans with title=product.title %}Edit Product "{{ title }}"{% endblocktrans %} - {{ block.super }}
+  {% else %}
+    {% trans "Create a Product" %} - {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'plugins/css/resizable.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <style>.martor-toolbar .btn-light{border-color:transparent;background:transparent}</style>
+{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    <h5 class="mt-2 mb-4">
+      <span>{% if product %}{% blocktrans with title=product.title %}Edit Product "{{ title }}"{% endblocktrans %}{% else %}{% trans "Create a Product" %}{% endif %}</span>
+      <span class="float-right">
+        <a class="btn btn-sm bg-gradient-default" role="button" style="line-height:1.5rem" onclick="window.history.go(-1); return false;">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+          <span>&nbsp; {% trans "Go Back" %}</span>
+        </a>
+      </span>
+    </h5>
+
+    <div class="row mt-4 row-content">
+      <div class="col-md-9">
+        <div class="card p-2 mb-3 card-product-item" style="box-shadow: 0 3px 5px #eaeaea">
+          <div class="card-body">
+            {% if form.non_field_errors %}
+              <div class="sidebar-bulletin">
+                {% for err in form.non_field_errors %}
+                  <span class="form-error">{{ err }}</span>{% if not forloop.last %}<br />{% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <form class="form" method="post">{% csrf_token %}
+              <div class="form-group">
+                <label class="text-bold" for="id_title">{{ form.title.label }} *</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                  <div class="invalid-feedback" style="display:block">
+                    {% for error in form.title.errors %}
+                      {{ error }}{% if not forloop.last %}<br />{% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label class="text-bold" for="id_category">{{ form.category.label }} *</label>
+                  {{ form.category }}
+                  {% if form.category.errors %}
+                    <div class="invalid-feedback" style="display:block">
+                      {% for error in form.category.errors %}
+                        {{ error }}{% if not forloop.last %}<br />{% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="col-md-6">
+                  <label class="text-bold" for="id_type">{{ form.type.label }} *</label>
+                  {{ form.type }}
+                  {% if form.type.errors %}
+                    <div class="invalid-feedback" style="display:block">
+                      {% for error in form.type.errors %}
+                        {{ error }}{% if not forloop.last %}<br />{% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="mt-4 form-buy-product form-important">
+                <div class="form-group row row-price">
+                  <div class="col-md-4">
+                    <label class="text-bold" for="id_price">{{ form.price.label }} *</label>
+                    {{ form.price }}
+                    <small class="form-text text-muted">{{ form.price.help_text }}</small>
+                    {% if form.price.errors %}
+                      <div class="invalid-feedback" style="display:block">
+                        {% for error in form.price.errors %}
+                          {{ error }}{% if not forloop.last %}<br />{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-4">
+                    <label class="text-bold" for="id_price_discount">{{ form.price_discount.label }}</label>
+                    {{ form.price_discount }}
+                    <small class="form-text text-muted">{{ form.price_discount.help_text }}</small>
+                    {% if form.price_discount.errors %}
+                      <div class="invalid-feedback" style="display:block">
+                        {% for error in form.price_discount.errors %}
+                          {{ error }}{% if not forloop.last %}<br />{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-4">
+                    <label class="text-bold" for="id_currency_code">{{ form.currency_code.label }} *</label>
+                    {{ form.currency_code }}
+                    <small class="form-text text-muted">{{ form.currency_code.help_text }}</small>
+                    {% if form.currency_code.errors %}
+                      <div class="invalid-feedback" style="display:block">
+                        {% for error in form.currency_code.errors %}
+                          {{ error }}{% if not forloop.last %}<br />{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div><!-- /.row-price -->
+
+                <div class="form-group">
+                  <label class="text-bold" for="id_buy_url">{{ form.buy_url.label }}</label>
+                  {{ form.buy_url }}
+                  <small class="form-text text-muted">{{ form.buy_url.help_text }}</small>
+                  {% if form.buy_url.errors %}
+                    <div class="invalid-feedback" style="display:block">
+                      {% for error in form.buy_url.errors %}
+                        {{ error }}{% if not forloop.last %}<br />{% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div><!-- /.form-buy-product -->
+
+              <div class="form-group">
+                <label class="text-bold" for="id_image_urls">{{ form.image_urls.label }}</label>
+                {{ form.image_urls }}
+                <small class="form-text text-muted">{{ form.image_urls.help_text }}</small>
+                {% if form.image_urls.errors %}
+                  <div class="invalid-feedback" style="display:block">
+                    {% for error in form.image_urls.errors %}
+                      {{ error }}{% if not forloop.last %}<br />{% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-bold" for="id_demo_url">{{ form.demo_url.label }}</label>
+                    {{ form.demo_url }}
+                    {% if form.demo_url.errors %}
+                      <div class="invalid-feedback" style="display:block">
+                        {% for error in form.demo_url.errors %}
+                          {{ error }}{% if not forloop.last %}<br />{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-bold" for="id_download_url">{{ form.download_url.label }}</label>
+                    {{ form.download_url }}
+                    {% if form.download_url.errors %}
+                      <div class="invalid-feedback" style="display:block">
+                        {% for error in form.download_url.errors %}
+                          {{ error }}{% if not forloop.last %}<br />{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="text-bold" for="id_sort_description">{{ form.sort_description.label }} *</label>
+                {{ form.sort_description }}
+                {% if form.sort_description.errors %}
+                  <div class="invalid-feedback" style="display:block">
+                    {% for error in form.sort_description.errors %}
+                      {{ error }}{% if not forloop.last %}<br />{% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="form-group">
+                <label class="text-bold" for="id_long_description">{{ form.long_description.label }}</label>
+                {{ form.long_description }}
+                {% if form.long_description.errors %}
+                  <div class="invalid-feedback" style="display:block">
+                    {% for error in form.long_description.errors %}
+                      {{ error }}{% if not forloop.last %}<br />{% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="form-group">
+                <label class="text-bold" for="id_terms_of_service">{{ form.terms_of_service.label }}</label>
+                {{ form.terms_of_service }}
+                {% if form.terms_of_service.errors %}
+                  <div class="invalid-feedback" style="display:block">
+                    {% for error in form.terms_of_service.errors %}
+                      {{ error }}{% if not forloop.last %}<br />{% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="form-group d-flex justify-content-between">
+                <div class="left">
+                  <div class="custom-control custom-switch">
+                    {{ form.publish }}
+                    <label class="custom-control-label" for="id_publish">{{ form.publish.label }}</label>
+                  </div>
+                </div>
+                <div class="right">
+                  {% if product %}
+                    <a class="btn btn-sm bg-gradient-default" href="{% url 'apps.product:product_detail' id=product.id %}">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                      <span>{% trans "Cancel" %} &nbsp;</span>
+                    </a>
+                    <button type="submit" class="btn btn-sm bg-gradient-success">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                      </svg>
+                      <span>{% trans "Update Product" %}</span>
+                    </button>
+                  {% else %}
+                    <button type="submit" class="btn btn-sm bg-gradient-success">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                      </svg>
+                      <span>{% trans "Create a Product" %}</span>
+                    </button>
+                  {% endif %}
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        {% include "apps/product/includes/sidebar_create.html" %}
+      </div>
+    </div><!-- /.row-content -->
+
+    {# including the modal create tag `modalCreateTag` #}
+    {% include "apps/blog/tag/includes/modal_create.html" %}
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/typo.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/spellcheck.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'martor/js/martor.bootstrap.min.js' %}"></script>
+
+  <script type="text/javascript">
+    // handle the price options bassed on type.
+    $('select[name="type"]').change(function() {
+      let value = $(this).val();
+      const priceFields = $('.form-buy-product');
+      if(value == 'free') {
+        priceFields.hide();
+      }else {
+        priceFields.show();
+      }
+    });
+  </script>
+{% endblock %}

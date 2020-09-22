@@ -25,12 +25,13 @@ class Product(TimeStampedModel):
     title = models.CharField(_('Title'), max_length=200)
 
     class CategoryOptions(models.TextChoices):
-        code = 'code', _('Code')
+        plugin = 'plugin', _('Plugin')
+        website = 'website', _('Website')
         ebook = 'ebook', _('E-Book')
 
     category = models.CharField(_('Category'), max_length=20,
                                 choices=CategoryOptions.choices,
-                                default=CategoryOptions.code)
+                                default=CategoryOptions.plugin)
 
     class TypeOptions(models.TextChoices):
         premium = 'premium', _('Premium')
@@ -40,29 +41,34 @@ class Product(TimeStampedModel):
                             choices=TypeOptions.choices,
                             default=TypeOptions.premium)
 
-    price = models.PositiveIntegerField(_('Price'), default=0)
+    price = models.PositiveIntegerField(_('Price'), default=0,
+                                        help_text=_('Currently price, e.g: 75000'))
     price_discount = models.PositiveIntegerField(_('Price Discount'), null=True, blank=True,
-                                                 help_text=_('Fixed price after discount.'))
+                                                 help_text=_('Fixed price after discount'))
 
     class CurrencyOptions(models.TextChoices):
-        usd = 'usd', _('USD-$')
-        idr = 'idr', _('IDR-Rp')
-        sgd = 'sgd', _('SGD-S$')
-        gbp = 'gbp', _('GBP-£')
-        eur = 'eur', _('EUR-€')
+        usd = 'usd', _('USD $')
+        idr = 'idr', _('IDR Rp')
+        sgd = 'sgd', _('SGD S$')
+        gbp = 'gbp', _('GBP £')
+        eur = 'eur', _('EUR €')
 
     currency_code = models.CharField(_('Currency Code'), max_length=5,
                                      choices=CurrencyOptions.choices,
-                                     default=CurrencyOptions.usd)
+                                     default=CurrencyOptions.usd,
+                                     help_text=_('Price currency code'))
 
-    buy_url = models.URLField(_('Buy URL'), null=True, blank=True)
-    description = models.TextField(_('Description'))
+    buy_url = models.URLField(_('Buy URL'), null=True, blank=True,
+                              help_text=_('e.g: https://www.paypal.com/paypalme/summonagus'))
     image_urls = models.TextField(_("Image URL's"), blank=True,
                                   help_text=_('Please use list string format, '
                                               'e.g: ["https://google.com/image.png"]'))
     demo_url = models.URLField(_('Demo URL'), null=True, blank=True)
     download_url = models.URLField(_('Download URL'), null=True, blank=True)
     publish = models.BooleanField(_('Publish'), default=True)
+    sort_description = models.TextField(_('Sort Description'))
+    long_description = models.TextField(_('Long Description'), blank=True)
+    terms_of_service = models.TextField(_('Terms of Service'), blank=True)
 
     objects = ProductManager()
 
@@ -76,7 +82,7 @@ class Product(TimeStampedModel):
         print('code', code)
         if code and hasattr(code, 'label'):
             if code.label:
-                return code.label.split('-')[-1]
+                return code.label.split(' ')[-1]
         return
 
     @property
