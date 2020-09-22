@@ -103,9 +103,12 @@
             <div class="dropdown-menu dropdown-menu-right text-sm" aria-labelledby="dropdown-signed-user">
               <a class="dropdown-item" href="{% url 'apps.blog:post_create' %}">{% trans "Add Post" %}</a>
 
+              {% if request.user.is_staff or request.user.is_superuser %}
+                <a class="dropdown-item" href="{% url 'apps.product:product_create' %}">{% trans "Add Product" %}</a>
+              {% endif %}
+
               {% if request.user.is_superuser %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'apps.product:product_create' %}">{% trans "Add Product" %}</a>
                 <a class="dropdown-item" href="#">{% trans "Add Page" %}</a>
                 <a class="dropdown-item" href="#">{% trans "Add File" %}</a>
               {% endif %}
@@ -120,7 +123,8 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'apps.accounts:profile_detail' username=request.user.username %}">{% trans "Your Profile" %}</a>
               <a class="dropdown-item" href="{% url 'apps.accounts:profile_activity' username=request.user.username %}">{% trans "Your Activity" %}</a>
-              <a class="dropdown-item" href="{% url 'apps.blog:posts_me' %}">{% trans "Your Posts" %}</a>
+              <a class="dropdown-item" href="{% url 'apps.blog:post_me' %}">{% trans "Your Posts" %}</a>
+              <a class="dropdown-item" href="{% url 'apps.product:product_me' %}">{% trans "Your Products" %}</a>
               <div class="dropdown-divider"></div>
               {% if request.user.is_superuser %}
                 <a class="dropdown-item" href="#">{% trans "Dashboard" %}</a>

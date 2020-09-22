@@ -8,12 +8,15 @@ from django.contrib import messages
 from django.db.models import (Q, F, Count)
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import (get_object_or_404, redirect)
-from django.views.generic import (ListView, DetailView,
+from django.views.generic import (TemplateView, ListView, DetailView,
                                   FormView, UpdateView)
 
 from apps.product.models.product import Product
 from apps.product.forms.product import ProductForm
+from apps.blog.utils.json import JSONResponseMixin
+from apps.blog.utils.visitor import (visitor_counter, get_popular_objects)
 from apps.accounts.utils.mixins import StaffLoginRequiredMixin
+from apps.accounts.models.user import User
 
 
 class ProductListView(ListView):
@@ -21,6 +24,50 @@ class ProductListView(ListView):
     queryset = Product.objects.published()
     context_object_name = 'products'
     paginate_by = 9
+
+    def get_default_queryset(self):
+        """ need this to implement overwrite the default queryset """
+        return self.queryset
+
+    def get_queryset(self):
+        queryset = self.get_default_queryset()
+        self.query = self.request.GET.get('q')
+
+        if self.query:
+            queryset = queryset.filter(Q(title__icontains=self.query))
+
+        return queryset
+
+    @property
+    def extra_context(self):
+        """ additional `context_data` for `get_context_data` """
+        return None
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data['query'] = self.query
+        if self.extra_context:
+            context_data.update(**self.extra_context)
+        return context_data
+
+
+class ProductListAuthorPrivateView(StaffLoginRequiredMixin, ProductListView):
+    template_name = 'apps/product/list_private.html'
+
+    def get_default_queryset(self):
+        queryset = self.queryset.filter(author=self.request.user)
+        self.publish = self.request.GET.get('publish')
+
+        if self.publish == 'yes':
+            queryset = queryset.filter(publish=True)
+        elif self.publish == 'no':
+            queryset = queryset.filter(publish=False)
+
+        return queryset
+
+    @property
+    def extra_context(self):
+        return dict(publish=self.publish)
 
 
 class ProductDetailView(DetailView):
@@ -31,6 +78,21 @@ class ProductDetailView(DetailView):
     def get_object(self):
         queries = {'id': self.kwargs['id'], 'deleted_at__isnull': True}
         return get_object_or_404(self.model, **queries)
+
+    def get_visitors(self):
+        """
+        function to get/create the visitor,
+        :return dict of {'client_ip': <str>, 'total_visitors': <int>}
+        """
+        queries = {'request': self.request,
+                   'content_type': self.object.get_content_type(),
+                   'object_id': self.object.id}
+        return visitor_counter(**queries)
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data['visitor_counter'] = self.get_visitors()
+        return context_data
 
 
 class ProductCreateView(StaffLoginRequiredMixin, FormView):
@@ -72,3 +134,45 @@ class ProductUpdateView(StaffLoginRequiredMixin, UpdateView):
         context = super().get_context_data(*args, **kwargs)
         context['product'] = self.get_object()
         return context
+
+
+class ProductDeleteJSONView(JSONResponseMixin, TemplateView):
+    model = Product
+
+    def soft_delete_product(self, id):
+        """
+        function to delete the product object with soft delete method
+        :param `id` is integer id of `Product`.
+        """
+        # soft delete the related objects
+        queries = {'content_type__model': 'product', 'object_id': id}
+        Visitor.objects.filter(**queries).update(deleted_at=timezone.now())
+
+        # soft delete the object
+        product = get_object_or_404(self.model, id=id)
+        product.deleted_at = timezone.now()
+        product.save()
+
+        return True
+
+    def get(self, request, *args, **kwargs):
+        context_data = {'success': False, 'message': None}
+        id = request.GET.get('id')
+
+        if str(id).isdigit():
+            if not request.user.is_authenticated:
+                context_data['message'] = _('You must login to delete this product!')
+            elif request.user.is_superuser:
+                self.soft_delete_product(id)
+                context_data['success'] = True
+                context_data['message'] = _('The successfully product deleted!')
+            elif request.user != product.author:
+                context_data['message'] = _('You are not allowed to access this feature!')
+            else:
+                self.soft_delete_product(id)
+                context_data['success'] = True
+                context_data['message'] = _('The successfully product deleted!')
+        else:
+            context_data['message'] = _('Param `id` should be integer!')
+
+        return self.render_to_json_response(context_data)

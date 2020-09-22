@@ -36,7 +36,7 @@ urlpatterns = [
 
     # posts
     path('', PostListView.as_view(), name='post_list'),
-    path('posts/me/', PostListAuthorPrivateView.as_view(), name='posts_me'),
+    path('posts/me/', PostListAuthorPrivateView.as_view(), name='post_me'),
     path('posts/tagged/<slug:name>/', PostListTaggedView.as_view(), name='post_list_tagged'),
     path('posts/author/<slug:username>/', PostListAuthorView.as_view(), name='post_list_author'),
     path('posts/detail/<slug:slug>/', PostDetailView.as_view(), name='post_detail'),

@@ -7,7 +7,8 @@ from django.conf import settings
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
-from apps.blog.models.base import (TimeStampedModel, DefaultManager)
+from apps.blog.models.base import (TimeStampedModel, DefaultManager,
+                                   ContentTypeModel)
 from apps.accounts.models.user import User
 
 
@@ -19,7 +20,7 @@ class ProductManager(DefaultManager):
         return queryset.filter(publish=True)
 
 
-class Product(TimeStampedModel):
+class Product(TimeStampedModel, ContentTypeModel):
     id = models.BigAutoField(primary_key=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=200)

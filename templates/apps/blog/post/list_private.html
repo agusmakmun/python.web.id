@@ -132,7 +132,7 @@
               </td>
             </tr>
           {% empty %}
-            ................
+            <!-- FIXME: KURANG KONDISI EMPTY -->
           {% endfor %}
         </tbody>
       </table>
@@ -147,7 +147,7 @@
   <script>
     $(document).ready(function() {
       // come from `js/djangoblog.js`
-      changeBaseURLPaginator(url='{% url "apps.blog:posts_me" %}', element='.main-pagination');
+      changeBaseURLPaginator(url='{% url "apps.blog:post_me" %}', element='.main-pagination');
 
       // delete mode
       $(document).on('click', '.delete-post-icon', function(){
