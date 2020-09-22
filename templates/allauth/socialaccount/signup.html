@@ -56,7 +56,18 @@
     {% endif %}
 
     <div style="padding:0 70px">
-      <button class="btn bg-gradient-success btn-block" type="submit">{% trans "Sign Up" %}</button>
+      <button class="btn btn-submit bg-gradient-success btn-block" type="submit">{% trans "Sign Up" %}</button>
     </div>
   </form>
+{% endblock %}
+
+{% block js %}
+  <script>
+    // Disable submit button after click, from: `static/js/djangoblog.js`
+    $(document).on('click', '.btn-submit', function() {
+      var form = $(this).closest('form');
+      var button = $(this);
+      submitAndDisableButton(form, button);
+    });
+  </script>
 {% endblock %}

@@ -47,3 +47,27 @@ var changeBaseURLPaginator = function(url, element) {
   elementMain.find('.form-go-to-page')
          .attr({'action': url});
 }
+
+
+/*
+1. Disable submit button after click,
+this case to handle duplicate data.
+*/
+let submitAndDisableButton = function(formId, buttonId) {
+  var form, button;
+
+  if(typeof(formId) == 'object') {form = formId} else {form = $(formId)}
+  if(typeof(buttonId) == 'object') {button = buttonId} else {button = $(buttonId)}
+
+  form.submit(function(e) {
+
+    // stop submitting the form to see the disabled button effect
+    // you should comment (disable) this line below before release.
+    // e.preventDefault();
+
+    // disable the submit button
+    button.attr('disabled', true);
+
+    return true;
+  });
+}

@@ -105,11 +105,11 @@ class ContactUsView(FormView):
         from_email = form.cleaned_data['email']
 
         try:
-            subject = _('%(subject)s from %(email)s by %(sender)s')
-            subject = subject % {'subject': subject, 'email': from_email, 'sender': sender}
+            subject_new = _('%(subject)s from %(email)s by %(sender)s')
+            subject_new = subject_new % {'subject': subject, 'email': from_email, 'sender': sender}
             recipients = [settings.EMAIL_HOST_USER]
 
-            send_mail(subject, message, from_email, recipients)
+            send_mail(subject_new, message, from_email, recipients)
             messages.success(self.request, _('Your message successfully sended!'))
             return redirect(reverse('apps.blog:post_list'))
 
