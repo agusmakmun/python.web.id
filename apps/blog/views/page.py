@@ -3,12 +3,16 @@ from __future__ import unicode_literals
 
 import os
 
+from django.urls import reverse
 from django.conf import settings
-from django.shortcuts import get_object_or_404
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.shortcuts import (get_object_or_404, redirect)
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import TemplateView
+from django.views.generic import (TemplateView, FormView)
 
 from apps.blog.models.post import Page
+from apps.blog.forms.contact import ContactForm
 
 
 class BasePageDetailView(TemplateView):
@@ -83,3 +87,33 @@ class PageFromDatabaseView(BasePageDetailView):
     def extra_context(self):
         """ additional `context_data` for `get_context_data` """
         return {'page': self.object}
+
+
+class ContactUsView(FormView):
+    template_name = 'apps/blog/page/contact.html'
+    form_class = ContactForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
+    def form_valid(self, form):
+        sender = form.cleaned_data['sender']
+        subject = form.cleaned_data['subject']
+        message = form.cleaned_data['message']
+        from_email = form.cleaned_data['email']
+
+        try:
+            subject = _('%(subject)s from %(email)s by %(sender)s')
+            subject = subject % {'subject': subject, 'email': from_email, 'sender': sender}
+            recipients = [settings.EMAIL_HOST_USER]
+
+            send_mail(subject, message, from_email, recipients)
+            messages.success(self.request, _('Your message successfully sended!'))
+            return redirect(reverse('apps.blog:post_list'))
+
+        except Exception as error:
+            messages.error(self.request, error)
+
+        return redirect(reverse('apps.blog:page_contact_us'))

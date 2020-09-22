@@ -8,7 +8,7 @@ from updown.views import AddRatingFromModel
 from apps.blog.views.page import (
     PageAboutView, PageDisclaimerView,
     PagePrivacyPolicyView, PageServicesView,
-    PageSponsorView, PageTOSView
+    PageSponsorView, PageTOSView, ContactUsView
 )
 from apps.blog.views.post import (
     PostListView, PostListTaggedView,
@@ -33,6 +33,7 @@ urlpatterns = [
     path('services/', PageServicesView.as_view(), name='page_services'),
     path('sponsor/', PageSponsorView.as_view(), name='page_sponsor'),
     path('terms-of-service/', PageTOSView.as_view(), name='page_terms_of_service'),
+    path('contact/', ContactUsView.as_view(), name='page_contact_us'),
 
     # posts
     path('', PostListView.as_view(), name='post_list'),

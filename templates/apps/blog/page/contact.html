@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Contact Us" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    <h5><a class="no-underline" href="">{% trans "Contact Us" %}</a></h5>
+    <div class="mt-4 row row-content">
+      <div class="col-md-8">
+        <div class="contact-from bg-white p-3 pb-4" style="border: 1px dashed #ddd">
+          <div class="alert alert-light pl-1 pt-1">
+            <h4>{% trans "What's in a great support request?" %}</h4>
+            <li>{% trans "Provide us with as much essential information as possible." %}</li>
+            <li>{% trans "Include any screenshots or links that are related to your problem." %}</li>
+          </div>
+
+          <form class="form mb-5" method="post">{% csrf_token %}
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label class="text-bold" for="id_sender">{{ form.sender.label }} *</label>
+                {{ form.sender }}
+                {% if form.sender.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.sender.errors %}
+                  {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+              <div class="col-md-6">
+                <label class="text-bold" for="id_email">{{ form.email.label }} *</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                  <div class="invalid-feedback" style="display:block">
+                    {% for error in form.email.errors %}
+                      {{ error }}{% if not forloop.last %}<br />{% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="text-bold" for="id_subject">{{ form.subject.label }} *</label>
+              {{ form.subject }}
+              {% if form.subject.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.subject.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="form-group">
+              <label class="text-bold" for="id_message">{{ form.message.label }} *</label>
+              {{ form.message }}
+              {% if form.message.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.message.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="form-group">
+              <button class="btn bg-gradient-success float-right" type="submit">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
+                </svg>                
+                <span>{% trans "Send Email" %}</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4">
+        {% include "apps/blog/page/includes/right_sidebar.html" %}
+      </div>
+    </div><!-- /.row-content -->
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script>
+
+  </script>
+{% endblock %}
