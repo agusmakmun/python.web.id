@@ -193,6 +193,36 @@ h1,h2,h3,h4,h5,h6 {
   color: #ececec;
 }
 
+/* Soft Gradient */
+.bg-gradient-default-soft {
+  background: #efefef linear-gradient(180deg,#ffffff,#f3f3f3) repeat-x!important;
+  color: #3a3939;
+}
+.bg-gradient-primary-soft {
+  background: #e8f3ff linear-gradient(180deg,#f7faff,#cbe2fb) repeat-x!important;
+  color: #2d5d90;
+}
+.bg-gradient-secondary-soft {
+  background: #f0f0f1 linear-gradient(180deg,#ffffff,#e8e8e8) repeat-x!important;
+  color: #495057;
+}
+.bg-gradient-success-soft {
+  background: #d5fbdb linear-gradient(180deg,#f8fff9,#d3fbd8) repeat-x!important;
+  color: #296530;
+}
+.bg-gradient-info-soft {
+  background: #d5f9ff linear-gradient(180deg,#f5fdff,#dff8ff) repeat-x!important;
+  color: #0f799a;
+}
+.bg-gradient-danger-soft,
+.bg-gradient-error-soft {
+  background: #f9eae9 linear-gradient(180deg,#fffbfb,#fbdedd) repeat-x!important;
+  color: #8e413e;
+}
+.bg-gradient-warning-soft {
+  background: #fbf4d6 linear-gradient(180deg,#fffefc,#fdf5d5) repeat-x!important;
+  color: #8a7628;
+}
 
 /* Ribbon */
 .ribbon-wrapper-orange {
