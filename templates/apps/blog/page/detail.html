@@ -2,6 +2,8 @@
 {% load static i18n %}
 {% load martortags %}
 
+{% block title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
 {% block css %}
   <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" rel="stylesheet" media="all">
   <style>div.martor-preview {border: 1px dashed #ddd}div.martor-preview hr{background-image: linear-gradient(to right,silver 50%,rgba(255,255,255,0) 40%); background-position: top; background-size: 3px 1px; background-repeat: repeat-x; height: 1px; border-top: 0; border-bottom: 0;}</style>
@@ -11,10 +13,14 @@
 {% block content %}
   <div class="container p-3">
     <h5><a class="no-underline" href="">{{ page_title }}</a></h5>
-
-    <div class="mt-4 row-content">
-      <div class="martor-preview">
-        {{ content|safe_markdown }}
+    <div class="mt-4 row row-content">
+      <div class="col-md-8">
+        <div class="martor-preview">
+          {{ content|safe_markdown }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        {% include "apps/blog/page/includes/right_sidebar.html" %}
       </div>
     </div><!-- /.row-content -->
   </div>
