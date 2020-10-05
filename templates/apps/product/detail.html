@@ -4,6 +4,29 @@
 
 {% block title %}{{ product.title }} - {{ block.super }}{% endblock %}
 
+{% block seo %}
+  <meta name="description" content="{{ product.sort_description }}">
+  <meta name="author" content="{{ product.author }}">
+  <meta property="article:tag" content="{{ product.get_category_display }}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ product.title }}">
+  <meta property="og:description" content="{{ product.sort_description }}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  {% if product.list_image_urls|length > 0 %}
+  <meta property="og:image" content="{{ product.list_image_urls|first }}">
+  {% endif %}
+  <meta property="og:site_name" content="python.web.id">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{{ product.sort_description }}">
+  {% if product.list_image_urls|length > 0 %}
+  <meta name="twitter:image:src" content="{{ product.list_image_urls|first }}">
+  {% endif %}
+  <meta name="twitter:title" content="{{ product.title }}">
+  <meta name="twitter:domain" content="python.web.id">
+  <meta name="twitter:creator" content="@{% if product.author.profile.twitter %}{{ product.author.profile.twitter|splitter|last }}{% else %}python.web.id{% endif %}">
+{% endblock %}
+
 {% block css %}
   <link rel="stylesheet" href="{% static 'martor/css/martor.bootstrap.min.css' %}" />
   <style>div.martor-preview {padding:0;background:transparent}</style>

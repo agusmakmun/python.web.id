@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block seo %}
-  <meta name="description" content="{% if object.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  <meta name="description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
   <meta name="author" content="{{ post.author }}">
   <meta name="keywords" content="{% if post.keywords %}{{ post.keywords }}{% else %}{{ post.title }}{% endif %}">
   {% for tag in post.tags.published %}
@@ -35,7 +35,7 @@
   {% endif %}
   <meta name="twitter:title" content="{{ post.title }}">
   <meta name="twitter:domain" content="python.web.id">
-  <meta name="twitter:creator" content="{% if post.author.profile.twitter %}{{ post.author.profile.twitter|splitter|last }}{% else %}@python.web.id{% endif %}">
+  <meta name="twitter:creator" content="@{% if post.author.profile.twitter %}{{ post.author.profile.twitter|splitter|last }}{% else %}python.web.id{% endif %}">
 {% endblock %}
 
 {% block css %}

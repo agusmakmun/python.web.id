@@ -1,8 +1,26 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% load martortags %}
+{% load martortags common_tags %}
 
 {% block title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
+{% block seo %}
+  {% if page %}
+    <meta name="description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+    <meta name="author" content="{{ page.author }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:site_name" content="python.web.id">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:domain" content="python.web.id">
+    <meta name="twitter:creator" content="@{% if page.author.profile.twitter %}{{ page.author.profile.twitter|splitter|last }}{% else %}python.web.id{% endif %}">
+  {% endif %}
+{% endblock %}
 
 {% block css %}
   <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" rel="stylesheet" media="all">
