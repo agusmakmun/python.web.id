@@ -2,9 +2,13 @@
 from __future__ import unicode_literals
 
 from django.urls import path
+from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps.views import sitemap
 
 from updown.views import AddRatingFromModel
 
+from apps.blog.models.post import Post
+from apps.blog.feed import LatestPosts
 from apps.blog.views.page import (
     PageAboutView, PageDisclaimerView,
     PagePrivacyPolicyView, PageServicesView,
@@ -24,6 +28,11 @@ from apps.blog.views.addons import FavoriteCreateDeleteJSONView
 
 
 app_name = 'apps.blog'
+
+info_dict = {
+    'queryset': Post.objects.published(),
+    'date_field': 'updated_at'
+}
 
 urlpatterns = [
     # pages
@@ -46,7 +55,9 @@ urlpatterns = [
         'model': 'Post',
         'field_name': 'rating'
     }, name='post_rating'),
-
+    path('sitemap.xml', sitemap, {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6)}},
+         name='django.contrib.sitemaps.views.sitemap'),
+    path('posts/feed/', LatestPosts(), name='post_feed'),
     path('posts/create/', PostCreateView.as_view(), name='post_create'),
     path('posts/update/<slug:slug>/', PostUpdateView.as_view(), name='post_update'),
     path('posts/delete/json/', PostDeleteJSONView.as_view(), name='post_json_delete'),

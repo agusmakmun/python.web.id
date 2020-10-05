@@ -4,6 +4,40 @@
 
 {% block title %}{{ post.title }} - {{ block.super }}{% endblock %}
 
+{% block robot %}
+  {% if not post.publish %}
+    <meta name="robots" content="NONE,NOARCHIVE" />
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block seo %}
+  <meta name="description" content="{% if object.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  <meta name="author" content="{{ post.author }}">
+  <meta name="keywords" content="{% if post.keywords %}{{ post.keywords }}{% else %}{{ post.title }}{% endif %}">
+  {% for tag in post.tags.published %}
+  <meta property="article:tag" content="{{ tag.name }}">
+  {% endfor %}
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  {% if post.description|markdown_find_images|length >= 1 %}
+  <meta property="og:image" content="{{ post.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta property="og:site_name" content="python.web.id">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  {% if post.description|markdown_find_images|length >= 1 %}
+  <meta name="twitter:image:src" content="{{ post.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta name="twitter:title" content="{{ post.title }}">
+  <meta name="twitter:domain" content="python.web.id">
+  <meta name="twitter:creator" content="{% if post.author.profile.twitter %}{{ post.author.profile.twitter|splitter|last }}{% else %}@python.web.id{% endif %}">
+{% endblock %}
+
 {% block css %}
   <link rel="stylesheet" href="{% static 'martor/css/martor.bootstrap.min.css' %}" />
   <style>div.martor-preview {padding:0;background:transparent}</style>
@@ -12,7 +46,7 @@
 {% block content %}
   <div class="container p-3">
     <h5 class="mt-2 mb-4">
-      <a class="no-underline" href="">{{ post.title }}</a>
+      <a class="no-underline" href="">{{ post.title }} {% if not post.publish %}<label class="badge badge-warning">{% trans "Draft" %}</label>{% endif %}</a>
       <span class="float-right">
         <a class="btn btn-sm bg-gradient-success" href="{% url 'apps.blog:post_create' %}" role="button" style="line-height:1.5rem">
           <svg width="15" height="15" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -101,6 +135,11 @@
                       <span>Linkedin</span>
                     </a>
                   </form>
+
+                  {% if post.author == request.user or request.user.is_superuser %}
+                    &nbsp;
+                    <a class="text-muted" href="{% url 'apps.blog:post_update' slug=post.slug %}">{% trans "Update" %}</a>
+                  {% endif %}
                 </div>
 
                 <div class="float-right author">

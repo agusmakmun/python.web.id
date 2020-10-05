@@ -109,6 +109,7 @@ class PostListAuthorView(PostListView):
 
 class PostListAuthorPrivateView(LoginRequiredMixin, PostListView):
     template_name = 'apps/blog/post/list_private.html'
+    queryset = Post.objects.all()
 
     def get_default_queryset(self):
         queryset = self.queryset.filter(author=self.request.user)

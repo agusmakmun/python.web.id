@@ -35,7 +35,7 @@ class LatestPosts(Feed):
         return item.author
 
     def item_link(self, item):
-        return reverse('posts_detail', args=[item.slug])
+        return reverse('apps.blog:post_detail', args=[item.slug])
 
     def item_pubdate(self, item):
-        return item.modified
+        return item.updated_at

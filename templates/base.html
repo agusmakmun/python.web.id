@@ -2,18 +2,14 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
-  <meta content="noodp,noydir" name="robots">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content='100004919839335' property='fb:admins'>
-  <meta content='647189095407751' property='fb:app_id'>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="549DDB40F02282AF680D66EE25B5A94F" name="msvalidate.01">
   <meta content="ALyG2_Wag27MgRzLcdZDMUIiL_keuGcVTfLYMeWH_CI" name="google-site-verification">
-  <link rel="publisher" href="https://plus.google.com/112965619973080744055">
   <link rel="openid2.provider" href="https://openid.stackexchange.com/openid/provider">
   <link rel="openid2.local_id" href="https://openid.stackexchange.com/user/dbed287a-f726-40d2-82b8-7faaf9dc5018">
   <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
-  <link rel="alternate" href="/feed/" type="application/rss+xml" title="Blog Feed">
+  <link rel="alternate" href="{% url 'apps.blog:post_feed' %}" type="application/rss+xml" title="Blog Feed">
 
   {% block robot %}
   <meta name="robots" content="noodp, noydir"/>

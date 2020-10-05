@@ -334,3 +334,24 @@ def append_url_param(url, rep='lang=en'):
         return '%s?%s' % (base_url, queries_str)
 
     return url
+
+
+@register.filter
+def markdown_find_images(markdown_text):
+    """
+    return list of image urls inside `markdown_text`.
+    :param `markdown_text` is markdown text to find.
+    example markdown text:
+        Hello ![title](/path/to/image.png)
+    provides for:
+        jpeg|jpg|png|gif
+    demo:
+        https://goo.gl/3LEXom
+    usage:
+        {{ field_name|markdown_find_images }}
+    example:
+        {{ post.description|markdown_find_images }}
+    """
+    # findgex = r"[^(\s]+\.(?:jpeg|jpg|png|gif)(?=\b[+^\)])"
+    findgex = r"[^(\s]+\.(?:jpeg|jpg|png|gif)(?=\))"
+    return re.findall(findgex, markdown_text)
