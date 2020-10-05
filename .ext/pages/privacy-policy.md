@@ -16,6 +16,8 @@ Like many other Web sites, [Python Learning](https://python.web.id) makes use of
 
 [Python Learning](https://python.web.id) uses cookies to store information about visitors' preferences, to record user-specific information on which pages the site visitor accesses or visits, and to personalize or customize our web page content based upon visitors' browser type or other information that the visitor sends via their browser.
 
+When you visit or interact with our sites, services, applications, tools or messaging, we or our authorised service providers may use cookies, web beacons, and other similar technologies for storing information to help provide you with a better, faster and safer experience and for advertising purposes.
+
 -----------------------
 
 #### Our Advertising Partners
