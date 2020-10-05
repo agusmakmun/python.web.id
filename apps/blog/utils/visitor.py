@@ -59,7 +59,7 @@ def get_popular_objects(queryset, addon_model=Visitor, year=None):
 
     >>> from apps.blog.utils.visitor import get_popular_objects
     >>> from apps.blog.models.post import Post
-    >>> queryset = Post.objects.published()
+    >>> queryset = Post.objects.published_public()
     >>> get_popular_objects(queryset)
     [<Post: NMD R1 Black and Blue Shoes>, <Post: Lorem ipsum>, ...]
     """

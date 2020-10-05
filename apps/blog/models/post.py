@@ -18,6 +18,10 @@ from apps.blog.models.addons import (Visitor, Favorite)
 class PostManager(DefaultManager):
 
     def published(self):
+        """ publish manager for post without `publish` field """
+        return super().published()
+
+    def published_public(self):
         """ update publish manager for post """
         queryset = super().published()
         return queryset.filter(publish=True)

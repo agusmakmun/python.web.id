@@ -23,7 +23,7 @@ class LatestPosts(Feed):
         return 'Summon Agus'
 
     def items(self):
-        return Post.objects.published()[:10]
+        return Post.objects.published_public()[:10]
 
     def item_title(self, item):
         return item.title

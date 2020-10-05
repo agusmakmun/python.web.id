@@ -30,7 +30,7 @@ from apps.blog.views.addons import FavoriteCreateDeleteJSONView
 app_name = 'apps.blog'
 
 info_dict = {
-    'queryset': Post.objects.published(),
+    'queryset': Post.objects.published_public(),
     'date_field': 'updated_at'
 }
 

@@ -20,7 +20,7 @@ class Tag(TimeStampedModel):
 
     def get_posts(self):
         if hasattr(self, 'post_set'):
-            return self.post_set.published()
+            return self.post_set.published_public()
         return None
 
     @property

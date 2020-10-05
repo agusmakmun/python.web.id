@@ -34,7 +34,7 @@ def popular_tags(limit=5, query=None):
         queryset = Tag.objects.published()
 
     maps = [
-        {'tag': tag, 'total': tag.post_set.published().count()}
+        {'tag': tag, 'total': tag.post_set.published_public().count()}
         for tag in queryset
     ]
     maps.sort(key=lambda x: x['total'], reverse=True)
@@ -52,7 +52,7 @@ def popular_tags(limit=5, query=None):
 #     used in:
 #         - apps/blog/posts_list.html
 #     """
-#     queryset = Post.objects.published().order_by('-rating_likes')
+#     queryset = Post.objects.published_public().order_by('-rating_likes')
 #     top_posts = Visitor.objects.filter(post__in=queryset).values('post')\
 #         .annotate(total=Count('post__pk')).order_by('-total')
 #     id_top_posts = [pk['post'] for pk in top_posts]
@@ -75,7 +75,9 @@ def random_posts(limit=5):
     function to get the random posts.
     used in: templates/apps/blog/post/includes/sidebar_list.html
     """
-    return Post.objects.published().order_by('-rating_likes').order_by('?')[:limit]
+    return Post.objects.published_public()\
+                       .order_by('-rating_likes')\
+                       .order_by('?')[:limit]
 
 
 @register.simple_tag

@@ -26,7 +26,7 @@ from apps.accounts.models.user import User
 class PostListView(ListView):
     paginate_by = getattr(settings, 'DEFAULT_PAGINATION_NUMBER', 10)
     template_name = 'apps/blog/post/list.html'
-    queryset = Post.objects.published()
+    queryset = Post.objects.published_public()
     context_object_name = 'posts'
 
     def get_default_queryset(self):
@@ -88,7 +88,7 @@ class PostListTaggedView(PostListView):
 
     def get_default_queryset(self):
         self.tag = get_object_or_404(Tag, name=self.kwargs['name'])
-        return self.tag.post_set.published()
+        return self.tag.post_set.published_public()
 
     @property
     def extra_context(self):
@@ -100,7 +100,7 @@ class PostListAuthorView(PostListView):
 
     def get_default_queryset(self):
         self.author = get_object_or_404(User, username=self.kwargs['username'])
-        return self.author.post_set.published()
+        return self.author.post_set.published_public()
 
     @property
     def extra_context(self):
@@ -109,7 +109,7 @@ class PostListAuthorView(PostListView):
 
 class PostListAuthorPrivateView(LoginRequiredMixin, PostListView):
     template_name = 'apps/blog/post/list_private.html'
-    queryset = Post.objects.all()
+    queryset = Post.objects.published()
 
     def get_default_queryset(self):
         queryset = self.queryset.filter(author=self.request.user)
@@ -150,7 +150,7 @@ class PostDetailView(DetailView):
         :return posts object
         """
         queries = {'tags__in': self.object.tags.all()}
-        return self.model.objects.published()\
+        return self.model.objects.published_public()\
                                  .filter(**queries)\
                                  .exclude(id=self.object.id)\
                                  .distinct()[:limit]
