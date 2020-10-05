@@ -45,6 +45,10 @@ MARTOR_ENABLE_CONFIGS = {
 }
 
 
+# Disqus Configuration
+DISQUS_WEBSITE_SHORTNAME = 'xxxx-xxxx-xxxx'
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',

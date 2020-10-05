@@ -36,7 +36,7 @@
             </div>
           {% endif %}
 
-          <div class="card p-2 mb-3 card-post-item">
+          <div class="card p-2 mb-3 card-post-item" {% if post.rating.get_difference <= -3 %}style="opacity:.35"{% endif %}>
             <div class="row no-gutters">
               <div class="col-md-1">
                 <div class="stats mb-3">

@@ -48,7 +48,7 @@ class FavoriteCreateDeleteJSONView(JSONResponseMixin, TemplateView):
         queries = {'user': request.user, 'content_type': content_type, 'object_id': object_id}
         favorite, created = self.model.objects.get_or_create(**queries)
 
-        if created:
+        if favorite.deleted_at:
             favorite.deleted_at = None
             context_data.update({'success': True, 'message': _('The post marked as favorite!')})
         else:

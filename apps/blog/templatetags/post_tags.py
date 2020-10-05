@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django import template
+from django.conf import settings
 from django.utils import timezone
 from django.db.models import (Q, Count)
 
@@ -70,7 +71,20 @@ def random_posts(limit=5):
     {% for post in random_posts_list %}
       <a href="{% url 'posts_detail' slug=post.slug %}">{{ post.title }}</a>
     {% endfor %}
-    used in:
-        - templates/apps/blog/post/includes/sidebar_list.html
+
+    function to get the random posts.
+    used in: templates/apps/blog/post/includes/sidebar_list.html
     """
     return Post.objects.published().order_by('-rating_likes').order_by('?')[:limit]
+
+
+@register.simple_tag
+def get_disqus_website_sortname():
+    """
+    {% load post_tags %}
+    {% get_disqus_website_sortname %}
+
+    function to get the disqus website sortname.
+    used in: templates/apps/blog/post/includes/disqus.html
+    """
+    return getattr(settings, 'DISQUS_WEBSITE_SHORTNAME')
