@@ -1,3 +1,8 @@
+"""
+Post Views
+to handle all post models,
+like: Post, Tag
+"""
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
@@ -5,17 +10,17 @@ from django.urls import reverse
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
-from django.db.models import (Q, F, Count)
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from updown.models import Vote
+# from updown.models import Vote
 
 from apps.blog.models.tag import Tag
-from apps.blog.models.post import (Post, Page)
+from apps.blog.models.post import Post
 from apps.blog.models.addons import (Visitor, Favorite)
 from apps.blog.utils.visitor import (visitor_counter, get_popular_objects)
 from apps.blog.utils.json import JSONResponseMixin
@@ -24,10 +29,16 @@ from apps.accounts.models.user import User
 
 
 class PostListView(ListView):
+    """ Class View to show the Posts """
     paginate_by = getattr(settings, 'DEFAULT_PAGINATION_NUMBER', 10)
     template_name = 'apps/blog/post/list.html'
     queryset = Post.objects.published_public()
     context_object_name = 'posts'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.query = None
+        self.sort = None
 
     def get_default_queryset(self):
         """ need this to implement overwrite the default queryset """
@@ -84,7 +95,12 @@ class PostListView(ListView):
 
 
 class PostListTaggedView(PostListView):
+    """ Class View to filter Posts by specific Tag """
     template_name = 'apps/blog/post/tagged.html'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.tag = None
 
     def get_default_queryset(self):
         self.tag = get_object_or_404(Tag, name=self.kwargs['name'])
@@ -96,7 +112,12 @@ class PostListTaggedView(PostListView):
 
 
 class PostListAuthorView(PostListView):
+    """ Class View to filter Posts by specific author """
     template_name = 'apps/blog/post/author.html'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.author = None
 
     def get_default_queryset(self):
         self.author = get_object_or_404(User, username=self.kwargs['username'])
@@ -108,8 +129,14 @@ class PostListAuthorView(PostListView):
 
 
 class PostListAuthorPrivateView(LoginRequiredMixin, PostListView):
+    """ Class View to filter Posts by specific author (his own posts) """
     template_name = 'apps/blog/post/list_private.html'
     queryset = Post.objects.published()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.publish = None
+        self.is_featured = None
 
     def get_default_queryset(self):
         queryset = self.queryset.filter(author=self.request.user)
@@ -135,11 +162,12 @@ class PostListAuthorPrivateView(LoginRequiredMixin, PostListView):
 
 
 class PostDetailView(DetailView):
+    """ Class View to show detail of Post object """
     template_name = 'apps/blog/post/detail.html'
     context_object_name = 'post'
     model = Post
 
-    def get_object(self):
+    def get_object(self, queryset=None):
         return get_object_or_404(self.model, slug=self.kwargs['slug'],
                                  deleted_at__isnull=True)
 
@@ -184,6 +212,7 @@ class PostDetailView(DetailView):
 
 
 class PostCreateView(LoginRequiredMixin, FormView):
+    """ Class View to create the Post object """
     template_name = 'apps/blog/post/create.html'
     form_class = PostForm
 
@@ -197,12 +226,13 @@ class PostCreateView(LoginRequiredMixin, FormView):
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
+    """ Class View to update the Post object """
     template_name = 'apps/blog/post/update.html'
     context_object_name = 'post'
     form_class = PostForm
     model = Post
 
-    def get_object(self):
+    def get_object(self, queryset=None):
         """ handle the object for specific permission """
         if self.request.user.is_superuser:
             return get_object_or_404(self.model, slug=self.kwargs['slug'])
@@ -234,40 +264,41 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 
 class PostDeleteJSONView(JSONResponseMixin, TemplateView):
+    """ Class View to delete the Post object via json format """
     model = Post
 
-    def soft_delete_post(self, id):
+    def soft_delete_post(self, post):
         """
         function to delete the post object with soft delete method
-        :param `id` is integer id of `Post`.
+        :param `post` is object of `Post`.
+        :return
         """
         # soft delete the related objects
-        queries = {'content_type__model': 'post', 'object_id': id}
+        queries = {'content_type__model': 'post', 'object_id': post.id}
         Visitor.objects.filter(**queries).update(deleted_at=timezone.now())
         Favorite.objects.filter(**queries).update(deleted_at=timezone.now())
 
         # soft delete the object
-        post = get_object_or_404(self.model, id=id)
         post.deleted_at = timezone.now()
         post.save()
 
-        return True
-
     def get(self, request, *args, **kwargs):
         context_data = {'success': False, 'message': None}
-        id = request.GET.get('id')
+        object_id = request.GET.get('id')
 
-        if str(id).isdigit():
+        if str(object_id).isdigit():
+            post = get_object_or_404(self.model, id=object_id)
+
             if not request.user.is_authenticated:
                 context_data['message'] = _('You must login to delete this post!')
             elif request.user.is_superuser:
-                self.soft_delete_post(id)
+                self.soft_delete_post(post=post)
                 context_data['success'] = True
                 context_data['message'] = _('The successfully post deleted!')
             elif request.user != post.author:
                 context_data['message'] = _('You are not allowed to access this feature!')
             else:
-                self.soft_delete_post(id)
+                self.soft_delete_post(post=post)
                 context_data['success'] = True
                 context_data['message'] = _('The successfully post deleted!')
         else:
