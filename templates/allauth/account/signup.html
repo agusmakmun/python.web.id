@@ -97,18 +97,20 @@
       </div>
     </div>
 
-    <div class="form-captcha mb-3">
-      <div class="d-flex justify-content-center">
-        {{ form.captcha }}
-      </div>
-      {% if form.captcha.errors %}
-        <div class="text-center invalid-feedback" style="display:block">
-          {% for error in form.captcha.errors %}
-            {{ error }}{% if not forloop.last %}<br />{% endif %}
-          {% endfor %}
+    {% if form.captcha %}
+      <div class="form-captcha mb-3">
+        <div class="d-flex justify-content-center">
+          {{ form.captcha }}
         </div>
-      {% endif %}
-    </div>
+        {% if form.captcha.errors %}
+          <div class="text-center invalid-feedback" style="display:block">
+            {% for error in form.captcha.errors %}
+              {{ error }}{% if not forloop.last %}<br />{% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
 
     <div style="padding:0 70px">
       <button class="btn btn-submit bg-gradient-success btn-block" type="submit">{% trans "Sign up" %}</button>

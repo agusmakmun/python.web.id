@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 06:41+0700\n"
+"POT-Creation-Date: 2020-10-10 05:51+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -603,7 +603,7 @@ msgstr ""
 #: templates/allauth/account/account_inactive.html:16
 #: templates/allauth/account/email_confirm.html:36
 #: templates/allauth/account/logout.html:25
-#: templates/allauth/account/password_reset.html:59
+#: templates/allauth/account/password_reset.html:61
 #: templates/allauth/account/password_reset_done.html:21
 #: templates/allauth/account/password_reset_from_key.html:20
 #: templates/allauth/account/password_reset_from_key.html:51
@@ -787,19 +787,19 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: templates/allauth/account/login.html:90
+#: templates/allauth/account/login.html:92
 msgid "Sign in"
 msgstr ""
 
-#: templates/allauth/account/login.html:94
+#: templates/allauth/account/login.html:96
 #, python-format
 msgid ""
 "If you have not created an account yet, <br>then please <a href="
 "\"%(signup_url)s\">sign up</a> first."
 msgstr ""
 
-#: templates/allauth/account/login.html:95
-#: templates/allauth/account/signup.html:119
+#: templates/allauth/account/login.html:97
+#: templates/allauth/account/signup.html:121
 msgid "Forgot Password?"
 msgstr ""
 
@@ -901,7 +901,7 @@ msgstr ""
 msgid "Please contact us if you have any trouble resetting your password."
 msgstr ""
 
-#: templates/allauth/account/password_reset.html:55
+#: templates/allauth/account/password_reset.html:57
 msgid "Reset My Password"
 msgstr ""
 
@@ -947,11 +947,11 @@ msgstr ""
 msgid "Password (again)"
 msgstr ""
 
-#: templates/allauth/account/signup.html:114
+#: templates/allauth/account/signup.html:116
 msgid "Sign up"
 msgstr ""
 
-#: templates/allauth/account/signup.html:118
+#: templates/allauth/account/signup.html:120
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">sign in</a>"
 msgstr ""
@@ -1291,7 +1291,7 @@ msgstr ""
 msgid "Include any screenshots or links that are related to your problem."
 msgstr ""
 
-#: templates/apps/blog/page/contact.html:73
+#: templates/apps/blog/page/contact.html:87
 msgid "Send Email"
 msgstr ""
 

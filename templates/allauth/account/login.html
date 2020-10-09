@@ -69,18 +69,20 @@
       </div>
     </div>
 
-    <div class="form-captcha">
-      <div class="d-flex justify-content-center">
-        {{ form.captcha }}
-      </div>
-      {% if form.captcha.errors %}
-        <div class="text-center invalid-feedback" style="display:block">
-          {% for error in form.captcha.errors %}
-            {{ error }}{% if not forloop.last %}<br />{% endif %}
-          {% endfor %}
+    {% if form.captcha %}
+      <div class="form-captcha">
+        <div class="d-flex justify-content-center">
+          {{ form.captcha }}
         </div>
-      {% endif %}
-    </div>
+        {% if form.captcha.errors %}
+          <div class="text-center invalid-feedback" style="display:block">
+            {% for error in form.captcha.errors %}
+              {{ error }}{% if not forloop.last %}<br />{% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
 
     <div class="d-flex justify-content-center mb-2 mt-3">
       <label>{{ form.remember }} &nbsp; {{ form.remember.label }}</label>

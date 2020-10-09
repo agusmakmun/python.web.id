@@ -52,4 +52,5 @@ class ContactForm(forms.Form):
             if k == 'message':
                 attrs.update({'rows': 5})
 
-            self.fields[k].widget.attrs = attrs
+            if k != 'captcha':
+                self.fields[k].widget.attrs = attrs
