@@ -2,7 +2,7 @@
 
 {% if is_paginated %}
   <div class="row main-pagination">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <ul class="pagination pagination-sm m-0 float-left">
         <li class="page-item {% if request.GET.page|default:'1' == '1' %}disabled{% endif %}">
           <a class="page-link" href="{% url 'apps.blog:post_list' %}?page=1{% if query %}&amp;q={{ query }}{% endif %}" title="{% trans 'First' %}">
@@ -23,14 +23,16 @@
         </li>
 
         {% for linkpage in page_obj.paginator.page_range %}
-          {% if page_obj.number == linkpage %}
-            <li class="page-item active">
-              <span class="page-link">{{ page_obj.number }}</span>
-            </li>
-          {% else %}
-            <li class="page-item">
-              <a class="page-link" href="{% url 'apps.blog:post_list' %}?page={{ linkpage }}{% if query %}&amp;q={{ query }}{% endif %}">{{ linkpage }}</a>
-            </li>
+          {% if linkpage <= page_obj.number|add:3 and linkpage >= page_obj.number|add:-3 %}
+            {% if page_obj.number == linkpage %}
+              <li class="page-item active">
+                <span class="page-link">{{ page_obj.number }}</span>
+              </li>
+            {% else %}
+              <li class="page-item">
+                <a class="page-link" href="{% url 'apps.blog:post_list' %}?page={{ linkpage }}{% if query %}&amp;q={{ query }}{% endif %}">{{ linkpage }}</a>
+              </li>
+            {% endif %}
           {% endif %}
         {% endfor %}
 
@@ -58,7 +60,7 @@
       </span>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
       <form class="float-right form-go-to-page" method="get" action="{% url 'apps.blog:post_list' %}">
         <div class="input-group input-group-sm">
           <input name="page" type="number" min="1" class="form-control" placeholder="{% trans 'Jump to page' %}" aria-describedby="addon-go" required>
