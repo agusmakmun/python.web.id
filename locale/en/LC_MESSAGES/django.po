@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 06:43+0700\n"
+"POT-Creation-Date: 2020-10-11 06:48+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <support@python.web.id>\n"
@@ -1793,7 +1793,7 @@ msgid "Edit Product \"%(title)s\""
 msgstr ""
 
 #: templates/apps/product/create.html:9 templates/apps/product/create.html:23
-#: templates/apps/product/create.html:242
+#: templates/apps/product/create.html:242 templates/apps/product/list.html:123
 #: templates/apps/product/list_private.html:30
 msgid "Create a Product"
 msgstr ""
@@ -1833,6 +1833,14 @@ msgstr ""
 
 #: templates/apps/product/list.html:108
 msgid "Read more"
+msgstr ""
+
+#: templates/apps/product/list.html:117
+msgid "No products yet!"
+msgstr ""
+
+#: templates/apps/product/list.html:118
+msgid "Upps, no products yet! Be the first to contribute a new product."
 msgstr ""
 
 #: templates/apps/product/list_private.html:114
