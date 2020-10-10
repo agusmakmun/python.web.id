@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2020 PYTHON.WEB.ID
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SUMMON AGUS <summon.agus@gmail.com>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-10 20:10+0700\n"
+"POT-Creation-Date: 2020-10-11 06:26+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
+"Language-Team: LANGUAGE <support@python.web.id>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -137,11 +137,16 @@ msgstr ""
 msgid "KeyError argument id is required!"
 msgstr ""
 
-#: apps/api/versioned/v1/views/authtoken.py:70
+#: apps/api/versioned/v1/serializers/auth.py:66 core/utils/middleware.py:113
+#: core/utils/paginator.py:45
+msgid "Success"
+msgstr ""
+
+#: apps/api/versioned/v1/views/authtoken.py:72
 msgid "Successfully logout."
 msgstr ""
 
-#: apps/api/versioned/v1/views/authtoken.py:100
+#: apps/api/versioned/v1/views/authtoken.py:116
 msgid "Password reset email has been sent."
 msgstr ""
 
@@ -349,38 +354,44 @@ msgid "About"
 msgstr ""
 
 #: apps/blog/views/page.py:52
+#: templates/apps/blog/page/includes/right_sidebar.html:43
+#: templates/includes/footer.html:42 templates/includes/navbar.html:46
+msgid "Developers"
+msgstr ""
+
+#: apps/blog/views/page.py:57
 #: templates/apps/blog/page/includes/right_sidebar.html:64
 #: templates/includes/footer.html:54
 msgid "Disclaimer"
 msgstr ""
 
-#: apps/blog/views/page.py:57
+#: apps/blog/views/page.py:62
 msgid "Privacy Policy"
 msgstr ""
 
-#: apps/blog/views/page.py:62
+#: apps/blog/views/page.py:67
 #: templates/apps/blog/page/includes/right_sidebar.html:16
 #: templates/includes/footer.html:16 templates/includes/navbar.html:41
 msgid "Services"
 msgstr ""
 
-#: apps/blog/views/page.py:67
+#: apps/blog/views/page.py:72
 #: templates/apps/blog/page/includes/right_sidebar.html:9
 #: templates/includes/footer.html:19 templates/includes/navbar.html:42
 msgid "Sponsor"
 msgstr ""
 
-#: apps/blog/views/page.py:72 apps/product/models/product.py:72
+#: apps/blog/views/page.py:77 apps/product/models/product.py:72
 #: templates/apps/product/detail.html:168
 msgid "Terms of Service"
 msgstr ""
 
-#: apps/blog/views/page.py:108
+#: apps/blog/views/page.py:113
 #, python-format
 msgid "%(subject)s from %(email)s by %(sender)s"
 msgstr ""
 
-#: apps/blog/views/page.py:113
+#: apps/blog/views/page.py:118
 msgid "Your message successfully sended!"
 msgstr ""
 
@@ -645,10 +656,6 @@ msgstr ""
 
 #: core/utils/middleware.py:106
 msgid "Failed"
-msgstr ""
-
-#: core/utils/middleware.py:113 core/utils/paginator.py:45
-msgid "Success"
 msgstr ""
 
 #: core/utils/middleware.py:161
@@ -1385,11 +1392,6 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: templates/apps/blog/page/includes/right_sidebar.html:43
-#: templates/includes/footer.html:42 templates/includes/navbar.html:46
-msgid "Developers"
-msgstr ""
-
 #: templates/apps/blog/page/includes/right_sidebar.html:50
 #: templates/includes/footer.html:57
 msgid "Terms"
@@ -1619,7 +1621,7 @@ msgstr ""
 
 #: templates/apps/blog/post/includes/sidebar_create.html:146
 msgid ""
-"Choose one or more (up to 5) tags that will help posters to find and "
+"Choose one or more (up to 5) tags that will help visitors to find and "
 "interpret your post."
 msgstr ""
 

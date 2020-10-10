@@ -11,9 +11,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_auth.views import (LogoutView, PasswordResetView)
+from rest_auth.views import (LogoutView, UserDetailsView, PasswordResetView)
 
-from apps.api.versioned.v1.serializers.auth import PasswordResetSerializer
+from apps.api.versioned.v1.serializers.auth import (
+    PasswordResetSerializer, UserDetailsSerializer
+)
 
 
 class LoginView(ObtainAuthToken):
@@ -69,6 +71,20 @@ class LogoutView(LogoutView):
         content = {'status': status.HTTP_200_OK,
                    'message': _('Successfully logout.')}
         return Response(content, status=content.get('status'))
+
+
+class UserDetailsView(UserDetailsView):
+    """
+    Reads and updates UserModel fields
+    Accepts GET, PUT, PATCH methods.
+
+    Default accepted fields: username, first_name, last_name
+    Default display fields: pk, username, email, first_name, last_name
+    Read-only fields: pk, email
+
+    Returns UserModel fields.
+    """
+    serializer_class = UserDetailsSerializer
 
 
 class PasswordResetView(PasswordResetView):

@@ -10,9 +10,10 @@ from updown.views import AddRatingFromModel
 from apps.blog.models.post import Post
 from apps.blog.feed import LatestPosts
 from apps.blog.views.page import (
-    PageAboutView, PageDisclaimerView,
-    PagePrivacyPolicyView, PageServicesView,
-    PageSponsorView, PageTOSView, ContactUsView
+    PageAboutView, PageDevelopersView,
+    PageDisclaimerView, PagePrivacyPolicyView,
+    PageServicesView, PageSponsorView,
+    PageTOSView, ContactUsView
 )
 from apps.blog.views.post import (
     PostListView, PostListTaggedView,
@@ -37,6 +38,7 @@ info_dict = {
 urlpatterns = [
     # pages
     path('about/', PageAboutView.as_view(), name='page_about'),
+    path('developers/', PageDevelopersView.as_view(), name='page_developers'),
     path('disclaimer/', PageDisclaimerView.as_view(), name='page_disclaimer'),
     path('privacy-policy/', PagePrivacyPolicyView.as_view(), name='page_privacy_policy'),
     path('services/', PageServicesView.as_view(), name='page_services'),

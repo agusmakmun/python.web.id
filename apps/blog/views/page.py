@@ -47,6 +47,11 @@ class PageAboutView(BasePageDetailView):
     page_title = _('About')
 
 
+class PageDevelopersView(BasePageDetailView):
+    content_path = '.ext/pages/developers.md'
+    page_title = _('Developers')
+
+
 class PageDisclaimerView(BasePageDetailView):
     content_path = '.ext/pages/disclaimer.md'
     page_title = _('Disclaimer')
