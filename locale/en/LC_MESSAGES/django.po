@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-10 07:02+0700\n"
+"POT-Creation-Date: 2020-10-10 11:21+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,6 +120,14 @@ msgstr ""
 
 #: apps/accounts/views/profile.py:109
 msgid "Profile successfully updated!"
+msgstr ""
+
+#: apps/api/apps.py:10
+msgid "App API"
+msgstr ""
+
+#: apps/api/versioned/v1/views/authtoken.py:70
+msgid "Successfully logout."
 msgstr ""
 
 #: apps/blog/admins/admin.py:14 apps/blog/admins/admin.py:15
@@ -589,6 +597,35 @@ msgstr ""
 
 #: apps/product/views/product.py:168 apps/product/views/product.py:174
 msgid "The product successfully deleted!"
+msgstr ""
+
+#: core/utils/handler.py:12
+msgid "400 Bad Request"
+msgstr ""
+
+#: core/utils/handler.py:19
+msgid "403 Permission Denied"
+msgstr ""
+
+#: core/utils/handler.py:26
+msgid "404 Not Found"
+msgstr ""
+
+#: core/utils/handler.py:33
+msgid "500 Server Error"
+msgstr ""
+
+#: core/utils/middleware.py:106
+msgid "Failed"
+msgstr ""
+
+#: core/utils/middleware.py:113 core/utils/paginator.py:45
+msgid "Success"
+msgstr ""
+
+#: core/utils/middleware.py:161
+msgid ""
+"Token already expired, please login with your username & password again!"
 msgstr ""
 
 #: templates/allauth/account/account_inactive.html:4
@@ -1263,7 +1300,11 @@ msgstr ""
 
 #: templates/apps/accounts/user/profile_activity.html:124
 #, python-format
-msgid "%(user)s dosen't votes anything!"
+msgid "%(user)s dosen't vote anything!"
+msgstr ""
+
+#: templates/apps/accounts/user/profile_activity.html:142
+msgid "You dosen't have favorites!"
 msgstr ""
 
 #: templates/apps/accounts/user/profile_update.html:41

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-10 07:02+0700\n"
+"POT-Creation-Date: 2020-10-10 11:21+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,6 +121,14 @@ msgstr "Profil"
 #: apps/accounts/views/profile.py:109
 msgid "Profile successfully updated!"
 msgstr "Profil berhasil diperbarui!"
+
+#: apps/api/apps.py:10
+msgid "App API"
+msgstr ""
+
+#: apps/api/versioned/v1/views/authtoken.py:70
+msgid "Successfully logout."
+msgstr ""
 
 #: apps/blog/admins/admin.py:14 apps/blog/admins/admin.py:15
 msgid "Django Blog"
@@ -591,6 +599,35 @@ msgstr "Anda harus login untuk menghapus produk ini!"
 #: apps/product/views/product.py:168 apps/product/views/product.py:174
 msgid "The product successfully deleted!"
 msgstr "Produk berhasil dihapus!"
+
+#: core/utils/handler.py:12
+msgid "400 Bad Request"
+msgstr ""
+
+#: core/utils/handler.py:19
+msgid "403 Permission Denied"
+msgstr ""
+
+#: core/utils/handler.py:26
+msgid "404 Not Found"
+msgstr ""
+
+#: core/utils/handler.py:33
+msgid "500 Server Error"
+msgstr ""
+
+#: core/utils/middleware.py:106
+msgid "Failed"
+msgstr ""
+
+#: core/utils/middleware.py:113 core/utils/paginator.py:45
+msgid "Success"
+msgstr ""
+
+#: core/utils/middleware.py:161
+msgid ""
+"Token already expired, please login with your username & password again!"
+msgstr ""
 
 #: templates/allauth/account/account_inactive.html:4
 #: templates/allauth/account/account_inactive.html:12
@@ -1266,9 +1303,16 @@ msgid "downvote"
 msgstr "suara negatif"
 
 #: templates/apps/accounts/user/profile_activity.html:124
-#, python-format
-msgid "%(user)s dosen't votes anything!"
+#, fuzzy, python-format
+#| msgid "%(user)s dosen't votes anything!"
+msgid "%(user)s dosen't vote anything!"
 msgstr "%(user)s tidak memberikan suara apapun!"
+
+#: templates/apps/accounts/user/profile_activity.html:142
+#, fuzzy
+#| msgid "%(user)s dosen't have posts!"
+msgid "You dosen't have favorites!"
+msgstr "%(user)s tidak memiliki postingan!"
 
 #: templates/apps/accounts/user/profile_update.html:41
 msgid "Please contact admin to change."
