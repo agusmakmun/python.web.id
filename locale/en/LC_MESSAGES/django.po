@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 06:26+0700\n"
+"POT-Creation-Date: 2020-10-11 06:43+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <support@python.web.id>\n"
@@ -1418,7 +1418,6 @@ msgstr ""
 #: templates/apps/blog/post/detail.html:55
 #: templates/apps/blog/post/list.html:14 templates/apps/blog/post/list.html:123
 #: templates/apps/blog/post/list_private.html:30
-#: templates/apps/product/list_private.html:30
 msgid "Create a Post"
 msgstr ""
 
@@ -1795,6 +1794,7 @@ msgstr ""
 
 #: templates/apps/product/create.html:9 templates/apps/product/create.html:23
 #: templates/apps/product/create.html:242
+#: templates/apps/product/list_private.html:30
 msgid "Create a Product"
 msgstr ""
 

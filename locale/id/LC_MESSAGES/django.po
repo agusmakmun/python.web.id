@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 06:26+0700\n"
+"POT-Creation-Date: 2020-10-11 06:43+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <support@python.web.id>\n"
@@ -1479,7 +1479,6 @@ msgstr "Ubah Postingan \"%(title)s\""
 #: templates/apps/blog/post/detail.html:55
 #: templates/apps/blog/post/list.html:14 templates/apps/blog/post/list.html:123
 #: templates/apps/blog/post/list_private.html:30
-#: templates/apps/product/list_private.html:30
 msgid "Create a Post"
 msgstr "Buat Postingan"
 
@@ -1688,8 +1687,9 @@ msgstr ""
 msgid ""
 "Choose one or more (up to 5) tags that will help visitors to find and "
 "interpret your post."
-msgstr "Pilih satu atau lebih (hingga 5) tag yang akan membantu pengunjung "
-"menemukan postingan anda."
+msgstr ""
+"Pilih satu atau lebih (hingga 5) tag yang akan membantu pengunjung menemukan "
+"postingan anda."
 
 #: templates/apps/blog/post/includes/sidebar_create.html:155
 msgid "complete the sentence: <i>my post is about...</i>"
@@ -1700,8 +1700,8 @@ msgid ""
 "use tags that describe things or concepts that are essential, not incidental "
 "to your post"
 msgstr ""
-"gunakan tag yang mendeskripsikan hal-hal atau konsep yang penting, bukan kebetulan "
-"untuk postingan anda."
+"gunakan tag yang mendeskripsikan hal-hal atau konsep yang penting, bukan "
+"kebetulan untuk postingan anda."
 
 #: templates/apps/blog/post/includes/sidebar_create.html:171
 msgid "favor using existing popular tags"
@@ -1709,7 +1709,9 @@ msgstr "mendukung penggunaan tag populer yang ada"
 
 #: templates/apps/blog/post/includes/sidebar_create.html:175
 msgid "If your post is primarily about a topic for which you can't find a tag:"
-msgstr "Jika postingan anda terutama tentang topik yang tidak dapat anda temukan tagnya:"
+msgstr ""
+"Jika postingan anda terutama tentang topik yang tidak dapat anda temukan "
+"tagnya:"
 
 #: templates/apps/blog/post/includes/sidebar_create.html:185
 msgid "combine multiple words into single-words with hyphens"
@@ -1780,7 +1782,9 @@ msgstr "Belum ada postingan!"
 
 #: templates/apps/blog/post/list.html:118
 msgid "Upps, no posts yet! Be the first to contribute a new post."
-msgstr "Upps, belum ada postingan! Jadi yang pertama untuk berkontribusi membuat postingan."
+msgstr ""
+"Upps, belum ada postingan! Jadi yang pertama untuk berkontribusi membuat "
+"postingan."
 
 #: templates/apps/blog/post/list.html:126
 msgid "No posts!"
@@ -1838,11 +1842,14 @@ msgstr "Tutup"
 
 #: templates/apps/blog/tag/list.html:10
 msgid "A tag is a keyword or label that categorizes the posts with other."
-msgstr "Tag adalah kata kunci atau label yang mengkategorikan postingan dengan yang lain."
+msgstr ""
+"Tag adalah kata kunci atau label yang mengkategorikan postingan dengan yang "
+"lain."
 
 #: templates/apps/blog/tag/list.html:11
 msgid "Using the right tags makes it easier for users to find the posts."
-msgstr "Penggunaan tag yang tepat memudahkan pengguna untuk menemukan postingan."
+msgstr ""
+"Penggunaan tag yang tepat memudahkan pengguna untuk menemukan postingan."
 
 #: templates/apps/blog/tag/list.html:20
 msgid "Search by tag name"
@@ -1863,6 +1870,7 @@ msgstr "Ubah Produk \"%(title)s\""
 
 #: templates/apps/product/create.html:9 templates/apps/product/create.html:23
 #: templates/apps/product/create.html:242
+#: templates/apps/product/list_private.html:30
 msgid "Create a Product"
 msgstr "Buat Produk"
 
@@ -1925,11 +1933,12 @@ msgid ""
 "provide you with a better, faster and safer experience and for advertising "
 "purposes. Learn more <a href=\"%(url_privacy_policy)s\">here</a>."
 msgstr ""
-"Saat anda mengunjungi atau berinteraksi dengan situs, layanan, aplikasi, alat, atau "
-"perpesanan kami, kami atau penyedia layanan resmi kami dapat menggunakan cookie, suar web, "
-"dan teknologi serupa lainnya untuk menyimpan informasi guna membantu memberikan anda "
-"pengalaman yang lebih baik, lebih cepat, dan lebih aman dan untuk tujuan periklanan. "
-"Baca selengkapnya <a href=\"%(url_privacy_policy)s\">disini</a>."
+"Saat anda mengunjungi atau berinteraksi dengan situs, layanan, aplikasi, "
+"alat, atau perpesanan kami, kami atau penyedia layanan resmi kami dapat "
+"menggunakan cookie, suar web, dan teknologi serupa lainnya untuk menyimpan "
+"informasi guna membantu memberikan anda pengalaman yang lebih baik, lebih "
+"cepat, dan lebih aman dan untuk tujuan periklanan. Baca selengkapnya <a href="
+"\"%(url_privacy_policy)s\">disini</a>."
 
 #: templates/includes/navbar.html:38
 msgid "More"
