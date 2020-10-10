@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from allauth.account.models import (EmailAddress, EmailConfirmation)
 from allauth.socialaccount.models import (SocialApp, SocialAccount, SocialToken)
+from rest_framework.authtoken.models import Token
 
 from apps.blog.admins.admin import admin_site
 from apps.blog.admins.base import DefaultAdminMixin
@@ -34,6 +35,11 @@ class SocialAccountAdmin(admin.ModelAdmin):
 
 @admin.register(SocialToken, site=admin_site)
 class SocialTokenAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Token, site=admin_site)
+class TokenAdmin(admin.ModelAdmin):
     pass
 
 

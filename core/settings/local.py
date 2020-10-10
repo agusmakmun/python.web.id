@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'martor',
     'updown',
     'corsheaders',
+    'rest_framework',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
