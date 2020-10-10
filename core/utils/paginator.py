@@ -31,7 +31,7 @@ class RestPagination(PageNumberPagination, LimitOffsetPagination):
         next_link = self.get_next_link() if self.get_next_link() is not None else ''
         prev_link = self.get_previous_link() if self.get_previous_link() is not None else ''
 
-        if getattr(settings, 'USE_SSL'):
+        if getattr(settings, 'USE_SSL', False):
             next_link = next_link.replace('http:', 'https:')
             prev_link = prev_link.replace('http:', 'https:')
 

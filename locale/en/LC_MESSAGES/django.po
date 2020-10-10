@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-10 11:21+0700\n"
+"POT-Creation-Date: 2020-10-10 20:10+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,8 +126,36 @@ msgstr ""
 msgid "App API"
 msgstr ""
 
+#: apps/api/base/views/base.py:48 apps/api/base/views/base.py:100
+#: apps/api/versioned/v1/views/post.py:67
+#: apps/api/versioned/v1/views/post.py:105
+msgid "Argument id should be integer!"
+msgstr ""
+
+#: apps/api/base/views/base.py:94 apps/api/versioned/v1/views/post.py:61
+#: apps/api/versioned/v1/views/post.py:99
+msgid "KeyError argument id is required!"
+msgstr ""
+
 #: apps/api/versioned/v1/views/authtoken.py:70
 msgid "Successfully logout."
+msgstr ""
+
+#: apps/api/versioned/v1/views/authtoken.py:100
+msgid "Password reset email has been sent."
+msgstr ""
+
+#: apps/api/versioned/v1/views/post.py:74
+msgid "Your are not allowed to update this post!"
+msgstr ""
+
+#: apps/api/versioned/v1/views/post.py:112
+msgid "Your are not allowed to delete this post!"
+msgstr ""
+
+#: apps/api/versioned/v1/views/post.py:119
+#, python-format
+msgid "%(verbose_name)s successfully deleted!"
 msgstr ""
 
 #: apps/blog/admins/admin.py:14 apps/blog/admins/admin.py:15
@@ -280,11 +308,11 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: apps/blog/models/tag.py:32
+#: apps/blog/models/tag.py:39
 msgid "Tag"
 msgstr ""
 
-#: apps/blog/models/tag.py:33 templates/apps/accounts/user/profile.html:261
+#: apps/blog/models/tag.py:40 templates/apps/accounts/user/profile.html:261
 #: templates/apps/blog/tag/list.html:4 templates/apps/blog/tag/list.html:8
 #: templates/includes/navbar.html:31
 msgid "Tags"
@@ -356,28 +384,28 @@ msgstr ""
 msgid "Your message successfully sended!"
 msgstr ""
 
-#: apps/blog/views/post.py:224
+#: apps/blog/views/post.py:226
 msgid "Post successfully created!"
 msgstr ""
 
-#: apps/blog/views/post.py:247
+#: apps/blog/views/post.py:249
 #, python-format
 msgid "\"%(post)s\" successfully updated!"
 msgstr ""
 
-#: apps/blog/views/post.py:293
+#: apps/blog/views/post.py:295
 msgid "You must login to delete this post!"
 msgstr ""
 
-#: apps/blog/views/post.py:297 apps/blog/views/post.py:303
+#: apps/blog/views/post.py:299 apps/blog/views/post.py:305
 msgid "The successfully post deleted!"
 msgstr ""
 
-#: apps/blog/views/post.py:299 apps/product/views/product.py:170
+#: apps/blog/views/post.py:301 apps/product/views/product.py:170
 msgid "You are not allowed to access this feature!"
 msgstr ""
 
-#: apps/blog/views/post.py:305 apps/product/views/product.py:176
+#: apps/blog/views/post.py:307 apps/product/views/product.py:176
 msgid "Param `id` should be integer!"
 msgstr ""
 
@@ -1139,6 +1167,22 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
+#: templates/apps/accounts/mail/registration/password_reset_email.html:4
+#, python-format
+msgid "Hi %(user_username)s,<br/>"
+msgstr ""
+
+#: templates/apps/accounts/mail/registration/password_reset_email.html:9
+#, python-format
+msgid ""
+"You received this email because you asked for a password reset for your "
+"account %(get_username)s at %(get_site_name)s."
+msgstr ""
+
+#: templates/apps/accounts/mail/registration/password_reset_email.html:15
+msgid "Reset password"
+msgstr ""
+
 #: templates/apps/accounts/user/includes/nav_left.html:16
 msgid "E-mails"
 msgstr ""
@@ -1454,35 +1498,26 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:7
 #: templates/apps/blog/post/includes/paginator.html:8
 #: templates/apps/blog/tag/includes/paginator.html:8
 msgid "First"
 msgstr ""
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:13
 #: templates/apps/blog/post/includes/paginator.html:17
 #: templates/apps/blog/tag/includes/paginator.html:17
 #: templates/apps/product/detail.html:148 templates/apps/product/list.html:46
 msgid "Previous"
 msgstr ""
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:32
 #: templates/apps/blog/post/includes/paginator.html:40
 #: templates/apps/blog/tag/includes/paginator.html:40
 #: templates/apps/product/detail.html:152 templates/apps/product/list.html:50
 msgid "Next"
 msgstr ""
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:39
 #: templates/apps/blog/post/includes/paginator.html:49
 #: templates/apps/blog/tag/includes/paginator.html:49
 msgid "Last"
-msgstr ""
-
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:46
-#, python-format
-msgid "Halaman %(current_page)s dari %(total_pages)s"
 msgstr ""
 
 #: templates/apps/blog/post/includes/paginator.html:59

@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from apps.blog.models.base import (TimeStampedModel, DefaultManager)
-from apps.blog.utils.slug import generate_unique_slug
 
 
 class Tag(TimeStampedModel):
@@ -27,6 +27,13 @@ class Tag(TimeStampedModel):
     def total_posts(self):
         posts = self.get_posts()
         return posts.count() if posts else 0
+
+    def save(self, *args, **kwargs):
+
+        # save that name is as a slug type
+        self.name = slugify(self.name)
+
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('Tag')

@@ -59,3 +59,9 @@ Put `client_id` and `client_secret` into http://127.0.0.1:8000/admin/socialaccou
 
 Go to https://www.linkedin.com/developers/apps and add new/select existing application.
 Put `client_id` and `client_secret` into http://127.0.0.1:8000/admin/socialaccount/socialapp/add/
+
+
+
+## API Docs
+
+- Version 1: https://documenter.getpostman.com/view/5291388/TVRkZnrS

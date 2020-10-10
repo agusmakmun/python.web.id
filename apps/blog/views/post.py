@@ -49,7 +49,9 @@ class PostListView(ListView):
         return self.get_default_queryset().filter(is_featured=True)
 
     def get_queryset(self):
-        queryset = self.get_default_queryset()
+        queryset = self.get_default_queryset()\
+                       .select_related('author')\
+                       .prefetch_related('tags')
         self.query = self.request.GET.get('q')
         self.sort = self.request.GET.get('sort', 'newest')
 

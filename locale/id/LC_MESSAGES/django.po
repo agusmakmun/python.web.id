@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-10 11:21+0700\n"
+"POT-Creation-Date: 2020-10-10 20:10+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "Kedua kata sandi itu tidak cocok."
 #: templates/allauth/account/signup.html:59
 #: templates/allauth/socialaccount/signup.html:29
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 #: apps/accounts/forms/auth.py:170
 msgid "Password with space forbidden to use."
@@ -58,7 +58,7 @@ msgstr "Kata sandi dengan spasi dilarang untuk digunakan."
 
 #: apps/accounts/forms/profile.py:16
 msgid "Steve Jobs"
-msgstr ""
+msgstr "Steve Jobs"
 
 #: apps/accounts/forms/profile.py:17
 msgid "City, Country"
@@ -91,19 +91,19 @@ msgstr "Situs"
 #: apps/accounts/models/user.py:35 templates/allauth/account/login.html:30
 #: templates/allauth/account/signup.html:29
 msgid "Github"
-msgstr ""
+msgstr "Github"
 
 #: apps/accounts/models/user.py:36
 msgid "Linkedin"
-msgstr ""
+msgstr "Linkedin"
 
 #: apps/accounts/models/user.py:37
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: apps/accounts/models/user.py:38
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: apps/accounts/models/user.py:64
 #: templates/apps/accounts/user/includes/nav_left.html:10
@@ -124,19 +124,47 @@ msgstr "Profil berhasil diperbarui!"
 
 #: apps/api/apps.py:10
 msgid "App API"
-msgstr ""
+msgstr "App API"
+
+#: apps/api/base/views/base.py:48 apps/api/base/views/base.py:100
+#: apps/api/versioned/v1/views/post.py:67
+#: apps/api/versioned/v1/views/post.py:105
+msgid "Argument id should be integer!"
+msgstr "Parameter id harus berupa angka!"
+
+#: apps/api/base/views/base.py:94 apps/api/versioned/v1/views/post.py:61
+#: apps/api/versioned/v1/views/post.py:99
+msgid "KeyError argument id is required!"
+msgstr "KeyError argumen id wajib ada!"
 
 #: apps/api/versioned/v1/views/authtoken.py:70
 msgid "Successfully logout."
-msgstr ""
+msgstr "Berhasil keluar."
+
+#: apps/api/versioned/v1/views/authtoken.py:100
+msgid "Password reset email has been sent."
+msgstr "Email pengaturan ulang kata sandi telah dikirim."
+
+#: apps/api/versioned/v1/views/post.py:74
+msgid "Your are not allowed to update this post!"
+msgstr "Anda tidak diizinkan mengubah postingan ini!"
+
+#: apps/api/versioned/v1/views/post.py:112
+msgid "Your are not allowed to delete this post!"
+msgstr "Anda tidak diizinkan menghapus postingan ini!"
+
+#: apps/api/versioned/v1/views/post.py:119
+#, python-format
+msgid "%(verbose_name)s successfully deleted!"
+msgstr "\"%(verbose_name)s\" berhasil dihapus!"
 
 #: apps/blog/admins/admin.py:14 apps/blog/admins/admin.py:15
 msgid "Django Blog"
-msgstr ""
+msgstr "Django Blog"
 
 #: apps/blog/apps.py:10
 msgid "App Blog"
-msgstr ""
+msgstr "App Blog"
 
 #: apps/blog/forms/contact.py:16
 msgid "Sender"
@@ -280,11 +308,11 @@ msgstr "Halaman"
 msgid "Name"
 msgstr "Nama"
 
-#: apps/blog/models/tag.py:32
+#: apps/blog/models/tag.py:39
 msgid "Tag"
 msgstr "Tag"
 
-#: apps/blog/models/tag.py:33 templates/apps/accounts/user/profile.html:261
+#: apps/blog/models/tag.py:40 templates/apps/accounts/user/profile.html:261
 #: templates/apps/blog/tag/list.html:4 templates/apps/blog/tag/list.html:8
 #: templates/includes/navbar.html:31
 msgid "Tags"
@@ -356,28 +384,28 @@ msgstr "%(subject)s dari %(email)s oleh %(sender)s"
 msgid "Your message successfully sended!"
 msgstr "Postingan berhasil dibuat"
 
-#: apps/blog/views/post.py:224
+#: apps/blog/views/post.py:226
 msgid "Post successfully created!"
 msgstr "Postingan berhasil dibuat"
 
-#: apps/blog/views/post.py:247
+#: apps/blog/views/post.py:249
 #, python-format
 msgid "\"%(post)s\" successfully updated!"
 msgstr "\"%(post)s\" berhasil diperbarui!"
 
-#: apps/blog/views/post.py:293
+#: apps/blog/views/post.py:295
 msgid "You must login to delete this post!"
 msgstr "Anda harus login untuk menghapus postingan ini!"
 
-#: apps/blog/views/post.py:297 apps/blog/views/post.py:303
+#: apps/blog/views/post.py:299 apps/blog/views/post.py:305
 msgid "The successfully post deleted!"
 msgstr "Postingan berhasil dihapus!"
 
-#: apps/blog/views/post.py:299 apps/product/views/product.py:170
+#: apps/blog/views/post.py:301 apps/product/views/product.py:170
 msgid "You are not allowed to access this feature!"
 msgstr "Anda tidak diizinkan mengakses fitur ini!"
 
-#: apps/blog/views/post.py:305 apps/product/views/product.py:176
+#: apps/blog/views/post.py:307 apps/product/views/product.py:176
 msgid "Param `id` should be integer!"
 msgstr "Parameter `id` harus berupa angka!"
 
@@ -400,7 +428,7 @@ msgstr "Tag \"%(tag)s\" berhasil dibuat!"
 
 #: apps/product/apps.py:10
 msgid "App Product"
-msgstr ""
+msgstr "App Product"
 
 #: apps/product/models/ads.py:14
 msgid "Navbar (Top)"
@@ -602,32 +630,33 @@ msgstr "Produk berhasil dihapus!"
 
 #: core/utils/handler.py:12
 msgid "400 Bad Request"
-msgstr ""
+msgstr "400 Permintaan yang buruk"
 
 #: core/utils/handler.py:19
 msgid "403 Permission Denied"
-msgstr ""
+msgstr "403 Izin ditolak"
 
 #: core/utils/handler.py:26
 msgid "404 Not Found"
-msgstr ""
+msgstr "404 Tidak ditemukan"
 
 #: core/utils/handler.py:33
 msgid "500 Server Error"
-msgstr ""
+msgstr "500 Server error"
 
 #: core/utils/middleware.py:106
 msgid "Failed"
-msgstr ""
+msgstr "Gagal"
 
 #: core/utils/middleware.py:113 core/utils/paginator.py:45
 msgid "Success"
-msgstr ""
+msgstr "Sukses"
 
 #: core/utils/middleware.py:161
 msgid ""
 "Token already expired, please login with your username & password again!"
 msgstr ""
+"Token telah kadaluarsa, silahkan masuk dengan username & password anda lagi!"
 
 #: templates/allauth/account/account_inactive.html:4
 #: templates/allauth/account/account_inactive.html:12
@@ -722,6 +751,11 @@ msgid ""
 "\n"
 "To confirm this is correct, go to %(activate_url)s\n"
 msgstr ""
+"Halo dari %(site_name)s!\n"
+"\n"
+"Anda menerima e-mail ini karena pengguna %(user_display)s telah memilih e-"
+"mail anda untuk terkoneksi dengan akunnya.\n"
+"Untuk memastikan ini benar, silahkan kunjungi %(activate_url)s\n"
 
 #: templates/allauth/account/email/email_confirmation_message.txt:7
 #, python-format
@@ -729,10 +763,12 @@ msgid ""
 "Thank you from %(site_name)s!\n"
 "%(site_domain)s"
 msgstr ""
+"Terimakasih dari %(site_name)s!\n"
+"%(site_domain)s"
 
 #: templates/allauth/account/email/email_confirmation_subject.txt:3
 msgid "Please Confirm Your E-mail Address"
-msgstr ""
+msgstr "Harap Konfirmasi Alamat E-mail Anda"
 
 #: templates/allauth/account/email/password_reset_key_message.txt:1
 #, python-format
@@ -842,7 +878,7 @@ msgstr ""
 #: templates/allauth/account/login.html:97
 #: templates/allauth/account/signup.html:121
 msgid "Forgot Password?"
-msgstr ""
+msgstr "Lupa Password?"
 
 #: templates/allauth/account/logout.html:4
 #: templates/allauth/account/logout.html:13
@@ -857,47 +893,47 @@ msgstr "Apakah anda yakin akan keluar?"
 #: templates/allauth/account/messages/cannot_delete_primary_email.txt:2
 #, python-format
 msgid "You cannot remove your primary e-mail address (%(email)s)."
-msgstr ""
+msgstr "Anda tidak dapat menghapus alamat e-mail utama anda (%(email)s)."
 
 #: templates/allauth/account/messages/email_confirmation_sent.txt:2
 #, python-format
 msgid "Confirmation e-mail sent to %(email)s."
-msgstr ""
+msgstr "E-mail konfirmasi dikirim ke %(email)s."
 
 #: templates/allauth/account/messages/email_confirmed.txt:2
 #, python-format
 msgid "You have confirmed %(email)s."
-msgstr ""
+msgstr "Anda telah mengonfirmasi %(email)s."
 
 #: templates/allauth/account/messages/email_deleted.txt:2
 #, python-format
 msgid "Removed e-mail address %(email)s."
-msgstr ""
+msgstr "Alamat e-mail dihapus %(email)s."
 
 #: templates/allauth/account/messages/logged_in.txt:4
 #, python-format
 msgid "Successfully signed in as %(name)s."
-msgstr ""
+msgstr "Berhasil masuk sebagai %(name)s."
 
 #: templates/allauth/account/messages/logged_out.txt:2
 msgid "You have signed out."
-msgstr ""
+msgstr "Anda telah keluar."
 
 #: templates/allauth/account/messages/password_changed.txt:2
 msgid "Password successfully changed."
-msgstr ""
+msgstr "Kata sandi berhasil diubah."
 
 #: templates/allauth/account/messages/password_set.txt:2
 msgid "Password successfully set."
-msgstr ""
+msgstr "Kata sandi berhasil disetel."
 
 #: templates/allauth/account/messages/primary_email_set.txt:2
 msgid "Primary e-mail address set."
-msgstr ""
+msgstr "Setel alamat e-mail utama."
 
 #: templates/allauth/account/messages/unverified_primary_email.txt:2
 msgid "Your primary e-mail address must be verified."
-msgstr ""
+msgstr "Alamat e-mail utama anda harus diverifikasi."
 
 #: templates/allauth/account/password_change.html:4
 #: templates/allauth/account/password_change.html:46
@@ -929,7 +965,7 @@ msgstr "Kata sandi baru (lagi)"
 #: templates/allauth/account/password_change.html:50
 #, python-format
 msgid "or need to <a href=\"%(reset_url)s\">reset</a> the password?"
-msgstr ""
+msgstr "atau ingin <a href=\"%(reset_url)s\">atur ulang</a> kata sandi?"
 
 #: templates/allauth/account/password_reset.html:5
 #: templates/allauth/account/password_reset.html:13
@@ -967,7 +1003,7 @@ msgstr ""
 #: templates/allauth/account/password_reset_from_key.html:48
 #: templates/allauth/account/password_reset_from_key_done.html:13
 msgid "Your password is now changed."
-msgstr ""
+msgstr "Kata sandi anda sekarang telah diubah."
 
 #: templates/allauth/account/password_set.html:4
 #: templates/allauth/account/password_set.html:40
@@ -976,7 +1012,7 @@ msgstr "Setel Kata Sandi"
 
 #: templates/allauth/account/signup.html:4
 msgid "Signup"
-msgstr ""
+msgstr "Daftar"
 
 #: templates/allauth/account/signup.html:13
 msgid ""
@@ -986,41 +1022,41 @@ msgstr ""
 
 #: templates/allauth/account/signup.html:88
 msgid "Password (again)"
-msgstr ""
+msgstr "Kata sandi (lagi)"
 
 #: templates/allauth/account/signup.html:116
 msgid "Sign up"
-msgstr ""
+msgstr "Daftar"
 
 #: templates/allauth/account/signup.html:120
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">sign in</a>"
-msgstr ""
+msgstr "Sudah memiliki akun? <a href=\"%(login_url)s\">masuk</a>"
 
 #: templates/allauth/account/signup_closed.html:4
 #: templates/allauth/account/signup_closed.html:12
 msgid "Sign Up Closed"
-msgstr ""
+msgstr "Pendaftaran ditutup"
 
 #: templates/allauth/account/signup_closed.html:13
 msgid "We are sorry, but the sign up is currently closed."
-msgstr ""
+msgstr "Kami minta maaf, tetapi pendaftaran saat ini ditutup."
 
 #: templates/allauth/account/snippets/already_logged_in.html:5
 msgid "Note"
-msgstr ""
+msgstr "Catatan"
 
 #: templates/allauth/account/snippets/already_logged_in.html:5
 #, python-format
 msgid "you are already logged in as %(user_display)s."
-msgstr ""
+msgstr "anda sudah masuk sebagai %(user_display)s."
 
 #: templates/allauth/account/verification_sent.html:4
 #: templates/allauth/account/verification_sent.html:12
 #: templates/allauth/account/verified_email_required.html:4
 #: templates/allauth/account/verified_email_required.html:12
 msgid "Verify Your E-mail Address"
-msgstr ""
+msgstr "Verifikasi Alamat E-mail Anda"
 
 #: templates/allauth/account/verification_sent.html:13
 msgid ""
@@ -1052,12 +1088,12 @@ msgstr ""
 
 #: templates/allauth/openid/login.html:9
 msgid "OpenID Sign In"
-msgstr ""
+msgstr "OpenID Masuk"
 
 #: templates/allauth/socialaccount/authentication_error.html:4
 #: templates/allauth/socialaccount/authentication_error.html:12
 msgid "Social Network Login Failure"
-msgstr ""
+msgstr "Gagal Masuk dengan Jaringan Sosial"
 
 #: templates/allauth/socialaccount/authentication_error.html:13
 msgid ""
@@ -1066,7 +1102,7 @@ msgstr ""
 
 #: templates/allauth/socialaccount/connections.html:4
 msgid "Account Connections"
-msgstr ""
+msgstr "Koneksi Akun"
 
 #: templates/allauth/socialaccount/connections.html:36
 msgid ""
@@ -1081,12 +1117,12 @@ msgstr ""
 
 #: templates/allauth/socialaccount/connections.html:76
 msgid "Add a 3rd Party Account"
-msgstr ""
+msgstr "Tambahkan Akun Pihak Ketiga"
 
 #: templates/allauth/socialaccount/login_cancelled.html:4
 #: templates/allauth/socialaccount/login_cancelled.html:12
 msgid "Login Cancelled"
-msgstr ""
+msgstr "Login Dibatalkan"
 
 #: templates/allauth/socialaccount/login_cancelled.html:15
 #, python-format
@@ -1098,20 +1134,20 @@ msgstr ""
 
 #: templates/allauth/socialaccount/messages/account_connected.txt:2
 msgid "The social account has been connected."
-msgstr ""
+msgstr "Akun sosial telah terhubung."
 
 #: templates/allauth/socialaccount/messages/account_connected_other.txt:2
 msgid "The social account is already connected to a different account."
-msgstr ""
+msgstr "Akun sosial sudah terhubung ke akun lain."
 
 #: templates/allauth/socialaccount/messages/account_disconnected.txt:2
 msgid "The social account has been disconnected."
-msgstr ""
+msgstr "Akun sosial telah terputus."
 
 #: templates/allauth/socialaccount/signup.html:4
 #: templates/allauth/socialaccount/signup.html:59
 msgid "Sign Up"
-msgstr ""
+msgstr "Daftar"
 
 #: templates/allauth/socialaccount/signup.html:13
 #, python-format
@@ -1126,7 +1162,7 @@ msgstr ""
 
 #: templates/apps/accounts/admin/login.html:24
 msgid "Please correct the errors below."
-msgstr ""
+msgstr "Mohon perbaiki kesalahan di bawah."
 
 #: templates/apps/accounts/admin/login.html:40
 #, python-format
@@ -1137,28 +1173,44 @@ msgstr ""
 
 #: templates/apps/accounts/admin/login.html:64
 msgid "Forgotten your password or username?"
-msgstr ""
+msgstr "Lupa kata sandi atau nama pengguna anda?"
 
 #: templates/apps/accounts/admin/login.html:68
 msgid "Log in"
+msgstr "Masuk"
+
+#: templates/apps/accounts/mail/registration/password_reset_email.html:4
+#, python-format
+msgid "Hi %(user_username)s,<br/>"
+msgstr "Halo %(user_username)s,<br/>"
+
+#: templates/apps/accounts/mail/registration/password_reset_email.html:9
+#, python-format
+msgid ""
+"You received this email because you asked for a password reset for your "
+"account %(get_username)s at %(get_site_name)s."
 msgstr ""
+
+#: templates/apps/accounts/mail/registration/password_reset_email.html:15
+msgid "Reset password"
+msgstr "Setel ulang kata sandi"
 
 #: templates/apps/accounts/user/includes/nav_left.html:16
 msgid "E-mails"
-msgstr ""
+msgstr "E-mail"
 
 #: templates/apps/accounts/user/includes/nav_left.html:29
 msgid "Connections"
-msgstr ""
+msgstr "Koneksi"
 
 #: templates/apps/accounts/user/includes/nav_tabs.html:18
 msgid "Activity"
-msgstr ""
+msgstr "Aktivitas"
 
 #: templates/apps/accounts/user/includes/nav_tabs.html:30
 #: templates/apps/blog/post/list_private.html:5
 msgid "My Posts"
-msgstr ""
+msgstr "Postingan Saya"
 
 #: templates/apps/accounts/user/includes/nav_tabs.html:41
 #: templates/apps/product/list_private.html:5
@@ -1232,7 +1284,7 @@ msgstr "DAMPAK"
 
 #: templates/apps/accounts/user/profile.html:161
 msgid "posts created"
-msgstr ""
+msgstr "postingan dibuat"
 
 #: templates/apps/accounts/user/profile.html:173
 msgid "votes cast"
@@ -1241,12 +1293,12 @@ msgstr ""
 #: templates/apps/accounts/user/profile.html:185
 #: templates/apps/accounts/user/profile_activity.html:34
 msgid "favorites"
-msgstr ""
+msgstr "favorit"
 
 #: templates/apps/accounts/user/profile.html:198
 #: templates/apps/accounts/user/profile_activity.html:20
 msgid "tags"
-msgstr ""
+msgstr "tags"
 
 #: templates/apps/accounts/user/profile.html:219
 #: templates/apps/accounts/user/profile_activity.html:26
@@ -1258,12 +1310,12 @@ msgstr ""
 #: templates/apps/accounts/user/profile.html:222
 #: templates/apps/accounts/user/profile_activity.html:48
 msgid "updates"
-msgstr ""
+msgstr "diperbarui"
 
 #: templates/apps/accounts/user/profile.html:225
 #: templates/apps/accounts/user/profile_activity.html:51
 msgid "newest"
-msgstr ""
+msgstr "terbaru"
 
 #: templates/apps/accounts/user/profile.html:241
 #: templates/apps/accounts/user/profile_activity.html:68
@@ -1329,15 +1381,15 @@ msgstr "Kontak Kami"
 
 #: templates/apps/blog/page/contact.html:13
 msgid "What's in a great support request?"
-msgstr ""
+msgstr "Apa ada permintaan yang bagus?"
 
 #: templates/apps/blog/page/contact.html:14
 msgid "Provide us with as much essential information as possible."
-msgstr ""
+msgstr "Berikan kami informasi penting sebanyak mungkin."
 
 #: templates/apps/blog/page/contact.html:15
 msgid "Include any screenshots or links that are related to your problem."
-msgstr ""
+msgstr "Sertakan gambar atau tautan apa pun yang terkait dengan masalah anda."
 
 #: templates/apps/blog/page/contact.html:87
 msgid "Send Email"
@@ -1365,13 +1417,13 @@ msgstr "Privasi"
 
 #: templates/apps/blog/post/author.html:5
 msgid "Posts by"
-msgstr ""
+msgstr "Diposting oleh"
 
 #: templates/apps/blog/post/create.html:7
 #: templates/apps/blog/post/create.html:27
 #, python-format
 msgid "Edit Post \"%(title)s\""
-msgstr ""
+msgstr "Ubah Postingan \"%(title)s\""
 
 #: templates/apps/blog/post/create.html:9
 #: templates/apps/blog/post/create.html:27
@@ -1381,16 +1433,16 @@ msgstr ""
 #: templates/apps/blog/post/list_private.html:30
 #: templates/apps/product/list_private.html:30
 msgid "Create a Post"
-msgstr ""
+msgstr "Buat Postingan"
 
 #: templates/apps/blog/post/create.html:33
 #: templates/apps/product/create.html:29
 msgid "Go Back"
-msgstr ""
+msgstr "Kembali"
 
 #: templates/apps/blog/post/create.html:79
 msgid "Combine multiple words into single-words with hyphens."
-msgstr ""
+msgstr "Gabungkan beberapa kata menjadi satu kata dengan tanda hubung."
 
 #: templates/apps/blog/post/create.html:80
 msgid ""
@@ -1401,15 +1453,15 @@ msgstr ""
 #: templates/apps/blog/post/create.html:129
 #: templates/apps/product/create.html:229
 msgid "Cancel"
-msgstr ""
+msgstr "Batalkan"
 
 #: templates/apps/blog/post/create.html:135
 msgid "Update Post"
-msgstr ""
+msgstr "Ubah Postingan"
 
 #: templates/apps/blog/post/detail.html:49
 msgid "Draft"
-msgstr ""
+msgstr "Draf"
 
 #: templates/apps/blog/post/detail.html:75
 msgid "vote up"
@@ -1425,72 +1477,63 @@ msgstr ""
 
 #: templates/apps/blog/post/detail.html:122
 msgid "share"
-msgstr ""
+msgstr "bagikan"
 
 #: templates/apps/blog/post/detail.html:128
 msgid "Copy Link"
-msgstr ""
+msgstr "Salin Tautan"
 
 #: templates/apps/blog/post/detail.html:128
 msgid "Link successfully copied!"
-msgstr ""
+msgstr "Tautan berhasil disalin!"
 
 #: templates/apps/blog/post/detail.html:150
 #: templates/apps/blog/post/list_private.html:126
 #: templates/apps/product/detail.html:50
 #: templates/apps/product/list_private.html:85
 msgid "Update"
-msgstr ""
+msgstr "Ubah"
 
 #: templates/apps/blog/post/includes/nav_tabs.html:11
 #: templates/apps/blog/tag/list.html:27
 msgid "Newest"
-msgstr ""
+msgstr "Terbaru"
 
 #: templates/apps/blog/post/includes/nav_tabs.html:20
 #: templates/apps/blog/post/list_private.html:83
 msgid "Featured"
-msgstr ""
+msgstr "Unggulan"
 
 #: templates/apps/blog/post/includes/nav_tabs.html:31
 #: templates/apps/blog/post/list_private.html:66
 msgid "Views"
-msgstr ""
+msgstr "Dilihat"
 
 #: templates/apps/blog/post/includes/nav_tabs.html:48
 msgid "Active"
-msgstr ""
+msgstr "Aktif"
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:7
 #: templates/apps/blog/post/includes/paginator.html:8
 #: templates/apps/blog/tag/includes/paginator.html:8
 msgid "First"
-msgstr ""
+msgstr "Pertama"
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:13
 #: templates/apps/blog/post/includes/paginator.html:17
 #: templates/apps/blog/tag/includes/paginator.html:17
 #: templates/apps/product/detail.html:148 templates/apps/product/list.html:46
 msgid "Previous"
-msgstr ""
+msgstr "Sebelumnya"
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:32
 #: templates/apps/blog/post/includes/paginator.html:40
 #: templates/apps/blog/tag/includes/paginator.html:40
 #: templates/apps/product/detail.html:152 templates/apps/product/list.html:50
 msgid "Next"
-msgstr ""
+msgstr "Selanjutnya"
 
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:39
 #: templates/apps/blog/post/includes/paginator.html:49
 #: templates/apps/blog/tag/includes/paginator.html:49
 msgid "Last"
-msgstr ""
-
-#: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:46
-#, python-format
-msgid "Halaman %(current_page)s dari %(total_pages)s"
-msgstr ""
+msgstr "Terakhir"
 
 #: templates/apps/blog/post/includes/paginator.html:59
 #: templates/apps/blog/tag/includes/paginator.html:59
