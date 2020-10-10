@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-10 05:51+0700\n"
+"POT-Creation-Date: 2020-10-10 07:02+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,8 +181,8 @@ msgstr "Favorit"
 msgid "Favorites"
 msgstr "Favorit"
 
-#: apps/blog/models/addons.py:61 apps/blog/models/post.py:33
-#: apps/blog/models/post.py:102 apps/product/models/product.py:26
+#: apps/blog/models/addons.py:61 apps/blog/models/post.py:34
+#: apps/blog/models/post.py:105 apps/product/models/product.py:26
 #: templates/apps/blog/post/list_private.html:39
 #: templates/apps/product/list_private.html:39
 msgid "Title"
@@ -200,69 +200,69 @@ msgstr "Galeri"
 msgid "Galleries"
 msgstr "Galeri"
 
-#: apps/blog/models/post.py:34 apps/blog/models/post.py:103
+#: apps/blog/models/post.py:35 apps/blog/models/post.py:106
 msgid "Slug"
 msgstr "Slug"
 
-#: apps/blog/models/post.py:35 apps/blog/models/post.py:104
+#: apps/blog/models/post.py:36 apps/blog/models/post.py:107
 #: apps/blog/models/tag.py:14
 #: templates/apps/blog/tag/includes/modal_create.html:22
 msgid "Description"
 msgstr "Deskripsi"
 
-#: apps/blog/models/post.py:37
+#: apps/blog/models/post.py:38
 msgid "Keywords"
 msgstr "Kata kunci"
 
-#: apps/blog/models/post.py:38
+#: apps/blog/models/post.py:39
 msgid "Separate by comma (,)"
 msgstr "Pisahkan dengan koma (,)"
 
-#: apps/blog/models/post.py:39
+#: apps/blog/models/post.py:40
 msgid "Meta Description"
 msgstr "Deskripsi Meta"
 
-#: apps/blog/models/post.py:40
+#: apps/blog/models/post.py:41
 msgid "Is Featured?"
 msgstr "Apakah Unggulan?"
 
-#: apps/blog/models/post.py:41 apps/blog/models/post.py:112
+#: apps/blog/models/post.py:42 apps/blog/models/post.py:115
 #: apps/product/models/product.py:69
 #: templates/apps/blog/post/list_private.html:84
 #: templates/apps/product/list_private.html:44
 msgid "Publish"
 msgstr "Terbit"
 
-#: apps/blog/models/post.py:94
+#: apps/blog/models/post.py:97
 msgid "Post"
 msgstr "Postingan"
 
-#: apps/blog/models/post.py:95 templates/apps/accounts/user/profile.html:216
+#: apps/blog/models/post.py:98 templates/apps/accounts/user/profile.html:216
 #: templates/includes/navbar.html:17 templates/includes/navbar.html:28
 msgid "Posts"
 msgstr "Postingan"
 
-#: apps/blog/models/post.py:106
+#: apps/blog/models/post.py:109
 msgid "Site"
 msgstr "Situs"
 
-#: apps/blog/models/post.py:107
+#: apps/blog/models/post.py:110
 msgid "Private"
 msgstr "Privat"
 
-#: apps/blog/models/post.py:108
+#: apps/blog/models/post.py:111
 msgid "Documentation"
 msgstr "Dokumentasi"
 
-#: apps/blog/models/post.py:110
+#: apps/blog/models/post.py:113
 msgid "Status"
 msgstr "Status"
 
-#: apps/blog/models/post.py:119
+#: apps/blog/models/post.py:122
 msgid "Page"
 msgstr "Halaman"
 
-#: apps/blog/models/post.py:120
+#: apps/blog/models/post.py:123
 msgid "Pages"
 msgstr "Halaman"
 
@@ -1431,15 +1431,15 @@ msgid "Previous"
 msgstr ""
 
 #: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:32
-#: templates/apps/blog/post/includes/paginator.html:38
-#: templates/apps/blog/tag/includes/paginator.html:38
+#: templates/apps/blog/post/includes/paginator.html:40
+#: templates/apps/blog/tag/includes/paginator.html:40
 #: templates/apps/product/detail.html:152 templates/apps/product/list.html:50
 msgid "Next"
 msgstr ""
 
 #: templates/apps/blog/post/includes/paginator-fontawesome.backup.html:39
-#: templates/apps/blog/post/includes/paginator.html:47
-#: templates/apps/blog/tag/includes/paginator.html:47
+#: templates/apps/blog/post/includes/paginator.html:49
+#: templates/apps/blog/tag/includes/paginator.html:49
 msgid "Last"
 msgstr ""
 
@@ -1448,19 +1448,19 @@ msgstr ""
 msgid "Halaman %(current_page)s dari %(total_pages)s"
 msgstr ""
 
-#: templates/apps/blog/post/includes/paginator.html:57
-#: templates/apps/blog/tag/includes/paginator.html:57
+#: templates/apps/blog/post/includes/paginator.html:59
+#: templates/apps/blog/tag/includes/paginator.html:59
 #, python-format
 msgid "Page %(current_page)s of %(total_pages)s"
 msgstr ""
 
-#: templates/apps/blog/post/includes/paginator.html:64
-#: templates/apps/blog/tag/includes/paginator.html:64
+#: templates/apps/blog/post/includes/paginator.html:66
+#: templates/apps/blog/tag/includes/paginator.html:66
 msgid "Jump to page"
 msgstr ""
 
-#: templates/apps/blog/post/includes/paginator.html:68
-#: templates/apps/blog/tag/includes/paginator.html:68
+#: templates/apps/blog/post/includes/paginator.html:70
+#: templates/apps/blog/tag/includes/paginator.html:70
 msgid "GO"
 msgstr ""
 

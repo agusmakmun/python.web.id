@@ -7,6 +7,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 
+from updown.models import Vote
 from updown.fields import RatingField
 from martor.models import MartorField
 
@@ -85,10 +86,12 @@ class Post(TimeStampedModel, ContentTypeModel):
     def delete(self, *args, **kwargs):
         """ run delete action for instanced objects """
 
-        # votes = Vote.objects.filter(content_type__model='post', object_id=self.id)
-        # votes.delete()
+        queries = {'content_type__model': 'post', 'object_id': self.id}
+        Favorite.objects.filter(**queries).delete()
+        Visitor.objects.filter(**queries).delete()
+        Vote.objects.filter(**queries).delete()
 
-        super(Post, self).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
 
     class Meta:
         verbose_name = _('Post')
