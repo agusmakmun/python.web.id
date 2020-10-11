@@ -3,9 +3,10 @@ astroid==2.4.2
 certifi==2020.6.20
 chardet==3.0.4
 defusedxml==0.6.0
-Django==3.1.1
+Django==3.1.2
 django-allauth==0.42.0
 django-cors-headers==3.5.0
+django-filter==2.4.0
 django-recaptcha==2.0.6
 django-rest-auth==0.9.5
 django-updown-ratings==1.0.1
@@ -17,6 +18,7 @@ Markdown==3.2.2
 martor==1.5.6
 mccabe==0.6.1
 oauthlib==3.1.0
+psycopg2-binary==2.8.6
 pylint==2.6.0
 python-memcached==1.59
 python3-openid==3.2.0

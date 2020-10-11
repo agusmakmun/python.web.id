@@ -1,5 +1,5 @@
 """
-Django 3.1.1
+Django 3.1.2
 """
 
 from pathlib import Path
@@ -11,6 +11,13 @@ ALLOWED_HOSTS = ['*']
 DEFAULT_PAGINATION_NUMBER = 10
 SECRET_KEY = 'xxxx-xxxx-xxxx-xxxx'
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+if not DEBUG:
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+    SENTRY_URL = 'xxxx-xxxx-xxxx-xxxx'
+    sentry_sdk.init(dsn=SENTRY_URL, integrations=[DjangoIntegration()])
 
 
 # Google TLS Configuration for port 587
@@ -28,6 +35,7 @@ EMAIL_HOST_PASSWORD = 'xxxx'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 FILE_UPLOAD_MAX_MEMORY_SIZE = 35000000
+URL_PASSWORD_RESET = '/accounts/password/reset/'
 
 
 # Martor Configuration
@@ -57,7 +65,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django.contrib.sitemaps',
     'django.contrib.sites',
 
@@ -67,16 +74,21 @@ INSTALLED_APPS = [
     'updown',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.linkedin',
+    'rest_auth',
+    'rest_auth.registration',
+    'django_filters',
 
     # major apps
     'apps.accounts',
     'apps.blog',
     'apps.product',
+    'apps.api',
 ]
 
 
@@ -94,6 +106,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 
+    # custom middleware
+    'core.utils.middleware.BaseAPIResponseMiddleware',
+    'core.utils.middleware.TokenExpirationMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -128,8 +143,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -153,7 +172,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 
     # custom auth backend
-    'apps.accounts.utils.backends.CustomAuthBackend'
+    'core.utils.backends.CustomAuthBackend'
 ]
 
 
@@ -184,6 +203,34 @@ SOCIALACCOUNT_PROVIDERS = {
             'public-profile-url'
         ]
     }
+}
+
+
+# Django Rest Framework Configuration
+# https://www.django-rest-framework.org
+REST_AUTH_EXPIRATION_DAYS = 365  # 1 year
+REST_FRAMEWORK = {
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'anon': '10000/day',
+    #     'user': '10000/day'
+    # },
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'rest_framework.filters.SearchFilter',
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+    'EXCEPTION_HANDLER': 'core.utils.handler.custom_exception_handler',
+    'DEFAULT_PAGINATION_CLASS': 'core.utils.paginator.RestPagination',
+    'PAGE_SIZE': 20 if DEBUG else 50
 }
 
 
@@ -224,7 +271,6 @@ USE_L10N = True
 
 # handle in computer machine, not in this django app
 # sudo timedatectl set-timezone Asia/Jakarta
-# https://python.web.id/posts/detail/how-to-handle-timezone-localtime-in-django/
 TIME_ZONE = 'Asia/Jakarta'
 USE_TZ = False
 
@@ -244,19 +290,21 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Google re-captcha (from apps.configs)
-# https://www.google.com/u/6/recaptcha/admin/site/347092627/settings
+# https://developers.google.com/recaptcha/
 RECAPTCHA_PUBLIC_KEY = 'xxxx-xxxx'
 RECAPTCHA_PRIVATE_KEY = 'xxxx-xxxx'
 
 
 # Django Cors Header
 # Only enable CORS for specified domains
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'http://localhost:8000',
-    'http://localhost:8080',
-)
+if DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
+else:
+    CORS_ORIGIN_WHITELIST = (
+        'http://python.web.id',
+        'https://python.web.id',
+    )
+
 CORS_ALLOW_HEADERS = (
     'accept',
     'accept-encoding',

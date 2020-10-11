@@ -42,7 +42,6 @@ $ cd python.web.id
 (env-python.web.id) $ pip install -r requirements.txt
 (env-python.web.id) $ cp core/settings/local.py core/settings.py
 (env-python.web.id) $ ./manage.py makemigrations && ./manage.py migrate
-(env-python.web.id) $ ./manage.py create_initial --show-print=true
 ```
 
 
@@ -64,4 +63,5 @@ Put `client_id` and `client_secret` into http://127.0.0.1:8000/admin/socialaccou
 
 ## API Docs
 
-- Version 1: https://documenter.getpostman.com/view/5291388/TVRkZnrS
+- Version 1.2: https://documenter.getpostman.com/view/5291388/TVRkZnrS
+- Version 1.1: Has been removed.
