@@ -1,0 +1,14 @@
+[
+  {
+    "is_active": true,
+    "is_staff": true,
+    "is_superuser": true,
+    "last_login": "2020-09-19 14:08:22.941228",
+    "last_name": "",
+    "username": "agus",
+    "email": "mail@gmail.com",
+    "date_joined": "2018-07-12 14:48:21.100069",
+    "password": "xxx-xxx-xxx",
+    "first_name": ""
+  }
+]
