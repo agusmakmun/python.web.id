@@ -1,0 +1,191 @@
+{% load i18n %}
+
+<div class="sidebar-post-form">
+  <div class="sidebar-help sidebar-bulletin mt-0 sidebar-help-for-title" {% if post %}style="display:none"{% endif %}>
+    <h6 class="card-title text-bold">{% trans "How to Post" %}</h6>
+    <ul class="list-group">
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "is your post about programming?" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "provide more details" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "add related resources or links" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "we prefer posts that can be posted, not just dummy." %}</span>
+      </div>
+    </ul>
+  </div>
+
+  <div class="sidebar-help sidebar-bulletin mt-0 sidebar-help-for-title-edit" {% if not post %}style="display:none"{% endif %}>
+    <h6 class="card-title text-bold">{% trans "How to Update" %}</h6>
+    <ul class="list-group">
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "fix grammatical or spelling errors" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "clarify meaning without changing" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "correct minor mistakes" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "add related resources or links" %}</span>
+      </div>
+    </ul>
+  </div>
+
+  <div class="sidebar-help sidebar-bulletin mt-0 sidebar-help-for-description" style="display:none">
+    <h6 class="card-title text-bold">{% trans "How to Format" %}</h6>
+    <ul class="list-group">
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "put returns between paragraphs" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "for linebreak add 2 spaces at end" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content"><i>_italic_</i> {% trans "or" %} <strong>**bold**</strong></span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "indent code by 4 spaces" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "backtick escapes" %} <code>`like code`</code></span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "quote by placing > at start of line" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "to make links" %} [foo](http://foo.com)</span>
+      </div>
+    </ul>
+  </div>
+
+  <div class="sidebar-help sidebar-bulletin mt-0 sidebar-help-for-tags" style="display:none">
+    <h6 class="card-title text-bold">{% trans "How to Tag" %}</h6>
+    <p>
+      <span>{% trans "A tag is a keyword or label that categorizes your post with other, similar posts." %}</span>
+      <span>{% trans "Choose one or more (up to 5) tags that will help visitors to find and interpret your post." %}</span>
+    </p>
+    <ul class="list-group">
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "complete the sentence: <i>my post is about...</i>" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "use tags that describe things or concepts that are essential, not incidental to your post" %}</span>
+      </div>
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">{% trans "favor using existing popular tags" %}</span>
+      </div>
+    </ul>
+
+    <p>{% trans "If your post is primarily about a topic for which you can't find a tag:" %}</p>
+
+    <ul class="list-group">
+      <div class="list-group-item p-0 mb-2 no-border no-bg">
+        <span>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </span>
+        <span class="content">
+          <span>{% trans "combine multiple words into single-words with hyphens" %}</span>
+          <span>(e.g. <code>django-rest-framework</code>), {% trans "up to a maximum of 35" %}</span>
+        </span>
+      </div>
+    </ul>
+  </div>
+</div>

@@ -1,556 +1,781 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2020 PYTHON.WEB.ID
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SUMMON AGUS <summon.agus@gmail.com>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-28 05:46+0700\n"
+"POT-Creation-Date: 2020-10-11 06:48+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
+"Language-Team: LANGUAGE <support@python.web.id>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: app_api/views/api.py:59
-msgid "You are not logged in!"
-msgstr "Anda belum login!"
+#: apps/accounts/apps.py:10
+msgid "App Auth User"
+msgstr "App Auth User"
 
-#: app_api/views/api.py:64
-msgid "You are logout!"
-msgstr "Anda keluar!"
+#: apps/accounts/forms/auth.py:40
+msgid "User is not registered!"
+msgstr "Pengguna tidak terdaftar!"
 
-#: app_api/views/api.py:125 app_blog/views.py:309
-msgid "Tag already exist!"
-msgstr "Tag sudah ada!"
+#: apps/accounts/forms/auth.py:81
+msgid "Username with white space forbidden to use!"
+msgstr "Username dengan spasi tidak diperbolehkan!"
 
-#: app_api/views/api.py:309
-msgid "Post successfully deleted!"
-msgstr "Post berhasil dihapus!"
+#: apps/accounts/forms/auth.py:82
+msgid "This username forbidden to use!"
+msgstr "Username ini tidak diperbolehkan!"
 
-#: app_api/views/api.py:311
-msgid "You are not owner of this post!"
-msgstr "Anda bukan pemilik post ini!"
+#: apps/accounts/forms/auth.py:83
+msgid "E-mail already exist, please use another email!"
+msgstr "E-mail sudah ada, silahkan gunakan e-mail yang lain!"
 
-#: app_api/views/api.py:370
-msgid "You are not owner of this profile!"
-msgstr "Anda bukan pemilik profil ini!"
+#: apps/accounts/forms/auth.py:84 apps/accounts/forms/auth.py:169
+msgid "The two password didn't match."
+msgstr "Kedua kata sandi itu tidak cocok."
 
-#: app_blog/forms.py:24
-msgid "Separate by comma (,)"
-msgstr "Pisahkan dengan koma (,)"
+#: apps/accounts/forms/auth.py:91 apps/accounts/forms/auth.py:92
+#: apps/blog/forms/contact.py:15 apps/blog/forms/contact.py:40
+#: templates/allauth/account/email.html:84
+#: templates/allauth/account/email.html:87
+#: templates/allauth/account/password_reset.html:31
+#: templates/allauth/account/signup.html:59
+#: templates/allauth/socialaccount/signup.html:29
+msgid "E-mail"
+msgstr "E-mail"
 
-#: app_blog/forms.py:39
+#: apps/accounts/forms/auth.py:170
+msgid "Password with space forbidden to use."
+msgstr "Kata sandi dengan spasi dilarang untuk digunakan."
+
+#: apps/accounts/forms/profile.py:16
+msgid "Steve Jobs"
+msgstr "Steve Jobs"
+
+#: apps/accounts/forms/profile.py:17
+msgid "City, Country"
+msgstr "Kota, Negara"
+
+#: apps/accounts/forms/profile.py:19
+msgid "Tell us about you ..."
+msgstr "Ceritakan tentang anda ..."
+
+#: apps/accounts/models/user.py:30
+msgid "Display name"
+msgstr "Nama tampilan"
+
+#: apps/accounts/models/user.py:31
+msgid "Location"
+msgstr "Lokasi"
+
+#: apps/accounts/models/user.py:32
+msgid "Birth date"
+msgstr "Tanggal lahir"
+
+#: apps/accounts/models/user.py:33
+msgid "About Me"
+msgstr "Tentang saya"
+
+#: apps/accounts/models/user.py:34 apps/product/models/product.py:30
+msgid "Website"
+msgstr "Situs"
+
+#: apps/accounts/models/user.py:35 templates/allauth/account/login.html:30
+#: templates/allauth/account/signup.html:29
+msgid "Github"
+msgstr "Github"
+
+#: apps/accounts/models/user.py:36
+msgid "Linkedin"
+msgstr "Linkedin"
+
+#: apps/accounts/models/user.py:37
+msgid "Instagram"
+msgstr "Instagram"
+
+#: apps/accounts/models/user.py:38
+msgid "Twitter"
+msgstr "Twitter"
+
+#: apps/accounts/models/user.py:64
+#: templates/apps/accounts/user/includes/nav_left.html:10
+#: templates/apps/accounts/user/includes/nav_tabs.html:9
+#: templates/apps/accounts/user/profile.html:5
+#: templates/apps/accounts/user/profile_activity.html:5
+#: templates/apps/accounts/user/profile_update.html:5
+msgid "Profile"
+msgstr "Profil"
+
+#: apps/accounts/models/user.py:65
+msgid "Profiles"
+msgstr "Profil"
+
+#: apps/accounts/views/profile.py:109
+msgid "Profile successfully updated!"
+msgstr "Profil berhasil diperbarui!"
+
+#: apps/api/apps.py:10
+msgid "App API"
+msgstr "App API"
+
+#: apps/api/base/views/base.py:48 apps/api/base/views/base.py:100
+#: apps/api/versioned/v1/views/post.py:67
+#: apps/api/versioned/v1/views/post.py:105
+msgid "Argument id should be integer!"
+msgstr "Parameter id harus berupa angka!"
+
+#: apps/api/base/views/base.py:94 apps/api/versioned/v1/views/post.py:61
+#: apps/api/versioned/v1/views/post.py:99
+msgid "KeyError argument id is required!"
+msgstr "KeyError argumen id wajib ada!"
+
+#: apps/api/versioned/v1/serializers/auth.py:66 core/utils/middleware.py:113
+#: core/utils/paginator.py:45
+msgid "Success"
+msgstr "Sukses"
+
+#: apps/api/versioned/v1/views/authtoken.py:72
+msgid "Successfully logout."
+msgstr "Berhasil keluar."
+
+#: apps/api/versioned/v1/views/authtoken.py:116
+msgid "Password reset email has been sent."
+msgstr "Email pengaturan ulang kata sandi telah dikirim."
+
+#: apps/api/versioned/v1/views/post.py:74
+msgid "Your are not allowed to update this post!"
+msgstr "Anda tidak diizinkan mengubah postingan ini!"
+
+#: apps/api/versioned/v1/views/post.py:112
+msgid "Your are not allowed to delete this post!"
+msgstr "Anda tidak diizinkan menghapus postingan ini!"
+
+#: apps/api/versioned/v1/views/post.py:119
 #, python-format
-msgid "%(tag)s already exist!"
-msgstr "%(tag)s sudah ada!"
+msgid "%(verbose_name)s successfully deleted!"
+msgstr "\"%(verbose_name)s\" berhasil dihapus!"
 
-#: app_blog/forms.py:59 app_blog/forms.py:72 app_user/forms.py:99
-#: app_user/forms.py:100 templates/app_dashboard/dashboard_users.html:22
-msgid "Email"
-msgstr ""
+#: apps/blog/admins/admin.py:14 apps/blog/admins/admin.py:15
+msgid "Django Blog"
+msgstr "Django Blog"
 
-#: app_blog/forms.py:60
+#: apps/blog/apps.py:10
+msgid "App Blog"
+msgstr "App Blog"
+
+#: apps/blog/forms/contact.py:16
 msgid "Sender"
 msgstr "Pengirim"
 
-#: app_blog/forms.py:61
+#: apps/blog/forms/contact.py:17
 msgid "Subject"
 msgstr "Subyek"
 
-#: app_blog/forms.py:62
+#: apps/blog/forms/contact.py:18
 msgid "Message"
 msgstr "Pesan"
 
-#: app_blog/models.py:29 app_blog/models.py:66 app_blog/models.py:135
-#: app_blog/models.py:206 templates/app_blog/posts_author_private.html:33
-#: templates/app_dashboard/dashboard_galleries.html:28
-#: templates/app_dashboard/dashboard_pages.html:28
-#: templates/app_dashboard/dashboard_posts.html:28
-#: templates/app_dashboard/dashboard_tags.html:43
-msgid "Title"
-msgstr "Judul"
+#: apps/blog/forms/tag.py:16
+#, python-format
+msgid "%(tag)s already exist!"
+msgstr "%(tag)s sudah ada"
 
-#: app_blog/models.py:30 app_blog/models.py:67 app_blog/models.py:136
-#: templates/app_dashboard/dashboard_tags.html:44
-msgid "Slug"
-msgstr ""
+#: apps/blog/models/addons.py:15
+msgid "Headers"
+msgstr "Header"
 
-#: app_blog/models.py:49
-msgid "Detail Tag"
-msgstr "Detil Tag"
-
-#: app_blog/models.py:50 templates/app_api/docs/docs_page.html:61
-#: templates/app_blog/tags_list.html:5
-#: templates/app_dashboard/dashboard_menus.html:10
-#: templates/app_user/profile_detail.html:179
-#: templates/app_user/profile_detail_activity.html:69
-#: templates/includes/navs.html:99
-msgid "Tags"
-msgstr "Tag"
-
-#: app_blog/models.py:68 app_blog/models.py:137
-msgid "Description"
-msgstr "Deskripsi"
-
-#: app_blog/models.py:70
-msgid "Keywords"
-msgstr "Kata kunci"
-
-#: app_blog/models.py:71
-msgid "Keywords sparate by comma."
-msgstr "Kata kunci dipisahkan dengan koma."
-
-#: app_blog/models.py:72
-msgid "Meta Description"
-msgstr "Deskripsi meta"
-
-#: app_blog/models.py:73
-msgid "Is Featured?"
-msgstr "Apakah Unggulan?"
-
-#: app_blog/models.py:74 app_blog/models.py:145
-#: templates/app_blog/posts_author_private.html:57
-#: templates/app_dashboard/dashboard_pages.html:32
-#: templates/app_dashboard/dashboard_posts.html:53
-msgid "Publish"
-msgstr "Terbit"
-
-#: app_blog/models.py:118
-msgid "Detail Post"
-msgstr "Detil Post"
-
-#: app_blog/models.py:119 templates/app_api/docs/docs_page.html:57
-#: templates/app_dashboard/dashboard_menus.html:13
-#: templates/app_user/profile_detail.html:140
-#: templates/app_user/profile_detail_activity.html:34
-#: templates/includes/navs.html:92 templates/includes/navs.html:96
-msgid "Posts"
-msgstr "Postingan"
-
-#: app_blog/models.py:139
-msgid "Site"
-msgstr "Situs"
-
-#: app_blog/models.py:140
-msgid "Private"
-msgstr "Pribadi"
-
-#: app_blog/models.py:141
-msgid "Documentation"
-msgstr "Dokumentasi"
-
-#: app_blog/models.py:143 templates/app_dashboard/dashboard_pages.html:31
-#: templates/app_dashboard/dashboard_users.html:27
-msgid "Status"
-msgstr ""
-
-#: app_blog/models.py:165
-msgid "Detail Page"
-msgstr "Detil Halaman"
-
-#: app_blog/models.py:166 templates/app_dashboard/dashboard_menus.html:22
-msgid "Pages"
-msgstr "Halaman"
-
-#: app_blog/models.py:173
+#: apps/blog/models/addons.py:16
 msgid "IP Address"
 msgstr "Alamat IP"
 
-#: app_blog/models.py:178
+#: apps/blog/models/addons.py:25
 #, python-format
-msgid "%(ip)s visited %(post)s"
-msgstr "%(ip)s mengunjungi %(post)s"
+msgid "%(ip_address)s visited to %(content_object)s"
+msgstr "%(ip_address)s mengunjungi %(content_object)s"
 
-#: app_blog/models.py:181
-msgid "Detail Visitor"
-msgstr "Detil Pengunjung"
+#: apps/blog/models/addons.py:30
+msgid "Visitor"
+msgstr "Pengunjung"
 
-#: app_blog/models.py:182 templates/app_dashboard/dashboard_menus.html:19
+#: apps/blog/models/addons.py:31
 msgid "Visitors"
 msgstr "Pengunjung"
 
-#: app_blog/models.py:194
+#: apps/blog/models/addons.py:49
 #, python-format
-msgid "%(post)s marked as favorite by %(user)s"
-msgstr "%(post)s ditandai sebagai favorit oleh %(user)s"
+msgid "%(title)s marked as favorite by %(user)s"
+msgstr "%(title)s ditandai sebagai favorit oleh %(user)s"
 
-#: app_blog/models.py:198
-msgid "Detail Favorite"
-msgstr "Detil Favorit"
+#: apps/blog/models/addons.py:52
+msgid "Favorite"
+msgstr "Favorit"
 
-#: app_blog/models.py:199 templates/app_blog/posts_author_private.html:47
-#: templates/app_dashboard/dashboard_posts.html:43
-#: templates/app_user/profile_detail.html:228
-#: templates/app_user/profile_detail_activity.html:146
+#: apps/blog/models/addons.py:53 templates/apps/blog/post/list_private.html:80
 msgid "Favorites"
 msgstr "Favorit"
 
-#: app_blog/models.py:207 templates/app_dashboard/dashboard_galleries.html:30
+#: apps/blog/models/addons.py:61 apps/blog/models/post.py:34
+#: apps/blog/models/post.py:105 apps/product/models/product.py:26
+#: templates/apps/blog/post/list_private.html:39
+#: templates/apps/product/list_private.html:39
+msgid "Title"
+msgstr "Judul"
+
+#: apps/blog/models/addons.py:62
 msgid "Attachment"
 msgstr "Lampiran"
 
-#: app_blog/models.py:213
-msgid "Detail Gallery"
-msgstr "Detil Galleri"
+#: apps/blog/models/addons.py:68
+msgid "Gallery"
+msgstr "Galeri"
 
-#: app_blog/models.py:214 templates/app_dashboard/dashboard_menus.html:25
+#: apps/blog/models/addons.py:69
 msgid "Galleries"
-msgstr "Galleri"
+msgstr "Galeri"
 
-#: app_blog/views.py:184
+#: apps/blog/models/post.py:35 apps/blog/models/post.py:106
+msgid "Slug"
+msgstr "Slug"
+
+#: apps/blog/models/post.py:36 apps/blog/models/post.py:107
+#: apps/blog/models/tag.py:14
+#: templates/apps/blog/tag/includes/modal_create.html:22
+msgid "Description"
+msgstr "Deskripsi"
+
+#: apps/blog/models/post.py:38
+msgid "Keywords"
+msgstr "Kata kunci"
+
+#: apps/blog/models/post.py:39
+msgid "Separate by comma (,)"
+msgstr "Pisahkan dengan koma (,)"
+
+#: apps/blog/models/post.py:40
+msgid "Meta Description"
+msgstr "Deskripsi Meta"
+
+#: apps/blog/models/post.py:41
+msgid "Is Featured?"
+msgstr "Apakah Unggulan?"
+
+#: apps/blog/models/post.py:42 apps/blog/models/post.py:115
+#: apps/product/models/product.py:69
+#: templates/apps/blog/post/list_private.html:84
+#: templates/apps/product/list_private.html:44
+msgid "Publish"
+msgstr "Terbit"
+
+#: apps/blog/models/post.py:97
+msgid "Post"
+msgstr "Postingan"
+
+#: apps/blog/models/post.py:98 templates/apps/accounts/user/profile.html:216
+#: templates/includes/navbar.html:17 templates/includes/navbar.html:28
+msgid "Posts"
+msgstr "Postingan"
+
+#: apps/blog/models/post.py:109
+msgid "Site"
+msgstr "Situs"
+
+#: apps/blog/models/post.py:110
+msgid "Private"
+msgstr "Privat"
+
+#: apps/blog/models/post.py:111
+msgid "Documentation"
+msgstr "Dokumentasi"
+
+#: apps/blog/models/post.py:113
+msgid "Status"
+msgstr "Status"
+
+#: apps/blog/models/post.py:122
+msgid "Page"
+msgstr "Halaman"
+
+#: apps/blog/models/post.py:123
+msgid "Pages"
+msgstr "Halaman"
+
+#: apps/blog/models/tag.py:13
+#: templates/apps/blog/tag/includes/modal_create.html:17
+#: templates/apps/blog/tag/list.html:26
+msgid "Name"
+msgstr "Nama"
+
+#: apps/blog/models/tag.py:39
+msgid "Tag"
+msgstr "Tag"
+
+#: apps/blog/models/tag.py:40 templates/apps/accounts/user/profile.html:261
+#: templates/apps/blog/tag/list.html:4 templates/apps/blog/tag/list.html:8
+#: templates/includes/navbar.html:31
+msgid "Tags"
+msgstr "Tag"
+
+#: apps/blog/views/addons.py:31
+msgid "`object_id` and `content_type` must filled!"
+msgstr "`object_id` dan `content_type` harus diisi!"
+
+#: apps/blog/views/addons.py:35
+msgid "`object_id` should be integer!"
+msgstr "`object_id` harus berupa angka!"
+
+#: apps/blog/views/addons.py:39
+msgid "You must login to mark as favorite!"
+msgstr "Anda harus login untuk menandai sebagai favorit!"
+
+#: apps/blog/views/addons.py:45
+msgid "This `content_type` doesn't exist!"
+msgstr "`content_type` ini tidak ada!"
+
+#: apps/blog/views/addons.py:54
+msgid "The post marked as favorite!"
+msgstr "Postingan ditandai sebagai favorit!"
+
+#: apps/blog/views/addons.py:57
+msgid "The post removed from favorite!"
+msgstr "Postingan dihapus dari favorit!"
+
+#: apps/blog/views/page.py:47
+#: templates/apps/blog/page/includes/right_sidebar.html:31
+#: templates/includes/footer.html:36 templates/includes/navbar.html:44
+msgid "About"
+msgstr "Tentang"
+
+#: apps/blog/views/page.py:52
+#: templates/apps/blog/page/includes/right_sidebar.html:43
+#: templates/includes/footer.html:42 templates/includes/navbar.html:46
+msgid "Developers"
+msgstr "Pengembang"
+
+#: apps/blog/views/page.py:57
+#: templates/apps/blog/page/includes/right_sidebar.html:64
+#: templates/includes/footer.html:54
+msgid "Disclaimer"
+msgstr "Penolakan"
+
+#: apps/blog/views/page.py:62
+msgid "Privacy Policy"
+msgstr "Kebijakan privasi"
+
+#: apps/blog/views/page.py:67
+#: templates/apps/blog/page/includes/right_sidebar.html:16
+#: templates/includes/footer.html:16 templates/includes/navbar.html:41
+msgid "Services"
+msgstr "Jasa"
+
+#: apps/blog/views/page.py:72
+#: templates/apps/blog/page/includes/right_sidebar.html:9
+#: templates/includes/footer.html:19 templates/includes/navbar.html:42
+msgid "Sponsor"
+msgstr "Sponsor"
+
+#: apps/blog/views/page.py:77 apps/product/models/product.py:72
+#: templates/apps/product/detail.html:168
+msgid "Terms of Service"
+msgstr "Persyaratan Layanan"
+
+#: apps/blog/views/page.py:113
+#, python-format
+msgid "%(subject)s from %(email)s by %(sender)s"
+msgstr "%(subject)s dari %(email)s oleh %(sender)s"
+
+#: apps/blog/views/page.py:118
+msgid "Your message successfully sended!"
+msgstr "Postingan berhasil dibuat"
+
+#: apps/blog/views/post.py:226
 msgid "Post successfully created!"
-msgstr "Post berhasil dibuat!"
+msgstr "Postingan berhasil dibuat"
 
-#: app_blog/views.py:204
+#: apps/blog/views/post.py:249
 #, python-format
 msgid "\"%(post)s\" successfully updated!"
 msgstr "\"%(post)s\" berhasil diperbarui!"
 
-#: app_blog/views.py:230
+#: apps/blog/views/post.py:295
 msgid "You must login to delete this post!"
-msgstr "Anda harus login untuk menghapus post ini!"
+msgstr "Anda harus login untuk menghapus postingan ini!"
 
-#: app_blog/views.py:234 app_blog/views.py:245
-msgid "The post deleted!"
-msgstr "Post telah terhapus!"
+#: apps/blog/views/post.py:299 apps/blog/views/post.py:305
+msgid "The successfully post deleted!"
+msgstr "Postingan berhasil dihapus!"
 
-#: app_blog/views.py:237 app_blog/views.py:343 app_blog/views.py:464
-#: app_dashboard/views.py:199 app_dashboard/views.py:241
-#: app_dashboard/views.py:279 app_dashboard/views.py:303
-msgid "You are not allowed to access this method!"
-msgstr "Anda tidak diizinkan untuk mengakses metode ini!"
+#: apps/blog/views/post.py:301 apps/product/views/product.py:170
+msgid "You are not allowed to access this feature!"
+msgstr "Anda tidak diizinkan mengakses fitur ini!"
 
-#: app_blog/views.py:263 app_dashboard/views.py:99
-msgid "You must login to create the tag!"
-msgstr "Anda harus login untuk membuat tag!"
+#: apps/blog/views/post.py:307 apps/product/views/product.py:176
+msgid "Param `id` should be integer!"
+msgstr "Parameter `id` harus berupa angka!"
 
-#: app_blog/views.py:268 app_blog/views.py:287 app_dashboard/views.py:95
-msgid "Tag successfully created!"
-msgstr "Tag berhasil dibuat!"
-
-#: app_blog/views.py:270 app_dashboard/views.py:97
-msgid "Tag failed to save!"
-msgstr "Tag gagal disimpan!"
-
-#: app_blog/views.py:297
-msgid "request post only!"
-msgstr "hanya request post!"
-
-#: app_blog/views.py:305
+#: apps/blog/views/tag.py:70
 msgid "You must login to create a tag!"
-msgstr "Anda harus login untuk membuat tag!"
+msgstr "Anda harus masuk untuk membuat tag!"
 
-#: app_blog/views.py:307
+#: apps/blog/views/tag.py:72
 msgid "Tag should not empty!"
 msgstr "Tag tidak boleh kosong!"
 
-#: app_blog/views.py:313
+#: apps/blog/views/tag.py:74
+msgid "Tag already exist!"
+msgstr "Tag sudah ada!"
+
+#: apps/blog/views/tag.py:78
 #, python-format
 msgid "Tag \"%(tag)s\" successfuly created!"
 msgstr "Tag \"%(tag)s\" berhasil dibuat!"
 
-#: app_blog/views.py:340
-msgid "You must login to mark as featured!"
-msgstr "Anda harus login untuk menandai sebagai post unggulan!"
+#: apps/product/apps.py:10
+msgid "App Product"
+msgstr "App Product"
 
-#: app_blog/views.py:348
-msgid "The post marked as featured!"
-msgstr "Pos ditandai sebagai unggulan!"
+#: apps/product/models/ads.py:14
+msgid "Navbar (Top)"
+msgstr "Navbar (Atas)"
 
-#: app_blog/views.py:351
-msgid "The post removed from featured!"
-msgstr "Posting dihapus dari unggulan!"
+#: apps/product/models/ads.py:16
+msgid "Post List (Top)"
+msgstr "Daftar Postingan (Atas)"
 
-#: app_blog/views.py:364
-msgid "You must login to mark as favorite!"
-msgstr "Anda harus login untuk menandai sebagai favorit!"
+#: apps/product/models/ads.py:17
+msgid "Post List (Middle)"
+msgstr "Daftar Postingan (Tengah)"
 
-#: app_blog/views.py:370
-msgid "The post removed from favorite!"
-msgstr "Post dihapus dari favorit!"
+#: apps/product/models/ads.py:18
+msgid "Post List (Bottom)"
+msgstr "Daftar Postingan (Bawah)"
 
-#: app_blog/views.py:373
-msgid "The post marked as favorite!"
-msgstr "Post ditandai sebagai favorit!"
+#: apps/product/models/ads.py:20
+msgid "Post Detail (Top)"
+msgstr "Detail Postingan (Atas)"
 
-#: app_blog/views.py:383
-msgid "You must login to undo a vote!"
-msgstr "Anda harus login untuk membatalkan voting!"
+#: apps/product/models/ads.py:21
+msgid "Post Detail (Middle)"
+msgstr "Detail Postingan (Tengah)"
 
-#: app_blog/views.py:400
-msgid "Undo vote successfully changed!"
-msgstr "Pembatalan voting berhasil diperbarui!"
+#: apps/product/models/ads.py:22
+msgid "Post Detail (Bottom)"
+msgstr "Detail Postingan (Bawah)"
 
-#: app_blog/views.py:402
-msgid "Vote doesn't exists!"
-msgstr "Voting tidak ada!"
+#: apps/product/models/ads.py:24
+msgid "Sidebar (Top)"
+msgstr "Sidebar (Atas)"
 
-#: app_blog/views.py:415
-msgid "Page successfully created!"
-msgstr "Halaman berhasil dibuat!"
+#: apps/product/models/ads.py:25
+msgid "Sidebar (Middle)"
+msgstr "Sidebar (Tengah)"
 
-#: app_blog/views.py:432
+#: apps/product/models/ads.py:26
+msgid "Sidebar (Bottom)"
+msgstr "Sidebar (Bawah)"
+
+#: apps/product/models/ads.py:28
+msgid "Footer"
+msgstr "Footer"
+
+#: apps/product/models/ads.py:30
+msgid "Place"
+msgstr "Tempat"
+
+#: apps/product/models/ads.py:34
+msgid "Raw HTML"
+msgstr "HTML mentah"
+
+#: apps/product/models/ads.py:35
+msgid "Please do not use javascript syntax."
+msgstr "Harap jangan gunakan sintaks javascript."
+
+#: apps/product/models/ads.py:43
+msgid "Advertisement"
+msgstr "Iklan"
+
+#: apps/product/models/ads.py:44
+msgid "Advertisements"
+msgstr "Iklan"
+
+#: apps/product/models/product.py:29
+msgid "Plugin"
+msgstr "Plugin"
+
+#: apps/product/models/product.py:31
+msgid "E-Book"
+msgstr "E-Book"
+
+#: apps/product/models/product.py:33
+#: templates/apps/product/list_private.html:41
+msgid "Category"
+msgstr "Kategori"
+
+#: apps/product/models/product.py:38
+msgid "Premium"
+msgstr "Premium"
+
+#: apps/product/models/product.py:39 templates/apps/product/detail.html:79
+#: templates/apps/product/list.html:66
+msgid "Free"
+msgstr "Gratis"
+
+#: apps/product/models/product.py:41
+#: templates/apps/product/list_private.html:42
+msgid "Type"
+msgstr "Tipe"
+
+#: apps/product/models/product.py:45
+#: templates/apps/product/list_private.html:43
+msgid "Price"
+msgstr "Harga"
+
+#: apps/product/models/product.py:46
+msgid "Currently price, e.g: 75000"
+msgstr "Harga saat ini, contoh: 75000"
+
+#: apps/product/models/product.py:47
+msgid "Price Discount"
+msgstr "Harga Diskon"
+
+#: apps/product/models/product.py:48
+msgid "Fixed price after discount"
+msgstr "Harga tetap setelah diskon"
+
+#: apps/product/models/product.py:51
+msgid "USD $"
+msgstr "USD $"
+
+#: apps/product/models/product.py:52
+msgid "IDR Rp"
+msgstr "IDR Rp"
+
+#: apps/product/models/product.py:53
+msgid "SGD S$"
+msgstr "SGD S$"
+
+#: apps/product/models/product.py:54
+msgid "GBP £"
+msgstr "GBP £"
+
+#: apps/product/models/product.py:55
+msgid "EUR €"
+msgstr "EUR €"
+
+#: apps/product/models/product.py:57
+msgid "Currency Code"
+msgstr "Kode mata uang"
+
+#: apps/product/models/product.py:60
+msgid "Price currency code"
+msgstr "Kode mata uang untuk harga"
+
+#: apps/product/models/product.py:62
+msgid "Buy URL"
+msgstr "URL Pembelian"
+
+#: apps/product/models/product.py:63
+msgid "e.g: https://www.paypal.com/paypalme/summonagus"
+msgstr "contoh: https://www.paypal.com/paypalme/summonagus"
+
+#: apps/product/models/product.py:64
+msgid "Image URL's"
+msgstr "URL Gambar"
+
+#: apps/product/models/product.py:65
+msgid "Please use list string format, e.g: [\"https://google.com/image.png\"]"
+msgstr ""
+"Harap gunakan format list string, contoh: [\"https://google.com/image.png\"]"
+
+#: apps/product/models/product.py:67
+msgid "Demo URL"
+msgstr "URL Demo"
+
+#: apps/product/models/product.py:68
+msgid "Download URL"
+msgstr "URL Unduh"
+
+#: apps/product/models/product.py:70
+msgid "Sort Description"
+msgstr "Deskripsi Singkat"
+
+#: apps/product/models/product.py:71
+msgid "Long Description"
+msgstr "Deskripsi Panjang"
+
+#: apps/product/models/product.py:98
+msgid "Product"
+msgstr "Produk"
+
+#: apps/product/models/product.py:99
+#: templates/apps/blog/page/includes/right_sidebar.html:23
+#: templates/apps/product/detail.html:38 templates/apps/product/list.html:5
+#: templates/apps/product/list.html:9 templates/includes/footer.html:13
+#: templates/includes/navbar.html:34
+msgid "Products"
+msgstr "Produk"
+
+#: apps/product/views/product.py:107
+msgid "Product successfully created!"
+msgstr "Produk berhasil dibuat"
+
+#: apps/product/views/product.py:129
 #, python-format
-msgid "\"%(page)s\" successfully updated!"
-msgstr "\"%(page)s\" berhasil diperbarui!"
+msgid "\"%(product)s\" successfully updated!"
+msgstr "\"%(product)s\" berhasil diperbarui!"
 
-#: app_blog/views.py:461
-msgid "You must login to delete this page!"
-msgstr "Anda harus login untuk menghapus halaman ini!"
+#: apps/product/views/product.py:164
+msgid "You must login to delete this product!"
+msgstr "Anda harus login untuk menghapus produk ini!"
 
-#: app_blog/views.py:468
-msgid "The page deleted!"
-msgstr "Halaman terhapus!"
+#: apps/product/views/product.py:168 apps/product/views/product.py:174
+msgid "The product successfully deleted!"
+msgstr "Produk berhasil dihapus!"
 
-#: app_blog/views.py:491
-msgid "Your message successfully sended!"
-msgstr "Pesan anda berhasil dikirim!"
-
-#: app_dashboard/views.py:83
-msgid "Tag successfully deleted!"
-msgstr "Tag berhasil dihapus!"
-
-#: app_dashboard/views.py:156
-msgid "File successfully uploaded!"
-msgstr "File berhasil diunggah!"
-
-#: app_dashboard/views.py:173
-#, python-format
-msgid "\"%(file)s\" successfully updated!"
-msgstr "\"%(file)s\" successfully diperbarui!"
-
-#: app_dashboard/views.py:196
-msgid "You must login to delete this file!"
-msgstr "Anda harus login untuk menghapus file ini!"
-
-#: app_dashboard/views.py:208
-msgid "The file deleted!"
-msgstr "File terhapus!"
-
-#: app_dashboard/views.py:238
-msgid "You must login to delete this visitor!"
-msgstr "Anda harus login untuk pengunjung ini!"
-
-#: app_dashboard/views.py:245
-msgid "The visitor deleted!"
-msgstr "Pengunjung terhapus!"
-
-#: app_dashboard/views.py:276 app_dashboard/views.py:300
-msgid "You must login to delete this user!"
-msgstr "Anda harus login untuk menghapus user ini!"
-
-#: app_dashboard/views.py:285
-#, fuzzy
-#| msgid "Post successfully created!"
-msgid "User successfully unactivated!"
-msgstr "Post berhasil dibuat!"
-
-#: app_dashboard/views.py:289
-#, fuzzy
-#| msgid "Post successfully created!"
-msgid "User successfully activated!"
-msgstr "Post berhasil dibuat!"
-
-#: app_dashboard/views.py:307
-msgid "The user deleted!"
-msgstr "User terhapus!"
-
-#: app_user/forms.py:21
-msgid "User is not registered!"
-msgstr "User tidak terdaftar!"
-
-#: app_user/forms.py:53
-msgid "Username with white space forbidden to use!"
-msgstr "Username dengan white space dilarang untuk digunakan!"
-
-#: app_user/forms.py:54
-msgid "This username forbidden to use!"
-msgstr "Username ini dilarang untuk digunakan!"
-
-#: app_user/forms.py:55
-msgid "Email already exist, please use another email!"
-msgstr "Email sudah ada, silahkan gunakan email lain!"
-
-#: app_user/forms.py:56 app_user/forms.py:123
-msgid "The two password didn't match."
-msgstr "Kedua password tidak cocok."
-
-#: app_user/forms.py:124
-msgid "Password with space forbidden to use."
-msgstr "Password dengan space dilarang untuk digunakan."
-
-#: app_user/forms.py:165
-msgid "City, Country"
-msgstr "Kota, Negara"
-
-#: app_user/forms.py:166
-msgid "Tell us about you ..."
-msgstr "Beritahu kami tentang anda ..."
-
-#: app_user/models.py:14
-msgid "Display name"
-msgstr "Tampilan nama"
-
-#: app_user/models.py:15 templates/app_dashboard/dashboard_users.html:25
-msgid "Location"
-msgstr "Lokasi"
-
-#: app_user/models.py:16
-msgid "About Me"
-msgstr "Tentang Saya"
-
-#: app_user/models.py:17
-msgid "Website"
-msgstr "Situs web"
-
-#: app_user/models.py:18
-msgid "Twitter"
-msgstr ""
-
-#: app_user/models.py:19
-msgid "Linkedin"
-msgstr ""
-
-#: app_user/models.py:20 templates/app_dashboard/dashboard_users.html:26
-msgid "Github"
-msgstr ""
-
-#: app_user/models.py:21
-msgid "Birth date"
-msgstr "Tanggal lahir"
-
-#: app_user/models.py:47
-msgid "Detail Profile"
-msgstr "Detil Profil"
-
-#: app_user/models.py:48
-msgid "Profiles"
-msgstr "Profil"
-
-#: app_user/views.py:107
-msgid "Profile updated!"
-msgstr "Profile dirubah!"
-
-#: djangoblog/utils/handler.py:10
+#: core/utils/handler.py:12
 msgid "400 Bad Request"
-msgstr ""
+msgstr "400 Permintaan yang buruk"
 
-#: djangoblog/utils/handler.py:17
+#: core/utils/handler.py:19
 msgid "403 Permission Denied"
-msgstr ""
+msgstr "403 Izin ditolak"
 
-#: djangoblog/utils/handler.py:24
+#: core/utils/handler.py:26
 msgid "404 Not Found"
-msgstr ""
+msgstr "404 Tidak ditemukan"
 
-#: djangoblog/utils/handler.py:31
+#: core/utils/handler.py:33
 msgid "500 Server Error"
+msgstr "500 Server error"
+
+#: core/utils/middleware.py:106
+msgid "Failed"
+msgstr "Gagal"
+
+#: core/utils/middleware.py:161
+msgid ""
+"Token already expired, please login with your username & password again!"
 msgstr ""
+"Token telah kadaluarsa, silahkan masuk dengan username & password anda lagi!"
 
-#: templates/allauth/account/account_inactive.html:3
-#: templates/allauth/account/account_inactive.html:8
+#: templates/allauth/account/account_inactive.html:4
+#: templates/allauth/account/account_inactive.html:12
 msgid "Account Inactive"
-msgstr "Akun tidak aktif"
+msgstr "Akun Tidak Aktif"
 
-#: templates/allauth/account/account_inactive.html:10
+#: templates/allauth/account/account_inactive.html:13
 msgid "This account is inactive."
-msgstr "Akun ini tidak aktif."
+msgstr "Akun ini tidak aktif"
 
-#: templates/allauth/account/email.html:3
-msgid "Email Account"
-msgstr "Akun Email"
+#: templates/allauth/account/account_inactive.html:16
+#: templates/allauth/account/email_confirm.html:36
+#: templates/allauth/account/logout.html:25
+#: templates/allauth/account/password_reset.html:61
+#: templates/allauth/account/password_reset_done.html:21
+#: templates/allauth/account/password_reset_from_key.html:20
+#: templates/allauth/account/password_reset_from_key.html:51
+#: templates/allauth/account/password_reset_from_key_done.html:16
+#: templates/allauth/account/signup_closed.html:16
+#: templates/allauth/account/verification_sent.html:16
+#: templates/allauth/account/verified_email_required.html:21
+#: templates/allauth/socialaccount/authentication_error.html:16
+#: templates/allauth/socialaccount/login_cancelled.html:18
+msgid "<a href=\"/\">Go to homepage</a>"
+msgstr "<a href=\"/\">Ke beranda</a>"
 
-#: templates/allauth/account/email.html:17
-msgid "The following e-mail addresses are associated with your account:"
-msgstr "Alamat e-mail berikut dikaitkan dengan akun anda:"
-
-#: templates/allauth/account/email.html:22
+#: templates/allauth/account/email.html:4
 msgid "E-mail Addresses"
-msgstr "Alamat email"
+msgstr "Alamat e-mail"
 
-#: templates/allauth/account/email.html:32
+#: templates/allauth/account/email.html:24
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "Alamat email berikut ini terkait dengan akun Anda:"
+
+#: templates/allauth/account/email.html:37
 msgid "Verified"
-msgstr "Terverifikasi"
+msgstr "Diverifikasi"
 
-#: templates/allauth/account/email.html:34
+#: templates/allauth/account/email.html:39
 msgid "Unverified"
-msgstr "Tidak terverifikasi"
+msgstr "Tidak diverifikasi"
 
-#: templates/allauth/account/email.html:38
+#: templates/allauth/account/email.html:43
 msgid "Primary"
 msgstr "Utama"
 
-#: templates/allauth/account/email.html:48
+#: templates/allauth/account/email.html:55
 msgid "Make Primary"
 msgstr "Jadikan Utama"
 
-#: templates/allauth/account/email.html:51
+#: templates/allauth/account/email.html:61
 msgid "Re-send Verification"
-msgstr "Kirim ulang verifikasi"
+msgstr "Kirim Ulang Verifikasi"
 
-#: templates/allauth/account/email.html:54
-#: templates/allauth/socialaccount/connections.html:37
+#: templates/allauth/account/email.html:67
+#: templates/allauth/socialaccount/connections.html:61
 msgid "Remove"
 msgstr "Hapus"
 
-#: templates/allauth/account/email.html:61
+#: templates/allauth/account/email.html:77
 msgid "Warning:"
 msgstr "Peringatan"
 
-#: templates/allauth/account/email.html:61
+#: templates/allauth/account/email.html:77
 msgid ""
 "You currently do not have any e-mail address set up. You should really add "
 "an e-mail address so you can receive notifications, reset your password, etc."
 msgstr ""
-"Anda saat ini tidak memiliki alamat e-mail yang disiapkan. Anda benar-benar "
-"harus menambahkansebuah alamat e-mail sehingga Anda dapat menerima "
-"pemberitahuan, mereset kata sandi anda, dsb."
+"Saat ini anda belum menyiapkan alamat email. Anda harus benar-benar "
+"menambahkan alamat email sehingga Anda dapat menerima pemberitahuan, "
+"mengatur ulang kata sandi, dll."
 
-#: templates/allauth/account/email.html:67
-msgid "Add E-mail Address"
-msgstr "Tambahkan Alamat E-mail"
+#: templates/allauth/account/email.html:88
+msgid "E-mail address"
+msgstr "Alamat e-mail"
 
-#: templates/allauth/account/email.html:85
+#: templates/allauth/account/email.html:94
 msgid "Add E-mail"
 msgstr "Tambahkan E-mail"
 
-#: templates/allauth/account/email.html:99
+#: templates/allauth/account/email.html:107
 msgid "Do you really want to remove the selected e-mail address?"
-msgstr "Apakah Anda benar-benar ingin menghapus alamat e-mail ini?"
+msgstr "Apakah anda benar-benar ingin menghapus alamat e-mail yang dipilih?"
 
 #: templates/allauth/account/email/email_confirmation_message.txt:1
 #, python-format
 msgid ""
 "Hello from %(site_name)s!\n"
 "\n"
-"You're receiving this e-mail because user %(user_display)s at "
-"%(site_domain)s has given yours as an e-mail address to connect their "
-"account.\n"
+"You're receiving this e-mail because user %(user_display)s has given yours "
+"as an e-mail address to connect their account.\n"
 "\n"
 "To confirm this is correct, go to %(activate_url)s\n"
 msgstr ""
 "Halo dari %(site_name)s!\n"
 "\n"
-"Anda menerima e-mail ini karena user %(user_display)s di %(site_domain)s "
-"telah memberi Anda alamat e-mail untuk menghubungkan akun mereka.\n"
-"\n"
-"Untuk mengkonfirmasi ini benar, silahkan klik %(activate_url)s\n"
+"Anda menerima e-mail ini karena pengguna %(user_display)s telah memilih e-"
+"mail anda untuk terkoneksi dengan akunnya.\n"
+"Untuk memastikan ini benar, silahkan kunjungi %(activate_url)s\n"
 
 #: templates/allauth/account/email/email_confirmation_message.txt:7
 #, python-format
-msgid "Thank you from %(site_name)s!%(site_domain)s"
-msgstr "Terimakasih dari %(site_name)s!%(site_domain)s"
+msgid ""
+"Thank you from %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"Terimakasih dari %(site_name)s!\n"
+"%(site_domain)s"
 
 #: templates/allauth/account/email/email_confirmation_subject.txt:3
 msgid "Please Confirm Your E-mail Address"
-msgstr "Mohon Konfirmasikan Alamat E-mail Anda"
+msgstr "Harap Konfirmasi Alamat E-mail Anda"
 
 #: templates/allauth/account/email/password_reset_key_message.txt:1
 #, python-format
@@ -558,111 +783,135 @@ msgid ""
 "Hello from %(site_name)s!\n"
 "\n"
 "You're receiving this e-mail because you or someone else has requested a "
-"password for your user account at %(site_domain)s.\n"
+"password for your user account.\n"
 "It can be safely ignored if you did not request a password reset. Click the "
 "link below to reset your password."
 msgstr ""
 "Halo dari %(site_name)s!\n"
 "\n"
-"Anda menerima e-mail ini karena Anda atau orang lain telah meminta kata "
-"sandi untuk akun pengguna anda di %(site_domain)s.\n"
-"Bisa diabaikan dengan aman jika Anda tidak meminta reset password. Klik "
-"tombol link di bawah ini untuk mereset kata sandi anda."
+"Anda mendapatkan e-mail ini karena anda atau orang lain telah meminta sebuah "
+"password untuk akun anda.\n"
+"Hal tersebut bisa dapat anda abaikan apabila anda tidak meminta pengaturan "
+"ulang kata sandi. Klik tautan dibawah untuk mengatur ulang kata sandi anda."
 
 #: templates/allauth/account/email/password_reset_key_message.txt:8
 #, python-format
 msgid "In case you forgot, your username is %(username)s."
-msgstr "Jika anda lupa, nama pengguna anda adalah %(username)s."
+msgstr "Jika anda lupa, username anda adalah %(username)s."
 
 #: templates/allauth/account/email/password_reset_key_message.txt:10
 #, python-format
-msgid "Thank you for using %(site_name)s!%(site_domain)s"
-msgstr "Terimakasih telah menggunakan %(site_name)s!%(site_domain)s"
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"Terimakasih telah menggunakan %(site_name)s!\n"
+"%(site_domain)s"
 
 #: templates/allauth/account/email/password_reset_key_subject.txt:3
 msgid "Password Reset E-mail"
-msgstr "E-mail Reset Password"
+msgstr "E-mail Atur Ulang Kata Sandi"
 
-#: templates/allauth/account/email_confirm.html:3
-#: templates/allauth/account/email_confirm.html:8
+#: templates/allauth/account/email_confirm.html:5
+#: templates/allauth/account/email_confirm.html:15
+#: templates/allauth/account/email_confirm.html:30
 msgid "Confirm E-mail Address"
-msgstr "Konfirmasi alamat E-mail"
+msgstr "Konfirmasi Alamat E-mail"
 
-#: templates/allauth/account/email_confirm.html:12
+#: templates/allauth/account/email_confirm.html:18
+#: templates/allauth/account/password_reset_from_key.html:35
 #, python-format
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
 msgstr ""
-"Mohon konfirmasikan bahwa <a href=\"mailto:%(email)s\">%(email)s</a> alamat "
-"email ini adalah untuk user %(user_display)s."
+"Mohon konfirmasi bahwa <a href=\"mailto:%(email)s\">%(email)s</a> adalah "
+"alamat e-mail untuk akun %(user_display)s."
 
-#: templates/allauth/account/email_confirm.html:18
+#: templates/allauth/account/email_confirm.html:21
+#: templates/allauth/account/password_reset_from_key.html:38
 msgid "Confirm"
 msgstr "Konfirmasi"
 
-#: templates/allauth/account/email_confirm.html:24
+#: templates/allauth/account/email_confirm.html:33
 #, python-format
 msgid ""
 "This e-mail confirmation link expired or is invalid. Please <a href="
 "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
-"Link konfirmasi e-mail ini telah kadaluarsa atau tidak valid. Mohon <a href="
-"\"%(email_url)s\">kirimkan permintaan konfirmasi e-mail baru</a>."
+"Tautan konfirmasi e-mail ini kedaluwarsa atau tidak valid. Silahkan <a href="
+"\"%(email_url)s\">kirim permintaan konfirmasi e-mail yang baru</a>."
 
-#: templates/allauth/account/login.html:4
-#: templates/allauth/openid/login.html:12 templates/includes/navs.html:71
+#: templates/allauth/account/login.html:5 templates/includes/navbar.html:143
 msgid "Sign In"
 msgstr "Masuk"
 
-#: templates/allauth/account/login.html:17
-#: templates/allauth/account/signup.html:16
+#: templates/allauth/account/login.html:13
+#: templates/allauth/account/signup.html:12
+#: templates/allauth/socialaccount/signup.html:12
 msgid "Welcome to Python Learning!"
-msgstr "Selamat datang di Python Learning"
+msgstr "Selamat datang di Belajar Python!"
 
-#: templates/allauth/account/login.html:18
+#: templates/allauth/account/login.html:14
 msgid ""
-"Please sign in with one of your existing third party accounts, or use login "
-"form below:"
+"Please sign in with one of your existing third party accounts, <br>or use "
+"login form below:"
 msgstr ""
-"Silahkan masuk dengan menggunakan salah satu akun pihak ke-3 berikut, atau "
-"gunakan formulir login dibawah ini:"
+"Silahkan masuk menggunakan salah satu akun pihak ketiga anda, <br>atau "
+"gunakan formulir dibawah:"
 
-#: templates/allauth/account/login.html:89
-msgid "Process Login"
-msgstr "Proses Masuk"
+#: templates/allauth/account/login.html:32
+#: templates/allauth/account/signup.html:31
+msgid "OR"
+msgstr "ATAU"
 
-#: templates/allauth/account/login.html:93
-msgid "Don't have an account?"
-msgstr "Belum punya akun?"
+#: templates/allauth/account/login.html:34
+#: templates/allauth/account/signup.html:33
+msgid "LinkedIn"
+msgstr "LinkedIn"
 
-#: templates/allauth/account/login.html:93
-msgid "Please"
-msgstr "Silahkan"
+#: templates/allauth/account/login.html:47
+#: templates/allauth/account/signup.html:46
+#: templates/apps/accounts/user/profile_update.html:39
+msgid "Username"
+msgstr "Username"
 
-#: templates/allauth/account/login.html:93
-msgid "signup first"
-msgstr "mendaftar dahulu"
+#: templates/allauth/account/login.html:60
+#: templates/allauth/account/password_set.html:22
+#: templates/allauth/account/password_set.html:24
+#: templates/allauth/account/signup.html:75
+#: templates/allauth/socialaccount/signup.html:42
+#: templates/apps/accounts/user/includes/nav_left.html:23
+msgid "Password"
+msgstr "Kata Sandi"
 
-#: templates/allauth/account/login.html:93
-#: templates/app_blog/pages_create.html:135
-#: templates/app_blog/posts_create.html:194
-msgid "or"
-msgstr "atau"
+#: templates/allauth/account/login.html:92
+msgid "Sign in"
+msgstr "Masuk"
 
-#: templates/allauth/account/login.html:93
-msgid "forgot password"
-msgstr "ubah kata sandi"
+#: templates/allauth/account/login.html:96
+#, python-format
+msgid ""
+"If you have not created an account yet, <br>then please <a href="
+"\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+"Jika anda belum membuat akun, <br>silahkan <a href=\"%(signup_url)s"
+"\">daftarkan</a> terlebih dahulu."
 
-#: templates/allauth/account/logout.html:3
-#: templates/allauth/account/logout.html:8
-#: templates/allauth/account/logout.html:15 templates/includes/navs.html:66
+#: templates/allauth/account/login.html:97
+#: templates/allauth/account/signup.html:121
+msgid "Forgot Password?"
+msgstr "Lupa Password?"
+
+#: templates/allauth/account/logout.html:4
+#: templates/allauth/account/logout.html:13
+#: templates/allauth/account/logout.html:21 templates/includes/navbar.html:133
 msgid "Sign Out"
 msgstr "Keluar"
 
-#: templates/allauth/account/logout.html:9
+#: templates/allauth/account/logout.html:14
 msgid "Are you sure you want to sign out?"
-msgstr "Anda yakin ingin keluar?"
+msgstr "Apakah anda yakin akan keluar?"
 
 #: templates/allauth/account/messages/cannot_delete_primary_email.txt:2
 #, python-format
@@ -672,22 +921,22 @@ msgstr "Anda tidak dapat menghapus alamat e-mail utama anda (%(email)s)."
 #: templates/allauth/account/messages/email_confirmation_sent.txt:2
 #, python-format
 msgid "Confirmation e-mail sent to %(email)s."
-msgstr "Konfirmasi e-mail dikirimkan ke %(email)s."
+msgstr "E-mail konfirmasi dikirim ke %(email)s."
 
 #: templates/allauth/account/messages/email_confirmed.txt:2
 #, python-format
 msgid "You have confirmed %(email)s."
-msgstr "Anda telah mengkonfirmasi %(email)s."
+msgstr "Anda telah mengonfirmasi %(email)s."
 
 #: templates/allauth/account/messages/email_deleted.txt:2
 #, python-format
 msgid "Removed e-mail address %(email)s."
-msgstr "Alamat e-mail %(email)s telah dihapus."
+msgstr "Alamat e-mail dihapus %(email)s."
 
 #: templates/allauth/account/messages/logged_in.txt:4
 #, python-format
 msgid "Successfully signed in as %(name)s."
-msgstr "Berhasil login sebagai %(name)s"
+msgstr "Berhasil masuk sebagai %(name)s."
 
 #: templates/allauth/account/messages/logged_out.txt:2
 msgid "You have signed out."
@@ -695,112 +944,134 @@ msgstr "Anda telah keluar."
 
 #: templates/allauth/account/messages/password_changed.txt:2
 msgid "Password successfully changed."
-msgstr "Kata sandi berhasil diperbaharui."
+msgstr "Kata sandi berhasil diubah."
 
 #: templates/allauth/account/messages/password_set.txt:2
 msgid "Password successfully set."
-msgstr "Kata sandi berhasil diterapkan."
+msgstr "Kata sandi berhasil disetel."
 
 #: templates/allauth/account/messages/primary_email_set.txt:2
 msgid "Primary e-mail address set."
-msgstr "Alamat e-mail utama diterapkan."
+msgstr "Setel alamat e-mail utama."
 
 #: templates/allauth/account/messages/unverified_primary_email.txt:2
 msgid "Your primary e-mail address must be verified."
 msgstr "Alamat e-mail utama anda harus diverifikasi."
 
-#: templates/allauth/account/password_change.html:3
-#: templates/allauth/account/password_change.html:59
-#: templates/allauth/account/password_reset_from_key.html:3
-#: templates/allauth/account/password_reset_from_key.html:8
-#: templates/allauth/account/password_reset_from_key_done.html:3
-#: templates/allauth/account/password_reset_from_key_done.html:10
+#: templates/allauth/account/password_change.html:4
+#: templates/allauth/account/password_change.html:46
+#: templates/allauth/account/password_reset_from_key.html:5
+#: templates/allauth/account/password_reset_from_key.html:32
+#: templates/allauth/account/password_reset_from_key.html:47
+#: templates/allauth/account/password_reset_from_key_done.html:4
+#: templates/allauth/account/password_reset_from_key_done.html:12
 msgid "Change Password"
-msgstr "Ubah Kata Sandi"
+msgstr "Ganti kata sandi"
 
-#: templates/allauth/account/password_change.html:62
+#: templates/allauth/account/password_change.html:22
+#: templates/allauth/account/password_change.html:24
+msgid "Current Password"
+msgstr "Kata sandi saat ini"
+
+#: templates/allauth/account/password_change.html:28
+#: templates/allauth/account/password_change.html:30
+msgid "New Password"
+msgstr "Kata sandi baru"
+
+#: templates/allauth/account/password_change.html:34
+#: templates/allauth/account/password_change.html:36
+#: templates/allauth/account/password_set.html:28
+#: templates/allauth/account/password_set.html:30
+msgid "New Password (again)"
+msgstr "Kata sandi baru (lagi)"
+
+#: templates/allauth/account/password_change.html:50
 #, python-format
 msgid "or need to <a href=\"%(reset_url)s\">reset</a> the password?"
-msgstr "atau perlu <a href=\"%(reset_url)s\">menyetel ulang</a> kata sandi?"
+msgstr "atau ingin <a href=\"%(reset_url)s\">atur ulang</a> kata sandi?"
 
-#: templates/allauth/account/password_reset.html:3
-#: templates/allauth/account/password_reset.html:16
-#: templates/allauth/account/password_reset_done.html:3
-#: templates/allauth/account/password_reset_done.html:10
+#: templates/allauth/account/password_reset.html:5
+#: templates/allauth/account/password_reset.html:13
+#: templates/allauth/account/password_reset_done.html:5
+#: templates/allauth/account/password_reset_done.html:13
 msgid "Password Reset"
-msgstr "Perbaharui kata sandi"
+msgstr "Setel Ulang Kata Sandi"
 
-#: templates/allauth/account/password_reset.html:17
+#: templates/allauth/account/password_reset.html:14
 msgid "Please contact us if you have any trouble resetting your password."
 msgstr ""
-"Silahkan hubungi kami jika anda memiliki masalah saat menyetel ulang kata "
-"sandi anda."
+"Silakan hubungi kami jika anda mengalami masalah saat mengatur ulang kata "
+"sandi."
 
-#: templates/allauth/account/password_reset.html:52
+#: templates/allauth/account/password_reset.html:57
 msgid "Reset My Password"
-msgstr "Perbaharui kata sandi saya"
+msgstr "Setel ulang kata sandi saya"
 
-#: templates/allauth/account/password_reset_done.html:11
+#: templates/allauth/account/password_reset_done.html:14
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
-"Kami telah mengirimi anda e-mail, silahkan hubungi kami jika anda tidak "
-"menerimanyadalam beberapa menit kemudian."
+"Kami telah mengirimkan e-mail kepada anda. Silakan hubungi kami jika anda "
+"tidak menerimanya dalam beberapa menit."
 
-#: templates/allauth/account/password_reset_from_key.html:8
+#: templates/allauth/account/password_reset_from_key.html:14
 msgid "Bad Token"
-msgstr "Token Salah"
+msgstr "Token Buruk"
 
-#: templates/allauth/account/password_reset_from_key.html:12
+#: templates/allauth/account/password_reset_from_key.html:17
 #, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
 msgstr ""
-"Link reset password tidak valid, mungkin karena sudah pernah digunakan.  "
-"Mohon untuk membuat <a href=\"%(passwd_reset_url)s\">reset password baru</a>."
+"Tautan setel ulang kata sandi tidak valid, mungkin karena sudah digunakan. "
+"Silakan minta <a href=\"%(passwd_reset_url)s\">kata sandi baru</a>."
 
-#: templates/allauth/account/password_reset_from_key.html:19
-msgid "change password"
-msgstr "ubah kata sandi"
-
-#: templates/allauth/account/password_reset_from_key.html:22
-#: templates/allauth/account/password_reset_from_key_done.html:12
+#: templates/allauth/account/password_reset_from_key.html:48
+#: templates/allauth/account/password_reset_from_key_done.html:13
 msgid "Your password is now changed."
-msgstr "Kata sandi anda telah diperbaharui."
+msgstr "Kata sandi anda sekarang telah diubah."
 
-#: templates/allauth/account/password_set.html:3
-#: templates/allauth/account/password_set.html:44
+#: templates/allauth/account/password_set.html:4
+#: templates/allauth/account/password_set.html:40
 msgid "Set Password"
-msgstr "Terapkan Password"
+msgstr "Setel Kata Sandi"
 
-#: templates/allauth/account/signup.html:3
-#: templates/allauth/account/signup.html:100
-msgid "Register"
-msgstr "Mendaftar"
+#: templates/allauth/account/signup.html:4
+msgid "Signup"
+msgstr "Daftar"
 
-#: templates/allauth/account/signup.html:17
-msgid "Fill out the form below to sign-up for a new account"
-msgstr "Isi formulir di bawah ini untuk mendaftar ke akun baru"
+#: templates/allauth/account/signup.html:13
+msgid ""
+"You can use one of your existing third party accounts, <br>or fill out the "
+"form below to sign-up:"
+msgstr ""
+"Anda dapat menggunakan salah satu akun pihak ketiga anda, <br>atau lengkapi "
+"formulir dibawah untuk mendaftar:"
 
-#: templates/allauth/account/signup.html:103
-msgid "Already signed up?"
-msgstr "Sudah terdaftar?"
+#: templates/allauth/account/signup.html:88
+msgid "Password (again)"
+msgstr "Kata sandi (lagi)"
 
-#: templates/allauth/account/signup.html:103
-msgid "Login here instead"
-msgstr "Masuk disini"
+#: templates/allauth/account/signup.html:116
+msgid "Sign up"
+msgstr "Daftar"
 
-#: templates/allauth/account/signup_closed.html:3
-#: templates/allauth/account/signup_closed.html:8
+#: templates/allauth/account/signup.html:120
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">sign in</a>"
+msgstr "Sudah memiliki akun? <a href=\"%(login_url)s\">masuk</a>"
+
+#: templates/allauth/account/signup_closed.html:4
+#: templates/allauth/account/signup_closed.html:12
 msgid "Sign Up Closed"
 msgstr "Pendaftaran ditutup"
 
-#: templates/allauth/account/signup_closed.html:10
+#: templates/allauth/account/signup_closed.html:13
 msgid "We are sorry, but the sign up is currently closed."
-msgstr "Mohon maaf, pendaftaran saat ini telah ditutup."
+msgstr "Kami minta maaf, tetapi pendaftaran saat ini ditutup."
 
 #: templates/allauth/account/snippets/already_logged_in.html:5
 msgid "Note"
@@ -809,107 +1080,106 @@ msgstr "Catatan"
 #: templates/allauth/account/snippets/already_logged_in.html:5
 #, python-format
 msgid "you are already logged in as %(user_display)s."
-msgstr "anda telah masuk sebagai %(user_display)s."
+msgstr "anda sudah masuk sebagai %(user_display)s."
 
-#: templates/allauth/account/verification_sent.html:3
-#: templates/allauth/account/verification_sent.html:8
-#: templates/allauth/account/verified_email_required.html:3
-#: templates/allauth/account/verified_email_required.html:8
+#: templates/allauth/account/verification_sent.html:4
+#: templates/allauth/account/verification_sent.html:12
+#: templates/allauth/account/verified_email_required.html:4
+#: templates/allauth/account/verified_email_required.html:12
 msgid "Verify Your E-mail Address"
 msgstr "Verifikasi Alamat E-mail Anda"
 
-#: templates/allauth/account/verification_sent.html:10
+#: templates/allauth/account/verification_sent.html:13
 msgid ""
 "We have sent an e-mail to you for verification. Follow the link provided to "
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
-"Kami telah mengirimkan e-mail kepada Anda untuk verifikasi. Ikuti tautan "
-"yang diberikan untuk menyelesaikan proses pendaftaran. Silahkan hubungi kami "
-"jika anda tidak menerimanya dalam beberapa menit kemudian."
+"Kami telah mengirimkan e-mail kepada anda untuk verifikasi. Ikuti tautan "
+"yang disediakan untuk menyelesaikan proses pendaftaran. Silakan hubungi kami "
+"jika anda tidak menerimanya dalam beberapa menit."
 
-#: templates/allauth/account/verified_email_required.html:13
+#: templates/allauth/account/verified_email_required.html:16
 msgid ""
 "This part of the site requires us to verify that you are who you claim to "
 "be. For this purpose, we require that you verify ownership of your e-mail "
 "address. "
 msgstr ""
-"Bagian dari situs ini mengharuskan kami untuk memverifikasi bahwa anda "
-"adalah orang diklaim. Untuk tujuan ini, kami meminta anda untuk "
-"memverifikasi kepemilikan alamat e-mail anda."
+"Bagian situs ini mengharuskan kami untuk memverifikasi bahwa anda adalah "
+"orang yang anda klaim. Untuk tujuan ini, kami meminta anda memverifikasi "
+"kepemilikan alamat e-mail anda."
 
-#: templates/allauth/account/verified_email_required.html:15
+#: templates/allauth/account/verified_email_required.html:17
 msgid ""
 "We have sent an e-mail to you for verification. Please click on the link "
 "inside this e-mail. Please contact us if you do not receive it within a few "
 "minutes."
 msgstr ""
-"Kami telah mengirimkan e-mail kepada anda untuk verifikasi. Silahkan klik "
-"pada link yang tersedia di e-mail ini. Silahkan hubungi kamu jika anda tidak "
-"menerimanya beberapa menit kemudian."
+"Kami telah mengirimkan e-mail kepada anda untuk verifikasi. Silakan klik "
+"tautan di dalam e-mail ini. Silakan hubungi kami jika anda tidak menerimanya "
+"dalam beberapa menit."
 
-#: templates/allauth/account/verified_email_required.html:17
+#: templates/allauth/account/verified_email_required.html:18
 #, python-format
 msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
 "mail address</a>."
 msgstr ""
-"<strong>Catatan:</strong> anda masih dapat <a href=\"%(email_url)s"
-"\">mengubah alamat e-mail</a>."
+"<strong>Catatan:</strong> anda tetap dapat <a href=\"%(email_url)s"
+"\">mengubah alamat e-mail anda</a>."
 
-#: templates/allauth/openid/login.html:3 templates/allauth/openid/login.html:7
+#: templates/allauth/openid/login.html:9
 msgid "OpenID Sign In"
-msgstr "Masuk dengan OpenID"
+msgstr "OpenID Masuk"
 
-#: templates/allauth/socialaccount/authentication_error.html:3
-#: templates/allauth/socialaccount/authentication_error.html:8
+#: templates/allauth/socialaccount/authentication_error.html:4
+#: templates/allauth/socialaccount/authentication_error.html:12
 msgid "Social Network Login Failure"
-msgstr "Gagal Masuk Jaringan Sosial"
+msgstr "Gagal Masuk dengan Jaringan Sosial"
 
-#: templates/allauth/socialaccount/authentication_error.html:10
+#: templates/allauth/socialaccount/authentication_error.html:13
 msgid ""
 "An error occurred while attempting to login via your social network account."
 msgstr ""
-"Terjadi kesalahan saat mencoba masuk melalui akun jaringan sosial Anda."
+"Terjadi kesalahan saat mencoba masuk melalui akun jejaring sosial anda."
 
-#: templates/allauth/socialaccount/connections.html:3
-#: templates/allauth/socialaccount/connections.html:19
+#: templates/allauth/socialaccount/connections.html:4
 msgid "Account Connections"
 msgstr "Koneksi Akun"
 
-#: templates/allauth/socialaccount/connections.html:15
+#: templates/allauth/socialaccount/connections.html:36
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
 msgstr ""
-"Anda dapat masuk ke akun menggunakan salah satu dari akun pihak ketiga "
+"Anda dapat masuk ke akun anda menggunakan salah satu akun pihak ketiga "
 "berikut:"
 
-#: templates/allauth/socialaccount/connections.html:44
+#: templates/allauth/socialaccount/connections.html:71
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr ""
-"Saat ini Anda tidak memiliki akun jejaring sosial yang terhubung ke akun ini."
+"Saat ini anda tidak memiliki akun jejaring sosial yang terhubung ke akun ini."
 
-#: templates/allauth/socialaccount/connections.html:49
+#: templates/allauth/socialaccount/connections.html:76
 msgid "Add a 3rd Party Account"
-msgstr "Tambahkan Akun Pihak ke-3"
+msgstr "Tambahkan Akun Pihak Ketiga"
 
-#: templates/allauth/socialaccount/login_cancelled.html:3
-#: templates/allauth/socialaccount/login_cancelled.html:8
+#: templates/allauth/socialaccount/login_cancelled.html:4
+#: templates/allauth/socialaccount/login_cancelled.html:12
 msgid "Login Cancelled"
 msgstr "Login Dibatalkan"
 
-#: templates/allauth/socialaccount/login_cancelled.html:11
+#: templates/allauth/socialaccount/login_cancelled.html:15
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your existing "
 "accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
 "\">sign in</a>."
 msgstr ""
-"Anda memutuskan untuk membatalkan masuk ke situs kami dengan menggunakan "
-"salah satu dari yang ada. Jika ini salah, lanjutkan ke <a href="
-"\"%(login_url)s\">masuk</a>."
+"Anda memutuskan untuk membatalkan masuk ke situs kami menggunakan salah satu "
+"akun anda. Jika ini adalah kesalahan, silahkan <a href=\"%(login_url)s"
+"\">masuk</a> untuk melanjutkan."
 
 #: templates/allauth/socialaccount/messages/account_connected.txt:2
 msgid "The social account has been connected."
@@ -917,1221 +1187,817 @@ msgstr "Akun sosial telah terhubung."
 
 #: templates/allauth/socialaccount/messages/account_connected_other.txt:2
 msgid "The social account is already connected to a different account."
-msgstr "Akun sosial sudah terhubung ke akun yang berbeda."
+msgstr "Akun sosial sudah terhubung ke akun lain."
 
 #: templates/allauth/socialaccount/messages/account_disconnected.txt:2
 msgid "The social account has been disconnected."
 msgstr "Akun sosial telah terputus."
 
-#: templates/allauth/socialaccount/signup.html:3
-msgid "Signup"
-msgstr "Daftar"
-
-#: templates/allauth/socialaccount/signup.html:7
-#: templates/allauth/socialaccount/signup.html:47
-#: templates/includes/navs.html:74
+#: templates/allauth/socialaccount/signup.html:4
+#: templates/allauth/socialaccount/signup.html:59
 msgid "Sign Up"
 msgstr "Daftar"
 
-#: templates/allauth/socialaccount/signup.html:10
+#: templates/allauth/socialaccount/signup.html:13
 #, python-format
 msgid ""
-"You are about to use your %(provider_name)s account to login to "
-"%(site_name)s. As a final step, please complete the following form:"
+"You are about to use your %(provider_name)s account to login to\n"
+"      %(site_name)s. As a final step, please complete the following form:"
 msgstr ""
-"Anda akan menggunakan akun %(provider_name)s untuk masuk ke %(site_name)s. "
-"Sebagai langkat terakhir, lengkapi formulir berikut ini:"
+"Anda akan menggunakan akun %(provider_name)s anda untuk masuk ke\n"
+"      %(site_name)s. Sebagai tahap terakhir, silahkan lengkapi formulir "
+"berikut:"
 
-#: templates/app_api/docs/docs_page.html:38
-msgid "Rest API v1"
-msgstr ""
+#: templates/apps/accounts/admin/login.html:24
+msgid "Please correct the error below."
+msgstr "Harap perbaiki kesalahan di bawah."
 
-#: templates/app_api/docs/docs_page.html:45
-msgid "Introduction"
-msgstr "Pengantar"
+#: templates/apps/accounts/admin/login.html:24
+msgid "Please correct the errors below."
+msgstr "Mohon perbaiki kesalahan di bawah."
 
-#: templates/app_api/docs/docs_page.html:49
-msgid "Authentication"
-msgstr "Otentikasi"
-
-#: templates/app_api/docs/docs_page.html:53
-msgid "Parameters"
-msgstr "Parameter"
-
-#: templates/app_api/docs/docs_page.html:65
-#: templates/app_dashboard/dashboard_menus.html:16
-#: templates/app_user/users_list.html:6 templates/includes/navs.html:102
-msgid "Users"
-msgstr "Pengguna"
-
-#: templates/app_api/docs/docs_page.html:69
-msgid "Support"
-msgstr "Dukungan"
-
-#: templates/app_blog/contact_us.html:3
-msgid "Contact Us"
-msgstr "Kontak Kami"
-
-#: templates/app_blog/contact_us.html:9
-msgid "Get in touch with Python Learning"
-msgstr "Hubungi Python Learning"
-
-#: templates/app_blog/contact_us.html:11
-msgid "What's in a great support request?"
-msgstr "Apa yang sangat perlu untuk dibantu?"
-
-#: templates/app_blog/contact_us.html:12
-msgid "Provide us with as much essential information as possible."
-msgstr "Berikan kami informasi penting sedetail mungkin."
-
-#: templates/app_blog/contact_us.html:13
-msgid "Include any screenshots or links that are related to your problem."
-msgstr "Sertakan screenshot atau tautan yang terkait dengan masalah Anda."
-
-#: templates/app_blog/contact_us.html:90
-msgid "Send Email"
-msgstr "Kirim Email"
-
-#: templates/app_blog/pages_create.html:10
-#: templates/app_blog/pages_create.html:28
+#: templates/apps/accounts/admin/login.html:40
 #, python-format
-msgid "Edit Page \"%(title)s\""
-msgstr "Ubah Halaman \"%(title)s\""
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+"Anda diautentikasi sebagai %(username)s, tetapi tidak diizinkan untuk "
+"mengakses halaman ini. Apakah anda ingin masuk ke akun lain?"
 
-#: templates/app_blog/pages_create.html:12
-#: templates/app_blog/pages_create.html:31
-#: templates/app_blog/pages_create.html:85
-#: templates/app_dashboard/dashboard_pages.html:20
-msgid "Create a Page"
-msgstr "Buat Halaman"
+#: templates/apps/accounts/admin/login.html:64
+msgid "Forgotten your password or username?"
+msgstr "Lupa kata sandi atau nama pengguna anda?"
 
-#: templates/app_blog/pages_create.html:35
-#: templates/app_blog/posts_create.html:35
-msgid "Go Back"
-msgstr "Kembali"
+#: templates/apps/accounts/admin/login.html:68
+msgid "Log in"
+msgstr "Masuk"
 
-#: templates/app_blog/pages_create.html:78
-msgid "Update Page"
-msgstr "Perbaharui Halaman"
+#: templates/apps/accounts/mail/registration/password_reset_email.html:4
+#, python-format
+msgid "Hi %(user_username)s,<br/>"
+msgstr "Halo %(user_username)s,<br/>"
 
-#: templates/app_blog/pages_create.html:81
-#: templates/app_blog/posts_create.html:115
-msgid "Cancel"
-msgstr "Batalkan"
+#: templates/apps/accounts/mail/registration/password_reset_email.html:9
+#, python-format
+msgid ""
+"You received this email because you asked for a password reset for your "
+"account %(get_username)s at %(get_site_name)s."
+msgstr ""
+"Anda menerima email ini karena anda meminta pengaturan ulang kata sandi "
+"untuk akun anda %(get_username)s di %(get_site_name)s."
 
-#: templates/app_blog/pages_create.html:96
-#: templates/app_blog/posts_create.html:155
-msgid "How to Post"
-msgstr "Bagaimana Memposting"
+#: templates/apps/accounts/mail/registration/password_reset_email.html:15
+msgid "Reset password"
+msgstr "Setel ulang kata sandi"
 
-#: templates/app_blog/pages_create.html:97
-msgid "Is your page about programming?"
-msgstr "Apakah halaman Anda tentang pemrograman?"
+#: templates/apps/accounts/user/includes/nav_left.html:16
+msgid "E-mails"
+msgstr "E-mail"
 
-#: templates/app_blog/pages_create.html:98
-msgid "We prefer pages that can be pageed, not just discussed."
-msgstr "Kami rekomendasikan halaman tidak hanya layak untuk dipasang."
+#: templates/apps/accounts/user/includes/nav_left.html:29
+msgid "Connections"
+msgstr "Koneksi"
 
-#: templates/app_blog/pages_create.html:99
-#: templates/app_blog/posts_create.html:158
-msgid "Provide details. Share your research."
-msgstr "Jelaskan secara detail. Bagikan ide anda."
+#: templates/apps/accounts/user/includes/nav_tabs.html:18
+msgid "Activity"
+msgstr "Aktivitas"
 
-#: templates/app_blog/pages_create.html:102
-#: templates/app_blog/posts_create.html:161
-msgid "How to Edit"
-msgstr "Bagaimana Menyunting"
-
-#: templates/app_blog/pages_create.html:106
-#: templates/app_blog/posts_create.html:165
-msgid "fix grammatical or spelling errors"
-msgstr "perbaiki kesalahan tata bahasa atau ejaan."
-
-#: templates/app_blog/pages_create.html:110
-#: templates/app_blog/posts_create.html:169
-msgid "clarify meaning without changing it"
-msgstr "klarifikasi makna tanpa mengubahnya"
-
-#: templates/app_blog/pages_create.html:114
-#: templates/app_blog/posts_create.html:173
-msgid "correct minor mistakes"
-msgstr "perbaiki kesalahan kecil"
-
-#: templates/app_blog/pages_create.html:118
-#: templates/app_blog/posts_create.html:177
-msgid "add related resources or links"
-msgstr "tambahkan sumber atau tautan terkait"
-
-#: templates/app_blog/pages_create.html:123
-#: templates/app_blog/posts_create.html:182
-msgid "How to Format"
-msgstr "Bagaimana menyusunnya"
-
-#: templates/app_blog/pages_create.html:127
-#: templates/app_blog/posts_create.html:186
-msgid "put returns between paragraphs"
-msgstr "menempatkan kembali antara paragraf"
-
-#: templates/app_blog/pages_create.html:131
-#: templates/app_blog/posts_create.html:190
-msgid "for linebreak add 2 spaces at end"
-msgstr "untuk linebreak tambahkan 2 spasi di akhir"
-
-#: templates/app_blog/pages_create.html:139
-#: templates/app_blog/posts_create.html:198
-msgid "indent code by 4 spaces"
-msgstr "kode indent dengan 4 spasi"
-
-#: templates/app_blog/pages_create.html:143
-#: templates/app_blog/posts_create.html:202
-msgid "backtick escapes"
-msgstr "backtick lolos"
-
-#: templates/app_blog/pages_create.html:147
-#: templates/app_blog/posts_create.html:206
-msgid "quote by placing > at start of line"
-msgstr "kutipan dengan menempatkan > pada awal baris"
-
-#: templates/app_blog/pages_create.html:151
-#: templates/app_blog/posts_create.html:210
-msgid "to make links"
-msgstr "untuk membuat tautan"
-
-#: templates/app_blog/pages_detail.html:54
-msgid "Other pages"
-msgstr "Halaman lainnya"
-
-#: templates/app_blog/posts_author.html:5
-msgid "Posts by"
-msgstr "Postingan oleh"
-
-#: templates/app_blog/posts_author_private.html:9
-#: templates/includes/profile_menus_top.html:17
+#: templates/apps/accounts/user/includes/nav_tabs.html:30
+#: templates/apps/blog/post/list_private.html:5
 msgid "My Posts"
 msgstr "Postingan Saya"
 
-#: templates/app_blog/posts_author_private.html:18
-#: templates/app_dashboard/dashboard_galleries.html:12
-#: templates/app_dashboard/dashboard_pages.html:13
-#: templates/app_dashboard/dashboard_posts.html:13
-#: templates/app_dashboard/dashboard_tags.html:13
-#: templates/app_dashboard/dashboard_users.html:13
-#: templates/app_dashboard/dashboard_visitors.html:13
-#: templates/includes/navs.html:93
-msgid "Search..."
-msgstr "Cari..."
-
-#: templates/app_blog/posts_author_private.html:25
-#: templates/app_blog/posts_create.html:12
-#: templates/app_blog/posts_create.html:31
-#: templates/app_blog/posts_create.html:119
-#: templates/app_blog/posts_detail.html:57
-#: templates/app_blog/posts_list.html:12
-#: templates/app_dashboard/dashboard_posts.html:20
-msgid "Create a Post"
-msgstr "Buat Postingan"
-
-#: templates/app_blog/posts_author_private.html:34
-#: templates/app_dashboard/dashboard_galleries.html:31
-#: templates/app_dashboard/dashboard_pages.html:30
-#: templates/app_dashboard/dashboard_posts.html:30
-#: templates/app_dashboard/dashboard_tags.html:45
-#: templates/app_dashboard/dashboard_visitors.html:23
-msgid "Created"
-msgstr "Dibuat"
-
-#: templates/app_blog/posts_author_private.html:37
-#: templates/app_blog/posts_list.html:43
-#: templates/app_dashboard/dashboard_posts.html:33
-msgid "Votes"
-msgstr "Voting"
-
-#: templates/app_blog/posts_author_private.html:42
-#: templates/app_blog/posts_list.html:40
-#: templates/app_dashboard/dashboard_posts.html:38
-msgid "Views"
-msgstr "Dilihat"
-
-#: templates/app_blog/posts_author_private.html:52
-#: templates/app_blog/posts_list.html:36
-#: templates/app_dashboard/dashboard_posts.html:48
-msgid "Featured"
-msgstr "Unggulan"
-
-#: templates/app_blog/posts_author_private.html:60
-#: templates/app_dashboard/dashboard_galleries.html:32
-#: templates/app_dashboard/dashboard_pages.html:33
-#: templates/app_dashboard/dashboard_posts.html:56
-#: templates/app_dashboard/dashboard_tags.html:47
-#: templates/app_dashboard/dashboard_users.html:28
-#: templates/app_dashboard/dashboard_visitors.html:24
-msgid "Actions"
-msgstr "Tindakan"
-
-#: templates/app_blog/posts_author_private.html:74
-#: templates/app_dashboard/dashboard_galleries.html:43
-#: templates/app_dashboard/dashboard_pages.html:45
-#: templates/app_dashboard/dashboard_posts.html:71
-#: templates/app_dashboard/dashboard_tags.html:58
-#: templates/app_dashboard/dashboard_users.html:52
-#: templates/app_dashboard/dashboard_visitors.html:34
-msgid "Delete"
-msgstr "Hapus"
-
-#: templates/app_blog/posts_author_private.html:77
-#: templates/app_dashboard/dashboard_galleries.html:46
-#: templates/app_dashboard/dashboard_pages.html:48
-#: templates/app_dashboard/dashboard_posts.html:74
-#: templates/app_dashboard/dashboard_tags.html:62
-msgid "Edit"
-msgstr "Ubah"
-
-#: templates/app_blog/posts_author_private.html:82
-#: templates/app_blog/posts_detail.html:322
-#: templates/app_blog/posts_list.html:119
-#: templates/app_blog/posts_list.html:216 templates/app_blog/tags_list.html:38
-#: templates/app_dashboard/dashboard_galleries.html:53
-#: templates/app_dashboard/dashboard_pages.html:56
-#: templates/app_dashboard/dashboard_posts.html:79
-#: templates/app_dashboard/dashboard_tags.html:67
-#: templates/app_dashboard/dashboard_users.html:58
-#: templates/app_dashboard/dashboard_visitors.html:39
-msgid "Empty!"
-msgstr "Kosong"
-
-#: templates/app_blog/posts_author_private.html:91
-#: templates/app_blog/posts_list.html:129
-#: templates/app_dashboard/dashboard_galleries.html:62
-#: templates/app_dashboard/dashboard_pages.html:65
-#: templates/app_dashboard/dashboard_posts.html:88
-#: templates/app_dashboard/dashboard_tags.html:76
-#: templates/app_dashboard/dashboard_users.html:67
-#: templates/app_dashboard/dashboard_visitors.html:48
-#: templates/app_user/users_list.html:111
-msgid "First Page"
-msgstr "Halaman Pertama"
-
-#: templates/app_blog/posts_author_private.html:94
-#: templates/app_blog/posts_list.html:132
-#: templates/app_dashboard/dashboard_galleries.html:65
-#: templates/app_dashboard/dashboard_pages.html:68
-#: templates/app_dashboard/dashboard_posts.html:91
-#: templates/app_dashboard/dashboard_tags.html:79
-#: templates/app_dashboard/dashboard_users.html:70
-#: templates/app_dashboard/dashboard_visitors.html:51
-#: templates/app_user/users_list.html:121
-msgid "Previous Page"
-msgstr "Halaman Sebelumnya"
-
-#: templates/app_blog/posts_author_private.html:105
-#: templates/app_blog/posts_list.html:143
-#: templates/app_dashboard/dashboard_galleries.html:76
-#: templates/app_dashboard/dashboard_pages.html:79
-#: templates/app_dashboard/dashboard_posts.html:102
-#: templates/app_dashboard/dashboard_tags.html:90
-#: templates/app_dashboard/dashboard_users.html:81
-#: templates/app_dashboard/dashboard_visitors.html:62
-#: templates/app_user/users_list.html:147
-msgid "Next Page"
-msgstr "Halaman Selanjutnya"
-
-#: templates/app_blog/posts_author_private.html:109
-#: templates/app_blog/posts_list.html:147
-#: templates/app_dashboard/dashboard_galleries.html:80
-#: templates/app_dashboard/dashboard_pages.html:83
-#: templates/app_dashboard/dashboard_posts.html:106
-#: templates/app_dashboard/dashboard_tags.html:94
-#: templates/app_dashboard/dashboard_users.html:85
-#: templates/app_dashboard/dashboard_visitors.html:66
-#: templates/app_user/users_list.html:159
-msgid "Last Page"
-msgstr "Halaman Terakhir"
-
-#: templates/app_blog/posts_author_private.html:116
-#: templates/app_blog/posts_list.html:154
-#: templates/app_dashboard/dashboard_galleries.html:87
-#: templates/app_dashboard/dashboard_pages.html:90
-#: templates/app_dashboard/dashboard_posts.html:113
-#: templates/app_dashboard/dashboard_tags.html:101
-#: templates/app_dashboard/dashboard_users.html:92
-#: templates/app_dashboard/dashboard_visitors.html:73
-#: templates/app_user/users_list.html:171
-msgid "Jump to page"
-msgstr "Loncat ke halaman"
-
-#: templates/app_blog/posts_author_private.html:120
-#: templates/app_blog/posts_list.html:157
-#: templates/app_dashboard/dashboard_galleries.html:89
-#: templates/app_dashboard/dashboard_pages.html:92
-#: templates/app_dashboard/dashboard_posts.html:117
-#: templates/app_dashboard/dashboard_tags.html:103
-#: templates/app_dashboard/dashboard_users.html:94
-#: templates/app_dashboard/dashboard_visitors.html:75
-#: templates/app_user/users_list.html:181
-msgid "GO"
-msgstr "PERGI"
-
-#: templates/app_blog/posts_author_private.html:135
-#: templates/app_dashboard/dashboard_posts.html:132
-msgid "Are you sure to delete this post?"
-msgstr "Anda yakin akan menghapus postingan ini?"
-
-#: templates/app_blog/posts_create.html:10
-#: templates/app_blog/posts_create.html:28
-#, python-format
-msgid "Edit Post \"%(title)s\""
-msgstr "Ubah Postingan \"%(title)s\""
-
-#: templates/app_blog/posts_create.html:67
-msgid "* Please use lowercase input, eg: django rest framework"
-msgstr "* Mohon gunakan huruf kecil, contoh: django rest framework"
-
-#: templates/app_blog/posts_create.html:70
-msgid "* Click here to <a class=\"ui link add-new-tag\">create new tag</a>"
-msgstr ""
-"* Klik disini untuk <a class=\"ui link add-new-tag\">membuat tag baru</a>"
-
-#: templates/app_blog/posts_create.html:112
-msgid "Update Post"
-msgstr "Perbaharui Postingan"
-
-#: templates/app_blog/posts_create.html:128
-msgid "Add new tag"
-msgstr "Tambahkan Tag"
-
-#: templates/app_blog/posts_create.html:132
-#: templates/app_blog/posts_create.html:239
-msgid "combine multiple words into single-words with hyphens"
-msgstr "gabungkan beberapa kata menjadi satu kata dengan tanda hubung"
-
-#: templates/app_blog/posts_create.html:133
-#: templates/app_blog/posts_create.html:240
-msgid "up to a maximum of 35"
-msgstr "sampai maksimal 35"
-
-#: templates/app_blog/posts_create.html:141
-msgid "type here..."
-msgstr "ketik disini..."
-
-#: templates/app_blog/posts_create.html:143
-#: templates/app_blog/tags_list.html:18
-#: templates/app_dashboard/dashboard_tags.html:29
-msgid "Add a Tag"
-msgstr "Tambahkan Tag"
-
-#: templates/app_blog/posts_create.html:156
-msgid "Is your post about programming?"
-msgstr "Postingan anda terkait dengan pemrograman?"
-
-#: templates/app_blog/posts_create.html:157
-msgid "We prefer posts that can be posted, not just discussed."
-msgstr "Kami rekomendasikan postingan tidak hanya sekedar layak di posting."
-
-#: templates/app_blog/posts_create.html:215
-msgid "How to Tag"
-msgstr "Bagaimana membuat Tag"
-
-#: templates/app_blog/posts_create.html:217
-msgid ""
-"A tag is a keyword or label that categorizes your post with other, similar "
-"posts."
-msgstr ""
-"Tag merupakan keyword atau label untuk mengkategorikan postingan anda dengan "
-"postingan yang lain."
-
-#: templates/app_blog/posts_create.html:218
-msgid ""
-"Choose one or more (up to 5) tags that will help posters to find and "
-"interpret your post."
-msgstr ""
-"Pilih satu atau lebih dari 5 tags, itu akan membantu pengguna lain untuk "
-"mencari postingan anda."
-
-#: templates/app_blog/posts_create.html:223
-msgid "complete the sentence: <i>my post is about...</i>"
-msgstr "selesaikan kalimatnya: <i>postingan saya terkait...</i>"
-
-#: templates/app_blog/posts_create.html:227
-msgid ""
-"use tags that describe things or concepts that are essential, not incidental "
-"to your post"
-msgstr ""
-"gunakan tag untuk menggambarkan sesuatu atau konsep yang penting, tidak "
-"disengaja untuk posting anda"
-
-#: templates/app_blog/posts_create.html:231
-msgid "favor using existing popular tags"
-msgstr "lebih baik menggunakan tag populer yang ada"
-
-#: templates/app_blog/posts_create.html:234
-msgid "If your post is primarily about a topic for which you can't find a tag:"
-msgstr ""
-"Jika pos anda terutama tentang topik yang tidak dapat anda temukan tag:"
-
-#: templates/app_blog/posts_create.html:266
-msgid "at least one tag such as (sql css mysql), max 5 tags"
-msgstr "setidaknya satu tag seperti (sql css mysql), maksimal 5 tag"
-
-#: templates/app_blog/posts_detail.html:52
-msgid "DRAFT"
-msgstr ""
-
-#: templates/app_blog/posts_detail.html:67
-msgid "This post doesn't published yet!"
-msgstr "Postingan ini belum dipublikasikan!"
-
-#: templates/app_blog/posts_detail.html:75
-msgid "undo vote up"
-msgstr "batalkan voting naik"
-
-#: templates/app_blog/posts_detail.html:79
-msgid "vote up"
-msgstr "voting naik"
-
-#: templates/app_blog/posts_detail.html:85
-msgid "View upvote and downvote totals"
-msgstr "Lihat total voting naik dan voting turun"
-
-#: templates/app_blog/posts_detail.html:102
-msgid "undo vote down"
-msgstr "batalkan voting turun"
-
-#: templates/app_blog/posts_detail.html:106
-msgid "vote down"
-msgstr "Voting turun"
-
-#: templates/app_blog/posts_detail.html:111
-msgid "Click to mark as favorite or undo"
-msgstr "Klik untuk menandai sebagai favorit atau membatalkan"
-
-#: templates/app_blog/posts_detail.html:122
-msgid "Featured post"
-msgstr "Postingan unggulan"
-
-#: templates/app_blog/posts_detail.html:140
-msgid "share"
-msgstr "bagikan"
-
-#: templates/app_blog/posts_detail.html:145
-#: templates/app_dashboard/dashboard_galleries.html:48
-msgid "Copy Link"
-msgstr "Salin Tautan"
-
-#: templates/app_blog/posts_detail.html:167
-msgid "edit"
-msgstr "ubah"
-
-#: templates/app_blog/posts_detail.html:169
-msgid "Are you sure want to delete this post?"
-msgstr "Anda yakin akan menghapus postingan ini?"
-
-#: templates/app_blog/posts_detail.html:170
-msgid "delete"
-msgstr "hapus"
-
-#: templates/app_blog/posts_detail.html:176
-msgid "remove from featured"
-msgstr "hapus dari unggulan"
-
-#: templates/app_blog/posts_detail.html:180
-msgid "mark as featured"
-msgstr "tandai sebagai unggulan"
-
-#: templates/app_blog/posts_detail.html:188
-#, python-format
-msgid "posted %(time)s ago"
-msgstr "diposting %(time)s yang lalu"
-
-#: templates/app_blog/posts_detail.html:197
-#: templates/app_blog/posts_list.html:95 templates/app_user/users_list.html:84
-#: templates/includes/navs.html:9
-msgid "Reputation scores"
-msgstr "Skor Reputasi"
-
-#: templates/app_blog/posts_detail.html:201
-#: templates/app_blog/posts_list.html:99
-#: templates/app_user/profile_detail.html:72 templates/includes/navs.html:13
-msgid "Total posts"
-msgstr "Total postingan"
-
-#: templates/app_blog/posts_detail.html:205
-#: templates/app_blog/posts_list.html:103
-#: templates/app_user/profile_detail.html:85 templates/includes/navs.html:17
-msgid "Total votes up"
-msgstr "Total voting naik"
-
-#: templates/app_blog/posts_detail.html:209
-#: templates/app_blog/posts_list.html:107
-#: templates/app_user/profile_detail.html:91 templates/includes/navs.html:21
-msgid "Total votes down"
-msgstr "Total voting turun"
-
-#: templates/app_blog/posts_detail.html:227
-msgid "Your Answer"
-msgstr "Jawaban Anda"
-
-#: templates/app_blog/posts_detail.html:244
-msgid "viewed"
-msgstr "dilihat"
-
-#: templates/app_blog/posts_detail.html:248
-msgid "your ip"
-msgstr "ip anda"
-
-#: templates/app_blog/posts_detail.html:252
-msgid "posted"
-msgstr "diposting"
-
-#: templates/app_blog/posts_detail.html:253
-#: templates/app_blog/posts_detail.html:258
-msgid "ago"
-msgstr "yang lalu"
-
-#: templates/app_blog/posts_detail.html:256
-msgid "active"
-msgstr "aktif"
-
-#: templates/app_blog/posts_detail.html:306
-msgid "Related posts"
-msgstr "Postingan terkait"
-
-#: templates/app_blog/posts_detail.html:310
-msgid "Vote score (upvotes - downvotes)"
-msgstr "Skor voting (naik - turun)"
-
-#: templates/app_blog/posts_list.html:18
-msgid "Featured Posts"
-msgstr "Postingan unggulan"
-
-#: templates/app_blog/posts_list.html:20
-msgid "Highest Posts Views"
-msgstr "Postingan Terbanyak Dilihat"
-
-#: templates/app_blog/posts_list.html:22
-msgid "Highest Posts Voted"
-msgstr "Postingan Terbanyak Divoting"
-
-#: templates/app_blog/posts_list.html:24
-#: templates/app_dashboard/dashboard_posts.html:4
-msgid "All Posts"
-msgstr "Seluruh Postingan"
-
-#: templates/app_blog/posts_list.html:33
-msgid "Newest"
-msgstr "Terbaru"
-
-#: templates/app_blog/posts_list.html:46
-msgid "Active"
-msgstr "Aktif"
-
-#: templates/app_blog/posts_list.html:64
-#: templates/app_user/profile_detail.html:143
-#: templates/app_user/profile_detail_activity.html:22
-#: templates/app_user/profile_detail_activity.html:35
-msgid "votes"
-msgstr "votingan"
-
-#: templates/app_blog/posts_list.html:70
-msgid "views"
-msgstr "dilihat"
-
-#: templates/app_blog/posts_list.html:77
-#, python-format
-msgid "posted at %(created)s - %(since)s ago"
-msgstr "diposting pada %(created)s - %(since)s yang lalu"
-
-#: templates/app_blog/posts_list.html:170
-msgid "posts tagged"
-msgstr "postingan ter-tag"
-
-#: templates/app_blog/posts_list.html:172
-msgid "posted by"
-msgstr "diposting oleh"
-
-#: templates/app_blog/posts_list.html:174
-msgid "posts by"
-msgstr "postingan oleh"
-
-#: templates/app_blog/posts_list.html:176
-#: templates/app_user/profile_detail_activity.html:13
-msgid "posts"
-msgstr "postingan"
-
-#: templates/app_blog/posts_list.html:182
-msgid "View Profile"
-msgstr "Lihat Profil"
-
-#: templates/app_blog/posts_list.html:208
-msgid "Popular Tags"
-msgstr "Tag Terpopuler"
-
-#: templates/app_blog/posts_tagged.html:4
-msgid "Posts tagged by"
-msgstr "Postingan pada tag"
-
-#: templates/app_blog/tags_create.html:4 templates/app_blog/tags_create.html:25
-msgid "Create a Tag"
-msgstr "Buat Tag"
-
-#: templates/app_blog/tags_list.html:16
-msgid "Type tag to find or create the tag..."
-msgstr "Ketikkan tag untuk mencari atau membuat tag..."
-
-#: templates/app_blog/tags_list.html:23
-msgid "Type tag to find..."
-msgstr "Ketikkan tag untuk mencari"
-
-#: templates/app_dashboard/dashboard_galleries.html:3
-msgid "All Galleries"
-msgstr "Seluruh Galeri"
-
-#: templates/app_dashboard/dashboard_galleries.html:19
-#: templates/app_dashboard/dashboard_galleries.html:100
-#: templates/app_dashboard/dashboard_galleries_create.html:3
-#: templates/app_dashboard/dashboard_galleries_create.html:48
-msgid "Upload File"
-msgstr "Unggah File"
-
-#: templates/app_dashboard/dashboard_galleries.html:29
-#: templates/app_dashboard/dashboard_pages.html:29
-#: templates/app_dashboard/dashboard_posts.html:29
-msgid "Author"
-msgstr "Penulis"
-
-#: templates/app_dashboard/dashboard_galleries.html:125
-msgid "Are you sure to delete this file?"
-msgstr "Anda yakin akan menghapus file ini?"
-
-#: templates/app_dashboard/dashboard_galleries.html:145
-msgid "Link copied!"
-msgstr "Tautan tersalin!"
-
-#: templates/app_dashboard/dashboard_galleries_create.html:30
-msgid "Currently"
-msgstr "Saat ini"
-
-#: templates/app_dashboard/dashboard_home.html:4
-#: templates/app_dashboard/dashboard_menus.html:7
-#: templates/includes/navs.html:63
-msgid "Dashboard"
-msgstr "Dasbor"
-
-#: templates/app_dashboard/dashboard_home.html:15
-msgid "All tags created"
-msgstr "Semua tag dibuat"
-
-#: templates/app_dashboard/dashboard_home.html:22
-msgid "All posts created"
-msgstr "Semua postingan dibuat"
-
-#: templates/app_dashboard/dashboard_home.html:29
-msgid "All users registered"
-msgstr "Semua pengguna terdaftar"
-
-#: templates/app_dashboard/dashboard_home.html:36
-msgid "All galleries created"
-msgstr "Semua galeri dibuat"
-
-#: templates/app_dashboard/dashboard_home.html:43
-msgid "All visitors visited"
-msgstr "Semua pengunjung melihat"
-
-#: templates/app_dashboard/dashboard_home.html:60
-msgid "Tags this year"
-msgstr "Tag tahun ini"
-
-#: templates/app_dashboard/dashboard_home.html:67
-msgid "Posts this year"
-msgstr "Postingan tahun ini"
-
-#: templates/app_dashboard/dashboard_home.html:74
-msgid "Users this year"
-msgstr "Pengguna tahun ini"
-
-#: templates/app_dashboard/dashboard_home.html:81
-msgid "Galleries this year"
-msgstr "Galeri tahun ini"
-
-#: templates/app_dashboard/dashboard_home.html:88
-msgid "Visitors this year"
-msgstr "Pengunjung tahun ini"
-
-#: templates/app_dashboard/dashboard_home.html:105
-#: templates/app_dashboard/dashboard_home.html:143
-msgid "Months"
-msgstr "Bulan"
-
-#: templates/app_dashboard/dashboard_home.html:106
-msgid "Tags created"
-msgstr "Tag terbuat"
-
-#: templates/app_dashboard/dashboard_home.html:107
-msgid "Posts created"
-msgstr "Postingan terbuat"
-
-#: templates/app_dashboard/dashboard_home.html:108
-msgid "Users registered"
-msgstr "Pengguna terdaftar"
-
-#: templates/app_dashboard/dashboard_home.html:109
-msgid "Galleries created"
-msgstr "Galeri terbuat"
-
-#: templates/app_dashboard/dashboard_home.html:127
-msgid "Global Performance in this year"
-msgstr "Kinerja Secara umum di tahun ini"
-
-#: templates/app_dashboard/dashboard_home.html:128
-#: templates/app_dashboard/dashboard_home.html:163
-msgid "Recorded per-months"
-msgstr "Direkam per-bulan"
-
-#: templates/app_dashboard/dashboard_home.html:144
-msgid "Visitors visited"
-msgstr "Pengunjung mengunjungi"
-
-#: templates/app_dashboard/dashboard_home.html:162
-msgid "Visitors Performance in this year"
-msgstr "Kinerja Pengunjung di tahun ini"
-
-#: templates/app_dashboard/dashboard_pages.html:4
-msgid "All Pages"
-msgstr "Seluruh Halaman"
-
-#: templates/app_dashboard/dashboard_pages.html:51
-msgid "View"
-msgstr "Lihat"
-
-#: templates/app_dashboard/dashboard_pages.html:107
-msgid "Are you sure to delete this page?"
-msgstr "Anda yakin akan menghapus halaman ini?"
-
-#: templates/app_dashboard/dashboard_tags.html:4
-msgid "All Tags"
-msgstr "Seluruh Tag"
-
-#: templates/app_dashboard/dashboard_tags.html:23
-msgid "Create a tag..."
-msgstr "Buat tag baru..."
-
-#: templates/app_dashboard/dashboard_tags.html:24
-msgid "Refresh"
-msgstr "Segarkan"
-
-#: templates/app_dashboard/dashboard_tags.html:32
-msgid "Save Tag"
-msgstr "Simpan Tag"
-
-#: templates/app_dashboard/dashboard_tags.html:46
-msgid "Total Posts"
-msgstr "Total Postingan"
-
-#: templates/app_dashboard/dashboard_tags.html:118
-msgid "Are you sure to delete this tag?"
-msgstr "Anda yakin akan menghapus tag ini?"
-
-#: templates/app_dashboard/dashboard_users.html:4
-msgid "All Users"
-msgstr "Seluruh Pengguna"
-
-#: templates/app_dashboard/dashboard_users.html:21
-#: templates/app_user/profile_edit.html:41
-msgid "Username"
-msgstr ""
-
-#: templates/app_dashboard/dashboard_users.html:23
-msgid "Date joined"
-msgstr "Tanggal bergabung"
-
-#: templates/app_dashboard/dashboard_users.html:24
-msgid "Last login"
-msgstr "Terakhir masuk"
-
-#: templates/app_dashboard/dashboard_users.html:42
-msgid "Click to Deactivate"
-msgstr ""
-
-#: templates/app_dashboard/dashboard_users.html:45
-msgid "Click to Activate"
-msgstr ""
-
-#: templates/app_dashboard/dashboard_users.html:109
-msgid "Are you sure to delete this user?"
-msgstr "Anda yakin akan menghapus pengguna ini?"
-
-#: templates/app_dashboard/dashboard_users.html:124
-#, fuzzy
-#| msgid "Are you sure want to delete this post?"
-msgid "Are you sure want to change status of this user?"
-msgstr "Anda yakin akan menghapus postingan ini?"
-
-#: templates/app_dashboard/dashboard_visitors.html:4
-msgid "All Visitors"
-msgstr "Seluruh Pengunjung"
-
-#: templates/app_dashboard/dashboard_visitors.html:21
-msgid "Post"
-msgstr "Postingan"
-
-#: templates/app_dashboard/dashboard_visitors.html:22
-msgid "Ip Address"
-msgstr "Alamat IP"
-
-#: templates/app_dashboard/dashboard_visitors.html:90
-msgid "Are you sure to delete this visitor?"
-msgstr "Anda yakin akan menghapus pengunjung ini?"
-
-#: templates/app_user/profile_detail.html:5
-#: templates/app_user/profile_detail_activity.html:4
-#: templates/app_user/profile_edit.html:4
-#: templates/includes/profile_menus_top.html:8
-msgid "Profile"
-msgstr "Profil"
-
-#: templates/app_user/profile_detail.html:14
-msgid "hero user"
-msgstr "pengguna pahlawan"
-
-#: templates/app_user/profile_detail.html:18
-msgid "normal user"
-msgstr "pengguna normal"
-
-#: templates/app_user/profile_detail.html:31
-msgid "Nothing about me!"
-msgstr "Tidak ada mengenai saya!"
-
-#: templates/app_user/profile_detail.html:33
+#: templates/apps/accounts/user/includes/nav_tabs.html:41
+#: templates/apps/product/list_private.html:5
+msgid "My Products"
+msgstr "Produk Saya"
+
+#: templates/apps/accounts/user/includes/nav_tabs.html:51
+msgid "Edit Profile & Settings"
+msgstr "Ubah Profil & Pengaturan"
+
+#: templates/apps/accounts/user/profile.html:18
+msgid "Marshal"
+msgstr "Perwira"
+
+#: templates/apps/accounts/user/profile.html:20
+msgid "Captain"
+msgstr "Kapten"
+
+#: templates/apps/accounts/user/profile.html:22
+msgid "Soldier"
+msgstr "Prajurit"
+
+#: templates/apps/accounts/user/profile.html:31
+msgid "No about me!"
+msgstr "Tidak tentang saya!"
+
+#: templates/apps/accounts/user/profile.html:32
 msgid "Social Accounts"
 msgstr "Akun Sosial"
 
-#: templates/app_user/profile_detail.html:35
+#: templates/apps/accounts/user/profile.html:36
 msgid "No social accounts!"
 msgstr "Tidak ada akun sosial!"
 
-#: templates/app_user/profile_detail.html:64
+#: templates/apps/accounts/user/profile.html:96
 msgid "BADGES"
 msgstr "LENCANA"
 
-#: templates/app_user/profile_detail.html:67
+#: templates/apps/accounts/user/profile.html:99
 msgid "Reputation score"
 msgstr "Skor reputasi"
 
-#: templates/app_user/profile_detail.html:77
+#: templates/apps/accounts/user/profile.html:108
+#: templates/includes/navbar.html:55
+msgid "Total posts"
+msgstr "Total postingan"
+
+#: templates/apps/accounts/user/profile.html:119
 msgid "Total featured posts"
 msgstr "Total postingan unggulan"
 
-#: templates/app_user/profile_detail.html:84
-msgid "Votes up"
-msgstr "Voting naik"
+#: templates/apps/accounts/user/profile.html:129
+#: templates/apps/blog/post/includes/nav_tabs.html:39
+#: templates/apps/blog/post/list_private.html:52
+msgid "Votes"
+msgstr "Suara"
 
-#: templates/app_user/profile_detail.html:90
-msgid "Votes down"
-msgstr "Voting turun"
+#: templates/apps/accounts/user/profile.html:132
+#: templates/includes/navbar.html:75
+msgid "Total votes up"
+msgstr "Total suara naik"
 
-#: templates/app_user/profile_detail.html:100
+#: templates/apps/accounts/user/profile.html:141
+#: templates/includes/navbar.html:85
+msgid "Total votes down"
+msgstr "Total suara turun"
+
+#: templates/apps/accounts/user/profile.html:158
 msgid "IMPACT"
 msgstr "DAMPAK"
 
-#: templates/app_user/profile_detail.html:103
+#: templates/apps/accounts/user/profile.html:161
 msgid "posts created"
-msgstr "postingan terbuat"
+msgstr "postingan dibuat"
 
-#: templates/app_user/profile_detail.html:110
+#: templates/apps/accounts/user/profile.html:173
 msgid "votes cast"
-msgstr "peranan voting"
+msgstr "pemeran suara"
 
-#: templates/app_user/profile_detail.html:118
-#: templates/app_user/profile_detail_activity.html:19
+#: templates/apps/accounts/user/profile.html:185
+#: templates/apps/accounts/user/profile_activity.html:34
 msgid "favorites"
 msgstr "favorit"
 
-#: templates/app_user/profile_detail.html:126
-#: templates/app_user/profile_detail_activity.html:16
+#: templates/apps/accounts/user/profile.html:198
+#: templates/apps/accounts/user/profile_activity.html:20
 msgid "tags"
-msgstr "tag"
+msgstr "tags"
 
-#: templates/app_user/profile_detail.html:146
-#: templates/app_user/profile_detail_activity.html:36
-msgid "activity"
-msgstr "aktivitas"
+#: templates/apps/accounts/user/profile.html:219
+#: templates/apps/accounts/user/profile_activity.html:26
+#: templates/apps/accounts/user/profile_activity.html:45
+#: templates/apps/blog/post/list.html:46
+msgid "votes"
+msgstr "suara"
 
-#: templates/app_user/profile_detail.html:149
-#: templates/app_user/profile_detail_activity.html:37
+#: templates/apps/accounts/user/profile.html:222
+#: templates/apps/accounts/user/profile_activity.html:48
+msgid "updates"
+msgstr "diperbarui"
+
+#: templates/apps/accounts/user/profile.html:225
+#: templates/apps/accounts/user/profile_activity.html:51
 msgid "newest"
 msgstr "terbaru"
 
-#: templates/app_user/profile_detail.html:157
-#: templates/app_user/profile_detail.html:159
-#: templates/app_user/profile_detail.html:161
-#: templates/app_user/profile_detail.html:236
-#: templates/app_user/profile_detail.html:238
-#: templates/app_user/profile_detail.html:240
-#: templates/app_user/profile_detail_activity.html:45
-#: templates/app_user/profile_detail_activity.html:47
-#: templates/app_user/profile_detail_activity.html:49
-#: templates/app_user/profile_detail_activity.html:154
-#: templates/app_user/profile_detail_activity.html:156
-#: templates/app_user/profile_detail_activity.html:158
-msgid "vote score"
-msgstr "skor voting"
-
-#: templates/app_user/profile_detail.html:167
-#: templates/app_user/profile_detail_activity.html:55
+#: templates/apps/accounts/user/profile.html:241
+#: templates/apps/accounts/user/profile_activity.html:68
 #, python-format
 msgid "%(user)s dosen't have posts!"
 msgstr "%(user)s tidak memiliki postingan!"
 
-#: templates/app_user/profile_detail.html:171
-#: templates/app_user/profile_detail.html:202
-#: templates/app_user/profile_detail.html:250
-#: templates/app_user/profile_detail.html:280
-#: templates/app_user/profile_detail_activity.html:60
+#: templates/apps/accounts/user/profile.html:248
+#: templates/apps/accounts/user/profile_activity.html:75
 msgid "View more"
 msgstr "Lihat selengkapnya"
 
-#: templates/app_user/profile_detail.html:190
-#: templates/app_user/profile_detail.html:212
-#: templates/app_user/profile_detail_activity.html:86
-#: templates/app_user/profile_detail_activity.html:101
-#: templates/app_user/profile_detail_activity.html:116
-#: templates/app_user/profile_detail_activity.html:131
-#, python-format
-msgid "%(user)s posted %(total)s posts in %(tag)s tag"
-msgstr "%(user)s memposting %(total)s postingan pada tag %(tag)s"
+#: templates/apps/accounts/user/profile_activity.html:14
+#: templates/apps/blog/post/includes/sidebar_list.html:16
+#: templates/apps/blog/tag/list.html:45
+msgid "posts"
+msgstr "postingan"
 
-#: templates/app_user/profile_detail.html:192
-#: templates/app_user/profile_detail.html:214
-#: templates/app_user/profile_detail_activity.html:88
-#: templates/app_user/profile_detail_activity.html:103
-#: templates/app_user/profile_detail_activity.html:118
-#: templates/app_user/profile_detail_activity.html:133
-#, python-format
-msgid "%(total)s posts in the %(tag)s tag"
-msgstr "%(total)s postingan di tag %(tag)s"
-
-#: templates/app_user/profile_detail.html:198
-#: templates/app_user/profile_detail_activity.html:76
-#, python-format
-msgid "%(user)s dosen't have tags!"
-msgstr "%(user)s tidak memiliki tag!"
-
-#: templates/app_user/profile_detail.html:246
-#: templates/app_user/profile_detail_activity.html:164
-#, python-format
-msgid "%(user)s dosen't have favorites!"
-msgstr "%(user)s tidak memiliki favorit!"
-
-#: templates/app_user/profile_detail.html:258
-#: templates/app_user/profile_detail_activity.html:174
-msgid "Votes Cast"
-msgstr "Peranan Voting"
-
-#: templates/app_user/profile_detail.html:265
-msgid "all time"
-msgstr "semua waktu"
-
-#: templates/app_user/profile_detail.html:271
-#: templates/app_user/profile_detail_activity.html:180
-msgid "up"
-msgstr "naik"
-
-#: templates/app_user/profile_detail.html:275
-#: templates/app_user/profile_detail_activity.html:183
-msgid "down"
-msgstr "turun"
-
-#: templates/app_user/profile_detail_activity.html:23
-msgid "Total votes cast"
-msgstr "Total peranan voting"
-
-#: templates/app_user/profile_detail_activity.html:177
+#: templates/apps/accounts/user/profile_activity.html:99
 msgid "all"
 msgstr "semua"
 
-#: templates/app_user/profile_detail_activity.html:193
+#: templates/apps/accounts/user/profile_activity.html:102
+msgid "up"
+msgstr "positif"
+
+#: templates/apps/accounts/user/profile_activity.html:105
+msgid "down"
+msgstr "negatif"
+
+#: templates/apps/accounts/user/profile_activity.html:114
 msgid "upvote"
-msgstr "voting naik"
+msgstr "suara positif"
 
-#: templates/app_user/profile_detail_activity.html:195
+#: templates/apps/accounts/user/profile_activity.html:116
 msgid "downvote"
-msgstr "voting turun"
+msgstr "suara negatif"
 
-#: templates/app_user/profile_detail_activity.html:202
+#: templates/apps/accounts/user/profile_activity.html:124
 #, python-format
-msgid "%(user)s dosen't have votes!"
-msgstr "%(user)s tidak memiliki votingan!"
+msgid "%(user)s dosen't vote anything!"
+msgstr "%(user)s tidak memberikan suara apapun!"
 
-#: templates/app_user/profile_edit.html:154
-msgid "Save Profile"
-msgstr "Simpan Profil"
+#: templates/apps/accounts/user/profile_activity.html:142
+msgid "You dosen't have favorites!"
+msgstr "Aanda tidak memiliki favorit!"
 
-#: templates/app_user/users_list.html:13 templates/app_user/users_list.html:22
-msgid "Search"
-msgstr "Cari"
+#: templates/apps/accounts/user/profile_update.html:41
+msgid "Please contact admin to change."
+msgstr "Silahkan hubungi admin untuk mengubah."
 
-#: templates/app_user/users_list.html:16
-msgid "Top Posts"
-msgstr "Postingan Tertinggi"
+#: templates/apps/accounts/user/profile_update.html:151
+msgid "Update Profile"
+msgstr "Ubah Profil"
 
-#: templates/app_user/users_list.html:17
-msgid "Top Rated"
-msgstr "Rating Tertinggi"
+#: templates/apps/blog/page/contact.html:4
+#: templates/apps/blog/page/contact.html:8
+msgid "Contact Us"
+msgstr "Kontak Kami"
 
-#: templates/app_user/users_list.html:18
-msgid "Date Joined"
-msgstr "Tanggal Bergabung"
+#: templates/apps/blog/page/contact.html:13
+msgid "What's in a great support request?"
+msgstr "Apa ada permintaan yang bagus?"
 
-#: templates/app_user/users_list.html:75
-msgid "Joined at"
-msgstr "Bergabung pada"
+#: templates/apps/blog/page/contact.html:14
+msgid "Provide us with as much essential information as possible."
+msgstr "Berikan kami informasi penting sebanyak mungkin."
 
-#: templates/app_user/users_list.html:76
-#, python-format
-msgid "Joined at %(time)s ago"
-msgstr "Bergabung pada %(time)s yang lalu"
+#: templates/apps/blog/page/contact.html:15
+msgid "Include any screenshots or links that are related to your problem."
+msgstr "Sertakan gambar atau tautan apa pun yang terkait dengan masalah anda."
 
-#: templates/app_user/users_list.html:78
-msgid "Last login at"
-msgstr "Terakhir login pada"
+#: templates/apps/blog/page/contact.html:87
+msgid "Send Email"
+msgstr "Tambahkan E-mail"
 
-#: templates/app_user/users_list.html:79
-#, python-format
-msgid " Last login at %(time)s ago"
-msgstr " Terakhir login pada %(time)s yang lalu"
+#: templates/apps/blog/page/includes/right_sidebar.html:37
+#: templates/includes/footer.html:39 templates/includes/navbar.html:45
+msgid "Contact"
+msgstr "Kontak"
 
-#: templates/app_user/users_list.html:88
-#, python-format
-msgid "Total posts: %(total)s"
-msgstr "Total postingan: %(total)s"
-
-#: templates/app_user/users_list.html:92
-#, python-format
-msgid "Total featured posts: %(total)s"
-msgstr "Total postingan unggulan: %(total)s"
-
-#: templates/app_user/users_list.html:96
-#, python-format
-msgid "Rating likes: %(total)s"
-msgstr "Rating disukai: %(total)s"
-
-#: templates/app_user/users_list.html:99
-#, python-format
-msgid "Rating dislikes: %(total)s"
-msgstr "Rating tidak disukai: %(total)s"
-
-#: templates/base_blank.html:66 templates/includes/footer.html:19
+#: templates/apps/blog/page/includes/right_sidebar.html:50
+#: templates/includes/footer.html:57
 msgid "Terms"
-msgstr "Ketentuan"
+msgstr "Persyaratan"
 
-#: templates/base_blank.html:67 templates/includes/footer.html:20
+#: templates/apps/blog/page/includes/right_sidebar.html:57
+#: templates/includes/footer.html:60
 msgid "Privacy"
 msgstr "Privasi"
 
-#: templates/base_blank.html:68 templates/includes/footer.html:9
-msgid "Contact"
-msgstr "Kontak"
+#: templates/apps/blog/post/author.html:5
+msgid "Posts by"
+msgstr "Diposting oleh"
+
+#: templates/apps/blog/post/create.html:7
+#: templates/apps/blog/post/create.html:27
+#, python-format
+msgid "Edit Post \"%(title)s\""
+msgstr "Ubah Postingan \"%(title)s\""
+
+#: templates/apps/blog/post/create.html:9
+#: templates/apps/blog/post/create.html:27
+#: templates/apps/blog/post/create.html:142
+#: templates/apps/blog/post/detail.html:55
+#: templates/apps/blog/post/list.html:14 templates/apps/blog/post/list.html:123
+#: templates/apps/blog/post/list_private.html:30
+msgid "Create a Post"
+msgstr "Buat Postingan"
+
+#: templates/apps/blog/post/create.html:33
+#: templates/apps/product/create.html:29
+msgid "Go Back"
+msgstr "Kembali"
+
+#: templates/apps/blog/post/create.html:79
+msgid "Combine multiple words into single-words with hyphens."
+msgstr "Gabungkan beberapa kata menjadi satu kata dengan tanda hubung."
+
+#: templates/apps/blog/post/create.html:80
+msgid ""
+"Click here to <a href=\"#\" data-toggle=\"modal\" data-target="
+"\"#modalCreateTag\">create new tag</a>"
+msgstr ""
+"Klik disini untuk <a href=\"#\" data-toggle=\"modal\" data-target="
+"\"#modalCreateTag\">membuat tag baru</a>"
+
+#: templates/apps/blog/post/create.html:129
+#: templates/apps/product/create.html:229
+msgid "Cancel"
+msgstr "Batalkan"
+
+#: templates/apps/blog/post/create.html:135
+msgid "Update Post"
+msgstr "Ubah Postingan"
+
+#: templates/apps/blog/post/detail.html:49
+msgid "Draft"
+msgstr "Draf"
+
+#: templates/apps/blog/post/detail.html:75
+msgid "vote up"
+msgstr "suara naik"
+
+#: templates/apps/blog/post/detail.html:83
+msgid "vote down"
+msgstr "suara turun"
+
+#: templates/apps/blog/post/detail.html:90
+msgid "Click to mark as favorite or undo"
+msgstr "Klik untuk menandai sebagai favorit atau batal"
+
+#: templates/apps/blog/post/detail.html:122
+msgid "share"
+msgstr "bagikan"
+
+#: templates/apps/blog/post/detail.html:128
+msgid "Copy Link"
+msgstr "Salin Tautan"
+
+#: templates/apps/blog/post/detail.html:128
+msgid "Link successfully copied!"
+msgstr "Tautan berhasil disalin!"
+
+#: templates/apps/blog/post/detail.html:150
+#: templates/apps/blog/post/list_private.html:126
+#: templates/apps/product/detail.html:50
+#: templates/apps/product/list_private.html:85
+msgid "Update"
+msgstr "Ubah"
+
+#: templates/apps/blog/post/includes/nav_tabs.html:11
+#: templates/apps/blog/tag/list.html:27
+msgid "Newest"
+msgstr "Terbaru"
+
+#: templates/apps/blog/post/includes/nav_tabs.html:20
+#: templates/apps/blog/post/list_private.html:83
+msgid "Featured"
+msgstr "Unggulan"
+
+#: templates/apps/blog/post/includes/nav_tabs.html:31
+#: templates/apps/blog/post/list_private.html:66
+msgid "Views"
+msgstr "Dilihat"
+
+#: templates/apps/blog/post/includes/nav_tabs.html:48
+msgid "Active"
+msgstr "Aktif"
+
+#: templates/apps/blog/post/includes/paginator.html:8
+#: templates/apps/blog/tag/includes/paginator.html:8
+msgid "First"
+msgstr "Pertama"
+
+#: templates/apps/blog/post/includes/paginator.html:17
+#: templates/apps/blog/tag/includes/paginator.html:17
+#: templates/apps/product/detail.html:148 templates/apps/product/list.html:46
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: templates/apps/blog/post/includes/paginator.html:40
+#: templates/apps/blog/tag/includes/paginator.html:40
+#: templates/apps/product/detail.html:152 templates/apps/product/list.html:50
+msgid "Next"
+msgstr "Selanjutnya"
+
+#: templates/apps/blog/post/includes/paginator.html:49
+#: templates/apps/blog/tag/includes/paginator.html:49
+msgid "Last"
+msgstr "Terakhir"
+
+#: templates/apps/blog/post/includes/paginator.html:59
+#: templates/apps/blog/tag/includes/paginator.html:59
+#, python-format
+msgid "Page %(current_page)s of %(total_pages)s"
+msgstr "Halaman %(current_page)s dari %(total_pages)s"
+
+#: templates/apps/blog/post/includes/paginator.html:66
+#: templates/apps/blog/tag/includes/paginator.html:66
+msgid "Jump to page"
+msgstr "Pergi ke halaman"
+
+#: templates/apps/blog/post/includes/paginator.html:70
+#: templates/apps/blog/tag/includes/paginator.html:70
+msgid "GO"
+msgstr "PERGI"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:5
+msgid "How to Post"
+msgstr "Bagaimana Memposting"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:13
+msgid "is your post about programming?"
+msgstr "postingan anda terkait pemrograman?"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:21
+#: templates/apps/product/includes/sidebar_create.html:21
+msgid "provide more details"
+msgstr "berikan detail lebih banyak"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:29
+#: templates/apps/blog/post/includes/sidebar_create.html:75
+#: templates/apps/product/includes/sidebar_create.html:29
+msgid "add related resources or links"
+msgstr "tambahkan sumber atau tautan terkait"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:37
+msgid "we prefer posts that can be posted, not just dummy."
+msgstr "kami lebih suka postingan yang bisa diposting, bukan hanya dummy."
+
+#: templates/apps/blog/post/includes/sidebar_create.html:43
+msgid "How to Update"
+msgstr "Bagaimana Mengubah"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:51
+msgid "fix grammatical or spelling errors"
+msgstr "perbaiki kesalahan tata bahasa atau ejaan"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:59
+msgid "clarify meaning without changing"
+msgstr "memperjelas makna tanpa mengubah"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:67
+msgid "correct minor mistakes"
+msgstr "perbaiki kesalahan kecil"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:81
+msgid "How to Format"
+msgstr "Bagaimana Memformat"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:89
+msgid "put returns between paragraphs"
+msgstr "tempatkan pengembalian di antara paragraf"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:97
+msgid "for linebreak add 2 spaces at end"
+msgstr "untuk pemutusan baris, tambahkan 2 spasi di akhir"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:105
+msgid "or"
+msgstr "atau"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:113
+msgid "indent code by 4 spaces"
+msgstr "indentasi kode sebanyak 4 spasi"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:121
+msgid "backtick escapes"
+msgstr "backtick lolos"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:129
+msgid "quote by placing > at start of line"
+msgstr "kutipan dengan menempatkan > di awal baris"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:137
+msgid "to make links"
+msgstr "untuk membuat tautan"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:143
+msgid "How to Tag"
+msgstr "Bagaimana Membuat Tag"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:145
+msgid ""
+"A tag is a keyword or label that categorizes your post with other, similar "
+"posts."
+msgstr ""
+"Tag adalah kata kunci atau label yang mengkategorikan posting anda dengan "
+"posting lain yang serupa."
+
+#: templates/apps/blog/post/includes/sidebar_create.html:146
+msgid ""
+"Choose one or more (up to 5) tags that will help visitors to find and "
+"interpret your post."
+msgstr ""
+"Pilih satu atau lebih (hingga 5) tag yang akan membantu pengunjung menemukan "
+"postingan anda."
+
+#: templates/apps/blog/post/includes/sidebar_create.html:155
+msgid "complete the sentence: <i>my post is about...</i>"
+msgstr "selesaikan kalimatnya: <i>postingan saya terkait...</i>"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:163
+msgid ""
+"use tags that describe things or concepts that are essential, not incidental "
+"to your post"
+msgstr ""
+"gunakan tag yang mendeskripsikan hal-hal atau konsep yang penting, bukan "
+"kebetulan untuk postingan anda."
+
+#: templates/apps/blog/post/includes/sidebar_create.html:171
+msgid "favor using existing popular tags"
+msgstr "mendukung penggunaan tag populer yang ada"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:175
+msgid "If your post is primarily about a topic for which you can't find a tag:"
+msgstr ""
+"Jika postingan anda terutama tentang topik yang tidak dapat anda temukan "
+"tagnya:"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:185
+msgid "combine multiple words into single-words with hyphens"
+msgstr "gabungkan beberapa kata menjadi satu-kata dengan tanda hubung"
+
+#: templates/apps/blog/post/includes/sidebar_create.html:186
+msgid "up to a maximum of 35"
+msgstr "hingga maksimal 35"
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:9
+msgid "viewed"
+msgstr "dilihat"
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:13
+msgid "your ip"
+msgstr "ip anda"
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:17
+msgid "posted"
+msgstr "diposting"
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:18
+#: templates/apps/blog/post/includes/sidebar_detail.html:23
+msgid "ago"
+msgstr "yang lalu"
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:21
+msgid "active"
+msgstr "aktif"
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:37
+msgid "Related posts"
+msgstr "Postingan terkait"
+
+#: templates/apps/blog/post/includes/sidebar_detail.html:47
+msgid "Empty!"
+msgstr "Kosong!"
+
+#: templates/apps/blog/post/includes/sidebar_list.html:9
+msgid "posts tagged"
+msgstr "posting dengan tag"
+
+#: templates/apps/blog/post/includes/sidebar_list.html:12
+#: templates/apps/blog/post/includes/sidebar_list.html:14
+msgid "posts by"
+msgstr "postingan oleh"
+
+#: templates/apps/blog/post/includes/sidebar_list.html:28
+msgid "View Profile"
+msgstr "Lihat Profil"
+
+#: templates/apps/blog/post/list.html:8
+msgid "All Posts"
+msgstr "Semua Postingan"
+
+#: templates/apps/blog/post/list.html:52
+msgid "views"
+msgstr "dilihat"
+
+#: templates/apps/blog/post/list.html:63
+#, python-format
+msgid "Posted at %(since)s ago / <i>%(created_at)s</i>"
+msgstr "Diposting pada %(since)s yang lalu / <i>%(created_at)s</i>"
+
+#: templates/apps/blog/post/list.html:117
+msgid "No posts yet!"
+msgstr "Belum ada postingan!"
+
+#: templates/apps/blog/post/list.html:118
+msgid "Upps, no posts yet! Be the first to contribute a new post."
+msgstr ""
+"Upps, belum ada postingan! Jadi yang pertama untuk berkontribusi membuat "
+"postingan."
+
+#: templates/apps/blog/post/list.html:126
+msgid "No posts!"
+msgstr "Tidak ada postingan!"
+
+#: templates/apps/blog/post/list.html:127
+msgid "The posts with current filter doesn't exist!"
+msgstr "Postingan dengan filter saat ini tidak ada!"
+
+#: templates/apps/blog/post/list.html:129
+msgid "See other posts"
+msgstr "Lihat postingan lainnya"
+
+#: templates/apps/blog/post/list_private.html:17
+#: templates/apps/product/list_private.html:17
+#: templates/includes/navbar.html:20
+msgid "Search..."
+msgstr "Cari..."
+
+#: templates/apps/blog/post/list_private.html:40
+#: templates/apps/product/list_private.html:40
+msgid "Created"
+msgstr "Dibuat"
+
+#: templates/apps/blog/post/list_private.html:85
+#: templates/apps/product/list_private.html:45
+msgid "Actions"
+msgstr "Aksi"
+
+#: templates/apps/blog/post/list_private.html:121
+#: templates/apps/product/list_private.html:80
+msgid "Delete"
+msgstr "Hapus"
+
+#: templates/apps/blog/post/list_private.html:155
+msgid "Are you sure to delete this post?"
+msgstr "Apakah anda yakin akan menghapus postingan ini?"
+
+#: templates/apps/blog/post/tagged.html:4
+msgid "Posts tagged by"
+msgstr "Postingan berdasarkan tag"
+
+#: templates/apps/blog/tag/includes/modal_create.html:7
+#: templates/apps/blog/tag/includes/modal_create.html:38
+msgid "Create a Tag"
+msgstr "Buat Tag"
+
+#: templates/apps/blog/tag/includes/modal_create.html:19
+msgid "Example"
+msgstr "Contoh"
+
+#: templates/apps/blog/tag/includes/modal_create.html:32
+msgid "Close"
+msgstr "Tutup"
+
+#: templates/apps/blog/tag/list.html:10
+msgid "A tag is a keyword or label that categorizes the posts with other."
+msgstr ""
+"Tag adalah kata kunci atau label yang mengkategorikan postingan dengan yang "
+"lain."
+
+#: templates/apps/blog/tag/list.html:11
+msgid "Using the right tags makes it easier for users to find the posts."
+msgstr ""
+"Penggunaan tag yang tepat memudahkan pengguna untuk menemukan postingan."
+
+#: templates/apps/blog/tag/list.html:20
+msgid "Search by tag name"
+msgstr "Cari berdasarkan nama tag"
+
+#: templates/apps/blog/tag/list.html:25
+msgid "Popular"
+msgstr "Populer"
+
+#: templates/apps/blog/tag/list.html:47
+msgid "post"
+msgstr "postingan"
+
+#: templates/apps/product/create.html:7 templates/apps/product/create.html:23
+#, python-format
+msgid "Edit Product \"%(title)s\""
+msgstr "Ubah Produk \"%(title)s\""
+
+#: templates/apps/product/create.html:9 templates/apps/product/create.html:23
+#: templates/apps/product/create.html:242 templates/apps/product/list.html:123
+#: templates/apps/product/list_private.html:30
+msgid "Create a Product"
+msgstr "Buat Produk"
+
+#: templates/apps/product/create.html:235
+msgid "Update Product"
+msgstr "Ubah Produk"
+
+#: templates/apps/product/detail.html:54
+#, python-format
+msgid "viewed in %(visitors)s times."
+msgstr "dilihat %(visitors)s kali."
+
+#: templates/apps/product/detail.html:93
+msgid "View Demo"
+msgstr "Lihat Demo"
+
+#: templates/apps/product/detail.html:105 templates/apps/product/list.html:82
+msgid "Download"
+msgstr "Unduh"
+
+#: templates/apps/product/detail.html:118 templates/apps/product/list.html:95
+msgid "Buy now"
+msgstr "Bayar sekarang"
+
+#: templates/apps/product/includes/sidebar_create.html:5
+msgid "How to create Product"
+msgstr "Bagaimana membuat Produk"
+
+#: templates/apps/product/includes/sidebar_create.html:13
+msgid "makesure the product is valid."
+msgstr "pastikan produknya valid."
+
+#: templates/apps/product/includes/sidebar_create.html:37
+msgid "we prefer products that can be posted, not just dummy."
+msgstr "kami lebih suka produknya yang bisa diposting, bukan hanya dummy."
+
+#: templates/apps/product/list.html:108
+msgid "Read more"
+msgstr "Baca selengkapnya"
+
+#: templates/apps/product/list.html:117
+msgid "No products yet!"
+msgstr "Belum ada produk!"
+
+#: templates/apps/product/list.html:118
+msgid "Upps, no products yet! Be the first to contribute a new product."
+msgstr ""
+"Upps, belum ada produk! Jadi yang pertama untuk berkontribusi membuat "
+"produk."
+
+#: templates/apps/product/list_private.html:114
+msgid "Are you sure to delete this product?"
+msgstr "Anda yakin akan menghapus produk ini?"
 
 #: templates/error_page.html:148
 #, python-format
 msgid "You have an error %(message)s."
-msgstr "Anda mendapati error %(message)s."
+msgstr "Anda mengalami kesalahan %(message)s."
 
 #: templates/error_page.html:149
 msgid "Please go back to <a href=\"/\">homepage</a>."
-msgstr "Silahkan kembali ke <a href=\"/\">halaman utama</a>."
+msgstr "Silahkan kembali ke <a href=\"/\">beranda</a>."
 
-#: templates/includes/footer.html:6
-msgid "Service"
-msgstr "Layanan"
+#: templates/includes/footer.html:68
+#, python-format
+msgid ""
+"When you visit or interact with our sites, services, applications, tools or "
+"messaging, we or our authorised service providers may use cookies, web "
+"beacons, and other similar technologies for storing information to help "
+"provide you with a better, faster and safer experience and for advertising "
+"purposes. Learn more <a href=\"%(url_privacy_policy)s\">here</a>."
+msgstr ""
+"Saat anda mengunjungi atau berinteraksi dengan situs, layanan, aplikasi, "
+"alat, atau perpesanan kami, kami atau penyedia layanan resmi kami dapat "
+"menggunakan cookie, suar web, dan teknologi serupa lainnya untuk menyimpan "
+"informasi guna membantu memberikan anda pengalaman yang lebih baik, lebih "
+"cepat, dan lebih aman dan untuk tujuan periklanan. Baca selengkapnya <a href="
+"\"%(url_privacy_policy)s\">disini</a>."
 
-#: templates/includes/footer.html:7
-msgid "Developers API"
-msgstr "API Pengembang"
+#: templates/includes/navbar.html:38
+msgid "More"
+msgstr "Lainnya"
 
-#: templates/includes/footer.html:10
-msgid "About"
-msgstr "Tentang"
+#: templates/includes/navbar.html:66
+msgid "Reputation scores"
+msgstr "Skor reputasi"
 
-#: templates/includes/footer.html:18
-msgid "Disclaimer"
-msgstr "Penolakan"
+#: templates/includes/navbar.html:104
+msgid "Add Post"
+msgstr "Tambah Postingan"
 
-#: templates/includes/navs.html:35
-msgid "Create new..."
-msgstr "Buat baru..."
+#: templates/includes/navbar.html:107
+msgid "Add Product"
+msgstr "Tambah Produk"
 
-#: templates/includes/navs.html:39
-msgid "New Post"
-msgstr "Postingan Baru"
+#: templates/includes/navbar.html:112
+msgid "Add Page"
+msgstr "Tambah Halaman"
 
-#: templates/includes/navs.html:40
-msgid "New Tag"
-msgstr "Tag Baru"
+#: templates/includes/navbar.html:113
+msgid "Add File"
+msgstr "Tambah E-mail"
 
-#: templates/includes/navs.html:43
-msgid "This site"
-msgstr "Situs ini"
-
-#: templates/includes/navs.html:44
-msgid "New Page"
-msgstr "Halaman Baru"
-
-#: templates/includes/navs.html:45
-msgid "New File"
-msgstr "File Baru"
-
-#: templates/includes/navs.html:49
-msgid "View profile and more"
-msgstr "Lihat profil dan lainnya"
-
-#: templates/includes/navs.html:55
+#: templates/includes/navbar.html:122
 msgid "Signed in as"
-msgstr "Login sebagai"
+msgstr "Masuk sebagai"
 
-#: templates/includes/navs.html:58
+#: templates/includes/navbar.html:124
 msgid "Your Profile"
-msgstr "Profil Anda"
+msgstr "Profile Anda"
 
-#: templates/includes/navs.html:59
+#: templates/includes/navbar.html:125
 msgid "Your Activity"
 msgstr "Aktivitas Anda"
 
-#: templates/includes/navs.html:60
+#: templates/includes/navbar.html:126
 msgid "Your Posts"
 msgstr "Postingan Anda"
 
-#: templates/includes/navs.html:65
+#: templates/includes/navbar.html:127
+msgid "Your Products"
+msgstr "Postingan Anda"
+
+#: templates/includes/navbar.html:130
+msgid "Dashboard"
+msgstr "Dasbor"
+
+#: templates/includes/navbar.html:132
 msgid "Settings"
-msgstr "Setelan"
-
-#: templates/includes/navs.html:105
-msgid "Services"
-msgstr "Layanan"
-
-#: templates/includes/navs.html:106
-msgid "new"
-msgstr "terbaru"
-
-#: templates/includes/profile_menus_left.html:7
-msgid "Edit Profile"
-msgstr "Ubah Profil"
-
-#: templates/includes/profile_menus_left.html:11
-msgid "Edit Emails"
-msgstr "Ubah Email"
-
-#: templates/includes/profile_menus_left.html:15
-msgid "Edit Password"
-msgstr "Ubah Kata Sandi"
-
-#: templates/includes/profile_menus_left.html:19
-msgid "Social Connections"
-msgstr "Koneksi Jejaring Sosial"
-
-#: templates/includes/profile_menus_top.html:12
-msgid "Activity"
-msgstr "Aktivitas"
-
-#: templates/includes/profile_menus_top.html:21
-msgid "Edit Profile &amp; Settings"
-msgstr "Ubah Profil &amp; Setelan"
+msgstr "Pengaturan"

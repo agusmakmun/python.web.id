@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load common_tags user_info %}
+
+{% block title %}{% trans "Profile" %} {{ profile }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    {% include "apps/accounts/user/includes/nav_tabs.html" %}
+
+    <div class="row mt-4 row-content">
+      <div class="col-md-6">
+        <div class="card" style="box-shadow: 0 3px 5px #eaeaea">
+          <div class="card-body">
+            <div class="ribbon-wrapper-orange">
+              <div class="ribbon-orange">
+                {% if user.is_superuser %}
+                  <span>{% trans "Marshal" %}</span>
+                {% elif user.is_staff %}
+                  <span>{% trans "Captain" %}</span>
+                {% else %}
+                  <span>{% trans "Soldier" %}</span>
+                {% endif %}
+              </div>
+            </div>
+            <h4 class="card-title text-secondary">{{ profile }}</h4>
+            {% if profile.location %}
+              <small class="text-secondary">{{ profile.location }}</small>
+            {% endif %}
+
+            <p class="card-text mb-3">{% if profile.about_me %}{{ profile.about_me }}{% else %}{% trans "No about me!" %}{% endif %}</p>
+            <h6 class="card-subtitle text-secondary mb-2">{% trans "Social Accounts" %}</h6>
+            <p class="card-text">
+
+              {% if not profile.website and not profile.twitter and not profile.linkedin and not profile.github and not profile.instagram %}
+                <span>{% trans "No social accounts!" %}</span>
+              {% endif %}
+
+              {% if profile.website %}
+                <a class="mr-2 no-underline" href="{{ profile.website }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="bi bi-globe" viewBox="0 0 16 16" fill="currentColor">
+                    <title>Website</title>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4H2.255a7.025 7.025 0 0 1 3.072-2.472 6.7 6.7 0 0 0-.597.933c-.247.464-.462.98-.64 1.539zm-.582 3.5h-2.49c.062-.89.291-1.733.656-2.5H3.82a13.652 13.652 0 0 0-.312 2.5zM4.847 5H7.5v2.5H4.51A12.5 12.5 0 0 1 4.846 5zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5H7.5V11H4.847a12.5 12.5 0 0 1-.338-2.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12H7.5v2.923c-.67-.204-1.335-.82-1.887-1.855A7.97 7.97 0 0 1 5.145 12zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11H1.674a6.958 6.958 0 0 1-.656-2.5h2.49c.03.877.138 1.718.312 2.5zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12h2.355a7.967 7.967 0 0 1-.468 1.068c-.552 1.035-1.218 1.65-1.887 1.855V12zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5h-2.49A13.65 13.65 0 0 0 12.18 5h2.146c.365.767.594 1.61.656 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4H8.5V1.077c.67.204 1.335.82 1.887 1.855.173.324.33.682.468 1.068z"/>
+                  </svg>
+                </a>
+              {% endif %}
+
+              {% if profile.github %}
+                <a class="mr-2 no-underline" href="{{ profile.github }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="bi bi-github" viewBox="0 0 512 499.36" fill="currentColor">
+                    <title>GitHub</title>
+                    <path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                    </path>
+                  </svg>
+                </a>
+              {% endif %}
+
+              {% if profile.linkedin %}
+                <a class="mr-2 no-underline" href="{{ profile.linkedin }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="bi bi-linkedin" viewBox="0 0 512 512" fill="currentColor">
+                    <title>LinkedIn</title>
+                    <path fill-rule="evenodd" d="M 426.00,0.00L 86.00,0.00 C 38.70,0.00,0.00,38.70,0.00,86.00l0.00,340.00 c0.00,47.30, 38.70,86.00, 86.00,86.00l 340.00,0.00 c 47.30,0.00, 86.00-38.70, 86.00-86.00L 512.00,86.00 C 512.00,38.70, 473.30,0.00, 426.00,0.00z M 192.00,416.00l-64.00,0.00 L 128.00,192.00 l 64.00,0.00 L 192.00,416.00 z M 160.00,160.00c-17.673,0.00-32.00-14.327-32.00-32.00s 14.327-32.00, 32.00-32.00s 32.00,14.327, 32.00,32.00S 177.673,160.00, 160.00,160.00z M 416.00,416.00l-64.00,0.00 L 352.00,288.00 c0.00-17.673-14.327-32.00-32.00-32.00s-32.00,14.327-32.00,32.00l0.00,128.00 l-64.00,0.00 L 224.00,192.00 l 64.00,0.00 l0.00,39.736 C 301.199,213.604, 321.376,192.00, 344.00,192.00c 39.765,0.00, 72.00,35.817, 72.00,80.00 L 416.00,416.00 z"/>
+                  </svg>
+                </a>
+              {% endif %}
+
+              {% if profile.instagram %}
+                <a class="mr-2 no-underline" href="{{ profile.instagram }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="bi bi-instagram" viewBox="0 0 169 169" fill="currentColor">
+                    <title>Instagram</title>
+                    <circle cx="129" cy="39" r="10"/>
+                    <g stroke="#4078C0" fill="none" stroke-width="15">
+                      <circle cx="84.5" cy="84.5" r="35.5"/>
+                      <path d="M59 8C22 8 8 22 8 59v51c0 37 14 51 51 51h51c37 0 51-14 51-51V59c0-37-14-51-51-51H59z"/>
+                    </g>
+                  </svg>
+                </a>
+              {% endif %}
+
+              {% if profile.twitter %}
+                <a class="mr-2 no-underline" href="{{ profile.twitter }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="bi bi-twitter" viewBox="0 0 512 416.32" fill="currentColor">
+                    <title>Twitter</title>
+                    <path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"/>
+                  </svg>
+                </a>
+              {% endif %}
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="box-shadow: 0 3px 5px #eaeaea">
+          <div class="card-body">
+            <h6 class="card-title text-secondary">{% trans "BADGES" %}</h6>
+            <h6 class="card-text mb-3">
+              {% with user|get_total_ratings as total_ratings %}
+                <span class="badge badge-pill badge-light text-orange mr-2" style="border: 1px solid" title="{% trans 'Reputation score' %}: {{ total_ratings }}">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                  </svg>
+                  <span style="vertical-align:middle">{{ total_ratings|numberize }}</span>
+                </span>
+              {% endwith %}
+
+              {% with user|get_total_posts as total_posts %}
+                <span class="badge badge-pill badge-light text-brown mr-2" style="border: 1px solid" title="{% trans 'Total posts' %}: {{ total_posts }}">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-rss" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
+                    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                    <path fill-rule="evenodd" d="M2.5 3.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"></path>
+                  </svg>
+                  <span style="vertical-align:middle">{{ total_posts|numberize }}</span>
+                </span>
+              {% endwith %}
+
+              {% with user|total_featured_posts as total_featured_posts %}
+                <span class="badge badge-pill badge-light text-yellow mr-2" style="border: 1px solid" title="{% trans 'Total featured posts' %}: {{ total_featured_posts }}">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"></path>
+                    <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"></path>
+                  </svg>
+                  <span style="vertical-align:middle">{{ total_featured_posts|numberize }}</span>
+                </span>
+              {% endwith %}
+            </h6>
+
+            <h6 class="card-subtitle text-secondary mb-2">{% trans "Votes" %}</h6>
+            <p class="card-text">
+              {% with user|get_total_ratings:'likes' as total_rating_likes %}
+                <span class="badge badge-pill badge-light text-green mr-2" style="border: 1px solid" title="{% trans 'Total votes up' %}: {{ total_rating_likes }}">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                  </svg>
+                  <span style="vertical-align:middle">{{ total_rating_likes|numberize }}</span>
+                </span>
+              {% endwith %}
+
+              {% with user|get_total_ratings:'dislikes' as total_rating_dislikes %}
+                <span class="badge badge-pill badge-light text-red mr-2" style="border: 1px solid" title="{% trans 'Total votes down' %}: {{ total_rating_dislikes }}">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.378 1.378 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51.136.02.285.037.443.051.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.896 1.896 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.094 2.094 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.162 3.162 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28v1c.563 0 .901.272 1.066.56.086.15.121.3.121.416 0 .12-.035.165-.04.17l-.354.353.353.354c.202.202.407.512.505.805.104.312.043.44-.005.488l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.415-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.353.352.373.714.267 1.021-.122.35-.396.593-.571.651-.653.218-1.447.224-2.11.164a8.907 8.907 0 0 1-1.094-.17l-.014-.004H9.62a.5.5 0 0 0-.595.643 8.34 8.34 0 0 1 .145 4.725c-.03.112-.128.215-.288.255l-.262.066c-.306.076-.642-.156-.667-.519-.075-1.081-.239-2.15-.482-2.85-.174-.502-.603-1.267-1.238-1.977C5.597 8.926 4.715 8.23 3.62 7.93 3.226 7.823 3 7.534 3 7.28V3.279c0-.26.22-.515.553-.55 1.293-.138 1.936-.53 2.491-.869l.04-.024c.27-.165.495-.296.776-.393.277-.096.63-.163 1.14-.163h3.5v-1H8c-.605 0-1.07.08-1.466.217a4.823 4.823 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591z"/>
+                  </svg>
+                  <span style="vertical-align:middle">{{ total_rating_dislikes|numberize }}</span>
+                </span>
+              {% endwith %}
+            </p>
+
+            <!-- just add more line space -->
+            <p><br /></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="card" style="box-shadow: 0 3px 5px #eaeaea">
+          <div class="card-body">
+            <h6 class="card-title text-secondary">{% trans "IMPACT" %}</h6>
+            <div class="card-text">
+              <h5 class="text-bold">+ {{ user|get_total_posts|numberize }}</h5>
+              <span class="card-subtitle">{% trans "posts created" %}</span>
+
+              <hr style="margin: .5rem 0"/>
+
+              <ul class="list-group">
+                <li class="list-group-item p-0 no-border d-flex justify-content-between align-items-center">
+                  <span class="text-muted" style="display:table-cell">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                    </svg>
+                  </span>
+                  <a class="content text-secondary" style="display:table-cell" href="{% url 'apps.accounts:profile_activity' username=user.username %}?tab=votes">
+                    <span>{{ total_votes|numberize }} {% trans "votes cast" %}</span>
+                  </a>
+                </li>
+
+                {% if request.user == user %}
+                  <li class="list-group-item p-0 no-border d-flex justify-content-between align-items-center">
+                    <span class="text-muted" style="display:table-cell">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                      </svg>
+                    </span>
+                    <a class="content text-secondary" style="display:table-cell" href="{% url 'apps.accounts:profile_activity' username=user.username %}?tab=favorites">
+                      <span>{{ total_favorites|numberize }} {% trans "favorites" %}</span>
+                    </a>
+                  </li>
+                {% endif %}
+
+                <li class="list-group-item p-0 no-border d-flex justify-content-between align-items-center">
+                  <span class="text-muted" style="display:table-cell">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tags-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M3 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 7.586 1H3zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                      <path d="M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
+                    </svg>
+                  </span>
+                  <a class="content text-secondary" style="display:table-cell" href="{% url 'apps.accounts:profile_activity' username=user.username %}?tab=tags">
+                    <span>{{ total_tags|numberize }} {% trans "tags" %}</span>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4 row-content">
+      <div class="col-md-6">
+        <div class="tab-content" id="tabAjaxPosts">
+          <div class="tab-pane fade show active" id="tab-posts" role="tabpanel" aria-labelledby="tab-posts"
+               style="border:1px solid #dee2e6;border-top:none;box-shadow:0 3px 5px #eaeaea">
+            <div class="nav justify-content-end bg-white main-post-filter-menu">
+              <li class="nav-item" style="position:absolute;left:1.3rem">
+                <a class="nav-link disabled text-bold">{% trans "Posts" %} ({{ total_posts }})</a>
+              </li>
+              <li class="nav-item">
+                <a role="button" data-filter="votes" class="nav-link post-filter-menu disabled">{% trans "votes" %}</a>
+              </li>
+              <li class="nav-item">
+                <a role="button" data-filter="updates" class="nav-link post-filter-menu">{% trans "updates" %}</a>
+              </li>
+              <li class="nav-item">
+                <a role="button" data-filter="newest" class="nav-link post-filter-menu">{% trans "newest" %}</a>
+              </li>
+            </div>
+            <hr class="m-0" />
+            <ul class="list-group list-group-flush list-group-posts">
+              {% for post in posts %}
+                <li class="list-group-item no-border">
+                  <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">
+                    {% with post.rating.get_difference as total_ratings %}
+                      <span class="badge badge-light {% if total_ratings > 0 %}text-green{% endif %}">{{ total_ratings }}</span>
+                    {% endwith %}
+                    <span>{{ post }}</span>
+                  </a>
+                </li>
+              {% empty %}
+                <li class="list-group-item">
+                  <span>{% blocktrans with user=user %}{{ user }} dosen't have posts!{% endblocktrans %}</span>
+                </li>
+              {% endfor %}
+            </ul>
+            {% if total_posts >= 2 %}
+              <div class="p-3 pl-4 bg-white">
+                <a class="no-underline" href="{% url 'apps.accounts:profile_activity' username=user.username %}?tab=posts">
+                  <span>{% trans "View more" %} &rarr;</span>
+                </a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tab-content" id="tabAjaxTags">
+          <div class="tab-pane fade show active bg-white" id="tab-tags" role="tabpanel" aria-labelledby="tab-tags"
+               style="border:1px solid #dee2e6;border-top:none;box-shadow:0 3px 5px #eaeaea">
+            <div class="nav justify-content-left bg-white main-post-filter-menu">
+              <li class="nav-item">
+                <a class="nav-link disabled text-bold">{% trans "Tags" %} ({{ total_tags }})</a>
+              </li>
+            </div>
+            <hr class="m-0" />
+            <div class="row">
+              {% for tag_data in tags_list %}
+                <div class="col-md-6">
+                  <div class="p-3">
+                    <a class="badge badge-tag badge-secondary no-radius"
+                       href="{% url 'apps.blog:post_list_tagged' name=tag_data.tag.name %}">
+                      <span>{{ tag_data.tag }}</span>
+                     </a>
+                     <span>x</span>
+                     <span class="badge badge-light">{{ tag_data.total }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script>
+    $('.post-filter-menu').click(function(){
+      var button = $(this);
+      $.ajax({
+        type: 'GET',
+        url: '?filter='+button.data('filter'),
+        success: function(reponse){
+          button.closest('.main-post-filter-menu').find('.post-filter-menu').removeClass('disabled');
+          button.addClass('disabled');
+          $('.list-group-posts').html(
+            $(reponse).find('.list-group-posts').children()
+          );
+        }
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load common_tags %}
+
+{% block title %}{% trans "My Posts" %} - {{ block.super }}{% endblock %}
+
+{% block robot %}
+  <meta name="robots" content="NONE,NOARCHIVE" />
+{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    {% include "apps/accounts/user/includes/nav_tabs.html" %}
+
+    <nav class="navbar navbar-light bg-light mt-3">
+      <form class="form-inline" method="get">{% csrf_token %}
+        <input name="q" class="form-control mr-sm-2 text-sm" type="search" placeholder="{% trans 'Search...' %}" aria-label="Search" required>
+        <button class="btn bg-gradient-default text-normal" type="submit">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+          </svg>
+        </button>
+      </form>
+      <div class="float-right">
+        <a class="btn btn-sm bg-gradient-success" href="{% url 'apps.blog:post_create' %}" role="button" style="line-height:1.5rem">
+          <svg width="15" height="15" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+          <span>{% trans "Create a Post" %} &nbsp;</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="table-responsive">
+      <table class="table table-hover bg-white">
+        <thead>
+          <tr>
+            <th scope="col">{% trans "Title" %}</th>
+            <th scope="col">{% trans "Created" %}</th>
+            <th scope="col">
+              <a class="no-underline" href="?sort=votes">
+                {% if request.GET.sort == 'votes' %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                  </svg>
+                {% else %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                  </svg>
+                {% endif %}
+                <span>{% trans "Votes" %}</span>
+              </a>
+            </th>
+            <th scope="col">
+              <a class="no-underline" href="?sort=views">
+                {% if request.GET.sort == 'views' %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                  </svg>
+                {% else %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                  </svg>
+                {% endif %}
+                <span>{% trans "Views" %}</span>
+              </a>
+            </th>
+            <th scope="col">
+              <a class="no-underline" href="?sort=favorites">
+                {% if request.GET.sort == 'favorites' %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                  </svg>
+                {% else %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                  </svg>
+                {% endif %}
+                <span>{% trans "Favorites" %}</span>
+              </a>
+            </th>
+            <th scope="col">{% trans "Featured" %}</th>
+            <th scope="col">{% trans "Publish" %}</th>
+            <th scope="col">{% trans "Actions" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+            <tr>
+              <td>
+                <a href="{% url 'apps.blog:post_detail' slug=post.slug %}">{{ post.title|truncatechars:50 }}</a>
+              </td>
+              <td>{{ post.created_at }}</td>
+              <td class="text-center">{{ post.rating.get_difference }}</td>
+              <td class="text-center">{{ post.total_visitors }}</td>
+              <td class="text-center">{{ post.total_favorites }}</td>
+              <td class="text-center">
+                {% if post.is_featured %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="#21BA45" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                  </svg>
+                {% else %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-circle-fill" fill="#DB2828" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+                  </svg>
+                {% endif %}
+              </td>
+              <td class="text-center">
+                {% if post.publish %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="#21BA45" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                  </svg>
+                {% else %}
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-circle-fill" fill="#DB2828" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+                  </svg>
+                {% endif %}
+              </td>
+              <td>
+                <span role="button" class="mr-1 delete-post-icon" data-target="" title="{% trans 'Delete' %}" data-url="{% url 'apps.blog:post_json_delete' %}?id={{ post.id }}">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="#DB2828" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                  </svg>
+                </span>
+                <a href="{% url 'apps.blog:post_update' slug=post.slug %}" title="{% trans 'Update' %}">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                  </svg>
+                </a>
+              </td>
+            </tr>
+          {% empty %}
+            <!-- FIXME: KURANG KONDISI EMPTY -->
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% include "apps/blog/post/includes/paginator.html" %}
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script>
+    $(document).ready(function() {
+      // come from `js/djangoblog.js`
+      changeBaseURLPaginator(url='{% url "apps.blog:post_me" %}', element='.main-pagination');
+
+      // delete mode
+      $(document).on('click', '.delete-post-icon', function(){
+        var button = $(this);
+        var confirmed = confirm('{% trans "Are you sure to delete this post?" %}');
+        if(confirmed) {
+          $.ajax({
+            type: 'GET',
+            url: $(this).data('url'),
+            success: function(response) {
+              button.closest('tr').remove();
+              showNotif(response['message'], 'success', false);
+            }
+          });
+        }
+      });
+    });
+  </script>
+{% endblock %}

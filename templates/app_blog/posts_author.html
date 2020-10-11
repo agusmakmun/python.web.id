@@ -1,6 +1,0 @@
-{% extends "app_blog/posts_list.html" %}
-{% load i18n %}
-
-{% block title %}
-  {% trans "Posts by" %} : {% if author.profile %}{{ author.profile }}{% else %}{{ author }}{% endif %}
-{% endblock %}

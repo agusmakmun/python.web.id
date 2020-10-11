@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Tags" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    <h5>{% trans "Tags" %}</h5>
+    <p>
+      <span>{% blocktrans %}A tag is a keyword or label that categorizes the posts with other.{% endblocktrans %}</span>
+      <span>{% blocktrans %}Using the right tags makes it easier for users to find the posts.{% endblocktrans %}</span>
+    </p>
+
+    <div class="mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex justify-content-between bd-highlight mb-3">
+            <div class="p-2 bd-highlight">
+              <div class="seach-tag-name">
+                <input name="q" type="text" class="form-control text-sm input-tag-title" autocomplete="off" placeholder="{% trans 'Search by tag name' %}" {% if query %}value="{{ query }}"{% endif %}>
+              </div>
+            </div>
+            <div class="p-2 bd-highlight">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="?sort=popular" class="btn bg-gradient-default text-sm {% if sort == 'popular' %}disabled{% endif %}">{% trans "Popular" %}</a>
+                <a href="?sort=name" class="btn bg-gradient-default text-sm {% if sort == 'name' %}disabled{% endif %}">{% trans "Name" %}</a>
+                <a href="?sort=new" class="btn bg-gradient-default text-sm {% if sort == 'new' %}disabled{% endif %}">{% trans "Newest" %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row card-tags">
+        {% for tag in tags %}
+          <div class="col-md-3 mb-4">
+            <div class="card card-body p-3">
+              <div class="card-title">
+                <a class="badge badge-tag badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
+              </div>
+              <p class="card-text">{{ tag.description|truncatechars:"150" }}</p>
+              <span class="text-muted">
+                {% with tag.post_set.published.count as total %}
+                  {% if total > 1 %}
+                    <span>{{ total }} {% trans "posts" %}</span>
+                  {% else %}
+                    <span>{{ total }} {% trans "post" %}</span>
+                  {% endif %}
+                {% endwith %}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="col-md-12 tags-paginator">
+          {% include "apps/blog/tag/includes/paginator.html" %}
+        </div>
+      </div>
+    </div><!-- /.row-content -->
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script>
+    // find tag
+    $('.input-tag-title').keyup(function(){
+      var value = $(this).val().toLowerCase();
+      $.ajax({
+        type: 'GET',
+        url: '{% url "apps.blog:tag_list" %}?q='+value,
+        success: function(response) {
+          $('.card-tags').html(
+            $(response).find('.card-tags').children()
+          );
+        }
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load i18n %}
+{% load common_tags ads_tags %}
+
+<div class="col-md-3 sidebar-right">
+  <div class="sidebar-post-info">
+    <table class="table table-sm text-muted">
+      <tbody>
+        <tr>
+          <td class="no-border">{% trans "viewed" %}</td>
+          <td class="no-border">{{ visitor_counter.total_visitors|numberize }}</td>
+        </tr>
+        <tr>
+          <td class="no-border">{% trans "your ip" %}</td>
+          <td class="no-border">{{ visitor_counter.client_ip }}</td>
+        </tr>
+        <tr>
+          <td class="no-border">{% trans "posted" %}</td>
+          <td class="no-border" title="{{ post.created_at }}">{{ post.created_at|timesince }} {% trans "ago" %}</td>
+        </tr>
+        <tr>
+          <td class="no-border">{% trans "active" %}</td>
+          <td class="no-border">
+            <a class="no-border" href="" title="{{ post.updated_at }}">{{ post.updated_at|timesince }} {% trans "ago" %}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ad-sidebar_top">
+    {{ 'sidebar_top'|get_ads|safe }}
+  </div>
+
+  <hr />
+
+  <div class="sidebar-related-posts">
+    <h6 class="text-secondary text-bold">{% trans "Related posts" %}</h6>
+    <ul class="list-group">
+      {% for post in related_posts %}
+        <li class="list-group-item p-0 mb-3 no-border d-flex justify-content-between align-items-center no-bg">
+          <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">
+            <span class="mr-2 text-muted" style="display:table-cell">{{ post.rating.get_difference|numberize }}</span>
+            <span class="content" style="display:table-cell;padding: 0 0 0 .5em">{{ post.title }}</span>
+          </a>
+        </li>
+      {% empty %}
+        <div class="item">{% trans "Empty!" %}</div>
+      {% endfor %}
+    </ul>
+  </div><!-- end /.sidebar-related-posts -->
+
+  <div class="ad-sidebar_bottom">
+    {{ 'sidebar_bottom'|get_ads|safe }}
+  </div>
+</div>

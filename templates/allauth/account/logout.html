@@ -1,20 +1,29 @@
-{% extends "account/base.html" %}
-{% load i18n %}
-{% block title %}{% trans "Sign Out" %} :: {{ block.super }}{% endblock %}
+{% extends "allauth/account/base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Sign Out" %} - {{ block.super }}{% endblock %}
 
 {% block content %}
-  <div class="ui text container margin-2-0">
-    <div class="ui piled segment">
-      <h3 class="ui grey header">{% trans "Sign Out" %}</h3>
-      <div class="ui message message-bulletin"><i class="info circle icon"></i> {% trans 'Are you sure you want to sign out?' %}</div>
-      <form method="post" action="{% url 'account_logout' %}" class="ui form">{% csrf_token %}
-        {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-        {% endif %}
-        <button class="ui primary button" type="submit">
-          <i class="sign out icon"></i> {% trans 'Sign Out' %}
-        </button>
-      </form>
+  <form class="form-center" method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    <div class="text-center mb-3">
+      <a href="/">
+        <img class="mb-4" src="{% static 'images/large-logo-orange.png' %}" alt="" width="72" height="72">
+      </a>
+      <h1 class="h6 mb-3 font-weight-bold">{% trans "Sign Out" %}</h1>
+      <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+      {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+      {% endif %}
+
+      <div style="padding:0 100px">
+        <button class="btn bg-gradient-primary btn-block" type="submit">{% trans "Sign Out" %}</button>
+      </div>
+
+      <div class="mt-3 mb-3 text-muted text-center">
+        <p>&larr; {% blocktrans %}<a href="/">Go to homepage</a>{% endblocktrans %}</p>
+      </div>
     </div>
-  </div>
+  </form>
 {% endblock %}

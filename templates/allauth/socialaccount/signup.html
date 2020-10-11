@@ -1,50 +1,73 @@
-{% extends "socialaccount/base.html" %}
-{% load i18n %}
-{% block title %}{% trans "Signup" %} :: {{ block.super }}{% endblock %}
+{% extends "allauth/account/base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Sign Up" %} - {{ block.super }}{% endblock %}
 
 {% block content %}
-  <div class="ui text container margin-2-0">
-    <h1>{% trans "Sign Up" %}</h1>
+  <form class="form-center" method="post" action="{% url 'socialaccount_signup' %}">{% csrf_token %}
+    <div class="text-center mb-3">
+      <a href="/">
+        <img class="mb-4" src="{% static 'images/large-logo-orange.png' %}" alt="python.web.id" width="72" height="72">
+      </a>
+      <h1 class="h6 mb-3 font-weight-bold">{% trans "Welcome to Python Learning!" %}</h1>
+      <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+      {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
 
-    <div class="ui teal message">
-      {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}
+      {% if form.non_field_errors %}
+        <div class="non-field-errors text-sm text-red">
+          {% for err in form.non_field_errors %}
+            <span class="form-error">{{ err }}</span>{% if not forloop.last %}<br />{% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
 
-    <form class="ui form signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
-      {% csrf_token %}
-      <div class="field">
-        <label>{{ form.email.label }} *</label>
-        <div class="ui left icon input">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group form-label-group">
           {{ form.email }}
-          <i class="mail icon"></i>
+          <label for="id_email">{% trans 'E-mail' %}</label>
+          {% if form.email.errors %}
+            <div class="invalid-feedback" style="display:block">
+              {% for error in form.email.errors %}
+                {{ error }}{% if not forloop.last %}<br />{% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
-        {% if form.email.errors %}
-          <div class="ui pointing red basic label">
-            {% for error in form.email.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </div>
-        {% endif %}
       </div>
-      <div class="field">
-        <label>{{ form.username.label }} *</label>
-        <div class="ui left icon input">
+      <div class="col-md-6">
+        <div class="form-group form-label-group">
           {{ form.username }}
-          <i class="person icon"></i>
+          <label for="id_username">{% trans 'Password' %}</label>
+          {% if form.username.errors %}
+            <div class="invalid-feedback" style="display:block">
+              {% for error in form.username.errors %}
+                {{ error }}{% if not forloop.last %}<br />{% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
-        {% if form.username.errors %}
-          <div class="ui pointing red basic label">
-            {% for error in form.username.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </div>
-        {% endif %}
       </div>
+    </div>
 
-      {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-      {% endif %}
-      <button class="ui primary button" type="submit">{% trans "Sign Up" %} &raquo;</button>
-    </form>
-  </div>
+    {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+
+    <div style="padding:0 70px">
+      <button class="btn btn-submit bg-gradient-success btn-block" type="submit">{% trans "Sign Up" %}</button>
+    </div>
+  </form>
+{% endblock %}
+
+{% block js %}
+  <script>
+    // Disable submit button after click, from: `static/js/djangoblog.js`
+    $(document).on('click', '.btn-submit', function() {
+      var form = $(this).closest('form');
+      var button = $(this);
+      submitAndDisableButton(form, button);
+    });
+  </script>
 {% endblock %}

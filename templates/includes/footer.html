@@ -1,23 +1,70 @@
-{% load i18n staticfiles %}
-<div class="footer">
-  <div class="ui container">
-    <div class="ui section divider"></div>
-    <div class="ui small right floated horizontal list">
-      <!--<a class="item spf-link" href="#">{% trans "Service" %}</a>-->
-      <a class="item spf-link" href="{% url 'docs_home' %}">{% trans "Developers API" %}</a>
-      <!--<a class="item" href="#">Shop</a>-->
-      <a class="item spf-link" href="{% url 'contact_us' %}">{% trans "Contact" %}</a>
-      <a class="item spf-link" href="{% url 'pages_detail' slug='about' %}">{% trans "About" %}</a>
-      {% include "includes/switch_language.html" %}
+{% load static i18n %}
+{% load ads_tags %}
+
+<footer class="footer container">
+  <div class="ad-footer">
+    {{ 'footer'|get_ads|safe }}
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link text-bold active" href="{% url 'apps.product:product_list' %}">{% trans "Products" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link text-bold" href="{% url 'apps.blog:page_services' %}">{% trans "Services" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link text-bold" href="{% url 'apps.blog:page_sponsor' %}">{% trans "Sponsor" %}</a>
+        </li>
+      </ul>
     </div>
-    <a href="{% url 'posts_list' %}" class="spf-link centered-image">
-      <img alt="Python Learning" title="Python Learning" src="{% static 'images/medium-logo-orange.png' %}" style="width:30px">
-    </a>
-    <div class="ui small horizontal list">
-      <div class="disabled item" href="#">&copy; 2014-{% now "Y" %} Python Learning.</div>
-      <a class="item spf-link" href="{% url 'pages_detail' slug='disclaimer' %}">{% trans "Disclaimer" %}</a>
-      <a class="item spf-link" href="{% url 'pages_detail' slug='term-of-service' %}">{% trans "Terms" %}</a>
-      <a class="item spf-link" href="{% url 'pages_detail' slug='privacy-policy' %}">{% trans "Privacy" %}</a>
+    <div class="col-md-6">
+      <nav class="nav justify-content-end">
+        {% include "includes/switch_language.html" %}
+      </nav>
     </div>
   </div>
-</div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="{% url 'apps.blog:page_about' %}">{% trans "About" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="{% url 'apps.blog:page_contact_us' %}">{% trans "Contact" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="{% url 'apps.blog:page_developers' %}">{% trans "Developers" %}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link disabled" tabindex="-1" aria-disabled="true">
+            <span class="text-sm">&copy; 2014-{% now "Y" %}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link active" href="{% url 'apps.blog:page_disclaimer' %}">{% trans "Disclaimer" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="{% url 'apps.blog:page_terms_of_service' %}">{% trans "Terms" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-sm text-muted nav-link" href="{% url 'apps.blog:page_privacy_policy' %}">{% trans "Privacy" %}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pt-3 pb-3 footer-notes text-sm text-muted">
+    {% url 'apps.blog:page_privacy_policy' as url_privacy_policy %}
+    <p>{% blocktrans %}When you visit or interact with our sites, services, applications, tools or messaging, we or our authorised service providers may use cookies, web beacons, and other similar technologies for storing information to help provide you with a better, faster and safer experience and for advertising purposes. Learn more <a href="{{ url_privacy_policy }}">here</a>.{% endblocktrans %}</p>
+  </div>
+</footer>

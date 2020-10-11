@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load martortags common_tags ads_tags user_info %}
+
+{% block title %}{{ post.title }} - {{ block.super }}{% endblock %}
+
+{% block robot %}
+  {% if not post.publish %}
+    <meta name="robots" content="NONE,NOARCHIVE" />
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block seo %}
+  <meta name="description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  <meta name="author" content="{{ post.author }}">
+  <meta name="keywords" content="{% if post.keywords %}{{ post.keywords }}{% else %}{{ post.title }}{% endif %}">
+  {% for tag in post.tags.published %}
+  <meta property="article:tag" content="{{ tag.name }}">
+  {% endfor %}
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  {% if post.description|markdown_find_images|length >= 1 %}
+  <meta property="og:image" content="{{ post.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta property="og:site_name" content="python.web.id">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.description|safe_markdown|striptags|truncatewords:'20' }}{% endif %}">
+  {% if post.description|markdown_find_images|length >= 1 %}
+  <meta name="twitter:image:src" content="{{ post.description|markdown_find_images|first }}">
+  {% endif %}
+  <meta name="twitter:title" content="{{ post.title }}">
+  <meta name="twitter:domain" content="python.web.id">
+  <meta name="twitter:creator" content="@{% if post.author.profile.twitter %}{{ post.author.profile.twitter|splitter|last }}{% else %}python.web.id{% endif %}">
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'martor/css/martor.bootstrap.min.css' %}" />
+  <style>div.martor-preview {padding:0;background:transparent}</style>
+{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    <h5 class="mt-2 mb-4">
+      <a class="no-underline" href="">{{ post.title }} {% if not post.publish %}<label class="badge badge-warning">{% trans "Draft" %}</label>{% endif %}</a>
+      <span class="float-right">
+        <a class="btn btn-sm bg-gradient-success" href="{% url 'apps.blog:post_create' %}" role="button" style="line-height:1.5rem">
+          <svg width="15" height="15" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+          <span>{% trans "Create a Post" %} &nbsp;</span>
+        </a>
+      </span>
+    </h5>
+
+    <div class="row mt-4 row-content">
+      <div class="col-md-9">
+        <div class="ad-post_detail_top">
+          {{ 'post_detail_top'|get_ads|safe }}
+        </div>
+
+        <div class="card p-3 mb-3 card-post-item">
+          {% if post.is_featured %}
+            <div class="ribbon-wrapper-orange">
+              <div class="ribbon-orange">FEATURED</div>
+            </div>
+          {% endif %}
+
+          <div class="post-item-content">
+            <div class="stats">
+              <div class="text-center text-{% if user_post_vote == 1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-up" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=1 %}" title="{% trans 'vote up' %}">
+                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                </svg>
+              </div>
+              <div class="text-center text-muted stats-inside-detail" data-id="121">
+                <div class="value">{{ post.rating.get_difference|numberize }}</div>
+              </div>
+              <div class="text-center text-{% if user_post_vote == -1 %}orange{% else %}muted{% endif %} stats-inside-detail vote-down" data-target="{% url 'apps.blog:post_rating' object_id=post.id score=-1 %}" title="{% trans 'vote down' %}">
+                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </svg>
+              </div>
+
+              {% with post.get_favorites.count as total_favorites %}
+                <div class="text-center text-{% if post.get_favorites.first.user == request.user and total_favorites > 0 %}orange{% else %}muted{% endif %} stats-inside-detail vote-favorite" data-object-id="{{ post.id }}" data-target="{% url 'apps.blog:favorite_json_create_delete' %}" title="{% trans 'Click to mark as favorite or undo' %}">
+                  <svg width=".8em" height=".8em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                  </svg>
+                </div>
+
+                {% if total_favorites > 0 %}
+                  <div class="text-center text-muted text-small stats-inside-detail total-favorites">
+                    {{ total_favorites }}
+                  </div>
+                {% endif %}
+              {% endwith %}
+            </div>
+
+            <div class="post-content" style="max-width:100%">
+              <div class="card-body pt-0 pb-2">
+                <div class="card-text martor-preview">
+                  {{ post.description|safe_markdown }}
+                </div>
+              </div>
+              <div class="card-footer card-footer-post-item">
+                <div class="tags">
+                  {% for tag in post.tags.all|slice:":5" %}
+                    <a class="badge badge-tag badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
+                  {% endfor %}
+                </div>
+
+                <div class="dropdown mt-2 dropdown-share-post">
+                  <span class="text-secondary share-button" id="dropdownSharePost" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-share-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+                    </svg>
+                    <span>{% trans "share" %}</span>
+                  </span>
+                  <form class="dropdown-menu" aria-labelledby="dropdownSharePost">
+                    <div class="input-group input-group-sm p-3 pt-2 pb-0 share-post-action">
+                      <input class="form-control input-link-post" type="text" value="{{ request.build_absolute_uri }}">
+                      <div class="input-group-append">
+                        <button role="button" class="btn btn-sm bg-gradient-warning button-copy-link-post" title="{% trans 'Copy Link' %}" data-success-message="{% trans 'Link successfully copied!' %}">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-stickies-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M0 1.5A1.5 1.5 0 0 1 1.5 0H13a1 1 0 0 1 1 1H1.5a.5.5 0 0 0-.5.5V14a1 1 0 0 1-1-1V1.5z"/>
+                            <path fill-rule="evenodd" d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5v4.396c0 .223.27.335.427.177l5.146-5.146a.25.25 0 0 0-.177-.427H10.5a1 1 0 0 0-1 1z"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- <div class="dropdown-divider"></div> -->
+                    <a role="button" class="dropdown-item text-sm" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;title={{ post.title }}&amp;description={{ post.description|striptags|truncatewords:"20"|wordsonly }}&amp;author={{ post.author.username }}', 'newwindow', 'width=555, height=315'); return false;">
+                      <span>Facebook</span>
+                    </a>
+                    <a role="button" class="dropdown-item text-sm" onclick="window.open('https://twitter.com/intent/tweet/?url={{ request.build_absolute_uri }}&amp;text={{ post.title }}&amp;via=python.web.id', 'newwindow', 'width=555, height=315'); return false;">
+                      <span>Twitter</span>
+                    </a>
+                    <a role="button" class="dropdown-item text-sm" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}', 'newwindow', 'width=555, height=315'); return false;">
+                      <span>Linkedin</span>
+                    </a>
+                  </form>
+
+                  {% if post.author == request.user or request.user.is_superuser %}
+                    &nbsp;
+                    <a class="text-muted" href="{% url 'apps.blog:post_update' slug=post.slug %}">{% trans "Update" %}</a>
+                  {% endif %}
+                </div>
+
+                <div class="float-right author">
+                  <div class="name">
+                    <a class="text-bold no-underline" href="{% url 'apps.blog:post_list_author' username=post.author.username %}">{{ post.author|truncatechars:"15" }}</a>
+                  </div>
+                  <div class="author-ratings">
+                    <span class="feeds">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-rss" fill="#F2711C" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        <path fill-rule="evenodd" d="M2.5 3.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                      </svg>
+                      <span class="value">{{ post.author|get_total_posts }}</span>
+                    </span>
+                    <span class="reputation">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-half" fill="#F2711C" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 0 1-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.171-.403.59.59 0 0 1 .084-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 0 1 .163-.505l2.906-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.002 2.223 8 2.226v9.8z"/>
+                      </svg>
+                      <span class="value">{{ post.author|get_total_ratings }}</span>
+                    </span>
+                    <span class="rate-up">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="#21BA45" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                      </svg>
+                      <span class="value">{{ post.author|get_total_ratings:'likes' }}</span>
+                    </span>
+                    <span class="rate-down">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="#DB2828" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                      <span class="value">{{ post.author|get_total_ratings:'dislikes' }}</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ad-post_detail_bottom">
+            {{ 'post_detail_bottom'|get_ads|safe }}
+          </div>
+
+          <div class="comments">
+            {% include "apps/blog/post/includes/disqus.html" %}
+          </div><!-- /.comments -->
+        </div>
+
+      </div>
+
+      {% include "apps/blog/post/includes/sidebar_detail.html" %}
+
+    </div><!-- /.row-content -->
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/djangoblog.detail.js' %}"></script>
+{% endblock %}

@@ -1,19 +1,13 @@
+
+// come from `js/djangoblog.js`
+var showNotif = showNotif;
+
+
 // highlight pre
 $('.martor-preview pre').each(function(i, block){
   hljs.highlightBlock(block)
 });
 
-var showNotif = function(response, className) {
-  $.notify(response, {
-    globalPosition: 'top center',
-    className: className
-  });
-  if(className == 'success') {
-    setTimeout(function(){
-      location.reload();
-    }, 3000);
-  }
-}
 
 // vote up and vote down
 $(document).on('click', '.vote-up, .vote-down', function() {
@@ -23,10 +17,10 @@ $(document).on('click', '.vote-up, .vote-down', function() {
       url: voteUrl,
       type: 'GET',
       success: function(response) {
-        showNotif(response, 'success');
+        showNotif(response, 'success', true);
       },
       error: function(xhr, options, response) {
-        showNotif(response, 'error');
+        showNotif(response, 'error', false);
       }
   });
 });
@@ -39,13 +33,14 @@ $(document).on('click', '.undo-vote-up, .undo-vote-down', function() {
       type: 'GET',
       success: function(response) {
         if(response['success']) {
-          showNotif(response['message'], 'success');
+          showNotif(response['message'], 'success', true);
         }else {
-          showNotif(response['message'], 'warn');
+          showNotif(response['message'], 'warn', false);
         }
       },
       error: function(xhr, options, response) {
-        showNotif(response, 'error');
+        console.log(xhr, options, response);
+        showNotif(response, 'error', false);
       }
   });
 });
@@ -57,20 +52,21 @@ $(document).on('click', '.vote-total-public-value', function() {
 });
 
 // bookmark action
-$(document).on('click', '.favorite-icon', function() {
+$(document).on('click', '.vote-favorite', function() {
   var favoriteUrl = $(this).data('target');
+  var object_id = $(this).data('object-id');
   $.ajax({
-      url: favoriteUrl,
-      type: 'GET',
+      url: favoriteUrl + '?content_type=post&object_id=' + object_id,
+      type: 'get',
       success: function(response) {
         if(response['success']) {
-          showNotif(response['message'], 'success');
+          showNotif(response['message'], 'success', true);
         }else {
-          showNotif(response['message'], 'warn');
+          showNotif(response['message'], 'warn', false);
         }
       },
       error: function(xhr, options, response) {
-        showNotif(response, 'error');
+        showNotif(response, 'error', false);
       }
   });
 });
@@ -84,22 +80,24 @@ $(document).on('click', '.mark-as-featured', function() {
       type: 'GET',
       success: function(response) {
         if(response['success']) {
-          showNotif(response['message'], 'success');
+          showNotif(response['message'], 'success', true);
         }else {
-          showNotif(response['message'], 'warn');
+          showNotif(response['message'], 'warn', false);
         }
       },
       error: function(xhr, options, response) {
-        showNotif(response, 'error');
+        showNotif(response, 'error', false);
       }
   });
 });
 
 // dropdown share
-$('.ui.dropdown.dropdown-share-post').dropdown();
-$(document).on('click', '.button-copy-link-post', function() {
+$(document).on('click', '.button-copy-link-post', function(e) {
+  e.preventDefault(); // stop triggering the form
   $('.input-link-post').select();
   document.execCommand('copy');
+  let message = $(this).data('success-message');
+  showNotif(message, 'success', false);
 });
 
 // delete post action
@@ -128,14 +126,14 @@ $(document).on('click', '.delete-action', function() {
         type: 'GET',
         success: function(response) {
           if(response['success']) {
-            showNotif(response['message'], 'success');
+            showNotif(response['message'], 'success', true);
             window.location = '/';
           }else {
-            showNotif(response['message'], 'warn');
+            showNotif(response['message'], 'warn', false);
           }
         },
         error: function(xhr, options, response) {
-          showNotif(response, 'error');
+          showNotif(response, 'error', false);
         }
     });
     $(this).trigger('notify-hide');

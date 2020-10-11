@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load common_tags martortags ads_tags user_info %}
+
+{% block content %}
+  <div class="container p-3">
+    <h5 class="mt-2 mb-4">
+      <span>{% trans "All Posts" %}</span>
+      <span class="float-right">
+        <a class="btn btn-sm bg-gradient-success" href="{% url 'apps.blog:post_create' %}" role="button" style="line-height:1.5rem">
+          <svg width="15" height="15" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+          <span>{% trans "Create a Post" %} &nbsp;</span>
+        </a>
+      </span>
+    </h5>
+
+    {% include "apps/blog/post/includes/nav_tabs.html" %}
+
+    <div class="row mt-4 row-content">
+      <div class="col-md-9">
+
+        {% if tag and tag.description %}
+          <p class="alert alert-light">{{ tag.description }}</p>
+        {% endif %}
+
+        <div class="ad-post_list_top">
+          {{ 'post_list_top'|get_ads|safe }}
+        </div>
+
+        {% for post in posts %}
+          {% if forloop.counter == 5 %}
+            <div class="ad-post_list_middle">
+              {{ 'post_list_middle'|get_ads|safe }}
+            </div>
+          {% endif %}
+
+          <div class="card p-2 mb-3 card-post-item" {% if post.rating.get_difference <= -3 %}style="opacity:.35"{% endif %}>
+            <div class="row no-gutters">
+              <div class="col-md-1">
+                <div class="stats mb-3">
+                  <div class="votes stats-inside">
+                    <div class="ui mini statistic">
+                      <div class="value">{{ post.rating.get_difference|numberize }}</div>
+                      <div class="label">{% trans "votes" %}</div>
+                    </div>
+                  </div>
+                  <div class="views stats-inside">
+                    <div class="ui mini statistic">
+                      <div class="value">{{ post.total_visitors|numberize }}</div>
+                      <div class="label">{% trans "views" %}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-11">
+                <div class="card-body pt-0 pb-2">
+                  <h5 class="mb-0 card-title">
+                    <a class="no-underline" href="{% url 'apps.blog:post_detail' slug=post.slug %}">{{ post.title }}</a>
+                  </h5>
+                  <div class="mb-1 mt-1">
+                    <span class="text-sm text-muted date">{% blocktrans with created_at=post.created_at since=post.created_at|timesince %}Posted at {{ since }} ago / <i>{{ created_at }}</i>{% endblocktrans %}</span>
+                  </div>
+                  <p class="card-text">{{ post.description|safe_markdown|striptags|truncatewords:"30" }}</p>
+                </div>
+
+                <div class="card-footer card-footer-post-item">
+                  <div class="float-left tags">
+                    {% for tag in post.tags.all|slice:":5" %}
+                      <a class="badge badge-tag badge-secondary no-radius" href="{% url 'apps.blog:post_list_tagged' name=tag.name %}">{{ tag }}</a>
+                    {% endfor %}
+                  </div>
+                  <div class="float-right author">
+                    <div class="name">
+                      <a class="text-bold no-underline" href="{% url 'apps.blog:post_list_author' username=post.author.username %}">{{ post.author|truncatechars:"15" }}</a>
+                    </div>
+                    <div class="author-ratings">
+                      <span class="feeds">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-rss" fill="#F2711C" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                          <path fill-rule="evenodd" d="M2.5 3.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                        </svg>
+                        <span class="value">{{ post.author|get_total_posts }}</span>
+                      </span>
+                      <span class="reputation">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-half" fill="#F2711C" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 0 1-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.171-.403.59.59 0 0 1 .084-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 0 1 .163-.505l2.906-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.002 2.223 8 2.226v9.8z"/>
+                        </svg>
+                        <span class="value">{{ post.author|get_total_ratings }}</span>
+                      </span>
+                      <span class="rate-up">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="#21BA45" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                        <span class="value">{{ post.author|get_total_ratings:'likes' }}</span>
+                      </span>
+                      <span class="rate-down">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="#DB2828" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                        <span class="value">{{ post.author|get_total_ratings:'dislikes' }}</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <div class="card text-center mb-3 card-post-item">
+            <div class="card-body">
+              {% if not request.GET %}
+                <h5 class="card-title">{% trans "No posts yet!" %}</h5>
+                <p class="card-text">{% trans "Upps, no posts yet! Be the first to contribute a new post." %}</p>
+                <a class="btn btn-sm bg-gradient-success" href="{% url 'apps.blog:post_create' %}" role="button">
+                  <svg width="15" height="15" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                  <span>{% trans "Create a Post" %} &nbsp;</span>
+                </a>
+              {% else %}
+                <h5 class="card-title">{% trans "No posts!" %}</h5>
+                <p class="card-text">{% trans "The posts with current filter doesn't exist!" %}</p>
+                <a class="btn btn-sm bg-gradient-primary" href="{% url 'apps.blog:post_list' %}" role="button">
+                  <span>&nbsp; {% trans "See other posts" %}</span>
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg>
+                  <span>&nbsp;</span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="ad-post_list_bottom">
+          {{ 'post_list_bottom'|get_ads|safe }}
+        </div>
+
+        {% include "apps/blog/post/includes/paginator.html" %}
+      </div>
+
+      {% include "apps/blog/post/includes/sidebar_list.html" %}
+
+    </div><!-- /.row-content -->
+  </div>
+{% endblock %}

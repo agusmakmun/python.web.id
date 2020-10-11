@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load martortags common_tags %}
+
+{% block title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
+{% block seo %}
+  {% if page %}
+    <meta name="description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+    <meta name="author" content="{{ page.author }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:site_name" content="python.web.id">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description" content="{{ page.description|safe_markdown|striptags|truncatewords:'20' }}">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:domain" content="python.web.id">
+    <meta name="twitter:creator" content="@{% if page.author.profile.twitter %}{{ page.author.profile.twitter|splitter|last }}{% else %}python.web.id{% endif %}">
+  {% endif %}
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" rel="stylesheet" media="all">
+  <style>div.martor-preview {border: 1px dashed #ddd}div.martor-preview hr{background-image: linear-gradient(to right,silver 50%,rgba(255,255,255,0) 40%); background-position: top; background-size: 3px 1px; background-repeat: repeat-x; height: 1px; border-top: 0; border-bottom: 0;}</style>
+{% endblock %}
+
+
+{% block content %}
+  <div class="container p-3">
+    <h5><a class="no-underline" href="">{{ page_title }}</a></h5>
+    <div class="mt-4 row row-content">
+      <div class="col-md-8">
+        <div class="martor-preview">
+          {{ content|safe_markdown }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        {% include "apps/blog/page/includes/right_sidebar.html" %}
+      </div>
+    </div><!-- /.row-content -->
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script>
+    $('.martor-preview pre').each(function(i, block){
+      hljs.highlightBlock(block)
+    });
+  </script>
+{% endblock %}

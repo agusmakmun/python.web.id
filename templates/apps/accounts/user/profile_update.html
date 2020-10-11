@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load common_tags %}
+
+{% block title %}{% trans "Profile" %} {{ profile }} - {{ block.super }}{% endblock %}
+
+{% block robot %}
+  <meta name="robots" content="NONE,NOARCHIVE" />
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'plugins/css/bootstrap-datepicker.min.css' %}" rel="stylesheet" media="all">
+  <style>.datepicker.dropdown-menu {font-size:13.5px}</style>
+{% endblock %}
+
+
+{% block content %}
+  <div class="container p-3">
+    {% include "apps/accounts/user/includes/nav_tabs.html" %}
+    <div class="row mt-4 row-content">
+      <div class="col-md-3">
+        {% include "apps/accounts/user/includes/nav_left.html" %}
+      </div>
+      <div class="col-md-9">
+        <form class="form bg-white p-4" method="post" style="border:1px solid #dee2e6;border-top:none;box-shadow:0 3px 5px #eaeaea">{% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_display_name">{{ form.display_name.label }}</label>
+              {{ form.display_name }}
+              {% if form.display_name.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.display_name.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group col-md-6">
+              <label class="text-bold">{% trans "Username" %} *</label>
+              <input type="text" class="form-control text-normal" value="{{ profile.user.username }}" disabled>
+              <small class="form-text text-muted">{% trans "Please contact admin to change." %}</small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_location">{{ form.location.label }}</label>
+              {{ form.location }}
+              {% if form.location.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.location.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_birth_date">{{ form.birth_date.label }}</label>
+              {{ form.birth_date }}
+              {% if form.birth_date.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.birth_date.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="text-bold" for="id_about_me">{{ form.about_me.label }}</label>
+            {{ form.about_me }}
+            {% if form.about_me.errors %}
+              <div class="invalid-feedback" style="display:block">
+                {% for error in form.about_me.errors %}
+                  {{ error }}{% if not forloop.last %}<br />{% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_website">{{ form.website.label }}</label>
+              {{ form.website }}
+              {% if form.website.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.website.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_github">{{ form.github.label }}</label>
+              {{ form.github }}
+              {% if form.github.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.github.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_linkedin">{{ form.linkedin.label }}</label>
+              {{ form.linkedin }}
+              {% if form.linkedin.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.linkedin.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_instagram">{{ form.instagram.label }}</label>
+              {{ form.instagram }}
+              {% if form.instagram.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.instagram.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="text-bold" for="id_twitter">{{ form.twitter.label }}</label>
+              {{ form.twitter }}
+              {% if form.twitter.errors %}
+                <div class="invalid-feedback" style="display:block">
+                  {% for error in form.twitter.errors %}
+                    {{ error }}{% if not forloop.last %}<br />{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-group mb-5">
+            <button type="submit" class="btn bg-gradient-primary text-normal float-right">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+              </svg>
+              <span>{% trans "Update Profile" %}</span>
+            </button>
+          </div>
+        <form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block js %}
+  <script src="{% static 'plugins/js/bootstrap-datepicker.min.js' %}"></script>
+  <script>
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        startDate: '-3d'
+    });
+  </script>
+{% endblock %}

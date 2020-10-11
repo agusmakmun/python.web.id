@@ -1,0 +1,76 @@
+{% load i18n %}
+
+{% if is_paginated %}
+  <div class="row main-pagination">
+    <div class="col-md-8">
+      <ul class="pagination pagination-sm m-0 float-left">
+        <li class="page-item {% if request.GET.page|default:'1' == '1' %}disabled{% endif %}">
+          <a class="page-link" href="{% url 'apps.blog:post_list' %}?page=1{% if query %}&amp;q={{ query }}{% endif %}" title="{% trans 'First' %}">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-double-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+              <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+            </svg>
+          </a>
+        </li>
+
+        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+          <a class= "page-link" title="{% trans 'Previous' %}"
+             {% if page_obj.has_previous %}href="{% url 'apps.blog:post_list' %}?page={{ page_obj.previous_page_number }}{% if query %}&amp;q={{ query }}{% endif %}"{% endif %}>
+             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+             </svg>
+          </a>
+        </li>
+
+        {% for linkpage in page_obj.paginator.page_range %}
+          {% if linkpage <= page_obj.number|add:3 and linkpage >= page_obj.number|add:-3 %}
+            {% if page_obj.number == linkpage %}
+              <li class="page-item active">
+                <span class="page-link">{{ page_obj.number }}</span>
+              </li>
+            {% else %}
+              <li class="page-item">
+                <a class="page-link" href="{% url 'apps.blog:post_list' %}?page={{ linkpage }}{% if query %}&amp;q={{ query }}{% endif %}">{{ linkpage }}</a>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+          <a class= "page-link" title="{% trans 'Next' %}"
+             {% if page_obj.has_next %}href="{% url 'apps.blog:post_list' %}?page={{ page_obj.next_page_number }}{% if query %}&amp;q={{ query }}{% endif %}"{% endif %}>
+             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+             </svg>
+          </a>
+        </li>
+
+        <li class="page-item {% if request.GET.page|default:'1' == page_obj.paginator.num_pages|stringformat:'i' %}disabled{% endif %}">
+          <a class="page-link" href="{% url 'apps.blog:post_list' %}?page={{ page_obj.paginator.num_pages }}{% if query %}&amp;q={{ query }}{% endif %}" title="{% trans 'Last' %}">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-double-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+              <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </a>
+        </li>
+      </ul><!-- /.pagination -->
+
+      <span class="page-total-info" style="margin: 7px 15px;float: left;">
+        <span class="text-muted">&nbsp; {% blocktrans with current_page=request.GET.page|default:"1" total_pages=page_obj.paginator.num_pages %}Page {{ current_page }} of {{ total_pages }}{% endblocktrans %}</span>
+      </span>
+    </div>
+
+    <div class="col-md-4">
+      <form class="float-right form-go-to-page" method="get" action="{% url 'apps.blog:post_list' %}">
+        <div class="input-group input-group-sm">
+          <input name="page" type="number" min="1" class="form-control" placeholder="{% trans 'Jump to page' %}" aria-describedby="addon-go" required>
+          {% if query %}<input name="q" type="hidden" value="{{ query }}">{% endif %}
+          {% if sort %}<input name="sort" type="hidden" value="{{ sort }}">{% endif %}
+          <div class="input-group-append">
+            <button type="submit" class="btn bg-gradient-default" type="button" id="addon-go">{% trans "GO" %}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endif %}{# is_paginated #}
