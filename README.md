@@ -65,3 +65,10 @@ Put `client_id` and `client_secret` into http://127.0.0.1:8000/admin/socialaccou
 
 - Version 1.2: https://documenter.getpostman.com/view/5291388/TVRkZnrS
 - Version 1.1: Has been removed.
+
+
+## Screenshots
+
+> For more details, you can checkout at this directory [.ext/screenshots/](.ext/screenshots/)
+
+![homepage](.ext/screenshots/1.homepage.png)
