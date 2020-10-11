@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 06:48+0700\n"
+"POT-Creation-Date: 2020-10-11 11:19+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <support@python.web.id>\n"
@@ -323,27 +323,27 @@ msgstr "Tag"
 msgid "Tags"
 msgstr "Tag"
 
-#: apps/blog/views/addons.py:31
+#: apps/blog/views/addons.py:33
 msgid "`object_id` and `content_type` must filled!"
 msgstr "`object_id` dan `content_type` harus diisi!"
 
-#: apps/blog/views/addons.py:35
+#: apps/blog/views/addons.py:37
 msgid "`object_id` should be integer!"
 msgstr "`object_id` harus berupa angka!"
 
-#: apps/blog/views/addons.py:39
+#: apps/blog/views/addons.py:41
 msgid "You must login to mark as favorite!"
 msgstr "Anda harus login untuk menandai sebagai favorit!"
 
-#: apps/blog/views/addons.py:45
+#: apps/blog/views/addons.py:47
 msgid "This `content_type` doesn't exist!"
 msgstr "`content_type` ini tidak ada!"
 
-#: apps/blog/views/addons.py:54
+#: apps/blog/views/addons.py:56
 msgid "The post marked as favorite!"
 msgstr "Postingan ditandai sebagai favorit!"
 
-#: apps/blog/views/addons.py:57
+#: apps/blog/views/addons.py:59
 msgid "The post removed from favorite!"
 msgstr "Postingan dihapus dari favorit!"
 
@@ -395,30 +395,43 @@ msgstr "%(subject)s dari %(email)s oleh %(sender)s"
 msgid "Your message successfully sended!"
 msgstr "Postingan berhasil dibuat"
 
-#: apps/blog/views/post.py:226
+#: apps/blog/views/post.py:224
 msgid "Post successfully created!"
 msgstr "Postingan berhasil dibuat"
 
-#: apps/blog/views/post.py:249
+#: apps/blog/views/post.py:247
 #, python-format
 msgid "\"%(post)s\" successfully updated!"
 msgstr "\"%(post)s\" berhasil diperbarui!"
 
-#: apps/blog/views/post.py:295
+#: apps/blog/views/post.py:293
 msgid "You must login to delete this post!"
 msgstr "Anda harus login untuk menghapus postingan ini!"
 
-#: apps/blog/views/post.py:299 apps/blog/views/post.py:305
+#: apps/blog/views/post.py:297 apps/blog/views/post.py:303
 msgid "The successfully post deleted!"
 msgstr "Postingan berhasil dihapus!"
 
-#: apps/blog/views/post.py:301 apps/product/views/product.py:170
+#: apps/blog/views/post.py:299 apps/blog/views/post.py:323
+#: apps/product/views/product.py:170
 msgid "You are not allowed to access this feature!"
 msgstr "Anda tidak diizinkan mengakses fitur ini!"
 
-#: apps/blog/views/post.py:307 apps/product/views/product.py:176
+#: apps/blog/views/post.py:305 apps/product/views/product.py:176
 msgid "Param `id` should be integer!"
 msgstr "Parameter `id` harus berupa angka!"
+
+#: apps/blog/views/post.py:320
+msgid "You must login to mark as featured!"
+msgstr "Anda harus login untuk menandai sebagai unggulan!"
+
+#: apps/blog/views/post.py:328
+msgid "The post marked as featured!"
+msgstr "Postingan ditandai sebagai unggulan!"
+
+#: apps/blog/views/post.py:331
+msgid "The post removed from featured!"
+msgstr "Postingan dihapus dari unggulan!"
 
 #: apps/blog/views/tag.py:70
 msgid "You must login to create a tag!"
@@ -696,7 +709,7 @@ msgstr "Alamat e-mail"
 
 #: templates/allauth/account/email.html:24
 msgid "The following e-mail addresses are associated with your account:"
-msgstr "Alamat email berikut ini terkait dengan akun Anda:"
+msgstr "Alamat e-mail berikut ini terhubung dengan akun anda:"
 
 #: templates/allauth/account/email.html:37
 msgid "Verified"
@@ -1543,6 +1556,14 @@ msgstr "Tautan berhasil disalin!"
 msgid "Update"
 msgstr "Ubah"
 
+#: templates/apps/blog/post/detail.html:157
+msgid "Remove from featured"
+msgstr "Hapus dari unggulan"
+
+#: templates/apps/blog/post/detail.html:161
+msgid "Mark as featured"
+msgstr "Tandai sebagai unggulan"
+
 #: templates/apps/blog/post/includes/nav_tabs.html:11
 #: templates/apps/blog/tag/list.html:27
 msgid "Newest"
@@ -1918,8 +1939,7 @@ msgstr "Belum ada produk!"
 #: templates/apps/product/list.html:118
 msgid "Upps, no products yet! Be the first to contribute a new product."
 msgstr ""
-"Upps, belum ada produk! Jadi yang pertama untuk berkontribusi membuat "
-"produk."
+"Upps, belum ada produk! Jadi yang pertama untuk berkontribusi membuat produk."
 
 #: templates/apps/product/list_private.html:114
 msgid "Are you sure to delete this product?"

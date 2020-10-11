@@ -6,18 +6,16 @@ like: Post, Tag
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.db.models import Q
 from django.urls import reverse
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
-from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
 from django.contrib.auth.mixins import LoginRequiredMixin
-
-# from updown.models import Vote
 
 from apps.blog.models.tag import Tag
 from apps.blog.models.post import Post
@@ -307,3 +305,30 @@ class PostDeleteJSONView(JSONResponseMixin, TemplateView):
             context_data['message'] = _('Param `id` should be integer!')
 
         return self.render_to_json_response(context_data)
+
+
+class PostMarkAsFeaturedJSONView(JSONResponseMixin, TemplateView):
+    """ Class view to mark a post as featured post """
+    model = Post
+
+    def get(self, request, *args, **kwargs):
+        mode = request.GET.get('mode')
+        context = {'success': False, 'message': None}
+        post = get_object_or_404(self.model, id=kwargs['id'])
+
+        if not request.user.is_authenticated:
+            context['message'] = _('You must login to mark as featured!')
+            return self.render_to_json_response(context)
+        elif not request.user.is_superuser:
+            context['message'] = _('You are not allowed to access this feature!')
+            return self.render_to_json_response(context)
+        else:
+            if mode == 'yes':
+                post.is_featured = True
+                context.update({'message': _('The post marked as featured!')})
+            else:
+                post.is_featured = False
+                context.update({'message': _('The post removed from featured!')})
+            post.save()
+            context.update({'success': True})
+        return self.render_to_json_response(context)

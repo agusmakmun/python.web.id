@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 06:48+0700\n"
+"POT-Creation-Date: 2020-10-11 11:18+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <support@python.web.id>\n"
@@ -323,27 +323,27 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: apps/blog/views/addons.py:31
+#: apps/blog/views/addons.py:33
 msgid "`object_id` and `content_type` must filled!"
 msgstr ""
 
-#: apps/blog/views/addons.py:35
+#: apps/blog/views/addons.py:37
 msgid "`object_id` should be integer!"
 msgstr ""
 
-#: apps/blog/views/addons.py:39
+#: apps/blog/views/addons.py:41
 msgid "You must login to mark as favorite!"
 msgstr ""
 
-#: apps/blog/views/addons.py:45
+#: apps/blog/views/addons.py:47
 msgid "This `content_type` doesn't exist!"
 msgstr ""
 
-#: apps/blog/views/addons.py:54
+#: apps/blog/views/addons.py:56
 msgid "The post marked as favorite!"
 msgstr ""
 
-#: apps/blog/views/addons.py:57
+#: apps/blog/views/addons.py:59
 msgid "The post removed from favorite!"
 msgstr ""
 
@@ -395,29 +395,42 @@ msgstr ""
 msgid "Your message successfully sended!"
 msgstr ""
 
-#: apps/blog/views/post.py:226
+#: apps/blog/views/post.py:224
 msgid "Post successfully created!"
 msgstr ""
 
-#: apps/blog/views/post.py:249
+#: apps/blog/views/post.py:247
 #, python-format
 msgid "\"%(post)s\" successfully updated!"
 msgstr ""
 
-#: apps/blog/views/post.py:295
+#: apps/blog/views/post.py:293
 msgid "You must login to delete this post!"
 msgstr ""
 
-#: apps/blog/views/post.py:299 apps/blog/views/post.py:305
+#: apps/blog/views/post.py:297 apps/blog/views/post.py:303
 msgid "The successfully post deleted!"
 msgstr ""
 
-#: apps/blog/views/post.py:301 apps/product/views/product.py:170
+#: apps/blog/views/post.py:299 apps/blog/views/post.py:323
+#: apps/product/views/product.py:170
 msgid "You are not allowed to access this feature!"
 msgstr ""
 
-#: apps/blog/views/post.py:307 apps/product/views/product.py:176
+#: apps/blog/views/post.py:305 apps/product/views/product.py:176
 msgid "Param `id` should be integer!"
+msgstr ""
+
+#: apps/blog/views/post.py:320
+msgid "You must login to mark as featured!"
+msgstr ""
+
+#: apps/blog/views/post.py:328
+msgid "The post marked as featured!"
+msgstr ""
+
+#: apps/blog/views/post.py:331
+msgid "The post removed from featured!"
 msgstr ""
 
 #: apps/blog/views/tag.py:70
@@ -1478,6 +1491,14 @@ msgstr ""
 #: templates/apps/product/detail.html:50
 #: templates/apps/product/list_private.html:85
 msgid "Update"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:157
+msgid "Remove from featured"
+msgstr ""
+
+#: templates/apps/blog/post/detail.html:161
+msgid "Mark as featured"
 msgstr ""
 
 #: templates/apps/blog/post/includes/nav_tabs.html:11

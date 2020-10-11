@@ -12,7 +12,7 @@
   <link rel="alternate" href="{% url 'apps.blog:post_feed' %}" type="application/rss+xml" title="Blog Feed">
 
   {% block robot %}
-  <meta name="robots" content="noodp, noydir"/>
+  <meta name="robots" content="index, follow, noodp">
   {% endblock %}
 
   <title>{% block title %}Python Learning{% endblock %}</title>
@@ -30,6 +30,14 @@
   <meta property="og:image" content="https://python.web.id{% static 'images/medium-logo-orange.png' %}">
   <meta property="og:site_name" content="python.web.id" >
   {% endblock %}
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KMQQF2Q');</script>
+  <!-- End Google Tag Manager -->
 
   {% block core_css %}
   <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="all">

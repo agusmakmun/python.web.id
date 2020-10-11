@@ -149,6 +149,19 @@
                     &nbsp;
                     <a class="text-muted" href="{% url 'apps.blog:post_update' slug=post.slug %}">{% trans "Update" %}</a>
                   {% endif %}
+
+                  {% if request.user.is_superuser %}
+                    &nbsp;
+                    {% if post.is_featured %}
+                      <a class="text-muted mark-as-featured" style="cursor:pointer" data-target="{% url 'apps.blog:post_mark_featured' id=post.id %}" data-mode="no">
+                        <span>{% trans "Remove from featured" %}</span>
+                      </a>
+                    {% else %}
+                      <a class="text-muted mark-as-featured" style="cursor:pointer" data-target="{% url 'apps.blog:post_mark_featured' id=post.id %}" data-mode="yes">
+                        <span>{% trans "Mark as featured" %}</span>
+                      </a>
+                    {% endif %}
+                  {% endif %}
                 </div>
 
                 <div class="float-right author">
