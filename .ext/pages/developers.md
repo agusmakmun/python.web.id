@@ -2,7 +2,7 @@
 ### Introduction
 
 **Python Learning API** helps to track posts, tags, and users metadata from new updates for web applications.
-It is designed as a REST service. Please [register first](/accounts/signup/) to get new API.
+It is designed as a REST service. Please [register first](/accounts/signup/?next=/developers/) to get new API.
 
 
 ### Authentication
@@ -10,7 +10,7 @@ It is designed as a REST service. Please [register first](/accounts/signup/) to 
 All requests to Python Learning API require you to authenticate yourself to the service.
 In order to do this you must login first to get a `Token` for all requests.
 
-> If you using 3d party app for login authentication, you must [set a password](/accounts/password/set/) first.
+> If you using 3d party app for login authentication, you must [set a password](/accounts/password/set/?next=/developers/) first.
 
 
 ### Getting Started

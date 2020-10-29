@@ -7,7 +7,7 @@ django-updown-ratings==1.0.1
 django-rest-auth==0.9.5
 djangorestframework==3.12.1
 Markdown==3.2.2
-martor==1.5.6
+martor==1.5.7
 psycopg2-binary==2.8.6
 python-memcached==1.59
 requests==2.24.0

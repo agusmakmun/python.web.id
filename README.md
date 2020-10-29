@@ -40,7 +40,7 @@ $ cd python.web.id
 
 ```
 (env-python.web.id) $ pip install -r requirements.txt
-(env-python.web.id) $ cp core/settings/local.py core/settings.py
+(env-python.web.id) $ cp core/settings.py.example core/settings.py # then update it
 (env-python.web.id) $ ./manage.py makemigrations && ./manage.py migrate
 ```
 
