@@ -275,11 +275,15 @@ h1,h2,h3,h4,h5,h6 {
   right: 0;
 }
 
+.main-container {
+  margin-top: 5rem;
+}
+
 
 /* Navbar */
 .navbar-top {
   border-bottom: 1px solid #fff;
-  box-shadow: 0 0 5px #b3b3b3;
+  box-shadow: 0 0 5px #00000057;
 }
 .nav-profile-left {
   border-right-width: 2px;
