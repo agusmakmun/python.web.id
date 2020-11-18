@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
 
     def save(self, commit=True):
         instance = super().save(commit=False)
-        instance.slug = generate_unique_slug(self.Meta.model, instance.title)
+        instance.slug = generate_unique_slug(self.Meta.model, instance.title, instance)
         if commit:
             instance.save()
         return instance

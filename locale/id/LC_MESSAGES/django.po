@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 11:19+0700\n"
+"POT-Creation-Date: 2020-11-18 19:11+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SUMMON AGUS <summon.agus@gmail.com>\n"
 "Language-Team: LANGUAGE <support@python.web.id>\n"
@@ -323,27 +323,27 @@ msgstr "Tag"
 msgid "Tags"
 msgstr "Tag"
 
-#: apps/blog/views/addons.py:33
+#: apps/blog/views/addons.py:31
 msgid "`object_id` and `content_type` must filled!"
 msgstr "`object_id` dan `content_type` harus diisi!"
 
-#: apps/blog/views/addons.py:37
+#: apps/blog/views/addons.py:35
 msgid "`object_id` should be integer!"
 msgstr "`object_id` harus berupa angka!"
 
-#: apps/blog/views/addons.py:41
+#: apps/blog/views/addons.py:39
 msgid "You must login to mark as favorite!"
 msgstr "Anda harus login untuk menandai sebagai favorit!"
 
-#: apps/blog/views/addons.py:47
+#: apps/blog/views/addons.py:45
 msgid "This `content_type` doesn't exist!"
 msgstr "`content_type` ini tidak ada!"
 
-#: apps/blog/views/addons.py:56
+#: apps/blog/views/addons.py:54
 msgid "The post marked as favorite!"
 msgstr "Postingan ditandai sebagai favorit!"
 
-#: apps/blog/views/addons.py:59
+#: apps/blog/views/addons.py:57
 msgid "The post removed from favorite!"
 msgstr "Postingan dihapus dari favorit!"
 
