@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% load common_tags %}
+{% block title %}{% trans "Dashboard" %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row row-statistics-all">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tags" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>
+                    <path fill-rule="evenodd" d="M5.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                    <path d="M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_tags|numberize }}</h3>
+                  <span class="text-secondary">{% trans "All tags created" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-rss" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    <path fill-rule="evenodd" d="M2.5 3.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_posts|numberize }}</h3>
+                  <span class="text-secondary">{% trans "All posts created" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_users|numberize }}</h3>
+                  <span class="text-secondary">{% trans "All users registered" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5h-2v12h2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_visitors|numberize }}</h3>
+                  <span class="text-secondary">{% trans "All visitors visited" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-charts">
+      <div class="col-md-12">
+        <div class="card card-shadow card-body mt-3 mb-3">
+          <div id="chart-visitors"></div>
+        </div>
+        <div class="card card-shadow card-body mt-3 mb-3">
+          <div id="chart-global"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-statistics-yearly">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tags" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>
+                    <path fill-rule="evenodd" d="M5.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                    <path d="M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_tags_this_year|numberize }}</h3>
+                  <span class="text-secondary">{% trans "Tags this year" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-rss" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    <path fill-rule="evenodd" d="M2.5 3.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_posts_this_year|numberize }}</h3>
+                  <span class="text-secondary">{% trans "Posts this year" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_users_this_year|numberize }}</h3>
+                  <span class="text-secondary">{% trans "Users this year" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card card-shadow no-border">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center" style="font-size:3em">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5h-2v12h2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                  </svg>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{ total_visitors_this_year|numberize }}</h3>
+                  <span class="text-secondary">{% trans "Visitors this year" %}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['line', 'corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawVisitorChart);
+
+    function drawVisitorChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', '{% trans "Months" %}');
+      data.addColumn('number', '{% trans "Visitors visited" %}');
+      data.addRows([
+        // format rows: [date, visitors]
+        {% for total in data_visitors_per_months %}
+          [new Date({% now 'Y' %}, {{ forloop.counter0 }}), {{ total }}] {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]);
+      var options = {
+        chart: {
+          title: '{% trans "Visitors Performance in this year" %} {% now "Y" %}',
+          subtitle: '{% trans "Recorded per-months" %}'
+        },
+        height: 300,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+      var chart = new google.charts.Line(document.getElementById('chart-visitors'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', '{% trans "Months" %}');
+      data.addColumn('number', '{% trans "Tags created" %}');
+      data.addColumn('number', '{% trans "Posts created" %}');
+      data.addColumn('number', '{% trans "Users registered" %}');
+      data.addRows([
+        // format rows: [date, month, user, product]
+        {% for data in data_per_months %}
+          [new Date({% now 'Y' %}, {{ forloop.counter0 }}), {{ data.tag }}, {{ data.post }}, {{ data.user }}] {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]);
+      var options = {
+        chart: {
+          title: '{% trans "Global Performance in this year" %} {% now "Y" %}',
+          subtitle: '{% trans "Recorded per-months" %}'
+        },
+        height: 300,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+      var chart = new google.charts.Line(document.getElementById('chart-global'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+{% endblock %}

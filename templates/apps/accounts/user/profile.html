@@ -274,6 +274,14 @@
                      <span class="badge badge-light">{{ tag_data.total }}</span>
                   </div>
                 </div>
+              {% empty %}
+                <div class="col-md-12">
+                  <ul class="list-group list-group-flush list-group-posts">
+                    <li class="list-group-item">
+                      <span>{% blocktrans with user=user %}{{ user }} dosen't have tags!{% endblocktrans %}</span>
+                    </li>
+                  </ul>
+                </div>
               {% endfor %}
             </div>
           </div>
