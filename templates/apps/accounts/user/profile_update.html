@@ -161,9 +161,6 @@
 {% block js %}
   <script src="{% static 'plugins/js/bootstrap-datepicker.min.js' %}"></script>
   <script>
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        startDate: '-3d'
-    });
+    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
   </script>
 {% endblock %}
