@@ -1,5 +1,5 @@
 """
-Django 3.1.2
+Django 3.2
 """
 
 from pathlib import Path
@@ -11,6 +11,7 @@ ALLOWED_HOSTS = ['*']
 DEFAULT_PAGINATION_NUMBER = 10
 SECRET_KEY = 'xxxx-xxxx-xxxx-xxxx'
 BASE_DIR = Path(__file__).resolve().parent.parent
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 if not DEBUG:

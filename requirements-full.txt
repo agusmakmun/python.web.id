@@ -1,9 +1,9 @@
-asgiref==3.2.10
+asgiref==3.3.4
 astroid==2.4.2
 certifi==2020.6.20
 chardet==3.0.4
 defusedxml==0.6.0
-Django==3.1.2
+Django==3.2
 django-allauth==0.42.0
 django-cors-headers==3.5.0
 django-filter==2.4.0
@@ -15,7 +15,7 @@ idna==2.10
 isort==5.6.1
 lazy-object-proxy==1.4.3
 Markdown==3.2.2
-martor==1.5.7
+martor==1.6.1
 mccabe==0.6.1
 oauthlib==3.1.0
 psycopg2-binary==2.8.6
