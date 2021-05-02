@@ -9,4 +9,4 @@ from django.utils.translation import ugettext_lazy as _
 class BlogConfig(AppConfig):
     name = 'apps.blog'
     verbose_name = _('App Blog')
-    DEFAULT_AUTO_FIELD = settings.DEFAULT_AUTO_FIELD
+    default_auto_field = settings.DEFAULT_AUTO_FIELD

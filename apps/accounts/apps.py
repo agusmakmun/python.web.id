@@ -9,4 +9,4 @@ from django.utils.translation import ugettext_lazy as _
 class AccountsConfig(AppConfig):
     name = 'apps.accounts'
     verbose_name = _('App Auth User')
-    DEFAULT_AUTO_FIELD = settings.DEFAULT_AUTO_FIELD
+    default_auto_field = settings.DEFAULT_AUTO_FIELD
