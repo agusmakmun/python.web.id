@@ -1,4 +1,4 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n common_tags %}<!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
@@ -32,13 +32,13 @@
   {% endblock %}
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58520101-1"></script>
+  {% settings_value "GOOGLE_TAG_MANAGER_ID" as settings_GOOGLE_TAG_MANAGER_ID %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings_GOOGLE_TAG_MANAGER_ID }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    gtag('config', 'UA-58520101-1');
+    gtag('config', '{{ settings_GOOGLE_TAG_MANAGER_ID }}');
   </script>
 
   {% block core_css %}
@@ -48,6 +48,10 @@
   <link href="{% static 'css/djangoblog.css' %}" rel="stylesheet" media="all">
   {% block css %}{% endblock %}
 
+  <!-- Google Adsense -->
+  {% settings_value "GOOGLE_ADSENSE_ID" as settings_GOOGLE_ADSENSE_ID %}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ GOOGLE_ADSENSE_ID }}" crossorigin="anonymous"></script>
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 </head>
 
 <body>

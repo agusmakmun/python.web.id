@@ -5,6 +5,7 @@ import json
 import hashlib
 from urllib import parse
 from django import template
+from django.conf import settings
 
 try:
     # Python 3
@@ -14,6 +15,22 @@ except ImportError:
     from urllib import urlencode
 
 register = template.Library()
+
+
+@register.simple_tag
+def settings_value(key):
+    """
+    return a value of settings.
+    {% settings_value "USE_STRIPE" as settings_USE_STRIPE %}
+    {% if settings_USE_STRIPE %}
+      ....
+    {% endif %}
+    """
+    restricted_keys = getattr(settings, 'RESTRICTED_SETTING_KEYS', [])
+    setting_value = getattr(settings, key, None)
+    if setting_value in restricted_keys:
+        return f'[ERROR: {key} IN RESTRICTED_SETTING_KEYS]'
+    return setting_value
 
 
 @register.filter
