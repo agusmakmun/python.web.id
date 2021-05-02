@@ -81,6 +81,7 @@ class StackOverFlowAPI:
                 if not Post.objects.filter(slug=post_data['slug']).exists():
                     post = Post.objects.create(**post_data)
                     post.tags.add(*self.get_tags(item_data.get('tags', [])))
+                    post.save()
                     logger.info(f'Object {post} is created.')
                     self.max_objects -= 1
 
@@ -106,7 +107,7 @@ class StackOverFlowAPI:
             try:
                 tags.append(
                     Tag.objects.get_or_create(
-                        slugify(tag_name)
+                        name=slugify(tag_name)
                     )[0]
                 )
             except Tag.MultipleObjectsReturned:
