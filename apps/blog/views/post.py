@@ -11,7 +11,9 @@ from django.urls import reverse
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
+from django.utils.text import Truncator
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import strip_tags
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (ListView, DetailView, UpdateView,
                                   FormView, TemplateView)
@@ -24,6 +26,8 @@ from apps.blog.utils.visitor import (visitor_counter, get_popular_objects)
 from apps.blog.utils.json import JSONResponseMixin
 from apps.blog.forms.post import PostForm
 from apps.accounts.models.user import User
+from apps.blog.templatetags.common_tags import markdown_find_images
+from martor.templatetags.martortags import safe_markdown
 
 
 class PostListView(ListView):
@@ -203,11 +207,23 @@ class PostDetailView(DetailView):
                    'object_id': self.object.id}
         return visitor_counter(**queries)
 
+    def get_meta_description(self):
+        if self.object.meta_description:
+            return self.object.meta_description
+        return Truncator(
+            strip_tags(safe_markdown(self.object.description))
+        ).words(20)
+
+    def get_image_urls(self):
+        return markdown_find_images(self.object.description)
+
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
         context_data['related_posts'] = self.get_related_posts(limit=5)
         context_data['user_post_vote'] = self.user_post_vote
         context_data['visitor_counter'] = self.get_visitors()
+        context_data['meta_description'] = self.get_meta_description()
+        context_data['image_urls'] = self.get_image_urls()
         return context_data
 
 

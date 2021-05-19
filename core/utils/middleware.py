@@ -4,7 +4,7 @@ import json
 import copy
 
 from django.conf import settings
-from django.utils import (timezone, translation)
+from django.utils import timezone
 from django.utils.deprecation import MiddlewareMixin
 from django.utils.translation import ugettext_lazy as _
 from django.core.serializers.json import DjangoJSONEncoder

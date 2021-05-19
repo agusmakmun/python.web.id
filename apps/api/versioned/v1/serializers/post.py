@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.forms.models import model_to_dict
-from django.utils.translation import ugettext_lazy as _
-
 from rest_framework import serializers
 
-from apps.blog.models.tag import Tag
 from apps.blog.models.post import Post
 from apps.api.base.serializers.fields import DynamicFieldsModelSerializer
 from apps.api.versioned.v1.serializers.tag import TagSerializer

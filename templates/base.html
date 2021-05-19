@@ -12,11 +12,11 @@
   <link rel="alternate" href="{% url 'apps.blog:post_feed' %}" type="application/rss+xml" title="Blog Feed">
 
   {% block robot %}
-  <meta name="robots" content="index, follow, noodp">
+  <meta name="robots" content="index,follow">
   {% endblock %}
 
   <title>{% block title %}Python Learning{% endblock %}</title>
-  <link rel="canonical" href="https://python.web.id{% block canonical %}{% endblock %}">
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
 
   {% block seo %}
   <meta name="description" content="Django Blog Python Learning">
@@ -26,20 +26,10 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Python Learning">
   <meta property="og:description" content="Django Blog Python Learning">
-  <meta property="og:url" content="https://python.web.id">
-  <meta property="og:image" content="https://python.web.id{% static 'images/medium-logo-orange.png' %}">
+  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/medium-logo-orange.png' %}">
   <meta property="og:site_name" content="python.web.id" >
   {% endblock %}
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  {% settings_value "GOOGLE_TAG_MANAGER_ID" as settings_GOOGLE_TAG_MANAGER_ID %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings_GOOGLE_TAG_MANAGER_ID }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ settings_GOOGLE_TAG_MANAGER_ID }}');
-  </script>
 
   {% block core_css %}
   <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="all">
@@ -48,10 +38,23 @@
   <link href="{% static 'css/djangoblog.css' %}" rel="stylesheet" media="all">
   {% block css %}{% endblock %}
 
-  <!-- Google Adsense -->
+  {% settings_value "GOOGLE_TAG_MANAGER_ID" as settings_GOOGLE_TAG_MANAGER_ID %}
+  {% if settings_GOOGLE_TAG_MANAGER_ID %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings_GOOGLE_TAG_MANAGER_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ settings_GOOGLE_TAG_MANAGER_ID }}');
+    </script>
+  {% endif %}
+
   {% settings_value "GOOGLE_ADSENSE_ID" as settings_GOOGLE_ADSENSE_ID %}
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ GOOGLE_ADSENSE_ID }}" crossorigin="anonymous"></script>
-  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  {% if settings_GOOGLE_ADSENSE_ID %}
+    <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ GOOGLE_ADSENSE_ID }}" crossorigin="anonymous"></script>
+  {% endif %}
 </head>
 
 <body>

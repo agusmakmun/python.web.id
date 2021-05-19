@@ -10,11 +10,12 @@ class Command(BaseCommand):
             'then create it as Post objects.')
 
     def add_arguments(self, parser):
-        parser.add_argument('--tagged', type=str, default='django')
+        parser.add_argument('--tagged', type=str, default='python')
         parser.add_argument('--pagesize', type=int, default=30)
         parser.add_argument('--page', type=int, default=1)
         parser.add_argument('--sort', type=str, default='votes')
         parser.add_argument('--max_objects', type=int, default=1)
+        parser.add_argument('--publish', type=bool, default=False)
 
     def handle(self, *args, **options):
         api = StackOverFlowAPI()
@@ -23,4 +24,5 @@ class Command(BaseCommand):
         api.page = options.get('page')
         api.sort = options.get('sort')
         api.max_objects = options.get('max_objects')
+        api.publish = options.get('publish')
         api.run()

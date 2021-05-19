@@ -2,21 +2,20 @@
 from __future__ import unicode_literals
 
 from django.urls import reverse
-from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
-from django.db.models import (Q, F, Count)
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (TemplateView, ListView, DetailView,
                                   FormView, UpdateView)
+from django.db.models import Q
 
 from apps.product.models.product import Product
 from apps.product.forms.product import ProductForm
 from apps.blog.utils.json import JSONResponseMixin
-from apps.blog.utils.visitor import (visitor_counter, get_popular_objects)
+from apps.blog.utils.visitor import visitor_counter
 from apps.accounts.utils.mixins import StaffLoginRequiredMixin
-from apps.accounts.models.user import User
+from apps.blog.models.addons import Visitor
 
 
 class ProductListView(ListView):
@@ -139,6 +138,15 @@ class ProductUpdateView(StaffLoginRequiredMixin, UpdateView):
 class ProductDeleteJSONView(JSONResponseMixin, TemplateView):
     model = Product
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.object = None
+
+    def get_object(self, id):
+        if not self.object:
+            self.object = get_object_or_404(self.model, id=id)
+        return self.object
+
     def soft_delete_product(self, id):
         """
         function to delete the product object with soft delete method
@@ -149,7 +157,7 @@ class ProductDeleteJSONView(JSONResponseMixin, TemplateView):
         Visitor.objects.filter(**queries).update(deleted_at=timezone.now())
 
         # soft delete the object
-        product = get_object_or_404(self.model, id=id)
+        product = self.get_object(id)
         product.deleted_at = timezone.now()
         product.save()
 
@@ -166,7 +174,7 @@ class ProductDeleteJSONView(JSONResponseMixin, TemplateView):
                 self.soft_delete_product(id)
                 context_data['success'] = True
                 context_data['message'] = _('The product successfully deleted!')
-            elif request.user != product.author:
+            elif request.user != self.get_object(id).author:
                 context_data['message'] = _('You are not allowed to access this feature!')
             else:
                 self.soft_delete_product(id)

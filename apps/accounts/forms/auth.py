@@ -75,7 +75,7 @@ class SignUpForm(SignupForm):
         'test', 'testing', 'tester', 'user',
         'root', 'password', 'presiden', 'president',
         'anon', 'anonymous', 'dancok', 'jancuk',
-        'xx', 'xxx',  'xxxx', 'xxxxx', 'xxxxxx'
+        'xx', 'xxx', 'xxxx', 'xxxxx', 'xxxxxx'
     ]
     error_message = {
         'username_misspace': _("Username with white space forbidden to use!"),

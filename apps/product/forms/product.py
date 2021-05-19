@@ -2,11 +2,8 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.utils.text import slugify
-from django.utils.translation import ugettext_lazy as _
 
 from martor.widgets import AdminMartorWidget
-
 from apps.product.models.product import Product
 
 

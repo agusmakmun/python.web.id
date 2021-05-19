@@ -4,12 +4,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
-from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from apps.blog.models.base import (TimeStampedModel, DefaultManager,
                                    ContentTypeModel)
-from apps.accounts.models.user import User
 
 
 class ProductManager(DefaultManager):
@@ -93,6 +91,9 @@ class Product(TimeStampedModel, ContentTypeModel):
         except Exception:
             pass
         return []
+
+    def get_absolute_url(self):
+        return reverse('apps.product:product_detail', kwargs={'id': self.id})
 
     class Meta:
         verbose_name = _('Product')

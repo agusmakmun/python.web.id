@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from django.contrib.admin import autodiscover
 from django.contrib.sites.models import Site
 from django.contrib.sites.admin import SiteAdmin
 from django.contrib.auth.models import (User, Group)

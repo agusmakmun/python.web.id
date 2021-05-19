@@ -13,8 +13,8 @@ class DefaultAdminMixin:
 
     def setup_raw_id_fields(self, model):
         return tuple(
-            f.name for f in model._meta.get_fields()
-            if isinstance(f, ForeignKey)
-            or isinstance(f, OneToOneField)
-            or isinstance(f, ManyToManyField)
+            f.name for f in model._meta.get_fields() if
+            isinstance(f, ForeignKey) or
+            isinstance(f, OneToOneField) or
+            isinstance(f, ManyToManyField)
         )

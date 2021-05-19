@@ -6,13 +6,11 @@ to show all statistics.
 from __future__ import unicode_literals
 
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView
 
 from core.utils.mixins import SuperUserLoginRequiredMixin
 
 from apps.accounts.models.user import User
-from apps.product.models.product import Product
 from apps.blog.models.addons import Visitor
 from apps.blog.models.post import Post
 from apps.blog.models.tag import Tag

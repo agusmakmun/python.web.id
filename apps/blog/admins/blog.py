@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
 
 from apps.blog.models.tag import Tag
 from apps.blog.models.post import (Post, Page)

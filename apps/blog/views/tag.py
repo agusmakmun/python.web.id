@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.urls import reverse
-from django.conf import settings
-from django.contrib import messages
-from django.shortcuts import redirect
 from django.db.models import (Q, Count)
-from django.views.generic.edit import FormMixin
 from django.views.generic import (ListView, TemplateView)
 from django.utils.translation import ugettext_lazy as _
 

@@ -15,12 +15,16 @@
         </tr>
         <tr>
           <td class="no-border">{% trans "posted" %}</td>
-          <td class="no-border" title="{{ post.created_at }}">{{ post.created_at|timesince }} {% trans "ago" %}</td>
+          <td class="no-border" title="{{ post.created_at }}">
+            <time>{{ post.created_at|timesince }} {% trans "ago" %}</time>
+          </td>
         </tr>
         <tr>
           <td class="no-border">{% trans "active" %}</td>
           <td class="no-border">
-            <a class="no-border" href="" title="{{ post.updated_at }}">{{ post.updated_at|timesince }} {% trans "ago" %}</a>
+            <a class="no-border" href="" title="{{ post.updated_at }}">
+              <time>{{ post.updated_at|timesince }} {% trans "ago" %}</time>
+            </a>
           </td>
         </tr>
       </tbody>

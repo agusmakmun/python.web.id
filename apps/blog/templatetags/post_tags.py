@@ -3,12 +3,11 @@ from __future__ import unicode_literals
 
 from django import template
 from django.conf import settings
-from django.utils import timezone
-from django.db.models import (Q, Count)
+from django.db.models import Q
 
 from apps.blog.models.tag import Tag
 from apps.blog.models.post import Post
-from apps.blog.models.addons import Visitor
+# from apps.blog.models.addons import Visitor
 
 register = template.Library()
 

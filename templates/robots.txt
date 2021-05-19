@@ -1,6 +1,5 @@
-User-agent: Mediapartners-Google
-Disallow:
-
 User-agent: *
-Disallow: /search
 Allow: /
+Disallow: /cgi-bin/
+Disallow: /static/
+Sitemap: https://python.web.id/sitemap.xml
