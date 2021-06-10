@@ -13,6 +13,7 @@ from django.views.generic import (TemplateView, FormView)
 
 from apps.blog.models.post import Page
 from apps.blog.forms.contact import ContactForm
+from apps.blog.forms.martor import MartorDemoForm
 
 
 class BasePageDetailView(TemplateView):
@@ -122,3 +123,8 @@ class ContactUsView(FormView):
             messages.error(self.request, error)
 
         return redirect(reverse('apps.blog:page_contact_us'))
+
+
+class MartorDemoView(FormView):
+    template_name = 'apps/blog/page/martor_demo.html'
+    form_class = MartorDemoForm

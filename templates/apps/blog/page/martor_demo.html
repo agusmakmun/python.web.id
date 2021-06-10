@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% load martortags common_tags %}
+
+{% block title %}{% trans "Online Markdown Editor - Try Martor Online" %}{% endblock %}
+
+{% block css %}
+  <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'plugins/css/resizable.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+  <style>
+    .martor-toolbar .btn-light {border-color:transparent;background:transparent}
+    .select2-container--default .select2-selection--multiple {border:1px solid #ced4da;line-height:2em}
+    .martor-field {height:450px}
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container p-3">
+    <h1 class="mt-2 h5 mb-4 text-center">
+      {% trans "Online Markdown Editor - Try Martor Online" %}
+    </h1>
+    <div class="card p-2 mt-4 mb-3 card-post-item" style="box-shadow: 0 3px 5px #eaeaea">
+      <div class="card-body pt-0">
+        {{ form.description }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/typo.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/spellcheck.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'martor/js/martor.bootstrap.min.js' %}"></script>
+</script>
+{% endblock %}

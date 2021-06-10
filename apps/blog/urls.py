@@ -13,7 +13,7 @@ from apps.blog.views.page import (
     PageAboutView, PageDevelopersView,
     PageDisclaimerView, PagePrivacyPolicyView,
     PageServicesView, PageSponsorView,
-    PageTOSView, ContactUsView
+    PageTOSView, ContactUsView, MartorDemoView
 )
 from apps.blog.views.post import (
     PostListView, PostListTaggedView,
@@ -45,6 +45,7 @@ urlpatterns = [
     path('sponsor/', PageSponsorView.as_view(), name='page_sponsor'),
     path('terms-of-service/', PageTOSView.as_view(), name='page_terms_of_service'),
     path('contact/', ContactUsView.as_view(), name='page_contact_us'),
+    path('try-martor-online/', MartorDemoView.as_view(), name='page_martor_demo'),
 
     # posts
     path('', PostListView.as_view(), name='post_list'),
