@@ -5,7 +5,7 @@ from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
