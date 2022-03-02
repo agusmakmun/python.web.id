@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 from django.views.generic import TemplateView
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
 from apps.blog.models.addons import Favorite

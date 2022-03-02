@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.shortcuts import (get_object_or_404, redirect)
 from django.views.generic import (TemplateView, ListView, DetailView,
                                   FormView, UpdateView)

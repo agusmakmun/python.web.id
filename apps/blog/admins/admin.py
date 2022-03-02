@@ -5,7 +5,7 @@ from django.contrib.sites.models import Site
 from django.contrib.sites.admin import SiteAdmin
 from django.contrib.auth.models import (User, Group)
 from django.contrib.auth.admin import (UserAdmin, GroupAdmin)
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from apps.accounts.sites import AdminSite
 

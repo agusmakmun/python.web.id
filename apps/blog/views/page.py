@@ -8,7 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import (get_object_or_404, redirect)
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import (TemplateView, FormView)
 
 from apps.blog.models.post import Page

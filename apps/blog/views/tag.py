@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db.models import (Q, Count)
 from django.views.generic import (ListView, TemplateView)
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from apps.blog.models.tag import Tag
 from apps.blog.utils.json import JSONResponseMixin
